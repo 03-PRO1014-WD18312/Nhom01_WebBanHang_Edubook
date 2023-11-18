@@ -1,5 +1,5 @@
 <?php
-include('DAO/BinhLuaDAO.php');
+include_once('DAO/BinhLuaDAO.php');
 class BinhLuanController
 {
     public function index()
@@ -8,9 +8,9 @@ class BinhLuanController
             if ($_SESSION['role'] == 2) {
                 $BinhLuaDAO = new BinhLuanDAO();
                 $list = $BinhLuaDAO->show();
-                include "views/binhluan/admin/list.php";
+                include_once "views/binhluan/admin/list.php";
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -27,7 +27,7 @@ class BinhLuanController
                 header("Location: index.php?controller=binhLuan");
                 exit();
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");

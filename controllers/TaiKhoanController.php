@@ -1,5 +1,5 @@
 <?php
-include('DAO/TaiKhoanDAO.php');
+include_once('DAO/TaiKhoanDAO.php');
 class TaiKhoanController
 {
     // danh sách tài khoản
@@ -9,9 +9,9 @@ class TaiKhoanController
             if ($_SESSION['role'] == 2) {
                 $TaiKhoanDAO = new TaiKhoanDAO();
                 $list = $TaiKhoanDAO->show();
-                include "views/taiKhoan/admin/list.php";
+                include_once "views/taiKhoan/admin/list.php";
             } else {
-                include('views/trangChu/user/Setting.php');
+                include_once('views/trangChu/user/Setting.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -31,10 +31,10 @@ class TaiKhoanController
                 } else {
                     $TaiKhoanDAO = new TaiKhoanDAO();
                     $roles = $TaiKhoanDAO->showRole();
-                    include('views/taiKhoan/admin/add.php');
+                    include_once('views/taiKhoan/admin/add.php');
                 }
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -57,7 +57,7 @@ class TaiKhoanController
                     exit();
                 }
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -80,13 +80,13 @@ class TaiKhoanController
                         $TaiKhoanDAO = new TaiKhoanDAO();
                         $list = $TaiKhoanDAO->showOne($_GET['id']);
                         $roles = $TaiKhoanDAO->showRole();
-                        include('views/taiKhoan/admin/fix.php');
+                        include_once('views/taiKhoan/admin/fix.php');
                     } else {
                         header("Location: index.php?controller=taiKhoan");
                     }
                 }
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");

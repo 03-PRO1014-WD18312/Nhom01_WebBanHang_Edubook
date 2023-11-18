@@ -1,7 +1,7 @@
 <?php
-include "DAO/SanPhamDAO.php";
-//include "DAO/TacGiaDAO.php";
-//include "DAO/SanPhamDAO.php";
+include_once "DAO/SanPhamDAO.php";
+//include_once "DAO/TacGiaDAO.php";
+//include_once "DAO/SanPhamDAO.php";
 
 class SanPhamController
 {
@@ -11,14 +11,14 @@ class SanPhamController
 
             $sanPhamDAO = new SanPhamDAO();
             $list = $sanPhamDAO->show();
-            include "views/sach/admin/list.php";
+            include_once "views/sach/admin/list.php";
         } else {
-            include "views/trangChu/user/Home.php";
+            include_once "views/trangChu/user/Home.php";
         }
     }
     public function productDetail()
     {
-        include "views/trangChu/user/ProductDetail.php";
+        include_once "views/trangChu/user/ProductDetail.php";
     }
     public function add()
     {
@@ -67,6 +67,7 @@ class SanPhamController
 
                 $list = $sanPhamDAO->show();
                 header("location: index.php?controller=sanPham");
+                exit();
             } else {
                 $sanPhamDAO = new SanPhamDAO();
                 $tg = $sanPhamDAO->showtg();
@@ -74,11 +75,10 @@ class SanPhamController
                 $l = $sanPhamDAO->showL();
                 $nph = $sanPhamDAO->showPH();
                 $b = $sanPhamDAO->showB();
-
-                include "views/sach/admin/add.php";
+                include_once "views/sach/admin/add.php";
             }
         } else {
-            include "views/trangChu/user/Home.php";
+            include_once "views/trangChu/user/Home.php";
         }
     }
     public function delete()
@@ -89,10 +89,12 @@ class SanPhamController
                 $sanPhamDAO->deleteASP($_GET['id']);
                 $sanPhamDAO->deleteSP($_GET['id']);
                 $list = $sanPhamDAO->show();
-                include "views/sach/admin/list.php";
+                $_SESSION['error'] = 'Xoá thành công';
+                header('location: index.php?controller=sanPham');
+                exit();
             }
         } else {
-            include "views/trangChu/user/Home.php";
+            include_once "views/trangChu/user/Home.php";
         }
     }
     public function fix()
@@ -107,7 +109,10 @@ class SanPhamController
                 $b = $sanPhamDAO->showB();
                 $imgs = $sanPhamDAO->imgs($_GET['id']);
                 $list = $sanPhamDAO->showOne($_GET['id']);
-                include "views/sach/admin/fix.php";
+                $_SESSION['error'] = 'Sửa thông tin thành công';
+                header('location: index.php?controller=sanPham');
+                exit();
+                include_once "views/sach/admin/fix.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $sanPhamDAO = new SanPhamDAO();
@@ -152,10 +157,12 @@ class SanPhamController
                     echo "Không có ảnh nào được chọn.";
                 }
                 $list = $sanPhamDAO->show();
-                header("location: index.php?controller=sanPham");
+                $_SESSION['error'] = 'Sửa thông tin thành công';
+                header('location: index.php?controller=sanPham');
+                exit();
             }
         } else {
-            include "views/trangChu/user/Home.php";
+            include_once "views/trangChu/user/Home.php";
         }
     }
     public function sanPham_fix_dlimg()
@@ -173,7 +180,7 @@ class SanPhamController
                 $b = $sanPhamDAO->showB();
                 $imgs = $sanPhamDAO->imgs($_GET['id_san_pham']);
                 $list = $sanPhamDAO->showOne($_GET['id_san_pham']);
-                include "views/sach/admin/fix.php";
+                include_once "views/sach/admin/fix.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $sanPhamDAO = new SanPhamDAO();
@@ -218,10 +225,12 @@ class SanPhamController
                     echo "Không có ảnh nào được chọn.";
                 }
                 $list = $sanPhamDAO->show();
-                header("location: index.php?controller=sanPham");
+                $_SESSION['error'] = 'Sửa thông tin thành công';
+                header('location: index.php?controller=sanPham');
+                exit();
             }
         } else {
-            include "views/trangChu/user/Home.php";
+            include_once "views/trangChu/user/Home.php";
         }
     }
 }
