@@ -13,12 +13,12 @@ class SanPhamController
             $list = $sanPhamDAO->show();
             include "views/sach/admin/list.php";
         } else {
-            include "views/home/user/Home.php";
+            include "views/trangChu/user/Home.php";
         }
     }
     public function productDetail()
     {
-        include "views/home/user/ProductDetail.php";
+        include "views/trangChu/user/ProductDetail.php";
     }
     public function add()
     {
@@ -78,7 +78,7 @@ class SanPhamController
                 include "views/sach/admin/add.php";
             }
         } else {
-            include "views/home/user/Home.php";
+            include "views/trangChu/user/Home.php";
         }
     }
     public function delete()
@@ -92,7 +92,7 @@ class SanPhamController
                 include "views/sach/admin/list.php";
             }
         } else {
-            include "views/home/user/Home.php";
+            include "views/trangChu/user/Home.php";
         }
     }
     public function fix()
@@ -155,7 +155,7 @@ class SanPhamController
                 header("location: index.php?controller=sanPham");
             }
         } else {
-            include "views/home/user/Home.php";
+            include "views/trangChu/user/Home.php";
         }
     }
     public function sanPham_fix_dlimg()
@@ -221,7 +221,7 @@ class SanPhamController
                 header("location: index.php?controller=sanPham");
             }
         } else {
-            include "views/home/user/Home.php";
+            include "views/trangChu/user/Home.php";
         }
     }
 }
