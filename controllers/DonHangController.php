@@ -10,7 +10,7 @@ class DonHangController
             $list = $DonHangDAO->show();
             include "views/donhang/admin/list.php";
         } else {
-            include('views/home/user/Home.php');
+            include('views/trangChu/user/Home.php');
         }
     }
     public function delete()
@@ -21,7 +21,7 @@ class DonHangController
             $list = $DonHangDAO->show();
             include "views/donhang/admin/list.php";
         } else {
-            include('views/home/user/Home.php');
+            include('views/trangChu/user/Home.php');
         }
     }
     public function showTT()
@@ -31,7 +31,7 @@ class DonHangController
             $list = $DonHangDAO->showTTDH();
             include "views/trangThaiDonHang/admin/list.php";
         } else {
-            include('views/home/user/Home.php');
+            include('views/trangChu/user/Home.php');
         }
     }
     function update_tt()
@@ -48,7 +48,7 @@ class DonHangController
                 include "views/trangThaiDonHang/admin/update.php";
             }
         } else {
-            include('views/home/user/Home.php');
+            include('views/trangChu/user/Home.php');
         }
     }
     public function update_tt_dh()
@@ -59,7 +59,7 @@ class DonHangController
             $list = $DonHangDAO->showTTDH();
             header("location: index.php?controller=donHang");
         } else {
-            include('views/home/user/Home.php');
+            include('views/trangChu/user/Home.php');
         }
     }
 }
