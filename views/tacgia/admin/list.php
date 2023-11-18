@@ -37,16 +37,16 @@
                     <tbody>
                         <?php foreach ($list as $key => $value) {
                         ?>
-                        <tr>
-                            <td><?php echo $key + 1 ?></td>
-                            <td><?php echo $value->name ?></td>
-                            <td><?php echo $value->soluong ?></td>
-                            <td><?php echo $value->trang_thai ?></td>
-                            <td>
-                                <a href="index.php?controller=tacGia_delete&id=<?php echo $value->id ?>">Xoá</a>
-                                /<a href="index.php?controller=tacGia_fix&id=<?php echo $value->id ?>">Sửa</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?php echo $key + 1 ?></td>
+                                <td><?php echo $value->ten ?></td>
+                                <td><?php echo $value->soluong ?></td>
+                                <td><?php echo $value->trang_thai ?></td>
+                                <td>
+                                    <a href="index.php?controller=tacGia_delete&id=<?php echo $value->id ?>">Xoá</a>
+                                    /<a href="index.php?controller=tacGia_fix&id=<?php echo $value->id ?>">Sửa</a>
+                                </td>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>

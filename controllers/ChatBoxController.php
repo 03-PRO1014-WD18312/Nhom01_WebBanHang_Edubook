@@ -1,16 +1,16 @@
 <?php
-include 'DAO/ChatBoxDAO.php';
+include_once 'DAO/ChatBoxDAO.php';
 class ChatBoxController
 {
     public function index()
     {
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] == 2) {
-                include "views/chatbox/admin/users.php";
+                include_once "views/chatbox/admin/users.php";
             } else {
                 $ChatBoxDAO = new User();
                 $id = $ChatBoxDAO->getId();
-                include "views/chatbox/user/chatbox.php";
+                include_once "views/chatbox/user/chatbox.php";
             }
         } else {
             header("Location: index.php?controller=login");
@@ -20,11 +20,11 @@ class ChatBoxController
     {
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] == 2) {
-                include "views/chatbox/admin/chatbox.php";
+                include_once "views/chatbox/admin/chatbox.php";
             } else {
                 $ChatBoxDAO = new User();
                 $id = $ChatBoxDAO->getId();
-                include "views/chatbox/user/chatbox.php";
+                include_once "views/chatbox/user/chatbox.php";
             }
         } else {
             header("Location: index.php?controller=login");

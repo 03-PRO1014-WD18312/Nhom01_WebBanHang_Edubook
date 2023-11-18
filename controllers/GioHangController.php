@@ -3,6 +3,6 @@ class GioHangController
 {
     public function index()
     {
-        include "views/trangChu/user/Cart.php";
+        include_once "views/trangChu/user/Cart.php";
     }
 }

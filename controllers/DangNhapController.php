@@ -1,5 +1,5 @@
 <?php
-include 'DAO/LoginDAO.php';
+include_once 'DAO/LoginDAO.php';
 class DangNhapController
 {
     // đăng nhập
@@ -34,7 +34,7 @@ class DangNhapController
                 exit();
             }
         } else {
-            include "views/dangNhap/Login.php";
+            include_once "views/dangNhap/Login.php";
         }
     }
     // đăng xuất

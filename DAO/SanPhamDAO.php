@@ -1,17 +1,13 @@
 <?php
-include 'models/SanPham.php';
-//include 'models/NhaXuatBan.php';
-// include 'models/LoaiSanPham.php';
-// include 'models/NhaPhatHanh.php';
-// include 'models/NhaXuatBan.php';
-// include 'models/AnhSanPham.php';
+include_once 'models/SanPham.php';
+include_once 'models/AnhSanPham.php';
 
 class SanPhamDAO
 {
     private $PDO;
     public function __construct()
     {
-        require('config/PDO.php');
+        require_once('config/PDO.php');
         $this->PDO = $pdo;
     }
     public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh)
@@ -216,7 +212,7 @@ class SanPhamDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create a Login object and add it to the array
-            $user = new LoaiSanPham(
+            $user = new LoaiTruyen(
                 $row['id_loai_san_pham'],
                 $row['ten_loai_san_pham'],
                 $row['trang_thai'],
@@ -282,7 +278,7 @@ class SanPhamDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create a Login object and add it to the array
-            $user = new NhaSanXuat(
+            $user = new NhaXuatBan(
                 $row['id_nha_san_xuat'],
                 $row['ten_nha_san_xuat'],
                 $row['trang_thai'],

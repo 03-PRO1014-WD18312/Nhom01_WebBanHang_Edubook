@@ -1,5 +1,5 @@
 <?php
-include 'DAO/TacGiaDAO.php';
+include_once 'DAO/TacGiaDAO.php';
 class TacGiaController
 {
     // danh sách tac gia
@@ -9,9 +9,9 @@ class TacGiaController
             if ($_SESSION['role'] == 2) {
                 $TacGiaDAO = new TacGiaDAO();
                 $list = $TacGiaDAO->show();
-                include "views/tacGia/admin/list.php";
+                include_once "views/tacGia/admin/list.php";
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -29,10 +29,10 @@ class TacGiaController
                     header("Location: index.php?controller=tacGia");
                     exit();
                 } else {
-                    include('views/tacGia/admin/add.php');
+                    include_once('views/tacGia/admin/add.php');
                 }
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -49,7 +49,7 @@ class TacGiaController
                 header("Location: index.php?controller=tacGia");
                 exit();
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
@@ -70,13 +70,13 @@ class TacGiaController
                     if (isset($_GET['id'])) {
                         $TacGiaDAO = new TacGiaDAO();
                         $list = $TacGiaDAO->showOne($_GET['id']);
-                        include('views/tacGia/admin/fix.php');
+                        include_once('views/tacGia/admin/fix.php');
                     } else {
                         header("Location: index.php?controller=tacGia");
                     }
                 }
             } else {
-                include('views/trangChu/user/Home.php');
+                include_once('views/trangChu/user/Home.php');
             }
         } else {
             header("Location: index.php?controller=login");
