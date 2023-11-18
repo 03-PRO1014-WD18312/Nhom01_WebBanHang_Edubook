@@ -6,7 +6,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Thống kê</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+
     </div>
 
     <!-- Content Row -->
@@ -19,8 +19,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Đơn hàng</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                Đơn hàng đã giao</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $doanh_thu['so_don_hang']; ?>
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -38,7 +39,8 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Doanh thu</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $doanh_thu['tong_tien']; ?>
+                            </div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -54,15 +56,17 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Đơn hàng bị huỷ
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Đơn hàng chưa giao
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                        <?php echo $don_hanh_chua_giao['soluong']; ?></div>
+
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $don_hanh_chua_giao['soluong'] / $don_hang['soluong'] * 100; ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
@@ -82,8 +86,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Số lượng Hỗ trợ</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                Số lượng khách hàng phản hồi</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $lien_he['soluong']; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -127,15 +131,18 @@
                     <div class="chart-pie pt-4 pb-2">
                         <canvas id="myPieChart"></canvas>
                     </div>
+                    <?php foreach ($bill as $key => $vl) {
+                        $tens[] = $vl['ten_loai_san_pham'];
+                    } ?>
                     <div class="mt-4 text-center small">
                         <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
+                            <i class="fas fa-circle text-primary"></i> <?php echo $tens[0] ?>
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
+                            <i class="fas fa-circle text-success"></i> <?php echo $tens[1] ?>
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
+                            <i class="fas fa-circle text-info"></i> <?php echo $tens[2] ?>
                         </span>
                     </div>
                 </div>
@@ -155,29 +162,42 @@
                     <h6 class="m-0 font-weight-bold text-primary">Sản phẩm mỗi loại trên tổng số</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%(số lượng)</span>
+                    <?php
+                    foreach ($san_pham as $key => $vl) {
+                        $ten[] = $vl['ten_loai_san_pham'];
+                        $so[] = $vl['so_luong_sach'];
+                    }
+                    ?>
+                    <h4 class="small font-weight-bold"><?php echo $ten[0] ?>
+                        <span class="float-right">
+                            <?php echo  $so[0] / $all_san_pham['soluong'] * 100; ?>%(<?php echo $so[0] ?>)</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo  $so[0] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%(số lượng)</span>
+                    <h4 class="small font-weight-bold">
+                        <?php echo $ten[1] ?>
+                        <span class="float-right"><?php echo  $so[1] / $all_san_pham['soluong'] * 100; ?>%(<?php echo $so[1] ?>)</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo  $so[1] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%(số lượng)</span>
+                    <h4 class="small font-weight-bold">
+                        <?php echo $ten[2] ?> <span class="float-right"><?php echo  $so[2] / $all_san_pham['soluong'] * 100; ?>%(
+                            <?php echo $so[2] ?>)</span>
                     </h4>
                     <div class="progress mb-4">
-                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: <?php echo  $so[2] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <!-- <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80"
                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div> -->
-                    <h4 class="small font-weight-bold">Tổng <span class="float-right">Tổng số</span></h4>
+                    <h4 class="small font-weight-bold">Tổng <span class="float-right"><?php echo  $all_san_pham['soluong'] / $all_san_pham['soluong'] * 100; ?>%(<?php echo  $all_san_pham['soluong']; ?>)</span>
+                    </h4>
                     <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width:  <?php echo  $all_san_pham['soluong'] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>
@@ -189,7 +209,12 @@
 
 </div>
 <!-- /.container-fluid -->
-
+<script>
+    <?php
+    $Date = json_encode($bill);
+    ?>
+    var data = <?php echo $Date; ?>
+</script>
 
 <!-- End of Main Content -->
 <?php include "views/layout/admin/Footer.php"; ?>
