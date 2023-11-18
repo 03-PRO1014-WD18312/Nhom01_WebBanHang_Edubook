@@ -5,7 +5,7 @@ class TrangChuController
     public function index()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 $trangChuDAO = new TrangChuDAO();
                 $doanh_thu = $trangChuDAO->show_thong_ke();
                 $don_hang = $trangChuDAO->don_hang();

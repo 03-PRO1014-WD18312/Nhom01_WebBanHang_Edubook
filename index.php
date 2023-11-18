@@ -111,6 +111,7 @@ switch ($controller) {
     case 'donHang_fix':
         $DonHangController = new DonHangController();
         $DonHangController->index();
+
         break;
     case 'donHang_delete':
         $DonHangController = new DonHangController();

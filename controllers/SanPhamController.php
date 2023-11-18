@@ -7,7 +7,7 @@ class SanPhamController
 {
     public function index()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
 
             $sanPhamDAO = new SanPhamDAO();
             $list = $sanPhamDAO->show();
@@ -22,7 +22,7 @@ class SanPhamController
     }
     public function add()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $sanPhamDAO = new SanPhamDAO();
                 $sanPhamDAO->add(
@@ -83,7 +83,7 @@ class SanPhamController
     }
     public function delete()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_GET['id'])) {
                 $sanPhamDAO = new SanPhamDAO();
                 $sanPhamDAO->deleteASP($_GET['id']);
@@ -99,7 +99,7 @@ class SanPhamController
     }
     public function fix()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_GET['id'])) {
                 $sanPhamDAO = new SanPhamDAO();
                 $tg = $sanPhamDAO->showtg();
@@ -164,7 +164,7 @@ class SanPhamController
     }
     public function sanPham_fix_dlimg()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_GET['id_san_pham'])) {
                 $sanPhamDAO = new SanPhamDAO();
                 if (isset($_GET['id_hinh_anh'])) {

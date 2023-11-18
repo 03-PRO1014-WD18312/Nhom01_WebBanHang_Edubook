@@ -5,7 +5,7 @@ class NhaXuatBanController
     // lấy danh sách bộ truyện
     public function index()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $NhaSanXuatDAO = new NhaSanXuatDAO();
             $list = $NhaSanXuatDAO->show();
             include_once "views/nhaxuatban/admin/list.php";
@@ -16,7 +16,7 @@ class NhaXuatBanController
     // tạo mới bộ truện
     public function add()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $NhaSanXuatDAO = new NhaSanXuatDAO();
                 $NhaSanXuatDAO->add($_POST['ten']);
@@ -33,7 +33,7 @@ class NhaXuatBanController
     // xoá bộ truyện
     public function remove()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $NhaSanXuatDAO = new NhaSanXuatDAO();
             $NhaSanXuatDAO->remove($_GET['id']);
             $list = $NhaSanXuatDAO->show();
@@ -46,7 +46,7 @@ class NhaXuatBanController
     // sửa bộ truyện
     public function update()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $NhaSanXuatDAO = new NhaSanXuatDAO();
                 $NhaSanXuatDAO->update($_POST['id'], $_POST['ten'], $_POST['trang_thai']);

@@ -6,7 +6,7 @@ class TacGiaController
     public function index()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 $TacGiaDAO = new TacGiaDAO();
                 $list = $TacGiaDAO->show();
                 include_once "views/tacGia/admin/list.php";
@@ -21,7 +21,7 @@ class TacGiaController
     public function add()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 if (isset($_POST['ten'])) {
                     $TacGiaDAO = new tacGiaDAO();
                     $TacGiaDAO->add($_POST['ten']);
@@ -42,7 +42,7 @@ class TacGiaController
     public function delete()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 $TacGiaDAO = new tacGiaDAO();
                 $TacGiaDAO->delete($_GET['id']);
                 $_SESSION['error'] = 'Xoá thành công';
@@ -59,7 +59,7 @@ class TacGiaController
     public function update()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 if (isset($_POST['id'])) {
                     $TacGiaDAO = new TacGiaDAO();
                     $TacGiaDAO->fix($_POST['id'], $_POST['ten'], $_POST['trang_thai']);

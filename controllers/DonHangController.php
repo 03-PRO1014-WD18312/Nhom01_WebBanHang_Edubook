@@ -5,7 +5,7 @@ class DonHangController
 {
     public function index()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $DonHangDAO = new DonHangDAO();
             $list = $DonHangDAO->show();
             include_once "views/donhang/admin/list.php";
@@ -15,7 +15,7 @@ class DonHangController
     }
     public function delete()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $DonHangDAO = new DonHangDAO();
             $DonHangDAO->delete($_GET['id']);
             $list = $DonHangDAO->show();
@@ -28,7 +28,7 @@ class DonHangController
     }
     public function showTT()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $DonHangDAO = new DonHangDAO();
             $list = $DonHangDAO->showTTDH();
             include_once "views/trangThaiDonHang/admin/list.php";
@@ -38,7 +38,7 @@ class DonHangController
     }
     function update_tt()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $DonHangDAO = new DonHangDAO();
                 $DonHangDAO->update_tt($_POST['id_trang_thai_don_hang'], $_POST['ten_trang_thai_don_hang']);
@@ -57,7 +57,7 @@ class DonHangController
     }
     public function update_tt_dh()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $DonHangDAO = new DonHangDAO();
             $DonHangDAO->donHang_update_tt($_GET['id'], $_GET['tt']);
             $list = $DonHangDAO->showTTDH();
