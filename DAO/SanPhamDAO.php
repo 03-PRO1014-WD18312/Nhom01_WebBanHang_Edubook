@@ -3,7 +3,7 @@ include 'models/SanPham.php';
 //include 'models/NhaXuatBan.php';
 include 'models/LoaiSanPham.php';
 include 'models/NhaPhatHanh.php';
-include 'models/NhaSanXuat.php';
+include 'models/NhaXuatBan.php';
 include 'models/AnhSanPham.php';
 
 class SanPhamDAO {
@@ -23,7 +23,8 @@ class SanPhamDAO {
         $stmt->execute();
     }
     public function show(){
-        $sql = "SELECT * FROM `san_pham` WHERE 1";
+        $sql = "SELECT * FROM `san_pham` ORDER BY `id_san_pham` DESC;
+";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
