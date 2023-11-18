@@ -5,7 +5,7 @@ class BoTruyenController
     // lấy danh sách bộ truyện
     public function index()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $BoTruyenDAO = new BoTruyenDAO();
             $list = $BoTruyenDAO->show();
             include_once "views/botruyen/admin/list.php";
@@ -16,7 +16,7 @@ class BoTruyenController
     // tạo mới bộ truện
     public function add()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $BoTruyenDAO = new BoTruyenDAO();
                 $BoTruyenDAO->add($_FILES['img'], $_POST['ten']);
@@ -34,7 +34,7 @@ class BoTruyenController
     // xoá bộ truyện
     public function remove()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $BoTruyenDAO = new BoTruyenDAO();
             $BoTruyenDAO->remove($_GET['id']);
             $list = $BoTruyenDAO->show();
@@ -48,7 +48,7 @@ class BoTruyenController
     // sửa bộ truyện
     public function update()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $BoTruyenDAO = new BoTruyenDAO();
                 $BoTruyenDAO->update($_POST['id'], $_POST['ten'], $_POST['trang_thai'], $_FILES['img']);

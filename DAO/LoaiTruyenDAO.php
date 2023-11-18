@@ -12,7 +12,7 @@ class LoaiTruyenDAO
     // thêm mới loại truyện
     public function add($ten)
     {
-        $sql = "INSERT INTO `loai_san_pham`( `ten_san_pham`) VALUES ('$ten');";
+        $sql = "INSERT INTO `loai_san_pham`( `ten_loai_san_pham`) VALUES ('$ten');";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
@@ -29,7 +29,7 @@ class LoaiTruyenDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new LoaiTruyen($row['id_loai_san_pham'], $row['ten_san_pham'], $row['trang_thai'], $row['so_luong_sach']);
+            $product = new LoaiTruyen($row['id_loai_san_pham'], $row['ten_loai_san_pham'], $row['trang_thai'], $row['so_luong_sach']);
             $lists[] = $product;
         }
 
@@ -52,7 +52,7 @@ class LoaiTruyenDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new LoaiTruyen($row['id_loai_san_pham'], $row['ten_san_pham'], $row['trang_thai'], 0);
+            $product = new LoaiTruyen($row['id_loai_san_pham'], $row['ten_loai_san_pham'], $row['trang_thai'], 0);
             $lists[] = $product;
         }
         return $lists;
@@ -60,7 +60,7 @@ class LoaiTruyenDAO
     // sửa loại truyên
     public function update($id, $name, $trang_thai)
     {
-        $sql = "UPDATE `loai_san_pham` SET `ten_san_pham`='$name',`trang_thai`='$trang_thai' WHERE  id_loai_san_pham = $id";
+        $sql = "UPDATE `loai_san_pham` SET `ten_loai_san_pham`='$name',`trang_thai`='$trang_thai' WHERE  id_loai_san_pham = $id";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }

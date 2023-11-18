@@ -5,7 +5,7 @@ class LoaiSanPhamController
     // lấy danh sách loại truyện
     public function index()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $LoaiTruyenDAO = new LoaiTruyenDAO();
             $list = $LoaiTruyenDAO->show();
             include_once "views/danhmuc/admin/list.php";
@@ -16,7 +16,7 @@ class LoaiSanPhamController
     // tạo mới loại truện
     public function add()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $LoaiTruyenDAO = new LoaiTruyenDAO();
                 $LoaiTruyenDAO->add($_POST['ten']);
@@ -34,7 +34,7 @@ class LoaiSanPhamController
     // xoá loại truyện
     public function remove()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             $LoaiTruyenDAO = new LoaiTruyenDAO();
             $LoaiTruyenDAO->remove($_GET['id']);
             $list = $LoaiTruyenDAO->show();
@@ -48,7 +48,7 @@ class LoaiSanPhamController
     // sửa loại truyện
     public function update()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $LoaiTruyenDAO = new LoaiTruyenDAO();
                 $LoaiTruyenDAO->update($_POST['id'], $_POST['ten'], $_POST['trang_thai']);

@@ -6,7 +6,7 @@ class TaiKhoanController
     public function index()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 $TaiKhoanDAO = new TaiKhoanDAO();
                 $list = $TaiKhoanDAO->show();
                 include_once "views/taiKhoan/admin/list.php";
@@ -21,7 +21,7 @@ class TaiKhoanController
     public function add()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 if (isset($_POST['email'])) {
                     $TaiKhoanDAO = new TaiKhoanDAO();
                     $TaiKhoanDAO->add($_POST['ten'], $_POST['email'], $_POST['password'], $_POST['quyen']);
@@ -44,7 +44,7 @@ class TaiKhoanController
     public function delete()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 if ($_SESSION['id'] == $_GET['id']) {
                     $_SESSION['error'] = 'không thể tự xoá tài khoản của bản thân';
                     header("Location: index.php?controller=taiKhoan");
@@ -67,7 +67,7 @@ class TaiKhoanController
     public function fix()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
 
                 if (isset($_POST['email'])) {
                     $TaiKhoanDAO = new TaiKhoanDAO();
