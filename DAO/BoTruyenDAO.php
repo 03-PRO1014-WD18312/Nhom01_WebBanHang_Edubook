@@ -1,12 +1,12 @@
 <?php
-include 'models/BoTruyen.php';
+include_once 'models/BoTruyen.php';
 class BoTruyenDAO
 {
     // kết nối database
     private $PDO;
     public function __construct()
     {
-        require('config/PDO.php');
+        require_once('config/PDO.php');
         $this->PDO = $pdo;
     }
     // thêm mới bộ truyện

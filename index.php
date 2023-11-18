@@ -5,11 +5,11 @@ include 'controllers/TrangChuController.php';
 include 'controllers/SanPhamController.php';
 // include 'controllers/SettingController.php';
 include 'controllers/GioHangController.php';
-// include 'controllers/LoaiSanPhamController.php';
-// include 'controllers/BoTruyenController.php';
+include 'controllers/LoaiSanPhamController.php';
+include 'controllers/BoTruyenController.php';
 include 'controllers/DonHangController.php';
-// include 'controllers/NhaPhatHanhController.php';
-// include 'controllers/NhaXuatBanController.php';
+include 'controllers/NhaPhatHanhController.php';
+include 'controllers/NhaXuatBanController.php';
 include 'controllers/TacGiaController.php';
 include 'controllers/TaiKhoanController.php';
 include 'controllers/ChatBoxController.php';
@@ -78,7 +78,7 @@ switch ($controller) {
         break;
     case 'nhaPhatHanh_fix':
         $NhaPhathanhController = new NhaphathanhController();
-        $NhaPhathanhController->fix();
+        $NhaPhathanhController->update();
         break;
     case 'nhaPhatHanh_delete':
         $NhaPhathanhController = new NhaphathanhController();
@@ -94,7 +94,7 @@ switch ($controller) {
         break;
     case 'nhaXuatBan_fix':
         $NhaXuatController = new NhaXuatBanController();
-        $NhaXuatController->fix();
+        $NhaXuatController->update();
         break;
     case 'nhaXuatBan_delete':
         $NhaXuatController = new NhaXuatBanController();
@@ -150,7 +150,7 @@ switch ($controller) {
         break;
     case 'boTruyen_fix':
         $BoTruyenController = new BoTruyenController();
-        $BoTruyenController->fix();
+        $BoTruyenController->update();
         break;
     case 'boTruyen_delete':
         $BoTruyenController = new BoTruyenController();
@@ -166,7 +166,7 @@ switch ($controller) {
         break;
     case 'loaisanpham_fix':
         $loaiSanPhamController = new LoaiSanPhamController();
-        $loaiSanPhamController->fix();
+        $loaiSanPhamController->update();
         break;
     case 'loaisanpham_delete':
         $loaiSanPhamController = new LoaiSanPhamController();
