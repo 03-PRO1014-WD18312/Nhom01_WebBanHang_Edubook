@@ -14,7 +14,7 @@ include_once 'controllers/TacGiaController.php';
 include_once 'controllers/TaiKhoanController.php';
 include_once 'controllers/ChatBoxController.php';
 include_once 'controllers/BinhLuanController.php';
-
+include_once 'controllers/PDFController.php';
 $controller = $_GET['controller'] ?? 'trangChu';
 // routing controller
 switch ($controller) {
@@ -109,8 +109,8 @@ switch ($controller) {
         $DonHangController->update_tt_dh();
         break;
     case 'donHang_fix':
-        $DonHangController = new DonHangController();
-        $DonHangController->index();
+        $DonHangController = new PDFController();
+        $DonHangController->indexXuat();
 
         break;
     case 'donHang_delete':
