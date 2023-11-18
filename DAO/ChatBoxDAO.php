@@ -212,7 +212,7 @@ class User
     private $pdo;
     public function __construct()
     {
-        require('config/PDO.php');
+        require_once('config/PDO.php');
         $this->pdo = $pdo;
     }
     // lấy id người quản trị web
@@ -222,13 +222,10 @@ class User
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
-
-
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Add user ID to the array
             $userIds = $row['id_user'];
         }
-
         return $userIds;
     }
 }

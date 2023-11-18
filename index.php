@@ -1,19 +1,19 @@
 <?php
 session_start();
-include 'controllers/DangNhapController.php';
-include 'controllers/TrangChuController.php';
-include 'controllers/SanPhamController.php';
-// include 'controllers/SettingController.php';
-include 'controllers/GioHangController.php';
-include 'controllers/LoaiSanPhamController.php';
-include 'controllers/BoTruyenController.php';
-include 'controllers/DonHangController.php';
-include 'controllers/NhaPhatHanhController.php';
-include 'controllers/NhaXuatBanController.php';
-include 'controllers/TacGiaController.php';
-include 'controllers/TaiKhoanController.php';
-include 'controllers/ChatBoxController.php';
-include 'controllers/BinhLuanController.php';
+include_once 'controllers/DangNhapController.php';
+include_once 'controllers/TrangChuController.php';
+include_once 'controllers/SanPhamController.php';
+// include_once 'controllers/SettingController.php';
+include_once 'controllers/GioHangController.php';
+include_once 'controllers/LoaiSanPhamController.php';
+include_once 'controllers/BoTruyenController.php';
+include_once 'controllers/DonHangController.php';
+include_once 'controllers/NhaPhatHanhController.php';
+include_once 'controllers/NhaXuatBanController.php';
+include_once 'controllers/TacGiaController.php';
+include_once 'controllers/TaiKhoanController.php';
+include_once 'controllers/ChatBoxController.php';
+include_once 'controllers/BinhLuanController.php';
 
 $controller = $_GET['controller'] ?? 'trangChu';
 // routing controller

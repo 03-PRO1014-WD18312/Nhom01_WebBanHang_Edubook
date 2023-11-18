@@ -109,9 +109,6 @@ class SanPhamController
                 $b = $sanPhamDAO->showB();
                 $imgs = $sanPhamDAO->imgs($_GET['id']);
                 $list = $sanPhamDAO->showOne($_GET['id']);
-                $_SESSION['error'] = 'Sửa thông tin thành công';
-                header('location: index.php?controller=sanPham');
-                exit();
                 include_once "views/sach/admin/fix.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
