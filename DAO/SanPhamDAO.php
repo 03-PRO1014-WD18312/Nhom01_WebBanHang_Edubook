@@ -1,10 +1,10 @@
 <?php
 include 'models/SanPham.php';
 //include 'models/NhaXuatBan.php';
-include 'models/LoaiSanPham.php';
-include 'models/NhaPhatHanh.php';
-include 'models/NhaXuatBan.php';
-include 'models/AnhSanPham.php';
+// include 'models/LoaiSanPham.php';
+// include 'models/NhaPhatHanh.php';
+// include 'models/NhaXuatBan.php';
+// include 'models/AnhSanPham.php';
 
 class SanPhamDAO {
     private $PDO;
