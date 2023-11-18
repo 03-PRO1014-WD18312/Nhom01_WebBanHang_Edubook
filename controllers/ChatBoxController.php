@@ -5,7 +5,7 @@ class ChatBoxController
     public function index()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 include_once "views/chatbox/admin/users.php";
             } else {
                 $ChatBoxDAO = new User();
@@ -19,7 +19,7 @@ class ChatBoxController
     public function chat()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 include_once "views/chatbox/admin/chatbox.php";
             } else {
                 $ChatBoxDAO = new User();

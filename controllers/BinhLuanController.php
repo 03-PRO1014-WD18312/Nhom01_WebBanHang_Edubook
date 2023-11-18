@@ -5,7 +5,7 @@ class BinhLuanController
     public function index()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
                 $BinhLuaDAO = new BinhLuanDAO();
                 $list = $BinhLuaDAO->show();
                 include_once "views/binhluan/admin/list.php";
@@ -19,7 +19,7 @@ class BinhLuanController
     public function delete()
     {
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == 2) {
+            if ($_SESSION['role'] != 4) {
 
                 $BinhLuaDAO = new BinhLuanDAO();
                 $BinhLuaDAO->delete($_GET['id']);
