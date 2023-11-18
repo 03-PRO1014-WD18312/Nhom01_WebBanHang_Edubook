@@ -1,5 +1,5 @@
 <?php
-include "DAO/DonHangDao.php";
+include_once "DAO/DonHangDao.php";
 
 class DonHangController
 {
@@ -8,9 +8,9 @@ class DonHangController
         if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
             $DonHangDAO = new DonHangDAO();
             $list = $DonHangDAO->show();
-            include "views/donhang/admin/list.php";
+            include_once "views/donhang/admin/list.php";
         } else {
-            include('views/trangChu/user/Home.php');
+            include_once('views/trangChu/user/Home.php');
         }
     }
     public function delete()
@@ -19,9 +19,11 @@ class DonHangController
             $DonHangDAO = new DonHangDAO();
             $DonHangDAO->delete($_GET['id']);
             $list = $DonHangDAO->show();
-            include "views/donhang/admin/list.php";
+            $_SESSION['error'] = 'Xoá thành công';
+            header('location: index.php?controller=donHang');
+            exit();
         } else {
-            include('views/trangChu/user/Home.php');
+            include_once('views/trangChu/user/Home.php');
         }
     }
     public function showTT()
@@ -29,9 +31,9 @@ class DonHangController
         if (isset($_SESSION['role']) && $_SESSION['role'] == 2) {
             $DonHangDAO = new DonHangDAO();
             $list = $DonHangDAO->showTTDH();
-            include "views/trangThaiDonHang/admin/list.php";
+            include_once "views/trangThaiDonHang/admin/list.php";
         } else {
-            include('views/trangChu/user/Home.php');
+            include_once('views/trangChu/user/Home.php');
         }
     }
     function update_tt()
@@ -41,14 +43,16 @@ class DonHangController
                 $DonHangDAO = new DonHangDAO();
                 $DonHangDAO->update_tt($_POST['id_trang_thai_don_hang'], $_POST['ten_trang_thai_don_hang']);
                 $list = $DonHangDAO->showTTDH();
-                include "views/trangThaiDonHang/admin/list.php";
+                $_SESSION['error'] = 'Sửa thông tin thành công';
+                header('location: index.php?controller=trangThaiDH');
+                exit();
             } else if (isset($_GET['id'])) {
                 $DonHangDAO = new DonHangDAO();
                 $list = $DonHangDAO->showOneTTDH($_GET['id']);
-                include "views/trangThaiDonHang/admin/update.php";
+                include_once "views/trangThaiDonHang/admin/update.php";
             }
         } else {
-            include('views/trangChu/user/Home.php');
+            include_once('views/trangChu/user/Home.php');
         }
     }
     public function update_tt_dh()
@@ -57,9 +61,11 @@ class DonHangController
             $DonHangDAO = new DonHangDAO();
             $DonHangDAO->donHang_update_tt($_GET['id'], $_GET['tt']);
             $list = $DonHangDAO->showTTDH();
+            $_SESSION['error'] = 'Sửa thông tin thành công';
             header("location: index.php?controller=donHang");
+            exit();
         } else {
-            include('views/trangChu/user/Home.php');
+            include_once('views/trangChu/user/Home.php');
         }
     }
 }

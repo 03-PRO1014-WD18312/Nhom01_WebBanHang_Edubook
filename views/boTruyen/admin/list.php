@@ -17,7 +17,6 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-
                         <tr>
                             <th>STT</th>
                             <th>Tên bộ truyện</th>
@@ -39,18 +38,18 @@
                     </tfoot>
                     <tbody>
                         <?php foreach ($list as $key => $vl) { ?>
-                            <tr>
-                                <td><?php echo $key + 1 ?></td>
-                                <td><?php echo $vl->ten ?></td>
-                                <td><img src="assets/imgs/item/<?php echo $vl->img ?>" width="10%" alt=""></td>
-                                <td><?php echo $vl->soluong ?></td>
-                                <td><?php echo $vl->trang_thai ?></td>
-                                <td>
-                                    <a href="index.php?controller=boTruyen_delete&id=<?php echo $vl->id ?>">xoá</a>/
-                                    <a href="index.php?controller=boTruyen_fix&id=<?php echo $vl->id ?>">sửa</a>
-                                </td>
+                        <tr>
+                            <td><?php echo $key + 1 ?></td>
+                            <td><?php echo $vl->ten ?></td>
+                            <td><img src="assets/imgs/item/<?php echo $vl->img ?>" width="10%" alt=""></td>
+                            <td><?php echo $vl->soluong ?></td>
+                            <td><?php echo $vl->trang_thai ?></td>
+                            <td>
+                                <a href="index.php?controller=boTruyen_delete&id=<?php echo $vl->id ?>">xoá</a>/
+                                <a href="index.php?controller=boTruyen_fix&id=<?php echo $vl->id ?>">sửa</a>
+                            </td>
 
-                            </tr>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
