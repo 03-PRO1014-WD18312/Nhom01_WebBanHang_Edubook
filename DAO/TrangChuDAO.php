@@ -11,7 +11,7 @@ class trangChuDAO
     // tổng hợp đơn hàng đã và đang giao , và doanh thu của thàng hiện tại
     public function show_thong_ke()
     {
-        $sql = "SELECT SUM(chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong) as tong_tien, COUNT(*) as so_don_hang FROM `ho_don` join don_hang ON don_hang.id_don_hang= ho_don.id_don_hang join chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang  WHERE  MONTH(don_hang.thoi_gian) = MONTH(NOW()) AND YEAR(don_hang.thoi_gian)=YEAR(NOW())";
+        $sql = "SELECT SUM(chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong) as tong_tien, COUNT(*) as so_don_hang FROM don_hang join chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang  WHERE  MONTH(don_hang.thoi_gian) = MONTH(NOW()) AND YEAR(don_hang.thoi_gian)=YEAR(NOW()) AND don_hang.id_trang_thai_don_hang = 3";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
