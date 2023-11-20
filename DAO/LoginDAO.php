@@ -1,14 +1,10 @@
 <?php
 include_once 'models/Login.php';
-class LoginDAO
+include_once 'DAO/ConnectDAO.php';
+class LoginDAO extends BaseDAO
 {
     // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // lệnh kiểm tra thông tin tài khoản trên databasse
     public function Login($username, $password)
     {

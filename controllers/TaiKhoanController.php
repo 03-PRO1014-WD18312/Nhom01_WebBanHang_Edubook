@@ -11,7 +11,7 @@ class TaiKhoanController
                 $list = $TaiKhoanDAO->show();
                 include_once "views/taiKhoan/admin/list.php";
             } else {
-                include_once('views/trangChu/user/Setting.php');
+                include_once('views/TaiKhoan/user/Setting.php');
             }
         } else {
             header("Location: index.php?controller=dangNhap");
