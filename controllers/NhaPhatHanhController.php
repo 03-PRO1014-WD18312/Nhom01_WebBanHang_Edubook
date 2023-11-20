@@ -10,7 +10,7 @@ class NhaPhatHanhController
             $list = $NhaPhatHanhDAO->show();
             include_once "views/nhaphathanh/admin/list.php";
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // tạo mới bộ truện
@@ -28,7 +28,7 @@ class NhaPhatHanhController
                 include_once('views/nhaphathanh/admin/add.php');
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // xoá bộ truyện
@@ -42,7 +42,7 @@ class NhaPhatHanhController
             header('location: index.php?controller=nhaPhatHanh');
             exit();
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // sửa bộ truyện
@@ -62,7 +62,7 @@ class NhaPhatHanhController
                 include_once "views/nhaphathanh/admin/fix.php";
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
 }

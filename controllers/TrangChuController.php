@@ -19,7 +19,7 @@ class TrangChuController
                 include_once('views/trangChu/user/Home.php');
             }
         } else {
-            header("Location: index.php?controller=dangNhap");
+            include_once('views/trangChu/user/Home.php');
         }
     }
 }
