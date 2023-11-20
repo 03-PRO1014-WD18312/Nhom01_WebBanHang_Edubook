@@ -1,14 +1,9 @@
 <?php
 include_once 'models/LoaiTruyen.php';
-class LoaiTruyenDAO
+include_once 'DAO/ConnectDAO.php';
+class LoaiTruyenDAO extends BaseDAO
 {
-    // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // thêm mới loại truyện
     public function add($ten)
     {

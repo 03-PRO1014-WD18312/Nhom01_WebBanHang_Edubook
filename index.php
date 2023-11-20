@@ -231,10 +231,6 @@ switch ($controller) {
         break;
     case 'giohang_delete':
         break;
-    case 'setting':
-        $SettingController = new SettingController();
-        $SettingController->index();
-        break;
     case 'chatBox':
         $ChatBoxController = new ChatBoxController();
         $ChatBoxController->index();

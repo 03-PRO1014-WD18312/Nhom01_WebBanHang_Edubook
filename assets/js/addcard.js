@@ -1,26 +1,24 @@
 const add = document.getElementById("add_card");
-add.onclick = function () {
-  // Tạo một đối tượng XMLHttpRequest để thực hiện yêu cầu HTTP
-  let xhr = new XMLHttpRequest();
-
-  // Cấu hình yêu cầu: gửi yêu cầu POST đến "api/insert-chat.php" và sử dụng chế độ bất đồng bộ
-  xhr.open("POST", "api/add_card.php", true);
-
-  // Xử lý sự kiện khi yêu cầu hoàn thành
-  xhr.onload = () => {
-    // Kiểm tra xem yêu cầu đã hoàn thành thành công và trả về mã HTTP 200 (OK)
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      // Đặt giá trị của trường nhập là chuỗi rỗng, xóa nội dung đã gửi
-      inputField.value = "";
-
-      // Cuộn hộp chat xuống dưới cùng để hiển thị tin nhắn mới nhất
-      scrollToBottom();
-    }
+const form = document.querySelector(".add_card");
+function addToCart(id) {
+  //   // Lấy thông tin sản phẩm
+  var productInfo = {
+    id: id,
+    // Thêm thông tin khác nếu cần thiết
   };
 
-  // Tạo một đối tượng FormData để chứa dữ liệu biểu mẫu từ form
-  let formData = new FormData(form);
+  // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "api/add_card.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
 
-  // Gửi yêu cầu XMLHttpRequest với dữ liệu biểu mẫu
-  xhr.send(formData);
-};
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Xử lý kết quả từ máy chủ nếu cần
+      alert(id);
+      console.log(xhr.responseText);
+    }
+  };
+  // Chuyển đổi object thành JSON và gửi đi
+  xhr.send(JSON.stringify(productInfo));
+}

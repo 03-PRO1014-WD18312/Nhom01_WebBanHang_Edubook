@@ -1,14 +1,10 @@
 <?php
 include_once 'models/NhaPhatHanh.php';
-class NhaPhatHanhDAO
+include_once 'DAO/ConnectDAO.php';
+class NhaPhatHanhDAO extends BaseDAO
 {
     // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // thêm mới bộ truyện
     public function add($ten)
     {

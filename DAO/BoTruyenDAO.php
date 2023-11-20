@@ -1,14 +1,10 @@
 <?php
 include_once 'models/BoTruyen.php';
-class BoTruyenDAO
+include_once 'DAO/ConnectDAO.php';
+class BoTruyenDAO extends BaseDAO
 {
     // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // thêm mới bộ truyện
     public function add($img, $ten)
     {
