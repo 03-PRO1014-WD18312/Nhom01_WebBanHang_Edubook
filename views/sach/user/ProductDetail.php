@@ -199,28 +199,7 @@
                                                 <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
                                             </ul>
                                         </div>
-                                        <div class="attr-detail attr-color mb-15">
-                                            <strong class="mr-10">Color</strong>
-                                            <ul class="list-filter color-filter">
-                                                <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
-                                                <li><a href="#" data-color="Yellow"><span class="product-color-yellow"></span></a></li>
-                                                <li class="active"><a href="#" data-color="White"><span class="product-color-white"></span></a></li>
-                                                <li><a href="#" data-color="Orange"><span class="product-color-orange"></span></a></li>
-                                                <li><a href="#" data-color="Cyan"><span class="product-color-cyan"></span></a></li>
-                                                <li><a href="#" data-color="Green"><span class="product-color-green"></span></a></li>
-                                                <li><a href="#" data-color="Purple"><span class="product-color-purple"></span></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="attr-detail attr-size">
-                                            <strong class="mr-10">Size</strong>
-                                            <ul class="list-filter size-filter font-small">
-                                                <li><a href="#">S</a></li>
-                                                <li class="active"><a href="#">M</a></li>
-                                                <li><a href="#">L</a></li>
-                                                <li><a href="#">XL</a></li>
-                                                <li><a href="#">XXL</a></li>
-                                            </ul>
-                                        </div>
+                                        
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius">
@@ -234,11 +213,7 @@
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
                                         </div>
-                                        <ul class="product-meta font-xs color-grey mt-50">
-                                            <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                            <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">Women</a>, <a href="#" rel="tag">Dress</a> </li>
-                                            <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span></li>
-                                        </ul>
+                                        
                                     </div>
                                     <!-- Detail Info -->
                                 </div>
@@ -246,10 +221,10 @@
                             <div class="tab-style3">
                                 <ul class="nav nav-tabs text-uppercase">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                        <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">CHI TIẾT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">BÌNH LUẬN</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
@@ -454,7 +429,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!--comment form-->
+                                       
                                         <div class="comment-form">
                                             <h4 class="mb-15">Add a review</h4>
                                             <div class="product-rate d-inline-block mb-30">
@@ -497,7 +472,7 @@
                             </div>
                             <div class="row mt-60">
                                 <div class="col-12">
-                                    <h3 class="section-title style-1 mb-30">Related products</h3>
+                                    <h3 class="section-title style-1 mb-30">Sản Phẩm Liên Quan</h3>
                                 </div>
                                 <div class="col-12">
                                     <div class="row related-products">
@@ -632,7 +607,7 @@
                     </div>
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
                         <div class="widget-category mb-30">
-                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
+                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">DANH MỤC</h5>
                             <ul class="categories">
                                 <li><a href="shop.html">Shoes & Bags</a></li>
                                 <li><a href="shop.html">Blouses & Shirts</a></li>
@@ -643,54 +618,9 @@
                                 <li><a href="shop.html">Accessories</a></li>
                             </ul>
                         </div>
-                        <!-- Fillter By Price -->
-                        <div class="sidebar-widget price_range range mb-30">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Fill by price</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group">
-                                <div class="list-group-item mb-10 mt-10">
-                                    <label class="fw-900">Color</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-                                        <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
-                                    </div>
-                                    <label class="fw-900 mt-15">Item Condition</label>
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
-                                        <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox21" value="">
-                                        <label class="form-check-label" for="exampleCheckbox21"><span>Refurbished (27)</span></label>
-                                        <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
-                                        <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="shop.html" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
-                        </div>
-                        <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                             <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">New products</h5>
+                                <h5 class="widget-title mb-10">BỘ TRUYỆN</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
                             <div class="single-post clearfix">
