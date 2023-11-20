@@ -1,14 +1,10 @@
 <?php
 include_once('models/Taikhoan.php');
-class TaiKhoanDAO
+include_once 'DAO/ConnectDAO.php';
+class TaiKhoanDAO extends BaseDAO
 {
     // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // lấy dữ liệu toàn bộ tài khoản trên data base
     public function show()
     {
