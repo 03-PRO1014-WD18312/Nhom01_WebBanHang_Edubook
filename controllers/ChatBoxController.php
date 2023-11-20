@@ -13,7 +13,7 @@ class ChatBoxController
                 include_once "views/chatbox/user/chatbox.php";
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     public function chat()
@@ -27,7 +27,7 @@ class ChatBoxController
                 include_once "views/chatbox/user/chatbox.php";
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
 }

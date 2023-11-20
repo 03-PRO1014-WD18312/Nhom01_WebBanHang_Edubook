@@ -13,7 +13,7 @@ class BinhLuanController
                 include_once('views/trangChu/user/Home.php');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     public function delete()
@@ -30,7 +30,7 @@ class BinhLuanController
                 include_once('views/trangChu/user/Home.php');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
 }

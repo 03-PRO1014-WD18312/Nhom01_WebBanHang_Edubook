@@ -44,6 +44,10 @@ switch ($controller) {
         $SanPhamController = new SanPhamController();
         $SanPhamController->productDetail();
         break;
+    case 'sanPham_view_more':
+        $SanPhamController = new SanPhamController();
+        $SanPhamController->productViewMore();
+        break;
     case 'sanPham_add':
         $SanPhamController = new SanPhamController();
         $SanPhamController->add();

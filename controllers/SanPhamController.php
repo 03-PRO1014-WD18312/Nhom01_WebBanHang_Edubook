@@ -13,13 +13,29 @@ class SanPhamController
             $list = $sanPhamDAO->show();
             include_once "views/sach/admin/list.php";
         } else {
-            include_once "views/trangChu/user/Home.php";
+            include_once "views/sach/user/Product.php";
         }
     }
     public function productDetail()
     {
-        include_once "views/trangChu/user/ProductDetail.php";
+        include_once "views/sach/user/ProductDetail.php";
     }
+    public function productViewMore()
+    {
+        include_once "views/sach/user/ProducrMore.php";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public function add()
     {
         if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
@@ -78,7 +94,7 @@ class SanPhamController
                 include_once "views/sach/admin/add.php";
             }
         } else {
-            include_once "views/trangChu/user/Home.php";
+            header("Location: index.php?controller=dangNhap");
         }
     }
     public function delete()
@@ -94,7 +110,7 @@ class SanPhamController
                 exit();
             }
         } else {
-            include_once "views/trangChu/user/Home.php";
+            header("Location: index.php?controller=dangNhap");
         }
     }
     public function fix()
@@ -159,7 +175,7 @@ class SanPhamController
                 exit();
             }
         } else {
-            include_once "views/trangChu/user/Home.php";
+            header("Location: index.php?controller=dangNhap");
         }
     }
     public function sanPham_fix_dlimg()
@@ -227,7 +243,7 @@ class SanPhamController
                 exit();
             }
         } else {
-            include_once "views/trangChu/user/Home.php";
+            header("Location: index.php?controller=dangNhap");
         }
     }
 }
