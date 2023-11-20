@@ -27,7 +27,7 @@ class NhaXuatBanController
                 include_once('views/nhaxuatban/admin/add.php');
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // xoá bộ truyện
@@ -40,7 +40,7 @@ class NhaXuatBanController
             $_SESSION['error'] = 'Xoá thành công';
             header('location: index.php?controller=nhaXuatBan');
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // sửa bộ truyện
@@ -59,7 +59,7 @@ class NhaXuatBanController
                 include_once "views/nhaxuatban/admin/fix.php";
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
 }

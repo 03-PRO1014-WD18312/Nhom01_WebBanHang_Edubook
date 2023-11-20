@@ -14,7 +14,7 @@ class TaiKhoanController
                 include_once('views/trangChu/user/Setting.php');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     // thêm mới tài khoản
@@ -34,10 +34,10 @@ class TaiKhoanController
                     include_once('views/taiKhoan/admin/add.php');
                 }
             } else {
-                include_once('views/trangChu/user/Home.php');
+                header('location: index.php?controller=trangChu');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     // xoá tài khoản
@@ -57,10 +57,10 @@ class TaiKhoanController
                     exit();
                 }
             } else {
-                include_once('views/trangChu/user/Home.php');
+                header('location: index.php?controller=trangChu');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     // sửa tài khoản
@@ -86,10 +86,10 @@ class TaiKhoanController
                     }
                 }
             } else {
-                include_once('views/trangChu/user/Home.php');
+                header('location: index.php?controller=trangChu');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
 }

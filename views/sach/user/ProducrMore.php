@@ -1,51 +1,10 @@
 <?php
 include "views/layout/user/Header.php";
 ?>
-<main class="main" style="background-color: #fff;">
-    <section class="featured section-padding position-relative">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                    <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="assets/imgs/theme/icons/feature-1.png" alt="">
-                        <h4 class="bg-1">Free Shipping</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                    <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="assets/imgs/theme/icons/feature-2.png" alt="">
-                        <h4 class="bg-3">Online Order</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                    <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="assets/imgs/theme/icons/feature-3.png" alt="">
-                        <h4 class="bg-2">Save Money</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                    <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="assets/imgs/theme/icons/feature-4.png" alt="">
-                        <h4 class="bg-4">Promotions</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                    <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="assets/imgs/theme/icons/feature-5.png" alt="">
-                        <h4 class="bg-5">Happy Sell</h4>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                    <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="assets/imgs/theme/icons/feature-6.png" alt="">
-                        <h4 class="bg-6">24/7 Support</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="product-tabs section-padding position-relative wow fadeIn animated " ">
-        <div class=" bg-square">
+
+<body>
+    <section class="product-tabs section-padding position-relative wow fadeIn animated ">
+        <div class=" bg-square" style="background-color: #fff !important;">
         </div>
 
         <div class="container">
@@ -62,7 +21,6 @@ include "views/layout/user/Header.php";
                         <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
                     </li>
                 </ul>
-                <a href="index.php?controller=sanPham_view_more" class="view-more d-none d-md-flex">View More<i class="fi-rs-angle-double-small-right"></i></a>
             </div>
             <!--End nav-tabs-->
             <div class="tab-content wow fadeIn animated" id="myTabContent">
@@ -101,7 +59,7 @@ include "views/layout/user/Header.php";
                                         <span class="old-price">$245.8</span>
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" id="add_card" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -202,79 +160,5 @@ include "views/layout/user/Header.php";
             <!--End tab-content-->
         </div>
     </section>
-    <section class="section-padding">
-        <div class="container wow fadeIn animated">
-            <h3 class="section-title mb-20"><span>Sản phẩm mới</span></h3>
-            <div class="carausel-6-columns-cover position-relative">
-                <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-2-arrows">
-                </div>
-                <div class="carausel-6-columns carausel-arrow-center" id="carausel-6-columns-2">
-                    <div class="product-cart-wrap small hover-up">
-                        <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="index.php?controller=sanPham_view">
-                                    <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                    <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="product-action-1">
-                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                    <i class="fi-rs-eye"></i></a>
-                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                <a aria-label="Compare" class="action-btn small hover-up" href="compare.php" tabindex="0"><i class="fi-rs-shuffle"></i></a>
-                            </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">Hot</span>
-                            </div>
-                        </div>
-                        <div class="product-content-wrap">
-                            <h2><a href="index.php?controller=sanPham_view">Lorem ipsum dolor</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
-                            </div>
-                            <div class="product-price">
-                                <span>$238.85 </span>
-                                <span class="old-price">$245.8</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section-padding">
-        <div class="container">
-            <h3 class="section-title mb-20 wow fadeIn animated"><span>Bộ truyện</span></h3>
-            <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
-                <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-3-arrows">
-                </div>
-                <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-1.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-2.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-3.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-4.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-5.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-6.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-3.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main>
+</body>
 <?php include "views/layout/user/Footer.php"; ?>

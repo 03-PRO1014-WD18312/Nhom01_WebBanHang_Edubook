@@ -10,7 +10,7 @@ class DonHangController
             $list = $DonHangDAO->show();
             include_once "views/donhang/admin/list.php";
         } else {
-            include_once('views/trangChu/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     public function delete()
@@ -23,7 +23,7 @@ class DonHangController
             header('location: index.php?controller=donHang');
             exit();
         } else {
-            include_once('views/trangChu/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     public function showTT()
@@ -33,7 +33,7 @@ class DonHangController
             $list = $DonHangDAO->showTTDH();
             include_once "views/trangThaiDonHang/admin/list.php";
         } else {
-            include_once('views/trangChu/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     function update_tt()
@@ -52,7 +52,7 @@ class DonHangController
                 include_once "views/trangThaiDonHang/admin/update.php";
             }
         } else {
-            include_once('views/trangChu/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     public function update_tt_dh()
@@ -65,7 +65,7 @@ class DonHangController
             header("location: index.php?controller=donHang");
             exit();
         } else {
-            include_once('views/trangChu/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
 }

@@ -28,7 +28,7 @@ class BoTruyenController
                 include_once('views/botruyen/admin/add.php');
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // xoá bộ truyện
@@ -42,7 +42,7 @@ class BoTruyenController
             header('location: index.php?controller=boTruyen');
             exit();
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // sửa bộ truyện
@@ -62,7 +62,7 @@ class BoTruyenController
                 include_once "views/botruyen/admin/fix.php";
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
 }
