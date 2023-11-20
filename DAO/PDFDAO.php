@@ -37,7 +37,6 @@ class PDFDAO extends TCPDF
 
         // Tạo một trang mới
         $this->AddPage();
-
         // Thêm dữ liệu hóa đơn
         $this->SetFont('dejavusans', '', 12);
         $this->MultiCell(180, 200, '

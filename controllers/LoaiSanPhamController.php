@@ -10,7 +10,7 @@ class LoaiSanPhamController
             $list = $LoaiTruyenDAO->show();
             include_once "views/danhmuc/admin/list.php";
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // tạo mới loại truện
@@ -28,7 +28,7 @@ class LoaiSanPhamController
                 include_once('views/danhmuc/admin/add.php');
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // xoá loại truyện
@@ -42,7 +42,7 @@ class LoaiSanPhamController
             header('location: index.php?controller=loaisanpham');
             exit();
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
     // sửa loại truyện
@@ -62,7 +62,7 @@ class LoaiSanPhamController
                 include_once "views/danhmuc/admin/fix.php";
             }
         } else {
-            include_once('views/home/user/Home.php');
+            header('location: index.php?controller=trangChu');
         }
     }
 }

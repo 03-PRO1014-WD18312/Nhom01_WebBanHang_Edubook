@@ -9,7 +9,8 @@
                             <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
                         </div>
                         <div class="col my-4 my-md-0 des">
-                            <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first shopping.</strong></h5>
+                            <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first
+                                    shopping.</strong></h5>
                         </div>
                     </div>
                 </div>
@@ -78,7 +79,8 @@
                         <div class="col-md-8 col-lg-12">
                             <p class="wow fadeIn animated">From App Store or Google Play</p>
                             <div class="download-app wow fadeIn animated mob-app">
-                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="assets/imgs/theme/app-store.jpg" alt=""></a>
+                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
+                                        src="assets/imgs/theme/app-store.jpg" alt=""></a>
                                 <a href="#" class="hover-up"><img src="assets/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
@@ -98,7 +100,8 @@
             </div>
             <div class="col-lg-6">
                 <p class="float-md-left font-sm text-muted mb-0">
-                    <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms & Conditions</a>
+                    <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms &
+                        Conditions</a>
                 </p>
             </div>
             <div class="col-lg-6">
@@ -132,6 +135,8 @@
 <script src="assets/js/plugins/jquery.elevatezoom.js"></script>
 <!-- Template  JS -->
 <script src="assets/js/main.js?v=3.3"></script>
-<script src="assets/js/shop.js?v=3.3"></script></body>
+<script src="assets/js/shop.js?v=3.3"></script>
+<script src="assets/js/addcard.js"></script>
+</body>
 
 </html>

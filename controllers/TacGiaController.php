@@ -14,7 +14,7 @@ class TacGiaController
                 include_once('views/trangChu/user/Home.php');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header('location: index.php?controller=trangChu');
         }
     }
     // thêm mới tác giả
@@ -32,10 +32,10 @@ class TacGiaController
                     include_once('views/tacGia/admin/add.php');
                 }
             } else {
-                include_once('views/trangChu/user/Home.php');
+                header('location: index.php?controller=trangChu');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     // xoá tác giả
@@ -49,10 +49,10 @@ class TacGiaController
                 header("Location: index.php?controller=tacGia");
                 exit();
             } else {
-                include_once('views/trangChu/user/Home.php');
+                header('location: index.php?controller=trangChu');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
     // sửa tác giả
@@ -76,10 +76,10 @@ class TacGiaController
                     }
                 }
             } else {
-                include_once('views/trangChu/user/Home.php');
+                header('location: index.php?controller=trangChu');
             }
         } else {
-            header("Location: index.php?controller=login");
+            header("Location: index.php?controller=dangNhap");
         }
     }
 }
