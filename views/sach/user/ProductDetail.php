@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
-                                <?php foreach ($infor as $key => $vl) { ?>
+                                <?php foreach ($infor as $key => $vl) { $id=$vl->id_san_pham; $loai = $vl->id_loai_san_pham; $bo= $vl->id_bo_truyen ?>
                                     <div class="detail-info">
                                         <h2 class="title-detail"><?php echo $vl->ten_san_pham ?></h2>
 
@@ -54,9 +54,9 @@
                                         </div>
                                         <div class="product_sort_info font-xs mb-30">
                                             <ul>
-                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
-                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
-                                                <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Bảo hành một năm </li>
+                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả 30 ngày</li>
+                                                <li><i class="fi-rs-credit-card mr-5"></i> Tiền mặt khi giao hàng có sẵn</li>
                                             </ul>
                                         </div>
 
@@ -68,7 +68,7 @@
                                                 <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                             </div>
                                             <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                                                <button type="submit" class="button button-add-to-cart">Mua ngay</button>
 
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
@@ -154,82 +154,48 @@
                                     <!--Comments-->
                                     <div class="comments-area">
                                         <div class="row">
-                                            <div class="col-lg-8">
-                                                <h4 class="mb-30">Customer questions & answers</h4>
+                                            
+                                                 <div class="col-lg-8">
+                                                <h4 class="mb-30">Câu hỏi & trả lời của khách hàng</h4>
                                                 <div class="comment-list">
+                                                <?php
+                                            $count_one = 0;
+                                           
+                                            foreach ($binh_luan as $key => $vl) {
+                                                 ?>
                                                     <div class="single-comment justify-content-between d-flex">
                                                         <div class="user justify-content-between d-flex">
                                                             <div class="thumb text-center">
-                                                                <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                                <h6><a href="#">Jacky Chan</a></h6>
-                                                                <p class="font-xxs">Since 2012</p>
+                                                                <img src="assets/imgs/user/<?php echo $vl->anh ?>" alt="" style="height: 80%;"   >
+                                                                <h6><a href="#"><?php echo $vl->nguoi_gui ?></a></h6>
+                                                               
                                                             </div>
                                                             <div class="desc">
                                                                 <div class="product-rate d-inline-block">
                                                                     <div class="product-rating" style="width:90%">
                                                                     </div>
                                                                 </div>
-                                                                <p>Thank you very fast shipping from Poland only 3days.</p>
+                                                                <p><?php echo $vl->mes ?></p>
                                                                 <div class="d-flex justify-content-between">
                                                                     <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                        <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
+                                                                        <p class="font-xs mr-30"><?php echo $vl->ngay ?> </p>
+                                                                      
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--single-comment -->
-                                                    <div class="single-comment justify-content-between d-flex">
-                                                        <div class="user justify-content-between d-flex">
-                                                            <div class="thumb text-center">
-                                                                <img src="assets/imgs/page/avatar-7.jpg" alt="">
-                                                                <h6><a href="#">Ana Rosie</a></h6>
-                                                                <p class="font-xxs">Since 2008</p>
-                                                            </div>
-                                                            <div class="desc">
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%">
-                                                                    </div>
-                                                                </div>
-                                                                <p>Great low price and works well.</p>
-                                                                <div class="d-flex justify-content-between">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                        <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--single-comment -->
-                                                    <div class="single-comment justify-content-between d-flex">
-                                                        <div class="user justify-content-between d-flex">
-                                                            <div class="thumb text-center">
-                                                                <img src="assets/imgs/page/avatar-8.jpg" alt="">
-                                                                <h6><a href="#">Steven Keny</a></h6>
-                                                                <p class="font-xxs">Since 2010</p>
-                                                            </div>
-                                                            <div class="desc">
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%">
-                                                                    </div>
-                                                                </div>
-                                                                <p>Authentic and Beautiful, Love these way more than ever expected They are Great earphones</p>
-                                                                <div class="d-flex justify-content-between">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                        <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--single-comment -->
+                                                   
+                                                    <?php
+                                               
+                                            }
+                                            ?>
                                                 </div>
                                             </div>
+                                            
+                                           
                                             <div class="col-lg-4">
-                                                <h4 class="mb-30">Customer reviews</h4>
+                                                <h4 class="mb-30">Phản hồi khách hàng</h4>
                                                 <div class="d-flex mb-30">
                                                     <div class="product-rate d-inline-block mr-15">
                                                         <div class="product-rating" style="width:90%">
@@ -257,43 +223,28 @@
                                                     <span>1 star</span>
                                                     <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
                                                 </div>
-                                                <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
+                                                <a href="#" class="font-xs text-muted">Xếp hạng được tính thế nào?</a>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="comment-form">
-                                        <h4 class="mb-15">Add a review</h4>
+                                        <h4 class="mb-15">Bình luận</h4>
                                         <div class="product-rate d-inline-block mb-30">
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12">
-                                                <form class="form-contact comment_form" action="#" id="commentForm">
+                                                <form class="form-contact comment_form" action="index.php?controller=binhLuan_add&loai=<?php echo $loai ?>&botruyen=<?php echo $bo ?>" method="post" id="commentForm">
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="form-group">
-                                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Viết bình luận"></textarea>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                                                            </div>
+                                                            <input type="hidden" name="id" value="<?php echo $id ?>" id="">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="button button-contactForm">Submit
-                                                            Review</button>
+                                                        <button type="submit" class="button button-contactForm">Gửi</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -361,13 +312,8 @@
                     <div class="widget-category mb-30">
                         <h5 class="section-title style-1 mb-30 wow fadeIn animated">DANH MỤC</h5>
                         <ul class="categories">
-                            <li><a href="shop.html">Shoes & Bags</a></li>
-                            <li><a href="shop.html">Blouses & Shirts</a></li>
-                            <li><a href="shop.html">Dresses</a></li>
-                            <li><a href="shop.html">Swimwear</a></li>
-                            <li><a href="shop.html">Beauty</a></li>
-                            <li><a href="shop.html">Jewelry & Watch</a></li>
-                            <li><a href="shop.html">Accessories</a></li>
+                            <!-- <li><a href="shop.html"></a></li> -->
+                            
                         </ul>
                     </div>
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">

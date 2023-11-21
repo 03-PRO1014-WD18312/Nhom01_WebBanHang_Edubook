@@ -8,37 +8,37 @@ include "views/layout/user/Header.php";
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
                         <img src="assets/imgs/theme/icons/feature-1.png" alt="">
-                        <h4 class="bg-1">Free Shipping</h4>
+                        <h4 class="bg-1">Miễn phí vận chuyển</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
                         <img src="assets/imgs/theme/icons/feature-2.png" alt="">
-                        <h4 class="bg-3">Online Order</h4>
+                        <h4 class="bg-3">Đặt hàng trực tuyến</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
                         <img src="assets/imgs/theme/icons/feature-3.png" alt="">
-                        <h4 class="bg-2">Save Money</h4>
+                        <h4 class="bg-2">Tiết kiệm tiền</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
                         <img src="assets/imgs/theme/icons/feature-4.png" alt="">
-                        <h4 class="bg-4">Promotions</h4>
+                        <h4 class="bg-4">Khuyến mãi</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
                         <img src="assets/imgs/theme/icons/feature-5.png" alt="">
-                        <h4 class="bg-5">Happy Sell</h4>
+                        <h4 class="bg-5">Bán vui vẻ</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
                         <img src="assets/imgs/theme/icons/feature-6.png" alt="">
-                        <h4 class="bg-6">24/7 Support</h4>
+                        <h4 class="bg-6">Hỗ trợ 24/7</h4>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ include "views/layout/user/Header.php";
                         <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false"><?php echo $ten[2] ?></button>
                     </li>
                 </ul>
-                <a href="index.php?controller=sanPham_view_more" class="view-more d-none d-md-flex">View More<i class="fi-rs-angle-double-small-right"></i></a>
+                <a href="index.php?controller=sanPham_view_more" class="view-more d-none d-md-flex">Xem thêm<i class="fi-rs-angle-double-small-right"></i></a>
             </div>
             <!--End nav-tabs-->
             <div class="tab-content wow fadeIn animated" id="myTabContent">
@@ -281,7 +281,7 @@ include "views/layout/user/Header.php";
     </section>
     <section class="section-padding">
         <div class="container">
-            <h3 class="section-title mb-20 wow fadeIn animated"><span>Nhà xuâ</span></h3>
+            <h3 class="section-title mb-20 wow fadeIn animated"><span>Nhà xuất bản</span></h3>
             <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-3-arrows">
                 </div>

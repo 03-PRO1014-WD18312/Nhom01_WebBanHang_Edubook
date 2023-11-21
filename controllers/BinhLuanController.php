@@ -10,7 +10,15 @@ class BinhLuanController
                 $list = $BinhLuaDAO->show();
                 include_once "views/binhluan/admin/list.php";
             } else {
-                include_once('views/trangChu/user/Home.php');
+                $sanPhamDAO = new SanPhamDAO();
+                $infor = $sanPhamDAO-> showOne($_POST['id']);
+                $imgs = $sanPhamDAO->showImg($_POST['id']);
+                $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
+                $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
+                $BinhLuanDAO = new BinhLuanDAO();
+                $BinhLuanDAO->add($_POST['id'],$_SESSION['id'],$_POST['comment']);
+                $binh_luan= $BinhLuanDAO->showOne($_POST['id']);
+                include_once "views/sach/user/ProductDetail.php";
             }
         } else {
             header("Location: index.php?controller=dangNhap");
