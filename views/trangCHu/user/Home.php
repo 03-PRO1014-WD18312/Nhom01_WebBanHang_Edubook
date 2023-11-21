@@ -44,7 +44,7 @@ include "views/layout/user/Header.php";
             </div>
         </div>
     </section>
-    <section class="product-tabs section-padding position-relative wow fadeIn animated " ">
+    <section class="product-tabs section-padding position-relative wow fadeIn animated " >
         <div class=" bg-square">
         </div>
 
@@ -67,7 +67,7 @@ include "views/layout/user/Header.php";
                         <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false"><?php echo $ten[2] ?></button>
                     </li>
                 </ul>
-                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>_more" class="view-more d-none d-md-flex">View More<i class="fi-rs-angle-double-small-right"></i></a>
+                <a href="index.php?controller=sanPham_view" class="view-more d-none d-md-flex">View More<i class="fi-rs-angle-double-small-right"></i></a>
             </div>
             <!--End nav-tabs-->
             <div class="tab-content wow fadeIn animated" id="myTabContent">
@@ -84,13 +84,13 @@ include "views/layout/user/Header.php";
                                     <div class="product-cart-wrap mb-30">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img product-img-zoom">
-                                                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">
+                                                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">
                                                     <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
                                                     <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><i class="fi-rs-eye"></i></a>
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-truck"></i></a>
                                             </div>
@@ -99,7 +99,7 @@ include "views/layout/user/Header.php";
                                             </div>
                                         </div>
                                         <div class="product-content-wrap" id="productInfo">
-                                            <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">Colorful
+                                            <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">Colorful
                                                     Pattern Shirts</a></h2>
                                             <div class="rating-result" title="90%">
                                                 <span>
@@ -138,13 +138,13 @@ include "views/layout/user/Header.php";
                                     <div class="product-cart-wrap mb-30">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img product-img-zoom">
-                                                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">
+                                                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">
                                                     <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
                                                     <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><i class="fi-rs-eye"></i></a>
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
@@ -153,7 +153,7 @@ include "views/layout/user/Header.php";
                                             </div>
                                         </div>
                                         <div class="product-content-wrap" id="productInfo">
-                                            <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">Colorful
+                                            <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">Colorful
                                                     Pattern Shirts</a></h2>
                                             <div class="rating-result" title="90%">
                                                 <span>
@@ -191,13 +191,13 @@ include "views/layout/user/Header.php";
                                     <div class="product-cart-wrap mb-30">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img product-img-zoom">
-                                                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">
+                                                <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">
                                                     <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
                                                     <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><i class="fi-rs-eye"></i></a>
                                                 <a aria-label="Quick view" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-eye"></i></a>
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
@@ -207,7 +207,7 @@ include "views/layout/user/Header.php";
                                             </div>
                                         </div>
                                         <div class="product-content-wrap" id="productInfo">
-                                            <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">Colorful
+                                            <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">Colorful
                                                     Pattern Shirts</a></h2>
                                             <div class="rating-result" title="90%">
                                                 <span>
@@ -248,7 +248,7 @@ include "views/layout/user/Header.php";
                         <div class="product-cart-wrap small hover-up">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">
+                                    <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">
                                         <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
                                         <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                     </a>
@@ -264,7 +264,7 @@ include "views/layout/user/Header.php";
                                 </div>
                             </div>
                             <div class="product-content-wrap">
-                                <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>">Lorem
+                                <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">Lorem
                                         ipsum dolor</a></h2>
                                 <div class="rating-result" title="90%">
                                     <span>
