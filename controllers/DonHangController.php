@@ -68,4 +68,17 @@ class DonHangController
             header('location: index.php?controller=trangChu');
         }
     }
+    public function fix(){
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+            if (isset($_GET['id'])){
+                $id = $_GET['id'];
+                $DonHangDAO = new DonHangDAO();
+                $info = $DonHangDAO->showOneId($_GET['id']);
+                include_once "views/donhang/admin/fix.php";
+            }
+
+        } else {
+            header('location: index.php?controller=trangChu');
+        }
+    }
 }

@@ -12,28 +12,34 @@ class PDFDAO extends TCPDF
         $this->Ln(10);
     }
 
-    function Footer()
-    {
-        // Thêm nội dung phần chân hóa đơn nếu cần
-        $this->SetY(-15);
-        $this->SetFont('dejavusans', 'I', 8);
-        $this->Cell(0, 10, 'Trang ' . $this->getAliasNumPage(), 0, 0, 'C');
-    }
+//    function Footer()
+//    {
+//        // Thêm nội dung phần chân hóa đơn nếu cần
+//        $this->SetY(-15);
+//        $this->SetFont('dejavusans', 'I', 8);
+//        $this->Cell(0, 10, 'Trang ' . $this->getAliasNumPage(), 0, 0, 'C');
+//    }
 
-    function generateInvoice($info)
+    function generateInvoice($info,$sanPham)
     {
-        // var_dump($info);
-
+        $countNumber = 0;
+        $thongTin = "";
+        $thanhTien = 0;
+        foreach ($sanPham as $i => $sp) {
+            $thanhTien = $thanhTien + ($sp->gia*$sp->so_luong);
+            $thongTin = $thongTin .'<b>'.($i+1).'</b>'.'. '.$sp->ten_san_pham. ' - '.number_format($sp->gia, 0, ',', '.').' VND(x'.$sp->so_luong.')'.'<br>';
+            $countNumber++;
+        }
         if ($info[0]->trang_thai == 1) {
             $gia = 0;
         } else {
-            $gia = $info[0]->tong_tien;
+            $gia = $thanhTien;
         }
         // Dữ liệu hóa đơn cố định
-        $invoiceData = [
-            ['ma_hoa_don' => $info[0]->ma_hoa_don,    'tong_tien' => $gia, 'ten' => $info[0]->ten_san_pham, 'noidung' => $info[0]->noidung, 'ngaydat' => $info[0]->thoi_gian, 'diachi' => $info[0]->dia_chi]
-            // ...
-        ];
+//        $invoiceData = [
+//            ['ma_hoa_don' => $info[0]->ma_hoa_don,'tong_tien' => $gia, 'ten' => $info[0]->ten_san_pham, 'noidung' => $info[0]->noidung, 'ngaydat' => $info[0]->thoi_gian, 'diachi' => $info[0]->dia_chi]
+//            // ...
+//        ];
 
         // Tạo một trang mới
         $this->AddPage();
@@ -53,40 +59,37 @@ class PDFDAO extends TCPDF
     <tr>
         <td style="border-bottom: 1px dashed black;">
             <b>Từ:</b>
-            <p>Cao Đẳng FPT Folytechnic cơ sở Trịnh Văn Bô (Nam Từ Liêm - Hà Nội)</p>
+            <p>Cao Đẳng FPT Folytechnic cơ sở Trịnh Văn Bô (Nam Từ Liêm - Hà Nội) <br><b>SDT</b>: 0337684944</p>
         </td>
         <td style="border-bottom: 1px dashed black;border-left: 1px dashed black">
             <b>Đến:</b>(Chỉ giao hàng giờ hành chính)
-            <p>' . $invoiceData[0]['diachi'] . '</p>
+            <p>' . $info[0]->ten.' - '.$info[0]->dia_chi.' - '.$info[0]->sdt . '</p>
         </td>
     </tr>
     <tr>
         <td colspan="2" style="border-bottom: 1px dashed black;text-align: center">
-            <h2 style="text-align: center;width: 100%;height: 30px;">MÃ HÓA ĐƠN: ' . $invoiceData[0]['ma_hoa_don'] . '</h2>
+            <h2 style="text-align: center;width: 100%;height: 30px;">MÃ HÓA ĐƠN: ' . $info[0]->ma_hoa_don . '</h2>
             <br>
         </td>
     </tr>
     <tr>
         <td colspan="2" style="border-bottom: 1px dashed black;width: 70%">
-            <b>Nội dung hàng (Tổng số lượng sản phẩm)</b>
-            <p>1. ' . $invoiceData[0]['ten'] . '</p>           
-            <b>Nội dung khách hàng</b>
-            <p>' . $invoiceData[0]['noidung'] . '</p>
+            <b>Nội dung hàng (Tổng số lượng sản phẩm: '.$countNumber.')</b>
+            <p>'.$thongTin.'</p>
         </td>
+
         <td colspan="1" style="border-left: 1px dashed black;border-bottom: 1px dashed black;height: 30%">
             <table style="height: 100%">
                 <tr>
                     <td>
-                        <img src="assets/imgs/donHang/qrcode.png" style="width: 100px;height: 100px" alt="">
+                    <img src="assets/imgs/donHang/qrcode.png" style="width: 100px;height: 100px" alt="">
                     </td>
                 </tr>
+                
                 <tr>
-                    <td style="border-top: 1px dashed black;width: 130px"></td>
-                </tr>
-                <tr>
-                    <td >
+                    <td style="border-top: 1px dashed black">
                         <p>Ngày đặt hàng</p>
-                        <b>' . $invoiceData[0]['ngaydat'] . '</b>
+                        <b>' . $info[0]->thoi_gian . '</b>
                     </td>
                 </tr>
             </table>
@@ -95,18 +98,18 @@ class PDFDAO extends TCPDF
     <tr style="border: 1px solid black;width: 100%;height: 200px">
         <td style="width: 50%">
             <p>Tiền thu người nhận:</p>
-            <h3>' . $invoiceData[0]['tong_tien'] . ' VND</h3>
+            <h3 style="text-align: center; font-size: 30px">'.number_format($gia, 0, ',', '.').' VND</h3>
         </td>
         <td style="width: 50%">
             <p>Khối lượng tối đa 5kg</p>
-            <div style="height: 150px;border: 1px solid black;width: 20px;" >
+            <div style="height: 150px;border: 1px solid black;width: 20px;text-align: center" >
                 <b>Chữ ký người nhận</b>
                 <p>Xác nhận Hàng nguyên vẹn, không móp méo, bể vỡ <br> <br></p>
             </div>
         </td>
     </tr>
     <tr>
-        <td colspan="2" style="border-bottom: 1px dashed black;border-top: 1px dashed black;text-align: center">
+        <td colspan="2" style="border-bottom: 1px dashed black;text-align: center">
             <p><b>Chỉ dẫn giao hàng:</b> Không đồng kiểm; Chuyển hoàn sau 3 lần phát; Lưu kho tối đa 5 ngày.</p>
         </td>
     </tr>

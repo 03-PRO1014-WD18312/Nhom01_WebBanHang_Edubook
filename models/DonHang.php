@@ -10,3 +10,15 @@ class DonHang{
         $this->ten_tt_don_hang = $ten_tt_don_hang;
     }
 }
+class ChiTietDonHang{
+    public $id_chi_tiet_don_hang,$id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong;
+    public function __construct($id_chi_tiet_don_hang,$id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong)
+    {
+        $this->id_chi_tiet_don_hang = $id_chi_tiet_don_hang;
+        $this->id_san_pham = $id_san_pham;
+        $this->id_don_hang = $id_don_hang;
+        $this->gia = $gia;
+        $this->ten_san_pham = $ten_san_pham;
+        $this->so_luong = $so_luong;
+    }
+}

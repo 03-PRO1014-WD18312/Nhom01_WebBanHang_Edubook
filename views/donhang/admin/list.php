@@ -67,7 +67,7 @@
                                 <td>
                                     <?php
                                     if ($dh->id_trang_thai_don_hang == 1) {
-                                        echo ' <button style="border: none;background-color: #2850c3;border-radius: 3px"><a style="padding: 3px;color: white" href="index.php?controller=donHang_update_tt&tt=2&id=' . $dh->id_don_hang . '">Giao hàng</a></button>';
+                                        echo ' <button style="border: none;background-color: #2850c3;border-radius: 3px"><a style="padding: 3px;color: white" href="index.php?controller=donHang_update_tt&tt=2&id=' . $dh->id_don_hang . '">Giao hàng</a></button> <button style="border: none;background-color: #2850c3;border-radius: 3px"><a style="padding: 3px;color: white" href="index.php?controller=donHang_exportId&id='.$dh->id_don_hang.'">Xuất đơn hàng</a></button>';
                                     } elseif ($dh->id_trang_thai_don_hang == 2) {
                                         echo '<button style="border: none;background-color: #2850c3;border-radius: 3px"><a style="padding: 3px;color: white" href="index.php?controller=donHang_update_tt&tt=3&id=' . $dh->id_don_hang . '">Giao hàng thành công</a></button> <br> <br> <button style="border: none;background-color: #2850c3;border-radius: 3px"><a style="padding: 3px;color: white" href="index.php?controller=donHang_update_tt&tt=4&id=' . $dh->id_don_hang . '">Giao hàng không thành công</a></button>';
                                     } elseif ($dh->id_trang_thai_don_hang == 3 || $dh->id_trang_thai_don_hang == 4 || $dh->id_trang_thai_don_hang == 5) {
