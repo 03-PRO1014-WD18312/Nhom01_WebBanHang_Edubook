@@ -18,7 +18,20 @@ class SanPhamController
     }
     public function productDetail()
     {
-        include_once "views/sach/user/ProductDetail.php";
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+
+            $sanPhamDAO = new SanPhamDAO();
+            $list = $sanPhamDAO->show();
+            include_once "views/sach/admin/list.php";
+        } else {
+            $sanPhamDAO = new SanPhamDAO();
+            $infor = $sanPhamDAO-> showOne($_GET['id']);
+            $imgs = $sanPhamDAO->showImg($_GET['id']);
+            $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
+            $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
+            include_once "views/sach/user/ProductDetail.php";
+        }
+        
     }
     public function productViewMore()
     {
