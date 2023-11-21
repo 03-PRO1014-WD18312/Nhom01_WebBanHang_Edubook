@@ -116,11 +116,15 @@ switch ($controller) {
         $DonHangController = new DonHangController();
         $DonHangController->index();
         break;
+    case 'donHang_fix':
+        $DonHangController = new DonHangController();
+        $DonHangController->fix();
+        break;
     case 'donHang_update_tt':
         $DonHangController = new DonHangController();
         $DonHangController->update_tt_dh();
         break;
-    case 'donHang_fix':
+    case 'donHang_exportId':
         $DonHangController = new PDFController();
         $DonHangController->indexXuat();
         break;

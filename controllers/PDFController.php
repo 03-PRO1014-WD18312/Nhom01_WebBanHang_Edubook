@@ -10,11 +10,12 @@ class PDFController
             $pdf = new PDFDAO();
             $DonHangDAO = new DonHangDAO();
             $info = $DonHangDAO->showOneId($_GET['id']);
-            $pdf->generateInvoice($info);
+            $sanPham = $DonHangDAO->gethd_id($_GET['id']);
+            $pdf->generateInvoice($info,$sanPham);
             $list = $DonHangDAO->show();
             include "views/donhang/admin/list.php";
         } else {
-            include('views/trangChu/user/Home.php');
+            header("location: index.php?controller=trangChu");
         }
     }
 }

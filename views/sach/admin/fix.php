@@ -2,7 +2,7 @@
 ?>
 <div class="container" ">
     <div class=" text">
-    Thêm Sách
+    Chi tiết
 </div>
 <form action="index.php?controller=sanPham_fix" method="post" enctype="multipart/form-data" style="min-height: 500px;">
     <input type="hidden" name="id_san_pham" value="<?php echo $list[0]->id_san_pham?>">
@@ -142,25 +142,18 @@
     </div>
     <h6>Ảnh sản phẩm</h6>
     <input type="file" name="images[]" multiple accept="image/*">
-    <div class=" form-row">
-
-        <table style="width: 50%">
-            <tr>
-                <td>STT</td>
-                <td>Ảnh</td>
-                <td>Hành động</td>
-            </tr>
-            <?php foreach ($imgs as $i => $img) {?>
-            <tr>
-                <td><?php echo $i+1?></td>
+    <div class="form-row">
+        <table style="width: 100%">
+            <?php $count = 1; foreach ($imgs as $i => $img) {?>
+                <?php if ($count == 1){echo '<tr>';}?>
                 <td>
                     <img src="assets/imgs/shop/<?php echo $img->hinh_anh?>" width="300px" height="200px" alt="">
                 </td>
-                <td>
-                    <a
-                        href="index.php?controller=sanPham_fix_dlimg&id_san_pham=<?php echo $list[0]->id_san_pham?>&id_hinh_anh=<?php echo $img->id ?>">Xóa</a>
-                </td>
-            </tr>
+
+                <!-- <a href="index.php?controller=sanPham_fix_dlimg&id_san_pham=<?php echo $list[0]->id_san_pham?>&id_hinh_anh=<?php echo $img->id ?>">Xóa</a> -->
+
+                <?php if ($count == 4 || $i == count($imgs) - 1){echo '</tr>';}?>
+                <?php $count++; if ($count > 4){$count = 1;}?>
             <?php } ?>
         </table>
     </div>
