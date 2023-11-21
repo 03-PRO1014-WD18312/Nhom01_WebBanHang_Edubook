@@ -36,6 +36,10 @@ switch ($controller) {
         break;
     case 'quenMatKhau':
         break;
+    case 'search':
+        $SanPhamController = new SanPhamController();
+        $SanPhamController->search();
+        break;
     case 'sanPham':
         $SanPhamController = new SanPhamController();
         $SanPhamController->index();
@@ -61,6 +65,10 @@ switch ($controller) {
         $SanPhamController->sanPham_fix_dlimg();
         break;
     case 'sanPham_delete':
+        $SanPhamController = new SanPhamController();
+        $SanPhamController->delete();
+        break;
+    case 'muaHang':
         $SanPhamController = new SanPhamController();
         $SanPhamController->delete();
         break;
@@ -233,10 +241,6 @@ switch ($controller) {
     case 'giohang_fix':
         break;
     case 'giohang_delete':
-        break;
-    case 'setting':
-        $SettingController = new SettingController();
-        $SettingController->index();
         break;
     case 'chatBox':
         $ChatBoxController = new ChatBoxController();

@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <title>Edu-Book</title>
     <!-- chat -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/chatbox/style1.css">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
@@ -29,8 +31,8 @@
                     </div>
                     <div class="header-right">
                         <div class="search-style-1">
-                            <form action="#">
-                                <input type="text" placeholder="Search for items...">
+                            <form action="index.php?controller=search" method="post">
+                                <input type="text" name="search" placeholder="Search for items...">
                             </form>
                         </div>
                         <div class="header-action-right">
@@ -46,7 +48,8 @@
                                         <ul>
                                             <li>
                                                 <div class="shopping-cart-img">
-                                                    <a href="sanPham-details.html"><img alt="Surfside Media" src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                                    <a href="sanPham-details.html"><img alt="Surfside Media"
+                                                            src="assets/imgs/shop/thumbnail-3.jpg"></a>
                                                 </div>
                                                 <div class="shopping-cart-title">
                                                     <h4><a href="sanPham-details.html">Daisy Casual Bag</a></h4>
@@ -115,7 +118,7 @@
                                     <li><a href="index.php?controller=sanPham">Sản phẩm</a></li>
                                     <li><a href="index.php?controller=gioiThieu">Giới thiệu</a></li>
                                     <li><a href="index.php?controller=chatBox">Liên hệ </a></li>
-                                    <li><a href="index.php?controller=sanPham_Detail">Chi tiết sản phẩm </a></li>
+                                    <li><a href="index.php?controller=sanPham_view">Chi tiết sản phẩm </a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -134,7 +137,8 @@
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="sanPham-details.html"><img alt="Surfside Media" src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                                <a href="sanPham-details.html"><img alt="Surfside Media"
+                                                        src="assets/imgs/shop/thumbnail-3.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="sanPham-details.html">Plain Striola Shirts</a></h4>
@@ -182,7 +186,8 @@
                     <!-- mobile menu start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Trang chủ</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                    href="index.html">Trang chủ</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop.html">Sản
                                     phẩm</a>
                             </li>

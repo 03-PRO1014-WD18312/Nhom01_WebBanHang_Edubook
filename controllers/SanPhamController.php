@@ -13,18 +13,46 @@ class SanPhamController
             $list = $sanPhamDAO->show();
             include_once "views/sach/admin/list.php";
         } else {
+            $sanPhamDAO = new SanPhamDAO();
+            $list = $sanPhamDAO->show();
             include_once "views/sach/user/Product.php";
         }
     }
     public function productDetail()
     {
-        include_once "views/sach/user/ProductDetail.php";
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+
+            $sanPhamDAO = new SanPhamDAO();
+            $list = $sanPhamDAO->show();
+            include_once "views/sach/admin/list.php";
+        } else {
+            $sanPhamDAO = new SanPhamDAO();
+            $infor = $sanPhamDAO-> showOne($_GET['id']);
+            $imgs = $sanPhamDAO->showImg($_GET['id']);
+            $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
+            $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
+            include_once "views/sach/user/ProductDetail.php";
+        }
+        
     }
     public function productViewMore()
     {
+        $LoaiTruyenDAO = new LoaiTruyenDAO();
+        $danh_muc = $LoaiTruyenDAO->show();
+        $SanPhamDAO = new SanPhamDAO();
+        $san_pham = $SanPhamDAO->show();
         include_once "views/sach/user/ProducrMore.php";
     }
-
+    public function search()
+    {
+        if (isset($_POST['search']) && $_POST['search'] != "") {
+            $sanPhamDAO = new SanPhamDAO();
+            $list = $sanPhamDAO->search($_POST['search']);
+            include_once "views/sach/user/Product.php";
+        } else {
+            header("Location: index.php?controller=sanPham");
+        }
+    }
 
 
 

@@ -3,6 +3,6 @@ class SettingController
 {
     public function index()
     {
-        include_once "views/home/user/Setting.php";
+        include_once "views/taiKhoan/user/Setting.php";
     }
 }

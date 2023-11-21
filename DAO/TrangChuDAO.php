@@ -1,13 +1,9 @@
 <?php
-class trangChuDAO
+include_once 'DAO/ConnectDAO.php';
+class trangChuDAO extends BaseDAO
 {
     // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // tổng hợp đơn hàng đã và đang giao , và doanh thu của thàng hiện tại
     public function show_thong_ke()
     {

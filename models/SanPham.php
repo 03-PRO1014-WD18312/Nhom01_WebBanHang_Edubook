@@ -1,7 +1,8 @@
 <?php
-class SanPham{
-    public $id_san_pham,$ten_san_pham,$mo_ta,$hinh_anh,$gia_ban,$gia_goc,$so_luong,$so_trang,$id_tac_gia,$nam_xb,$kich_thuoc,$trong_luong,$ngay_nhap,$id_loai_san_pham ,$id_bo_truyen,$id_nha_san_xuat,$id_nha_phat_hanh,$trang_thai;
-    public function __construct($id_san_pham,$ten_san_pham,$mo_ta,$hinh_anh,$gia_ban,$gia_goc,$so_luong,$so_trang,$id_tac_gia,$nam_xb,$kich_thuoc,$trong_luong,$ngay_nhap,$id_loai_san_pham ,$id_bo_truyen,$id_nha_san_xuat,$id_nha_phat_hanh,$trang_thai)
+class SanPham
+{
+    public $id_san_pham, $ten_san_pham, $mo_ta, $hinh_anh, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh, $trang_thai;
+    public function __construct($id_san_pham, $ten_san_pham, $mo_ta, $hinh_anh, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh, $trang_thai)
     {
         $this->id_san_pham = $id_san_pham;
         $this->ten_san_pham = $ten_san_pham;

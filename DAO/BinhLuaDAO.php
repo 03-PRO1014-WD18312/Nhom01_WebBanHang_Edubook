@@ -1,14 +1,10 @@
 <?php
 include_once('models/BinhLuan.php');
-class BinhLuanDAO
+include_once 'DAO/ConnectDAO.php';
+class BinhLuanDAO extends BaseDAO
 {
     // kết nối database
-    private $PDO;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
-    }
+
     // lấy dữ liệu toàn bộ tác giả trên data base
     public function show()
     {
