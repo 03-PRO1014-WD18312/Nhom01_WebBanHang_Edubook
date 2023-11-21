@@ -1,8 +1,8 @@
 <?php
 class PDF
 {
-    public $ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $noidung, $trang_thai;
-    public function __construct($ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $noidung, $trang_thai)
+    public $ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $noidung, $trang_thai,$ten,$sdt,$gia,$so_luong;
+    public function __construct($ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $noidung, $trang_thai, $ten, $sdt,$gia,$so_luong)
     {
         $this->ma_hoa_don = $ma_hoa_don;
         $this->thoi_gian = $thoi_gian;
@@ -11,5 +11,9 @@ class PDF
         $this->ten_san_pham = $ten_san_pham;
         $this->noidung = $noidung;
         $this->trang_thai = $trang_thai;
+        $this->ten = $ten;
+        $this->sdt = $sdt;
+        $this->gia = $gia;
+        $this->so_luong = $so_luong;
     }
 }
