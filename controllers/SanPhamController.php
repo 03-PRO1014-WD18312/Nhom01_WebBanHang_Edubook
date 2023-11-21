@@ -145,6 +145,7 @@ class SanPhamController
     {
         if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_GET['id'])) {
+                $idsp = $_GET['id'];
                 $sanPhamDAO = new SanPhamDAO();
                 $tg = $sanPhamDAO->showtg();
                 $nsx = $sanPhamDAO->showNSX();
@@ -211,64 +212,12 @@ class SanPhamController
         if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_GET['id_san_pham'])) {
                 $sanPhamDAO = new SanPhamDAO();
+                $idsp = $_GET['id_san_pham'];
                 if (isset($_GET['id_hinh_anh'])) {
                     $sanPhamDAO->deleteOneASP($_GET['id_hinh_anh']);
                 }
-                $tg = $sanPhamDAO->showtg();
-                $nsx = $sanPhamDAO->showNSX();
-                $l = $sanPhamDAO->showL();
-                $nph = $sanPhamDAO->showPH();
-                $b = $sanPhamDAO->showB();
                 $imgs = $sanPhamDAO->imgs($_GET['id_san_pham']);
-                $list = $sanPhamDAO->showOne($_GET['id_san_pham']);
-                include_once "views/sach/admin/fix.php";
-            }
-            if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                $sanPhamDAO = new SanPhamDAO();
-                //upload sản phẩm
-                $hinhAnh = $_POST['hinh_anh_sp_old'];
-                if (isset($_FILES['hinh_anh_sp']) && $_FILES['hinh_anh_sp']['error'] === UPLOAD_ERR_OK) {
-                    $hinhAnh = img();
-                }
-                $sanPhamDAO->fix(
-                    $_POST['ten_san_pham'],
-                    $_POST['mo_ta'],
-                    $hinhAnh,
-                    $_POST['gia_ban'],
-                    $_POST['gia_goc'],
-                    $_POST['so_luong'],
-                    $_POST['so_trang'],
-                    $_POST['id_tac_gia'],
-                    $_POST['nam_xb'],
-                    $_POST['kich_thuoc'],
-                    $_POST['trong_luong'],
-                    $_POST['id_loai_san_pham'],
-                    $_POST['id_bo_truyen'],
-                    $_POST['id_nha_san_xuat'],
-                    $_POST['id_nha_phat_hanh'],
-                    $_POST['id_san_pham']
-                );
-                // kiểm tra xem có ảnh sản phẩm mới không
-                $idSanPham = $_POST['id_san_pham'];
-                $thuMucDich = "assets/imgs/shop/";
-                if (isset($_FILES["images"])) {
-                    foreach ($_FILES["images"]["tmp_name"] as $key => $tmp_name) {
-                        $tenTep = basename($_FILES["images"]["name"][$key]);
-                        $duongDanLuuTep = $thuMucDich . $tenTep;
-                        if (move_uploaded_file($tmp_name, $duongDanLuuTep)) {
-                            $anh = $tenTep;
-                            $sanPhamDAO->addImgs($anh, $idSanPham);
-                        } else {
-                            echo "Có lỗi khi tải lên ảnh: " . $tenTep;
-                        }
-                    }
-                } else {
-                    echo "Không có ảnh nào được chọn.";
-                }
-                $list = $sanPhamDAO->show();
-                $_SESSION['error'] = 'Sửa thông tin thành công';
-                header('location: index.php?controller=sanPham');
-                exit();
+                include_once "views/sach/admin/imgs.php";
             }
         } else {
             header("Location: index.php?controller=dangNhap");
