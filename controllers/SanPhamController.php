@@ -13,6 +13,8 @@ class SanPhamController
             $list = $sanPhamDAO->show();
             include_once "views/sach/admin/list.php";
         } else {
+            $sanPhamDAO = new SanPhamDAO();
+            $list = $sanPhamDAO->show();
             include_once "views/sach/user/Product.php";
         }
     }
@@ -22,9 +24,22 @@ class SanPhamController
     }
     public function productViewMore()
     {
+        $LoaiTruyenDAO = new LoaiTruyenDAO();
+        $danh_muc = $LoaiTruyenDAO->show();
+        $SanPhamDAO = new SanPhamDAO();
+        $san_pham = $SanPhamDAO->show();
         include_once "views/sach/user/ProducrMore.php";
     }
-
+    public function search()
+    {
+        if (isset($_POST['search']) && $_POST['search'] != "") {
+            $sanPhamDAO = new SanPhamDAO();
+            $list = $sanPhamDAO->search($_POST['search']);
+            include_once "views/sach/user/Product.php";
+        } else {
+            header("Location: index.php?controller=sanPham");
+        }
+    }
 
 
 

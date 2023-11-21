@@ -115,6 +115,38 @@ class SanPhamDAO extends BaseDAO
         }
         return $lists;
     }
+    public function search($key)
+    {
+        $sql = "SELECT * FROM `san_pham` WHERE ten_san_pham LIKE '%$key%' AND trang_thai =1";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new SanPham(
+                $row['id_san_pham'],
+                $row['ten_san_pham'],
+                $row['mo_ta'],
+                $row['hinh_anh'],
+                $row['gia_ban'],
+                $row['gia_goc'],
+                $row['so_luong'],
+                $row['so_trang'],
+                $row['id_tac_gia'],
+                $row['nam_xb'],
+                $row['kich_thuoc'],
+                $row['trong_luong'],
+                $row['ngay_nhap'],
+                $row['id_loai_san_pham'],
+                $row['id_bo_truyen'],
+                $row['id_nha_san_xuat'],
+                $row['id_nha_phat_hanh'],
+                $row['trang_thai'],
+            );
+            $lists[] = $product;
+        }
+        return $lists;
+    }
     public function getOneIdDesc()
     {
         $sql = "SELECT * FROM san_pham ORDER BY id_san_pham DESC LIMIT 1";
