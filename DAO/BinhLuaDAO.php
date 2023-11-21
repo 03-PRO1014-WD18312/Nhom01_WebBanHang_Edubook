@@ -3,8 +3,6 @@ include_once('models/BinhLuan.php');
 include_once 'DAO/ConnectDAO.php';
 class BinhLuanDAO extends BaseDAO
 {
-    // kết nối database
-
     // lấy dữ liệu toàn bộ tác giả trên data base
     public function show()
     {
