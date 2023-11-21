@@ -377,13 +377,11 @@
                         </div>
                         <?php
                         $count_one = 0;
-                        var_dump($bo_truyen);
                         foreach ($bo_truyen as $key => $vl) {
                             $count_one++; ?>
-
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="assets/imgs/shop/" alt="#">
+                                    <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
                                 </div>
                                 <div class="content pt-10">
                                     <h5><a href="product-details.html"><?php echo $vl->ten_san_pham ?></a></h5>
