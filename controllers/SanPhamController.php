@@ -31,6 +31,8 @@ class SanPhamController
             $imgs = $sanPhamDAO->showImg($_GET['id']);
             $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
             $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
+            $BinhLuanDAO = new BinhLuanDAO();
+            $binh_luan= $BinhLuanDAO->showOne($_GET['id']);
             include_once "views/sach/user/ProductDetail.php";
         }
         

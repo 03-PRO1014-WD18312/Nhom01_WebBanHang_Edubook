@@ -23,7 +23,7 @@ include "views/layout/user/Header.php";
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><i
+                                            <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><i
                                                 class=" fi-rs-eye"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i class="fas fa-truck"></i></i></a>
@@ -86,7 +86,7 @@ include "views/layout/user/Header.php";
                 <!-- Product sidebar Widget -->
                 <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                     <div class="widget-header position-relative mb-20 pb-10">
-                        <h5 class="widget-title mb-10">New products</h5>
+                        <h5 class="widget-title mb-10">Sản phẩm mới</h5>
                         <div class="bt-1 border-color-1"></div>
                     </div>
                     <div class="single-post clearfix">

@@ -1,28 +1,7 @@
 <footer class="main">
     <section class="newsletter p-30 text-white wow fadeIn animated">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-md-3 mb-lg-0">
-                    <div class="row align-items-center">
-                        <div class="col flex-horizontal-center">
-                            <img class="icon-email" src="assets/imgs/theme/icons/icon-email.svg" alt="">
-                            <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
-                        </div>
-                        <div class="col my-4 my-md-0 des">
-                            <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first
-                                    shopping.</strong></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <!-- Subscribe Form -->
-                    <form class="form-subcriber d-flex wow fadeIn animated">
-                        <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
-                        <button class="btn bg-dark text-white" type="submit">Subscribe</button>
-                    </form>
-                    <!-- End Subscribe Form -->
-                </div>
-            </div>
+            
         </div>
     </section>
     <section class="section-padding footer-mid">
@@ -31,17 +10,17 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5 mb-lg-0">
                         <div class="logo logo-width-1 wow fadeIn animated">
-                            <a href="index.html"><img src="assets/imgs/logo/logo.png" alt="logo"></a>
+                            <a href="index.html"><img src="assets/imgs/logo/logo.jpg" alt="logo"></a>
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                         <p class="wow fadeIn animated">
-                            <strong>Address: </strong>562 Wellington Road
+                            <strong>Địa chỉ: </strong>25 Trịnh Văn Bô
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Phone: </strong>+1 0000-000-000
+                            <strong>Số điện thoại</strong>+1 0000-000-000
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Email: </strong>contact@surfsidemedia.in
+                            <strong>Email: </strong>contact@fpt.edu.vn
                         </p>
                         <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
@@ -54,30 +33,30 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <h5 class="widget-title wow fadeIn animated">About</h5>
+                    <h5 class="widget-title wow fadeIn animated">Về</h5>
                     <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Về chúng tôi</a></li>
+                        <li><a href="#">Thông tin giao hàng</a></li>
+                        <li><a href="#">Chính sách sản phẩm</a></li>
+                        <li><a href="#">Điều khoản và điều kiện</a></li>
+                        <li><a href="#">Liên hệ chúng tôi</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3">
-                    <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                    <h5 class="widget-title wow fadeIn animated">Tài khoản của tôi</h5>
                     <ul class="footer-list wow fadeIn animated">
-                        <li><a href="my-account.html">My Account</a></li>
-                        <li><a href="#">View Cart</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>
-                        <li><a href="#">Order</a></li>
+                        <li><a href="my-account.html">Tài khoản của tôi</a></li>
+                        <li><a href="#">Xem giỏ hàng</a></li>
+                        <li><a href="#">Sản phẩm yêu thích</a></li>
+                        <li><a href="#">Theo dõi đơn hàng</a></li>
+                        <li><a href="#">Đặt hàng</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 mob-center">
-                    <h5 class="widget-title wow fadeIn animated">Install App</h5>
+                    <h5 class="widget-title wow fadeIn animated">Cài đặt ứng dụng</h5>
                     <div class="row">
                         <div class="col-md-8 col-lg-12">
-                            <p class="wow fadeIn animated">From App Store or Google Play</p>
+                            <p class="wow fadeIn animated">Từ App Store hoặc Google Play</p>
                             <div class="download-app wow fadeIn animated mob-app">
                                 <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
                                         src="assets/imgs/theme/app-store.jpg" alt=""></a>
@@ -85,7 +64,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
-                            <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
+                            <p class="mb-20 wow fadeIn animated">Cổng thanh toán an toàn</p>
                             <img class="wow fadeIn animated" src="assets/imgs/theme/payment-method.png" alt="">
                         </div>
                     </div>
@@ -100,13 +79,12 @@
             </div>
             <div class="col-lg-6">
                 <p class="float-md-left font-sm text-muted mb-0">
-                    <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms &
-                        Conditions</a>
+                    <a href="privacy-policy.html">Chính sách bảo mật</a> | <a href="terms-conditions.html">Điều khoản và điều kiện</a>
                 </p>
             </div>
             <div class="col-lg-6">
                 <p class="text-lg-end text-start font-sm text-muted mb-0">
-                    &copy; <strong class="text-brand">SurfsideMedia</strong> All rights reserved
+                    &copy; <strong class="text-brand">EduBook</strong> Mọi quyền được bảo lưu
                 </p>
             </div>
         </div>
