@@ -10,49 +10,21 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-body">
+                <a href="index.php?controller=sanPham_fix&id=<?php echo $idsp?>">Trở lại</a>
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                    <table>
                         <tr>
-                            <th>STT</th>
-                            <th>Tên sách</th>
-                            <th>Hình ảnh</th>
-                            <th>giá bán</th>
-                            <th>Số lượng</th>
-                            <th>Loại sách</th>
-                            <th>Bộ truyện</th>
-                            <th>button</th>
+                            <td>STT</td>
+                            <td>Ảnh</td>
+                            <td>button</td>
                         </tr>
-                        </thead>
-                        <tfoot>
+                        <?php foreach ($imgs as $i => $img) {?>
                         <tr>
-                            <th>STT</th>
-                            <th>Tên sách</th>
-                            <th>Hình ảnh</th>
-                            <th>giá bán</th>
-                            <th>Số lượng</th>
-                            <th>Loại sách</th>
-                            <th>Bộ truyện</th>
-                            <th>button</th>
+                            <td><?php echo $i+1 ?></td>
+                            <td><img src="assets/imgs/shop/<?php echo $img->hinh_anh?>" width="300px" height="200px" alt=""></td>
+                            <td><a href="index.php?controller=sanPham_fix_dlimg&id_san_pham=<?php echo $idsp?>&id_hinh_anh=<?php echo $img->id?>">Xóa</a></td>
                         </tr>
-                        </tfoot>
-                        <tbody>
-                        <?php foreach ($list as $i => $sp) {?>
-                            <tr>
-                                <td><?php echo $i+1?></td>
-                                <td><?php echo $sp->ten_san_pham?></td>
-                                <td><img src="assets/imgs/shop/<?php echo $sp->hinh_anh?>" width="100px" height="60px" alt=""></td>
-                                <td><?php echo $sp->gia_ban?></td>
-                                <td><?php echo $sp->so_luong?></td>
-                                <td><?php echo $sp->id_loai_san_pham?></td>
-                                <td><?php echo $sp->id_bo_truyen?></td>
-                                <td>
-                                    <a href="index.php?controller=sanPham_fix&id=<?php echo $sp->id_san_pham?>">Chi tiết</a> |
-                                    <a href="index.php?controller=sanPham_delete&id=<?php echo $sp->id_san_pham?>">Xóa</a>
-                                </td>
-                            </tr>
                         <?php } ?>
-                        </tbody>
                     </table>
                 </div>
             </div>

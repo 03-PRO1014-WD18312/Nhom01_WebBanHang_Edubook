@@ -143,6 +143,7 @@
     <h6>Ảnh sản phẩm</h6>
     <input type="file" name="images[]" multiple accept="image/*">
     <div class="form-row">
+        <a href="index.php?controller=sanPham_fix_dlimg&id_san_pham=<?php echo $idsp ?>">Chỉnh sửa</a>
         <table style="width: 100%">
             <?php $count = 1; foreach ($imgs as $i => $img) {?>
                 <?php if ($count == 1){echo '<tr>';}?>
