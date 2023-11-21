@@ -17,12 +17,12 @@ class TrangChuController
                 include_once('views/trangChu/admin/Home.php');
             } else {
                 $LoaiTruyenDAO = new LoaiTruyenDAO();
-            $danh_muc = $LoaiTruyenDAO->show();
-            $SanPhamDAO = new SanPhamDAO();
-            $san_pham = $SanPhamDAO->show();
-            $san_pham_now = $SanPhamDAO->showNow();
-            $BoTruyenDAO = new BoTruyenDAO();
-            $Bo_truyen = $BoTruyenDAO->show();
+                $danh_muc = $LoaiTruyenDAO->show();
+                $SanPhamDAO = new SanPhamDAO();
+                $san_pham = $SanPhamDAO->show();
+                $san_pham_now = $SanPhamDAO->showNow();
+                $BoTruyenDAO = new BoTruyenDAO();
+                $Bo_truyen = $BoTruyenDAO->show();
                 include_once('views/trangChu/user/Home.php');
             }
         } else {

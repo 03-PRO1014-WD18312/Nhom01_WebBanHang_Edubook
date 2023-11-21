@@ -13,9 +13,20 @@ class SanPhamController
             $list = $sanPhamDAO->show();
             include_once "views/sach/admin/list.php";
         } else {
-            $sanPhamDAO = new SanPhamDAO();
-            $list = $sanPhamDAO->show();
-            include_once "views/sach/user/Product.php";
+
+            if (isset($_GET['id'])) {
+                $sanPhamDAO = new SanPhamDAO();
+                $LoaiTruyenDAO = new LoaiTruyenDAO();
+                $danh_muc = $LoaiTruyenDAO->show();
+                $list = $sanPhamDAO->showLQ($_GET['id']);
+                include_once "views/sach/user/Product.php";
+            } else {
+                $sanPhamDAO = new SanPhamDAO();
+                $LoaiTruyenDAO = new LoaiTruyenDAO();
+                $danh_muc = $LoaiTruyenDAO->show();
+                $list = $sanPhamDAO->show();
+                include_once "views/sach/user/Product.php";
+            }
         }
     }
     public function productDetail()
@@ -27,7 +38,7 @@ class SanPhamController
             include_once "views/sach/admin/list.php";
         } else {
             $sanPhamDAO = new SanPhamDAO();
-            $infor = $sanPhamDAO-> showOne($_GET['id']);
+            $infor = $sanPhamDAO->showOne($_GET['id']);
             $imgs = $sanPhamDAO->showImg($_GET['id']);
             $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
             $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
@@ -35,7 +46,6 @@ class SanPhamController
             $binh_luan= $BinhLuanDAO->showOne($_GET['id']);
             include_once "views/sach/user/ProductDetail.php";
         }
-        
     }
     public function productViewMore()
     {
@@ -49,6 +59,8 @@ class SanPhamController
     {
         if (isset($_POST['search']) && $_POST['search'] != "") {
             $sanPhamDAO = new SanPhamDAO();
+            $LoaiTruyenDAO = new LoaiTruyenDAO();
+            $danh_muc = $LoaiTruyenDAO->show();
             $list = $sanPhamDAO->search($_POST['search']);
             include_once "views/sach/user/Product.php";
         } else {

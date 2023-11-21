@@ -18,8 +18,8 @@ include "views/layout/user/Header.php";
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom" style="min-height: 300px; max-height:300px ; overflow: hidden;">
                                             <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>">
-                                                <img class="default-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="loi">
-                                                <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="loi">
+                                                <img class="default-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" style="margin: auto;min-height:  300px;" alt="loi">
+                                                <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" style="margin: auto;min-height:  300px;" alt="loi">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -69,6 +69,7 @@ include "views/layout/user/Header.php";
                         </ul>
                     </nav>
                 </div>
+
             </div>
             <div class="col-lg-3 primary-sidebar sticky-sidebar">
                 <div class="row">
@@ -78,9 +79,10 @@ include "views/layout/user/Header.php";
                 <div class="widget-category mb-30">
                     <h5 class="section-title style-1 mb-30 wow fadeIn animated">Danh mục</h5>
                     <ul class="categories">
-                        <li><a href="shop.html">Shoes & Bags</a></li>
-                        <li><a href="shop.html">Blouses & Shirts</a></li>
-                        <li><a href="shop.html">Dresses</a></li>
+                        <?php foreach ($danh_muc as $key => $vl) { ?>
+                            <li><a href="index.php?controller=sanPham&id=<?php echo $vl->id ?>"><?php echo $vl->ten ?></a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- Product sidebar Widget -->
@@ -89,42 +91,32 @@ include "views/layout/user/Header.php";
                         <h5 class="widget-title mb-10">Sản phẩm mới</h5>
                         <div class="bt-1 border-color-1"></div>
                     </div>
-                    <div class="single-post clearfix">
-                        <div class="image">
-                            <img src="assets/imgs/shop/thumbnail-3.jpg" alt="#">
-                        </div>
-                        <div class="content pt-10">
-                            <h5><a href="product-details.html">Chen Cardigan</a></h5>
-                            <p class="price mb-0 mt-5">$99.50</p>
-                            <div class="product-rate">
-                                <div class="product-rating" style="width:90%"></div>
+                    <?php
+                    $count_one = 0;
+                    foreach ($list as $key => $vl) {
+                        $count_one++;
+
+                    ?>
+                        <div class="single-post clearfix">
+                            <div class="image">
+                                <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
+                            </div>
+                            <div class="content pt-10">
+                                <h5><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><?php echo $vl->ten_san_pham ?></a>
+                                </h5>
+                                <p class="price mb-0 mt-5"><?php echo $vl->gia_ban ?></p>
+                                <div class="product-rate">
+                                    <div class="product-rating" style="width:100%"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="single-post clearfix">
-                        <div class="image">
-                            <img src="assets/imgs/shop/thumbnail-4.jpg" alt="#">
-                        </div>
-                        <div class="content pt-10">
-                            <h6><a href="product-details.html">Chen Sweater</a></h6>
-                            <p class="price mb-0 mt-5">$89.50</p>
-                            <div class="product-rate">
-                                <div class="product-rating" style="width:80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-post clearfix">
-                        <div class="image">
-                            <img src="assets/imgs/shop/thumbnail-5.jpg" alt="#">
-                        </div>
-                        <div class="content pt-10">
-                            <h6><a href="product-details.html">Colorful Jacket</a></h6>
-                            <p class="price mb-0 mt-5">$25</p>
-                            <div class="product-rate">
-                                <div class="product-rating" style="width:60%"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        if ($count_one == 3) {
+                            break;
+                        }
+                    }
+                    ?>
+
                 </div>
             </div>
         </div>
