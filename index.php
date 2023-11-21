@@ -15,6 +15,7 @@ include_once 'controllers/TaiKhoanController.php';
 include_once 'controllers/ChatBoxController.php';
 include_once 'controllers/BinhLuanController.php';
 include_once 'controllers/PDFController.php';
+include_once 'controllers/GioiThieuController.php';
 $controller = $_GET['controller'] ?? 'trangChu';
 // routing controller
 switch ($controller) {
@@ -225,6 +226,8 @@ switch ($controller) {
         $BinhLuanController->index();
         break;
     case 'binhLuan_add':
+        $BinhLuanController = new BinhLuanController();
+        $BinhLuanController->index();
         break;
     case 'binhLuan_delete':
         break;
@@ -249,6 +252,10 @@ switch ($controller) {
     case 'chatBox_mes':
         $ChatBoxController = new ChatBoxController();
         $ChatBoxController->chat();
+        break;
+    case 'gioiThieu':
+        $GioiThieuController = new GioiThieuController();
+        $GioiThieuController->index();
         break;
     default:
         break;
