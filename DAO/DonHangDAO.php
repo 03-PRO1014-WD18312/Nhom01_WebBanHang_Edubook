@@ -79,12 +79,12 @@ class DonHangDAO
     {
         $sql = "SELECT 
         ho_don.ma_hoa_don, 
-        don_hang.thoi_gian, 
+        don_hang.thoi_gian,
         dia_chi.dia_chi, 
-        chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong as tong_tien,
+        chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong as tong_tien,chi_tiet_don_hang.gia,chi_tiet_don_hang.so_luong,
         chi_tiet_don_hang.ten_san_pham,
         ho_don.noidung,
-        ho_don.trang_thai
+        ho_don.trang_thai,users.ten,users.sdt
         FROM `ho_don` 
         JOIN don_hang ON don_hang.id_don_hang = ho_don.id_hoa_don 
         JOIN users ON users.id_user = don_hang.id_user 
@@ -104,12 +104,29 @@ class DonHangDAO
                 $row['tong_tien'],
                 $row['ten_san_pham'],
                 $row['noidung'],
-                $row['trang_thai']
+                $row['trang_thai'],
+                $row['ten'],
+                $row['sdt'],
+                $row['gia'],
+                $row['so_luong'],
             );
 
             $users[] = $user;
         }
 
         return $users;
+    }
+    public function gethd_id($id)
+    {
+        $sql = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = ".$id;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new ChiTietDonHang($row['id_chi_tiet_don_hang'], $row['id_san_pham'], $row['id_don_hang'], $row['gia'], $row['ten_san_pham'],$row['so_luong']);
+            $lists[] = $product;
+        }
+        return $lists;
     }
 }

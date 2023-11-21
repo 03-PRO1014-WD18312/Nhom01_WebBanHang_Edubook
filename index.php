@@ -36,6 +36,10 @@ switch ($controller) {
         break;
     case 'quenMatKhau':
         break;
+    case 'search':
+        $SanPhamController = new SanPhamController();
+        $SanPhamController->search();
+        break;
     case 'sanPham':
         $SanPhamController = new SanPhamController();
         $SanPhamController->index();
@@ -61,6 +65,10 @@ switch ($controller) {
         $SanPhamController->sanPham_fix_dlimg();
         break;
     case 'sanPham_delete':
+        $SanPhamController = new SanPhamController();
+        $SanPhamController->delete();
+        break;
+    case 'muaHang':
         $SanPhamController = new SanPhamController();
         $SanPhamController->delete();
         break;
@@ -108,14 +116,17 @@ switch ($controller) {
         $DonHangController = new DonHangController();
         $DonHangController->index();
         break;
+    case 'donHang_fix':
+        $DonHangController = new DonHangController();
+        $DonHangController->fix();
+        break;
     case 'donHang_update_tt':
         $DonHangController = new DonHangController();
         $DonHangController->update_tt_dh();
         break;
-    case 'donHang_fix':
+    case 'donHang_exportId':
         $DonHangController = new PDFController();
         $DonHangController->indexXuat();
-
         break;
     case 'donHang_delete':
         $DonHangController = new DonHangController();
