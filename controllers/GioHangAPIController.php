@@ -5,8 +5,7 @@ class GioHangControllerAPI
     public function index($id)
     {
         $GioHangDAO = new GioHangDAOAPI();
-        $a = $GioHangDAO->add_card($id);
-        return $a;
+        $GioHangDAO->add_card($id);
     }
     public function dow($id)
     {
@@ -24,6 +23,12 @@ class GioHangControllerAPI
     {
         $GioHangDAO = new GioHangDAOAPI();
         $a = $GioHangDAO->delete($id);
+        return $a;
+    }
+    public function sum($id)
+    {
+        $GioHangDAO = new GioHangDAOAPI();
+        $a = $GioHangDAO->sum($id);
         return $a;
     }
 }

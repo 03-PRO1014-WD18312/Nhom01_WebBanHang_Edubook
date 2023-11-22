@@ -34,11 +34,19 @@ class GioHangDAOAPI
 
             $stmt->execute();
         }
+    }
+    public function sum($data)
+    {
+        session_start(); // You need to start the session to access $_SESSION variables.
 
+        $id = $_SESSION['id'];
         $sql = "SELECT sum(so_luong) as so_luong FROM `gio_hang` WHERE id_user = $id ";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $so_luong = $stmt->fetchColumn();
+        if ($so_luong == 0) {
+            $so_luong = 0;
+        }
         return $so_luong;
     }
     public function down_card($data)
@@ -65,11 +73,6 @@ class GioHangDAOAPI
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
         }
-
-        $sql = "SELECT sum(so_luong) as so_luong FROM `gio_hang` WHERE id_user = $id ";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        $so_luong = $stmt->fetchColumn();
         $output = "";
         $sql = "SELECT gio_hang.id_gio_hang,gio_hang.id_san_pham,san_pham.hinh_anh,san_pham.ten_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham = san_pham.id_san_pham WHERE gio_hang.id_user = $id ORDER BY `id_gio_hang` DESC";
 
@@ -140,11 +143,6 @@ class GioHangDAOAPI
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
         }
-
-        $sql = "SELECT sum(so_luong) as so_luong FROM `gio_hang` WHERE id_user = $id ";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        $so_luong = $stmt->fetchColumn();
         $output = "";
         $sql = "SELECT gio_hang.id_gio_hang,gio_hang.id_san_pham,san_pham.hinh_anh,san_pham.ten_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham = san_pham.id_san_pham WHERE gio_hang.id_user = $id ORDER BY `id_gio_hang` DESC";
 
@@ -205,13 +203,6 @@ class GioHangDAOAPI
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->execute();
-
-
-
-        $sql = "SELECT sum(so_luong) as so_luong FROM `gio_hang` WHERE id_user = $id ";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        $so_luong = $stmt->fetchColumn();
 
         $output = "";
         $sql = "SELECT gio_hang.id_gio_hang,gio_hang.id_san_pham,san_pham.hinh_anh,san_pham.ten_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham = san_pham.id_san_pham WHERE gio_hang.id_user = $id ORDER BY `id_gio_hang` DESC";

@@ -18,8 +18,7 @@ function addToCart(id) {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
         // Xử lý kết quả từ máy chủ nếu cần
-        var response = JSON.parse(xhr.responseText);
-        card.innerHTML = response.result;
+        sum(id);
         alert("Thêm vào giỏ hàng thành công");
         // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
       } else {
@@ -49,6 +48,7 @@ function down(id) {
       if (xhr.status === 200) {
         // Xử lý kết quả từ máy chủ nếu cần
         var response = JSON.parse(xhr.responseText);
+        sum(id);
         table.innerHTML = response.result;
         // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
       } else {
@@ -79,6 +79,7 @@ function up(id) {
       if (xhr.status === 200) {
         // Xử lý kết quả từ máy chủ nếu cần
         var response = JSON.parse(xhr.responseText);
+        sum(id);
         table.innerHTML = response.result;
         // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
       } else {
@@ -108,7 +109,36 @@ function dele(id) {
       if (xhr.status === 200) {
         // Xử lý kết quả từ máy chủ nếu cần
         var response = JSON.parse(xhr.responseText);
+        sum(id);
         table.innerHTML = response.result;
+        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+      } else {
+        // Xử lý lỗi nếu có
+        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
+    }
+  };
+
+  // Chuyển đổi object thành JSON và gửi đi
+  xhr.send(JSON.stringify(productInfo));
+}
+function sum(id) {
+  var productInfo = {
+    id: id,
+    // Thêm thông tin khác nếu cần thiết
+  };
+
+  // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "api/sum_card.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Xử lý kết quả từ máy chủ nếu cần
+        var response = JSON.parse(xhr.responseText);
+        card.innerHTML = response.result;
         // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
       } else {
         // Xử lý lỗi nếu có

@@ -7,37 +7,60 @@ class SanPhamController
 {
     public function index()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 4) {
 
-            $sanPhamDAO = new SanPhamDAO();
-            $list = $sanPhamDAO->show();
-            include_once "views/sach/admin/list.php";
-        } else {
-
-            $GioHangDAO = new GioHangDAO();
-            $sum = $GioHangDAO->sum($_SESSION['id']);
-            if (isset($_GET['id'])) {
                 $sanPhamDAO = new SanPhamDAO();
-                $LoaiTruyenDAO = new LoaiTruyenDAO();
-                $danh_muc = $LoaiTruyenDAO->show();
-                $list = $sanPhamDAO->showLQ($_GET['id']);
-                include_once "views/sach/user/Product.php";
-            } else {
-                $sanPhamDAO = new SanPhamDAO();
-                $LoaiTruyenDAO = new LoaiTruyenDAO();
-                $danh_muc = $LoaiTruyenDAO->show();
                 $list = $sanPhamDAO->show();
-                include_once "views/sach/user/Product.php";
+                include_once "views/sach/admin/list.php";
+            } else {
+
+                $GioHangDAO = new GioHangDAO();
+                $sum = $GioHangDAO->sum($_SESSION['id']);
+                if (isset($_GET['id'])) {
+                    $sanPhamDAO = new SanPhamDAO();
+                    $LoaiTruyenDAO = new LoaiTruyenDAO();
+                    $danh_muc = $LoaiTruyenDAO->show();
+                    $list = $sanPhamDAO->showLQ($_GET['id']);
+                    include_once "views/sach/user/Product.php";
+                } else {
+                    $sanPhamDAO = new SanPhamDAO();
+                    $LoaiTruyenDAO = new LoaiTruyenDAO();
+                    $danh_muc = $LoaiTruyenDAO->show();
+                    $list = $sanPhamDAO->show();
+
+                    include_once "views/sach/user/Product.php";
+                }
             }
+        } else {
+            $sanPhamDAO = new SanPhamDAO();
+            $LoaiTruyenDAO = new LoaiTruyenDAO();
+            $danh_muc = $LoaiTruyenDAO->show();
+            $list = $sanPhamDAO->show();
+            $sum = 0;
+            include_once "views/sach/user/Product.php";
         }
     }
     public function productDetail()
     {
-        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 4) {
 
-            $sanPhamDAO = new SanPhamDAO();
-            $list = $sanPhamDAO->show();
-            include_once "views/sach/admin/list.php";
+                $sanPhamDAO = new SanPhamDAO();
+                $list = $sanPhamDAO->show();
+                include_once "views/sach/admin/list.php";
+            } else {
+                $sanPhamDAO = new SanPhamDAO();
+                $infor = $sanPhamDAO->showOne($_GET['id']);
+                $imgs = $sanPhamDAO->showImg($_GET['id']);
+                $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
+                $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
+                $BinhLuanDAO = new BinhLuanDAO();
+                $binh_luan = $BinhLuanDAO->showOne($_GET['id']);
+                $GioHang = new GioHangDAO();
+                $sum = $GioHang->sum($_SESSION['id']);
+                include_once "views/sach/user/ProductDetail.php";
+            }
         } else {
             $sanPhamDAO = new SanPhamDAO();
             $infor = $sanPhamDAO->showOne($_GET['id']);
@@ -46,6 +69,7 @@ class SanPhamController
             $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
             $BinhLuanDAO = new BinhLuanDAO();
             $binh_luan = $BinhLuanDAO->showOne($_GET['id']);
+            $sum = 0;
             include_once "views/sach/user/ProductDetail.php";
         }
     }

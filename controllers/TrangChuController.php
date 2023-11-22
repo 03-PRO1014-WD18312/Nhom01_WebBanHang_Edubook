@@ -35,6 +35,7 @@ class TrangChuController
             $san_pham_now = $SanPhamDAO->showNow();
             $BoTruyenDAO = new BoTruyenDAO();
             $Bo_truyen = $BoTruyenDAO->show();
+            $sum = 0;
             include_once('views/trangChu/user/Home.php');
         }
     }
