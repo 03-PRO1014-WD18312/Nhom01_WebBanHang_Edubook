@@ -16,7 +16,8 @@ class BinhLuanController
                 $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
                 $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
                 $BinhLuanDAO = new BinhLuanDAO();
-                $BinhLuanDAO->add($_POST['id'],$_SESSION['id'],$_POST['comment']);
+                $time = get_time();
+                $BinhLuanDAO->add($_POST['id'],$_SESSION['id'],$time,$_POST['comment']);
                 $binh_luan= $BinhLuanDAO->showOne($_POST['id']);
                 include_once "views/sach/user/ProductDetail.php";
             }
