@@ -11,6 +11,9 @@ class TaiKhoanController
                 $list = $TaiKhoanDAO->show();
                 include_once "views/taiKhoan/admin/list.php";
             } else {
+                $DonHangDAO = new DonHangDAO();
+                $list_don_hang =  $DonHangDAO->donhang($_SESSION['id']);
+                $list_lich_su = $DonHangDAO->lichsu($_SESSION['id']);
                 include_once('views/TaiKhoan/user/Setting.php');
             }
         } else {
@@ -34,6 +37,7 @@ class TaiKhoanController
                     include_once('views/taiKhoan/admin/add.php');
                 }
             } else {
+
                 header('location: index.php?controller=trangChu');
             }
         } else {
