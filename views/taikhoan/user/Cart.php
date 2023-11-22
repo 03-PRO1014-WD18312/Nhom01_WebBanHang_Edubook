@@ -1,114 +1,4 @@
 <?php include "views/layout/user/Header.php"; ?>
-<div class="mobile-header-active mobile-header-wrapper-style">
-    <div class="mobile-header-wrapper-inner">
-        <div class="mobile-header-top">
-            <div class="mobile-header-logo">
-                <a href="index.html"><img src="assets/imgs/logo/logo.png" alt="logo"></a>
-            </div>
-            <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
-                <button class="close-style search-close">
-                    <i class="icon-top"></i>
-                    <i class="icon-bottom"></i>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-header-content-area">
-            <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="Search for items…">
-                    <button type="submit"><i class="fi-rs-search"></i></button>
-                </form>
-            </div>
-            <div class="mobile-menu-wrap mobile-header-border">
-                <div class="main-categori-wrap mobile-header-border">
-                    <a class="categori-button-active-2" href="#">
-                        <span class="fi-rs-apps"></span> Browse Categories
-                    </a>
-                    <div class="categori-dropdown-wrap categori-dropdown-active-small">
-                        <ul>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a></li>
-                            <li> <a href="shop.html"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                            <li><a href="shop.html"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- mobile menu start -->
-                <nav>
-                    <ul class="mobile-menu">
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop.html">shop</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our Collections</a>
-                            <ul class="dropdown">
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Dresses</a></li>
-                                        <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                        <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="product-details.html">Women's Sets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Jackets</a></li>
-                                        <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                        <li><a href="product-details.html">Genuine Leather</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Gaming Laptops</a></li>
-                                        <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                        <li><a href="product-details.html">Tablets</a></li>
-                                        <li><a href="product-details.html">Laptop Accessories</a></li>
-                                        <li><a href="product-details.html">Tablet Accessories</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog.html">Blog</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
-                            <ul class="dropdown">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                                <li><a href="#">Spanish</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- mobile menu end -->
-            </div>
-            <div class="mobile-header-info-wrap mobile-header-border">
-                <div class="single-mobile-header-info mt-30">
-                    <a href="contact.html"> Our location </a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="login.html">Log In </a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="register.html">Sign Up</a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="#">(+1) 0000-000-000 </a>
-                </div>
-            </div>
-            <div class="mobile-social-icon">
-                <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
-            </div>
-        </div>
-    </div>
-</div>
 <main class="main">
     <section class="mt-50 mb-50">
         <div class="container">
@@ -117,80 +7,88 @@
                     <div class="table-responsive">
                         <table class="table shopping-summery text-center clean">
                             <thead>
-                            <tr class="main-heading">
-                                <th scope="col">Image</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">Remove</th>
-                            </tr>
+                                <tr class="main-heading">
+                                    <th scope="col">Hình ảnh</th>
+                                    <th scope="col">tên sản phẩm</th>
+                                    <th scope="col">Giá bán</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Thành tiền</th>
+                                    <th scope="col">Xoá</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
-                                <td class="product-des product-name">
-                                    <h5 class="product-name"><a href="product-details.html">J.Crew Mercantile Women's Short-Sleeve</a></h5>
-                                    <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
-                                    </p>
-                                </td>
-                                <td class="price" data-title="Price"><span>$65.00 </span></td>
-                                <td class="text-center" data-title="Stock">
-                                    <div class="detail-qty border radius  m-auto">
-                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                        <span class="qty-val">1</span>
-                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-right" data-title="Cart">
-                                    <span>$65.00 </span>
-                                </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="image"><img src="assets/imgs/shop/product-11-2.jpg" alt="#"></td>
-                                <td class="product-des">
-                                    <h5 class="product-name"><a href="product-details.html">Amazon Essentials Women's Tank</a></h5>
-                                    <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et gubergren</p>
-                                </td>
-                                <td class="price" data-title="Price"><span>$75.00 </span></td>
-                                <td class="text-center" data-title="Stock">
-                                    <div class="detail-qty border radius  m-auto">
-                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                        <span class="qty-val">2</span>
-                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-right" data-title="Cart">
-                                    <span>$150.00 </span>
-                                </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="image"><img src="assets/imgs/shop/product-6-1.jpg" alt="#"></td>
-                                <td class="product-des">
-                                    <h5 class="product-name"><a href="product-details.html">Amazon Brand - Daily Ritual Women's Jersey </a></h5>
-                                    <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
-                                    </p>
-                                </td>
-                                <td class="price" data-title="Price"><span>$62.00 </span></td>
-                                <td class="text-center" data-title="Stock">
-                                    <div class="detail-qty border radius  m-auto">
-                                        <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                        <span class="qty-val">1</span>
-                                        <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-right" data-title="Cart">
-                                    <span>$62.00 </span>
-                                </td>
-                                <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="text-end">
-                                    <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg"
+                                            alt="#"></td>
+                                    <td class="product-des product-name">
+                                        <h5 class="product-name"><a href="product-details.html">J.Crew Mercantile
+                                                Women's Short-Sleeve</a></h5>
+                                        <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
+                                        </p>
+                                    </td>
+                                    <td class="price" data-title="Price"><span>$65.00 </span></td>
+                                    <td class="text-center" data-title="Stock">
+                                        <div class="detail-qty border radius  m-auto">
+                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                            <span class="qty-val">1</span>
+                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" data-title="Cart">
+                                        <span>$65.00 </span>
+                                    </td>
+                                    <td class="action" data-title="Remove"><a href="#" class="text-muted"><i
+                                                class="fi-rs-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="image"><img src="assets/imgs/shop/product-11-2.jpg" alt="#"></td>
+                                    <td class="product-des">
+                                        <h5 class="product-name"><a href="product-details.html">Amazon Essentials
+                                                Women's Tank</a></h5>
+                                        <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et
+                                            gubergren</p>
+                                    </td>
+                                    <td class="price" data-title="Price"><span>$75.00 </span></td>
+                                    <td class="text-center" data-title="Stock">
+                                        <div class="detail-qty border radius  m-auto">
+                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                            <span class="qty-val">2</span>
+                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" data-title="Cart">
+                                        <span>$150.00 </span>
+                                    </td>
+                                    <td class="action" data-title="Remove"><a href="#" class="text-muted"><i
+                                                class="fi-rs-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="image"><img src="assets/imgs/shop/product-6-1.jpg" alt="#"></td>
+                                    <td class="product-des">
+                                        <h5 class="product-name"><a href="product-details.html">Amazon Brand - Daily
+                                                Ritual Women's Jersey </a></h5>
+                                        <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
+                                        </p>
+                                    </td>
+                                    <td class="price" data-title="Price"><span>$62.00 </span></td>
+                                    <td class="text-center" data-title="Stock">
+                                        <div class="detail-qty border radius  m-auto">
+                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                            <span class="qty-val">1</span>
+                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div>
+                                    </td>
+                                    <td class="text-right" data-title="Cart">
+                                        <span>$62.00 </span>
+                                    </td>
+                                    <td class="action" data-title="Remove"><a href="#" class="text-muted"><i
+                                                class="fi-rs-trash"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6" class="text-end">
+                                        <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -461,7 +359,8 @@
                                 </div>
                                 <div class="form-row row">
                                     <div class="form-group col-lg-6">
-                                        <input required="required" placeholder="State / Country" name="name" type="text">
+                                        <input required="required" placeholder="State / Country" name="name"
+                                            type="text">
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <input required="required" placeholder="PostCode / ZIP" name="name" type="text">
@@ -483,10 +382,12 @@
                                             <form action="#" target="_blank">
                                                 <div class="form-row row justify-content-center">
                                                     <div class="form-group col-lg-6">
-                                                        <input class="font-medium" name="Coupon" placeholder="Enter Your Coupon">
+                                                        <input class="font-medium" name="Coupon"
+                                                            placeholder="Enter Your Coupon">
                                                     </div>
                                                     <div class="form-group col-lg-6">
-                                                        <button class="btn  btn-sm"><i class="fi-rs-label mr-10"></i>Apply</button>
+                                                        <button class="btn  btn-sm"><i
+                                                                class="fi-rs-label mr-10"></i>Apply</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -503,22 +404,27 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
-                                        <tr>
-                                            <td class="cart_total_label">Cart Subtotal</td>
-                                            <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">$240.00</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="cart_total_label">Shipping</td>
-                                            <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="cart_total_label">Total</td>
-                                            <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">$240.00</span></strong></td>
-                                        </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Cart Subtotal</td>
+                                                <td class="cart_total_amount"><span
+                                                        class="font-lg fw-900 text-brand">$240.00</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Shipping</td>
+                                                <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free
+                                                    Shipping</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="cart_total_label">Total</td>
+                                                <td class="cart_total_amount"><strong><span
+                                                            class="font-xl fw-900 text-brand">$240.00</span></strong>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To
+                                    CheckOut</a>
                             </div>
                         </div>
                     </div>

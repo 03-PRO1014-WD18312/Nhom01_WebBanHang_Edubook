@@ -3,7 +3,7 @@
     <section class="pt-150 pb-150">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 m-auto">
+                <div class="col-lg-10 m-auto" style="width: 100%;">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="dashboard-menu">

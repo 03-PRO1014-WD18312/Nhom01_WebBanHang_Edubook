@@ -41,7 +41,7 @@
                                 <div class="header-action-icon-2">
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <a class="mini-cart-icon" href="index.php?controller=cart">
+                                    <a class="mini-cart-icon" href="index.php?controller=giohang">
                                         <img alt="Surfside Media" src="assets/imgs/theme/icons/icon-cart.svg">
                                         <span class="pro-count blue">2</span>
                                     </a>
