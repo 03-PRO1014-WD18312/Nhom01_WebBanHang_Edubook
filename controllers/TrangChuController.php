@@ -23,6 +23,8 @@ class TrangChuController
                 $san_pham_now = $SanPhamDAO->showNow();
                 $BoTruyenDAO = new BoTruyenDAO();
                 $Bo_truyen = $BoTruyenDAO->show();
+                $GioHangDAO = new GioHangDAO();
+                $sum = $GioHangDAO->sum($_SESSION['id']);
                 include_once('views/trangChu/user/Home.php');
             }
         } else {

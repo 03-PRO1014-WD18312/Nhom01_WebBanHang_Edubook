@@ -14,6 +14,8 @@ class SanPhamController
             include_once "views/sach/admin/list.php";
         } else {
 
+            $GioHangDAO = new GioHangDAO();
+            $sum = $GioHangDAO->sum($_SESSION['id']);
             if (isset($_GET['id'])) {
                 $sanPhamDAO = new SanPhamDAO();
                 $LoaiTruyenDAO = new LoaiTruyenDAO();
@@ -43,7 +45,7 @@ class SanPhamController
             $lien_quan = $sanPhamDAO->showLQ($_GET['loai']);
             $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
             $BinhLuanDAO = new BinhLuanDAO();
-            $binh_luan= $BinhLuanDAO->showOne($_GET['id']);
+            $binh_luan = $BinhLuanDAO->showOne($_GET['id']);
             include_once "views/sach/user/ProductDetail.php";
         }
     }

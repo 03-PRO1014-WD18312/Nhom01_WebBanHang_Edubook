@@ -1,10 +1,29 @@
 <?php
-include '../DAO/GioHangDAO.php';
+include '../DAO/GioHangDAOAPI.php';
 class GioHangControllerAPI
 {
     public function index($id)
     {
-        $GioHangDAO = new GioHangDAO();
-        $GioHangDAO->add_card($id);
+        $GioHangDAO = new GioHangDAOAPI();
+        $a = $GioHangDAO->add_card($id);
+        return $a;
+    }
+    public function dow($id)
+    {
+        $GioHangDAO = new GioHangDAOAPI();
+        $a = $GioHangDAO->down_card($id);
+        return $a;
+    }
+    public function up($id)
+    {
+        $GioHangDAO = new GioHangDAOAPI();
+        $a = $GioHangDAO->up_card($id);
+        return $a;
+    }
+    public function delete($id)
+    {
+        $GioHangDAO = new GioHangDAOAPI();
+        $a = $GioHangDAO->delete($id);
+        return $a;
     }
 }

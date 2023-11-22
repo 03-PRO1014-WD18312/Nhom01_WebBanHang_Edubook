@@ -1,7 +1,9 @@
 const add = document.getElementById("add_card");
 const form = document.querySelector(".add_card");
+let card = document.getElementById("card");
+let table = document.getElementById("tbody");
 function addToCart(id) {
-  //   // Lấy thông tin sản phẩm
+  // Lấy thông tin sản phẩm
   var productInfo = {
     id: id,
     // Thêm thông tin khác nếu cần thiết
@@ -13,12 +15,108 @@ function addToCart(id) {
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-      // Xử lý kết quả từ máy chủ nếu cần
-      alert(id);
-      console.log(xhr.responseText);
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Xử lý kết quả từ máy chủ nếu cần
+        var response = JSON.parse(xhr.responseText);
+        card.innerHTML = response.result;
+        alert("Thêm vào giỏ hàng thành công");
+        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+      } else {
+        // Xử lý lỗi nếu có
+        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
     }
   };
+
+  // Chuyển đổi object thành JSON và gửi đi
+  xhr.send(JSON.stringify(productInfo));
+}
+function down(id) {
+  // Lấy thông tin sản phẩm
+  var productInfo = {
+    id: id,
+    // Thêm thông tin khác nếu cần thiết
+  };
+
+  // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "api/down_card.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Xử lý kết quả từ máy chủ nếu cần
+        var response = JSON.parse(xhr.responseText);
+        table.innerHTML = response.result;
+        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+      } else {
+        // Xử lý lỗi nếu có
+        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
+    }
+  };
+
+  // Chuyển đổi object thành JSON và gửi đi
+  xhr.send(JSON.stringify(productInfo));
+}
+
+function up(id) {
+  // Lấy thông tin sản phẩm
+  var productInfo = {
+    id: id,
+    // Thêm thông tin khác nếu cần thiết
+  };
+
+  // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "api/up_card.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Xử lý kết quả từ máy chủ nếu cần
+        var response = JSON.parse(xhr.responseText);
+        table.innerHTML = response.result;
+        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+      } else {
+        // Xử lý lỗi nếu có
+        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
+    }
+  };
+
+  // Chuyển đổi object thành JSON và gửi đi
+  xhr.send(JSON.stringify(productInfo));
+}
+function dele(id) {
+  // Lấy thông tin sản phẩm
+  var productInfo = {
+    id: id,
+    // Thêm thông tin khác nếu cần thiết
+  };
+
+  // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "api/delete_card.php", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        // Xử lý kết quả từ máy chủ nếu cần
+        var response = JSON.parse(xhr.responseText);
+        table.innerHTML = response.result;
+        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+      } else {
+        // Xử lý lỗi nếu có
+        alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+      }
+    }
+  };
+
   // Chuyển đổi object thành JSON và gửi đi
   xhr.send(JSON.stringify(productInfo));
 }
