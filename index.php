@@ -238,6 +238,8 @@ switch ($controller) {
     case 'theodoi_delete':
         break;
     case 'giohang':
+        $GioHangController = new GioHangController();
+        $GioHangController->index();
         break;
     case 'giohang_add':
         break;
