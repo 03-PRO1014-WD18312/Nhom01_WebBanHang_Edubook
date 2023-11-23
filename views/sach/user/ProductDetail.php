@@ -232,6 +232,7 @@
                                         <h4 class="mb-15">Bình luận</h4>
                                         <div class="product-rate d-inline-block mb-30">
                                         </div>
+                                        
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12">
                                                 <form class="form-contact comment_form" action="index.php?controller=binhLuan_add&loai=<?php echo $loai ?>&botruyen=<?php echo $bo ?>" method="post" id="commentForm">

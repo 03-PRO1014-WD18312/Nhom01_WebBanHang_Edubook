@@ -25,3 +25,12 @@ class role
         $this->name = $name;
     }
 }
+class DiaChi{
+    public $name,$sdt,$diaChi;
+    public function __construct($name,$sdt,$diaChi)
+    {
+        $this->name = $name;
+        $this->sdt = $sdt;
+        $this->diaChi = $diaChi;
+    }
+}
