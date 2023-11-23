@@ -9,15 +9,30 @@
         <meta name="author" content="">
         <title>VNPAY RESPONSE</title>
         <!-- Bootstrap core CSS -->
-        <link href="../assets/bootstrap.min.css" rel="stylesheet"/>
-        <!-- Custom styles for this template -->
-        <link href="../assets/jumbotron-narrow.css" rel="stylesheet">
-        <script src="../assets/jquery-1.11.3.min.js"></script>
+<!--        <link href="../assets/bootstrap.min.css" rel="stylesheet"/>-->
+<!--         Custom styles for this template -->
+<!--        <link href="../assets/jumbotron-narrow.css" rel="stylesheet">-->
+<!--        <script src="../assets/jquery-1.11.3.min.js"></script>-->
     </head>
     <body>
         <?php
         session_start();
-        require_once("../config/config.php");
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+        /*
+         * To change this license header, choose License Headers in Project Properties.
+         * To change this template file, choose Tools | Templates
+         * and open the template in the editor.
+         */
+
+        $vnp_TmnCode = "87J682PG"; //Website ID in VNPAY System
+        $vnp_HashSecret = "KQJDGPOXRJQROQWOENLOACLRFKMTUCSF"; //Secret key
+        $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl = "http://localhost/php/Nhom01_WebBanHang_Edubook/views/donhang/user/vnpay_return.php";
+        $vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
+        //Config input format
+        //Expire
+        $startTime = date("YmdHis");
+        $expire = date('YmdHis',strtotime('+15 minutes',strtotime($startTime)));
         $vnp_SecureHash = $_GET['vnp_SecureHash'];
         $inputData = array();
         foreach ($_GET as $key => $value) {
@@ -40,9 +55,15 @@
         }
 
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
-        if ($_GET['vnp_ResponseCode'] == 00 && $_GET['vnp_TransactionStatus'] == 00){
-            addDanhMuc($_SESSION['value_hd']['order_id'], $_SESSION['value_hd']['amount'], $_SESSION['value_hd']['idus'], $_SESSION['value_hd']['idsp'],$_SESSION['value_hd']['order_desc']);
-        }
+//        if ($_GET['vnp_ResponseCode'] == 00 && $_GET['vnp_TransactionStatus'] == 00){
+//            $DonHangDAO = new DonHangDAO();
+//            $DonHangDAO->add($_SESSION['id']);
+//            $newIdDH = $DonHangDAO->getOneIdDesc();
+//            $SanPhamDAO = new SanPhamDAO();
+//            $sanPham =  $SanPhamDAO->showOne($_SESSION['idsp']);
+//            $DonHangDAO->addChiTietDH($_SESSION['idsp'],$newIdDH,$sanPham[0]->gia_ban,$sanPham[0]->ten_san_pham,$_SESSION['so_luong']);
+//
+//        }
         unset($_SESSION['value_hd']);
         ?>
         <!--Begin display -->
@@ -59,7 +80,7 @@
                 <div class="form-group">
 
                     <label >Số tiền:</label>
-                    <label><?php echo $_GET['vnp_Amount'] ?></label>
+                    <label><?php echo number_format(($_GET['vnp_Amount']/100), 0, ',', '.') ?> VND</label>
                 </div>
                 <div class="form-group">
                     <label >Nội dung thanh toán:</label>

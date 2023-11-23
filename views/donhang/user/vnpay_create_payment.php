@@ -1,5 +1,20 @@
 <?php
-include_once "../config/config.php";
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$vnp_TmnCode = "87J682PG"; //Website ID in VNPAY System
+$vnp_HashSecret = "KQJDGPOXRJQROQWOENLOACLRFKMTUCSF"; //Secret key
+$vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+$vnp_Returnurl = "http://localhost/php/Nhom01_WebBanHang_Edubook/views/donhang/user/vnpay_return.php";
+$vnp_apiUrl = "http://sandbox.vnpayment.vn/merchant_webapi/merchant.html";
+//Config input format
+//Expire
+$startTime = date("YmdHis");
+$expire = date('YmdHis',strtotime('+15 minutes',strtotime($startTime)));
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
@@ -8,7 +23,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
  *
  * @author xonv
  */
-require_once("config/config.php");
 
 $vnp_TxnRef = $_POST['order_id']; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
 $vnp_OrderInfo = $_POST['order_desc'];

@@ -81,4 +81,35 @@ class DonHangController
             header('location: index.php?controller=trangChu');
         }
     }
+    public function muaHang(){
+        if (isset($_SESSION['role']) && isset($_SESSION['id'])){
+            if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {}
+            else{
+                if (isset($_GET['id'])){
+                    $sanPhamDAO = new SanPhamDAO();
+                    $user = new TaiKhoanDAO();
+                    $thongTinUs = $user->getUsID($_SESSION['id']);
+                    $thongTinSp = $sanPhamDAO->showOne($_GET['id']);
+                    $tongTien = 0;
+                    $thanhTien = 0;
+                    foreach ($thongTinSp as $sp) {
+                        $tongTien = $tongTien + $sp->gia_ban;
+                    }
+                    include_once "views/donHang/user/thongTin.php";
+                }
+                if ($_SERVER['REQUEST_METHOD'] == "POST"){
+                    $_SESSION['value_hd'] = array(
+                        'order_id' => $_POST['order_id'],
+                        'amount' => $_POST['amount'],
+                        'idsp' => $_POST['idsp'],
+                        'so_luong' => $_POST['so_luong']
+                    );
+                    include_once "views/donhang/user/vnpay_create_payment.php";
+                }
+            }
+        }else{
+            header("Location: index.php?controller=dangNhap");
+        }
+
+    }
 }

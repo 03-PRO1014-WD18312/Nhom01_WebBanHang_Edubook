@@ -95,4 +95,23 @@ class TaiKhoanDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
+    public function getUsID($id){
+        $sql = "SELECT * FROM `users` INNER JOIN dia_chi ON users.id_user = dia_chi.id_user  WHERE dia_chi.trang_thai = 1 AND users.id_user = ".$id;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $users = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Create a Login object and add it to the array
+            $user = new DiaChi(
+                $row['ten'],
+                $row['sdt'],
+                $row['dia_chi']
+            );
+            $users[] = $user;
+        }
+
+        return $users;
+    }
 }
