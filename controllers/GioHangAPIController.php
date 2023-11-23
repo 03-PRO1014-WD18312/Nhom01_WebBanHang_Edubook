@@ -1,5 +1,5 @@
 <?php
-include '../DAO/GioHangDAOAPI.php';
+include '../../DAO/GioHangDAOAPI.php';
 class GioHangControllerAPI
 {
     public function index($id)

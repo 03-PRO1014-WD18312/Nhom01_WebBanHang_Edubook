@@ -4,7 +4,7 @@ const usersList = document.getElementById("usersList");
 
 setInterval(() => {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/inform.php", true);
+  xhr.open("POST", "api/chatbox/inform.php", true);
   xhr.onload = () => {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       if (!searchBar.classList.contains("active")) {
