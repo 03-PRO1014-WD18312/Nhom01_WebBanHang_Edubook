@@ -38,9 +38,9 @@ class BinhLuanDAO extends BaseDAO
         return $users;
     }
     // lệnh thêm mới tác giả
-    public function add($idpro,$iduser,$mes)
+    public function add($idpro,$iduser,$time,$mes)
     {
-        $sql = "INSERT INTO `binh_luan`( `id_user`, `id_san_pham`, `noi_dung_binh_luan`, `ngay_binh_luan`, `danh_gia`) VALUES ('$iduser','$idpro','$mes','2023-11-21 12:33:11','5')";
+        $sql = "INSERT INTO `binh_luan`( `id_user`, `id_san_pham`, `noi_dung_binh_luan`, `ngay_binh_luan`, `danh_gia`) VALUES ('$iduser','$idpro','$mes','$time','5')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
