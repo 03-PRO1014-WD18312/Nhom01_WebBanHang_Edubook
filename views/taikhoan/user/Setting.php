@@ -187,54 +187,29 @@
                                                                 <th>Số thứ tự</th>
                                                                 <th>địa chỉ</th>
                                                                 <th>Trạng thái</th>
-                                                                <th>xóa</th>
+
                                                                 <th>đặt làm mặc định</th>
+                                                                <th>xóa</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $list_dh = [];
-
-                                                            foreach ($list_lich_su as $vl) {
-                                                                $found = false;
-
-                                                                foreach ($list_dh as &$vl2) {
-                                                                    if ($vl2['id'] == $vl->id_don_hang) {
-                                                                        $vl2['san_pham'] .= "<br>" . $vl->ten_san_pham;
-                                                                        $vl2['tien'] += $vl->so_luong * $vl->gia;
-                                                                        $found = true;
-                                                                        break;
-                                                                    }
+                                                            foreach ($list as $key => $vl) {
+                                                                if ($vl->trang_thai == 1) {
+                                                                    $trang_thai = 'Mặc định';
+                                                                } else {
+                                                                    $trang_thai = 'Địa chỉ';
                                                                 }
-                                                                if (!$found) {
-                                                                    $id = $vl->id_don_hang;
-                                                                    $ngay = $vl->thoi_gian;
-                                                                    $trang_thai = $vl->trang_thai_don_hang;
-                                                                    $san_pham = $vl->ten_san_pham;
-                                                                    $tien = $vl->so_luong * $vl->gia;
-
-                                                                    $list_dh[] = [
-                                                                        'id' => $id,
-                                                                        'ngay' => $ngay,
-                                                                        'trang_thai' => $trang_thai,
-                                                                        'san_pham' => $san_pham,
-                                                                        'tien' => $tien
-                                                                    ];
-                                                                }
-                                                            }
-                                                            ?>
-                                                            <?php
-
-                                                            foreach ($list_dh as $key => $vl) {
-
                                                             ?>
                                                                 <tr>
-                                                                    <td><?php echo $vl['id'] ?></td>
-                                                                    <td><?php echo $vl['ngay'] ?></td>
-                                                                    <td><?php echo $vl['trang_thai'] ?></td>
-                                                                    <td><?php echo $vl['san_pham'] ?></td>
-                                                                    <td><?php echo $vl['tien'] ?></td>
-                                                                    <td><a href="#" class="btn-small d-block">View</a></td>
+                                                                    <td><?php echo $key + 1 ?></td>
+                                                                    <td><?php echo $vl->dia_chi ?></td>
+                                                                    <td><?php echo  $trang_thai ?></td>
+
+                                                                    <td><a id="<?php echo $vl->id ?>">đặt làm mặc định</a>
+                                                                    <td> <a id="<?php echo $vl->id ?>">xoa</a></td>
+                                                                    </td>
+
                                                                 </tr>
                                                             <?php
                                                             } ?>
