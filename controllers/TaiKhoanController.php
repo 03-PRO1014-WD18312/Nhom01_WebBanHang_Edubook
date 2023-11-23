@@ -14,6 +14,8 @@ class TaiKhoanController
                 $DonHangDAO = new DonHangDAO();
                 $list_don_hang =  $DonHangDAO->donhang($_SESSION['id']);
                 $list_lich_su = $DonHangDAO->lichsu($_SESSION['id']);
+                $GioHangDAO = new GioHangDAO();
+                $sum = $GioHangDAO->sum($_SESSION['id']);
                 include_once('views/TaiKhoan/user/Setting.php');
             }
         } else {
