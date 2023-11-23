@@ -30,7 +30,7 @@ sendBtn.onclick = () => {
   let xhr = new XMLHttpRequest();
 
   // Cấu hình yêu cầu: gửi yêu cầu POST đến "api/insert-chat.php" và sử dụng chế độ bất đồng bộ
-  xhr.open("POST", "api/insert-chat.php", true);
+  xhr.open("POST", "api/chatbox/insert-chat.php", true);
 
   // Xử lý sự kiện khi yêu cầu hoàn thành
   xhr.onload = () => {
@@ -56,7 +56,7 @@ setInterval(() => {
   // Tạo một đối tượng XMLHttpRequest để thực hiện yêu cầu HTTP
   let xhr = new XMLHttpRequest();
   // Cấu hình yêu cầu: gửi yêu cầu POST đến "api/get-chat.php" và sử dụng chế độ bất đồng bộ
-  xhr.open("POST", "api/get-chat.php", true);
+  xhr.open("POST", "api/chatbox/get-chat.php", true);
 
   // Xử lý sự kiện khi yêu cầu hoàn thành
   xhr.onload = () => {

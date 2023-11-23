@@ -1,5 +1,5 @@
 <?php
-include_once "../controllers/GioHangAPIController.php";
+include_once "../../controllers/GioHangAPIController.php";
 $add_card = new GioHangControllerAPI();
 
 // Nhận dữ liệu từ phía front-end

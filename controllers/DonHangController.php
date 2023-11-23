@@ -68,24 +68,25 @@ class DonHangController
             header('location: index.php?controller=trangChu');
         }
     }
-    public function fix(){
+    public function fix()
+    {
         if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
-            if (isset($_GET['id'])){
+            if (isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $DonHangDAO = new DonHangDAO();
                 $info = $DonHangDAO->showOneId($_GET['id']);
                 include_once "views/donhang/admin/fix.php";
             }
-
         } else {
             header('location: index.php?controller=trangChu');
         }
     }
-    public function muaHang(){
-        if (isset($_SESSION['role']) && isset($_SESSION['id'])){
-            if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {}
-            else{
-                if (isset($_GET['id'])){
+    public function muaHang()
+    {
+        if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
+            if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+            } else {
+                if (isset($_GET['id'])) {
                     $sanPhamDAO = new SanPhamDAO();
                     $user = new TaiKhoanDAO();
                     $thongTinUs = $user->getUsID($_SESSION['id']);
@@ -97,7 +98,7 @@ class DonHangController
                     }
                     include_once "views/donHang/user/thongTin.php";
                 }
-                if ($_SERVER['REQUEST_METHOD'] == "POST"){
+                if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION['value_hd'] = array(
                         'order_id' => $_POST['order_id'],
                         'amount' => $_POST['amount'],
@@ -107,9 +108,14 @@ class DonHangController
                     include_once "views/donhang/user/vnpay_create_payment.php";
                 }
             }
-        }else{
+        } else {
             header("Location: index.php?controller=dangNhap");
         }
-
+    }
+    public function showCard()
+    {
+        $sanPhamDAO = new SanPhamDAO();
+        $list = $sanPhamDAO->card($_POST['card']);
+        var_dump($list);
     }
 }
