@@ -192,7 +192,7 @@
                                                                 <th>xóa</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="tbody_dia_chi">
                                                             <?php
                                                             foreach ($list as $key => $vl) {
                                                                 if ($vl->trang_thai == 1) {
@@ -206,8 +206,10 @@
                                                                     <td><?php echo $vl->dia_chi ?></td>
                                                                     <td><?php echo  $trang_thai ?></td>
 
-                                                                    <td><a id="<?php echo $vl->id ?>">đặt làm mặc định</a>
-                                                                    <td> <a id="<?php echo $vl->id ?>">xoa</a></td>
+                                                                    <td><a onclick="pick(<?php echo $vl->id ?>)">đặt làm mặc
+                                                                            định</a>
+                                                                    <td> <a onclick="remo(<?php echo $vl->id ?>)">xoa</a>
+                                                                    </td>
                                                                     </td>
 
                                                                 </tr>
