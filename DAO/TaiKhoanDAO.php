@@ -29,6 +29,28 @@ class TaiKhoanDAO extends BaseDAO
 
         return $users;
     }
+    // lấy địa chỉ
+    public function show_dia_chi($id)
+    {
+        $sql = "SELECT * FROM `dia_chi` WHERE id_user = $id ORDER BY trang_thai";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $users = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Create a Login object and add it to the array
+            $user = new listDiaChi(
+                $row['id_dia_chi'],
+                $row['dia_chi'],
+                $row['trang_thai']
+            );
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
     // lấy danh sách quyền hạn của trang web
     public function showRole()
     {
@@ -95,8 +117,9 @@ class TaiKhoanDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function getUsID($id){
-        $sql = "SELECT * FROM `users` INNER JOIN dia_chi ON users.id_user = dia_chi.id_user  WHERE dia_chi.trang_thai = 1 AND users.id_user = ".$id;
+    public function getUsID($id)
+    {
+        $sql = "SELECT * FROM `users` INNER JOIN dia_chi ON users.id_user = dia_chi.id_user  WHERE dia_chi.trang_thai = 1 AND users.id_user = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 

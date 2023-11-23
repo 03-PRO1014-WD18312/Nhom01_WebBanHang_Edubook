@@ -18,7 +18,7 @@ class GioHangDAO extends BaseDAO
     }
     public function sum($id)
     {
-        $sql = "SELECT sum(so_luong) as so_luong FROM `gio_hang` WHERE id_user = $id ";
+        $sql = "SELECT COUNT(*) as so_luong FROM `gio_hang` WHERE id_user = $id ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $so_luong = $stmt->fetchColumn();

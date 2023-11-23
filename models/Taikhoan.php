@@ -25,12 +25,25 @@ class role
         $this->name = $name;
     }
 }
-class DiaChi{
-    public $name,$sdt,$diaChi;
-    public function __construct($name,$sdt,$diaChi)
+class DiaChi
+{
+    public $name, $sdt, $diaChi;
+    public function __construct($name, $sdt, $diaChi)
     {
         $this->name = $name;
         $this->sdt = $sdt;
         $this->diaChi = $diaChi;
+    }
+}
+class listDiaChi
+{
+    public $id;
+    public $dia_chi;
+    public $trang_thai;
+    public function __construct($id, $dia_chi, $trang_thai)
+    {
+        $this->id = $id;
+        $this->dia_chi = $dia_chi;
+        $this->trang_thai = $trang_thai;
     }
 }
