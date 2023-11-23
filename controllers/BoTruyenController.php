@@ -10,7 +10,7 @@ class BoTruyenController
             $list = $BoTruyenDAO->show();
             include_once "views/botruyen/admin/list.php";
         } else {
-            include_once('views/home/user/Home.php');
+            include_once('views/trangChu/user/Home.php');
         }
     }
     // tạo mới bộ truện
