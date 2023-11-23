@@ -110,9 +110,7 @@ include "views/layout/user/Header.php";
                                             href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i
                                                 class="fas fa-truck"></i></i></a>
                                     </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">Hot</span>
-                                    </div>
+
                                 </div>
                                 <div class="product-content-wrap" id="productInfo">
                                     <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -122,8 +120,9 @@ include "views/layout/user/Header.php";
                                             </span>
                                 </div>
                                 <div class="product-price">
-                                    <span>$238.85 </span>
-                                    <span class="old-price">$245.8</span>
+                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', '.')?> VND</span>
+                                    <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.')?>
+                                        VND</span>
                                 </div>
                                 <div class="product-action-1 show">
                                     <?php if (isset($_SESSION['id'])) { ?>
@@ -179,9 +178,7 @@ include "views/layout/user/Header.php";
                                         href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i
                                             class="fas fa-truck"></i></i></a>
                                 </div>
-                                <div class="product-badges product-badges-position product-badges-mrg">
-                                    <span class="hot">Hot</span>
-                                </div>
+
                             </div>
                             <div class="product-content-wrap" id="productInfo">
                                 <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -191,8 +188,9 @@ include "views/layout/user/Header.php";
                                         </span>
                             </div>
                             <div class="product-price">
-                                <span>$238.85 </span>
-                                <span class="old-price">$245.8</span>
+                                <span><?php echo  number_format($vl->gia_ban, 0, ',', '.')?> VND</span>
+                                <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.')?>
+                                    VND</span>
                             </div>
                             <div class="product-action-1 show">
                                 <?php if (isset($_SESSION['id'])) { ?>
@@ -247,9 +245,7 @@ include "views/layout/user/Header.php";
                                     href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i
                                         class="fas fa-truck"></i></i></a>
                             </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">Hot</span>
-                            </div>
+
                         </div>
                         <div class="product-content-wrap" id="productInfo">
                             <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -259,8 +255,8 @@ include "views/layout/user/Header.php";
                                     </span>
                         </div>
                         <div class="product-price">
-                            <span>$238.85 </span>
-                            <span class="old-price">$245.8</span>
+                            <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                            <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?> VND</span>
                         </div>
                         <div class="product-action-1 show">
                             <?php if (isset($_SESSION['id'])) { ?>
@@ -316,9 +312,7 @@ include "views/layout/user/Header.php";
                                     href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"
                                     tabindex="0"><i class="fi-rs-shuffle"></i></a>
                             </div>
-                            <div class="product-badges product-badges-position product-badges-mrg">
-                                <span class="hot">Hot</span>
-                            </div>
+
                         </div>
                         <div class="product-content-wrap">
                             <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -327,8 +321,8 @@ include "views/layout/user/Header.php";
                                     </span>
                         </div>
                         <div class="product-price">
-                            <span>$238.85 </span>
-                            <span class="old-price">$245.8</span>
+                            <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                            <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?> VND</span>
                         </div>
                     </div>
                 </div>
