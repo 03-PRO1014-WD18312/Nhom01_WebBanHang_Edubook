@@ -53,9 +53,7 @@ include "views/layout/user/Header.php";
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i class="fas fa-truck"></i></i></a>
                                             </div>
-                                            <div class="product-badges product-badges-position product-badges-mrg">
-                                                <span class="hot">Hot</span>
-                                            </div>
+
                                         </div>
                                         <div class="product-content-wrap" id="productInfo">
                                             <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -65,8 +63,9 @@ include "views/layout/user/Header.php";
                                                     </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                                            <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                                VND</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <button aria-label="Add To Cart" id="add_card" onclick="addToCart(<?php echo $vl->id_san_pham ?>)" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
@@ -107,9 +106,7 @@ include "views/layout/user/Header.php";
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i class="fas fa-truck"></i></i></a>
                                         </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
+
                                     </div>
                                     <div class="product-content-wrap" id="productInfo">
                                         <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -119,8 +116,9 @@ include "views/layout/user/Header.php";
                                                 </span>
                                     </div>
                                     <div class="product-price">
-                                        <span>$238.85 </span>
-                                        <span class="old-price">$245.8</span>
+                                        <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                                        <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                            VND</span>
                                     </div>
                                     <div class="product-action-1 show">
                                         <button aria-label="Add To Cart" id="add_card" onclick="addToCart(<?php echo $vl->id_san_pham ?>)" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
@@ -160,9 +158,7 @@ include "views/layout/user/Header.php";
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i class="fas fa-truck"></i></i></a>
                                     </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">Hot</span>
-                                    </div>
+
                                 </div>
                                 <div class="product-content-wrap" id="productInfo">
                                     <h2><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><?php echo $vl->ten_san_pham ?></a></h2>
@@ -172,8 +168,9 @@ include "views/layout/user/Header.php";
                                             </span>
                                 </div>
                                 <div class="product-price">
-                                    <span>$238.85 </span>
-                                    <span class="old-price">$245.8</span>
+                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                                    <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                        VND</span>
                                 </div>
                                 <div class="product-action-1 show">
                                     <button aria-label="Add To Cart" id="add_card" onclick="addToCart(<?php echo $vl->id_san_pham ?>)" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
