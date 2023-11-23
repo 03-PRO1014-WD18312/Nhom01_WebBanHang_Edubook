@@ -4525,7 +4525,7 @@ table .product-thumbnail img {
   border-color: #f15412;
 }
 
-.detail-qty {
+.detai {
   max-width: 80px;
   padding: 9px 20px;
   position: relative;
@@ -4533,22 +4533,22 @@ table .product-thumbnail img {
   border-radius: 4px;
 }
 
-.detail-qty > a {
+.detai > a {
   font-size: 16px;
   position: absolute;
   right: 8px;
   color: #707070;
 }
 
-.detail-qty > a:hover {
+.detai > a:hover {
   color: #f15412;
 }
 
-.detail-qty > a.qty-up {
+.detai > a.qty-up {
   top: 0;
 }
 
-.detail-qty > a.qty-down {
+.detai > a.qty-down {
   bottom: 0;
 }
 
@@ -4575,7 +4575,7 @@ table .product-thumbnail img {
   vertical-align: top;
 }
 
-.detail-extralink .detail-qty {
+.detail-extralink .detai {
   margin: 0 6px 15px 0;
   background: #fff;
 }

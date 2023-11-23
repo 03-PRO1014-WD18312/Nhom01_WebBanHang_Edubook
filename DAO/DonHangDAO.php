@@ -2,15 +2,71 @@
 include_once 'models/DonHang.php';
 include_once 'models/TrangThaiDonHang.php';
 include_once 'models/PDF.php';
-
-class DonHangDAO
+include_once 'DAO/ConnectDAO.php';
+include_once 'config/PDO.php';
+class DonHangDAO extends BaseDAO
 {
-    private $PDO;
-    public function __construct()
+
+
+    //
+    public function donhang($id)
     {
-        require_once('config/PDO.php');
-        $this->PDO = $pdo;
+        $sql = "SELECT
+        don_hang.id_don_hang,
+        don_hang.thoi_gian,
+        trang_thai_don_hang.ten_trang_thai_don_hang,
+        chi_tiet_don_hang.ten_san_pham,
+        chi_tiet_don_hang.gia,
+        chi_tiet_don_hang.so_luong
+    FROM
+        don_hang
+    JOIN
+        chi_tiet_don_hang ON don_hang.id_don_hang = chi_tiet_don_hang.id_don_hang
+    JOIN
+        trang_thai_don_hang ON trang_thai_don_hang.id_trang_thai_don_hang = don_hang.id_trang_thai_don_hang
+    WHERE
+        don_hang.id_trang_thai_don_hang NOT IN (3, 4) AND don_hang.id_user= $id
+     ORDER BY `id_don_hang` DESC";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new LichSu($row['id_don_hang'],  $row['thoi_gian'], $row['ten_trang_thai_don_hang'], $row['ten_san_pham'], $row['gia'], $row['so_luong']);
+            $lists[] = $product;
+        }
+        return $lists;
     }
+    //
+    public function lichsu($id)
+    {
+        $sql = "SELECT
+        don_hang.id_don_hang,
+        don_hang.thoi_gian,
+        trang_thai_don_hang.ten_trang_thai_don_hang,
+        chi_tiet_don_hang.ten_san_pham,
+        chi_tiet_don_hang.gia,
+        chi_tiet_don_hang.so_luong
+    FROM
+        don_hang
+    JOIN
+        chi_tiet_don_hang ON don_hang.id_don_hang = chi_tiet_don_hang.id_don_hang
+    JOIN
+        trang_thai_don_hang ON trang_thai_don_hang.id_trang_thai_don_hang = don_hang.id_trang_thai_don_hang
+    WHERE
+        don_hang.id_trang_thai_don_hang = 3 AND don_hang.id_user= $id
+     ORDER BY `id_don_hang` DESC";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new LichSu($row['id_don_hang'],  $row['thoi_gian'], $row['ten_trang_thai_don_hang'], $row['ten_san_pham'], $row['gia'], $row['so_luong']);
+            $lists[] = $product;
+        }
+        return $lists;
+    }
+    //
     public function show()
     {
         $sql = "SELECT * FROM `don_hang` INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang ORDER BY `id_don_hang` DESC";
@@ -88,8 +144,8 @@ class DonHangDAO
         FROM `ho_don` 
         JOIN don_hang ON don_hang.id_don_hang = ho_don.id_hoa_don 
         JOIN users ON users.id_user = don_hang.id_user 
-        JOIN dia_chi ON users.id_dia_chi = dia_chi.id_dia_chi 
-        JOIN chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang WHERE ho_don.id_hoa_don=" . $id;
+        JOIN dia_chi ON users.id_user = dia_chi.id_user 
+        JOIN chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang WHERE dia_chi.trang_thai = 1 AND ho_don.id_hoa_don=" . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 
@@ -118,15 +174,38 @@ class DonHangDAO
     }
     public function gethd_id($id)
     {
-        $sql = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = ".$id;
+        $sql = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ChiTietDonHang($row['id_chi_tiet_don_hang'], $row['id_san_pham'], $row['id_don_hang'], $row['gia'], $row['ten_san_pham'],$row['so_luong']);
+            $product = new ChiTietDonHang($row['id_chi_tiet_don_hang'], $row['id_san_pham'], $row['id_don_hang'], $row['gia'], $row['ten_san_pham'], $row['so_luong']);
             $lists[] = $product;
         }
         return $lists;
+    }
+    public function add($id_user)
+    {
+        $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user',get_time(),1)";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
+    public function getOneIdDesc(){
+        $sql = "SELECT id_don_hang FROM don_hang ORDER BY id_don_hang DESC LIMIT 1";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new DonHang($row['id_don_hang'], $row['id_user'], $row['thoi_gian'], $row['id_trang_thai_don_hang'], 0);
+            $lists[] = $product;
+        }
+        return $lists;
+    }
+    public function addChiTietDH($id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong){
+        $sql = "INSERT INTO `chi_tiet_don_hang`(`id_san_pham`, `id_don_hang`, `gia`, `ten_san_pham`, `so_luong`) VALUES ('$id_san_pham','$id_don_hang','$gia','$ten_san_pham','$so_luong')";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
     }
 }

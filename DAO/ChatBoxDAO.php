@@ -207,25 +207,3 @@ class ChatBoxDAO
         return $rs;
     }
 }
-class User
-{
-    private $pdo;
-    public function __construct()
-    {
-        require_once('config/PDO.php');
-        $this->pdo = $pdo;
-    }
-    // lấy id người quản trị web
-    public function getId()
-    {
-        $sql = "SELECT `id_user` FROM `users` WHERE id_quyen = 2";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Add user ID to the array
-            $userIds = $row['id_user'];
-        }
-        return $userIds;
-    }
-}

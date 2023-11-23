@@ -1,5 +1,5 @@
 <?php
-include_once 'DAO/ChatBoxDAO.php';
+include_once 'DAO/ChatBoxDAOAPI.php';
 class ChatBoxController
 {
     public function index()

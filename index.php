@@ -70,8 +70,8 @@ switch ($controller) {
         $SanPhamController->delete();
         break;
     case 'muaHang':
-        $SanPhamController = new SanPhamController();
-        $SanPhamController->delete();
+        $SanPhamController = new DonHangController();
+        $SanPhamController->muaHang();
         break;
         // case 'sanPham':
         //     $SanPhamController = new SanPhamController();
@@ -238,6 +238,8 @@ switch ($controller) {
     case 'theodoi_delete':
         break;
     case 'giohang':
+        $GioHangController = new GioHangController();
+        $GioHangController->index();
         break;
     case 'giohang_add':
         break;
