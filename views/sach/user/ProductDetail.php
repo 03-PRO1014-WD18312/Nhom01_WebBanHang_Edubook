@@ -1,4 +1,10 @@
 <?php include "views/layout/user/Header.php"; ?>
+<style>
+    /* Thêm style cho nút tăng và giảm */
+    input[type="number"]::-webkit-inner-spin-button {
+        /* Điều chỉnh khoảng cách bên trái của nút tăng và giảm */
+    }
+</style>
 <main class="main">
     <section class="mt-50 mb-50">
         <div class="container">
@@ -37,7 +43,10 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
-                                <?php foreach ($infor as $key => $vl) { $id=$vl->id_san_pham; $loai = $vl->id_loai_san_pham; $bo= $vl->id_bo_truyen ?>
+                                <?php foreach ($infor as $key => $vl) {
+                                    $id = $vl->id_san_pham;
+                                    $loai = $vl->id_loai_san_pham;
+                                    $bo = $vl->id_bo_truyen ?>
                                     <div class="detail-info">
                                         <h2 class="title-detail"><?php echo $vl->ten_san_pham ?></h2>
 
@@ -45,7 +54,8 @@
                                             <div class="product-price primary-color float-left">
                                                 <ins><span class="text-brand"><?php echo $vl->gia_ban ?></span></ins>
                                                 <ins><span class="old-price font-md ml-15"><?php echo $vl->gia_goc ?></span></ins>
-                                                <span class="save-price  font-md color3 ml-15"><?php echo ($vl->gia_ban / $vl->gia_goc) * 100 ?>% Off</span>
+                                                <span class="save-price  font-md color3 ml-15"><?php echo ($vl->gia_ban / $vl->gia_goc) * 100 ?>%
+                                                    Off</span>
                                             </div>
                                         </div>
                                         <div class="bt-1 border-color-1 mt-15 mb-15"></div>
@@ -55,25 +65,30 @@
                                         <div class="product_sort_info font-xs mb-30">
                                             <ul>
                                                 <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Bảo hành một năm </li>
-                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả 30 ngày</li>
-                                                <li><i class="fi-rs-credit-card mr-5"></i> Tiền mặt khi giao hàng có sẵn</li>
+                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả 30
+                                                    ngày</li>
+                                                <li><i class="fi-rs-credit-card mr-5"></i> Tiền mặt khi giao hàng có sẵn
+                                                </li>
                                             </ul>
                                         </div>
 
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                        <div class="detail-extralink">
-                                            <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        <form action="" method="POST">
+                                            <div class="detail-extralink">
+                                                <div class="detail-qty border radius" style="width: 10%;  ">
+                                                    <input type="number" name="so_luong" min="1" max="10" value="1" style="">
+                                                    <input type="hidden" name="idsp" value="<?php echo $vl->id_san_pham ?>">
+                                                </div>
+                                                <div class="product-extra-link2">
+                                                    <button type="submit" class="button button-add-to-cart">Mua
+                                                        ngay</button>
+                                                    <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart">Mua ngay</button>
+                                        </form>
 
-                                                <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
-                                            </div>
-                                        </div>
                                     <?php } ?>
+
                                     </div>
                                     <!-- Detail Info -->
                             </div>
@@ -84,7 +99,8 @@
                                     <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">CHI TIẾT</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">BÌNH LUẬN</a>
+                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">BÌNH
+                                        LUẬN</a>
                                 </li>
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
@@ -154,46 +170,47 @@
                                     <!--Comments-->
                                     <div class="comments-area">
                                         <div class="row">
-                                            
-                                                 <div class="col-lg-8">
+
+                                            <div class="col-lg-8">
                                                 <h4 class="mb-30">Câu hỏi & trả lời của khách hàng</h4>
                                                 <div class="comment-list">
-                                                <?php
-                                            $count_one = 0;
-                                           
-                                            foreach ($binh_luan as $key => $vl) {
-                                                 ?>
-                                                    <div class="single-comment justify-content-between d-flex">
-                                                        <div class="user justify-content-between d-flex">
-                                                            <div class="thumb text-center">
-                                                                <img src="assets/imgs/user/<?php echo $vl->anh ?>" alt="" style="height: 80%;"   >
-                                                                <h6><a href="#"><?php echo $vl->nguoi_gui ?></a></h6>
-                                                               
-                                                            </div>
-                                                            <div class="desc">
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%">
-                                                                    </div>
+                                                    <?php
+                                                    $count_one = 0;
+
+                                                    foreach ($binh_luan as $key => $vl) {
+                                                    ?>
+                                                        <div class="single-comment justify-content-between d-flex">
+                                                            <div class="user justify-content-between d-flex">
+                                                                <div class="thumb text-center">
+                                                                    <img src="assets/imgs/user/<?php echo $vl->anh ?>" alt="" style="height: 80%;">
+                                                                    <h6><a href="#"><?php echo $vl->nguoi_gui ?></a></h6>
+
                                                                 </div>
-                                                                <p><?php echo $vl->mes ?></p>
-                                                                <div class="d-flex justify-content-between">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30"><?php echo $vl->ngay ?> </p>
-                                                                      
+                                                                <div class="desc">
+                                                                    <div class="product-rate d-inline-block">
+                                                                        <div class="product-rating" style="width:90%">
+                                                                        </div>
+                                                                    </div>
+                                                                    <p><?php echo $vl->mes ?></p>
+                                                                    <div class="d-flex justify-content-between">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <p class="font-xs mr-30"><?php echo $vl->ngay ?>
+                                                                            </p>
+
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                   
+
                                                     <?php
-                                               
-                                            }
-                                            ?>
+
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
-                                            
-                                           
+
+
                                             <div class="col-lg-4">
                                                 <h4 class="mb-30">Phản hồi khách hàng</h4>
                                                 <div class="d-flex mb-30">
@@ -205,23 +222,28 @@
                                                 </div>
                                                 <div class="progress">
                                                     <span>5 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%
+                                                    </div>
                                                 </div>
                                                 <div class="progress">
                                                     <span>4 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+                                                    </div>
                                                 </div>
                                                 <div class="progress">
                                                     <span>3 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                                    <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
+                                                    </div>
                                                 </div>
                                                 <div class="progress">
                                                     <span>2 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                                    <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%
+                                                    </div>
                                                 </div>
                                                 <div class="progress mb-30">
                                                     <span>1 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%
+                                                    </div>
                                                 </div>
                                                 <a href="#" class="font-xs text-muted">Xếp hạng được tính thế nào?</a>
                                             </div>
@@ -232,7 +254,7 @@
                                         <h4 class="mb-15">Bình luận</h4>
                                         <div class="product-rate d-inline-block mb-30">
                                         </div>
-                                        
+
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12">
                                                 <form class="form-contact comment_form" action="index.php?controller=binhLuan_add&loai=<?php echo $loai ?>&botruyen=<?php echo $bo ?>" method="post" id="commentForm">
@@ -314,7 +336,7 @@
                         <h5 class="section-title style-1 mb-30 wow fadeIn animated">DANH MỤC</h5>
                         <ul class="categories">
                             <!-- <li><a href="shop.html"></a></li> -->
-                            
+
                         </ul>
                     </div>
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
