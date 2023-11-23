@@ -6,7 +6,7 @@ class GioHangDAOAPI
     private $pdo;
     public function __construct()
     {
-        require_once('../config/PDO.php');
+        require_once('../../config/PDO.php');
         $this->pdo = $pdo;
     }
     // thêm giỏ hàng

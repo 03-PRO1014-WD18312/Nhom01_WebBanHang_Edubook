@@ -1,9 +1,7 @@
 <?php
-include '../DAO/ChatBoxDAO.php';
+include '../../DAO/ChatBoxDAO.php';
 class ChatBoxControllerAPI
 {
-
-
 
     public function getchat()
     {

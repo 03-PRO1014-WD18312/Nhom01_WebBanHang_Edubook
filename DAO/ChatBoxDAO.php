@@ -4,7 +4,7 @@ class ChatBoxDAO
     private $pdo;
     public function __construct()
     {
-        require_once('../config/PDO.php');
+        require_once('../../config/PDO.php');
         $this->pdo = $pdo;
     }
     // lấy đoạn chat

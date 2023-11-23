@@ -11,7 +11,7 @@ function addToCart(id) {
 
   // Sử dụng AJAX để gửi dữ liệu đến máy chủ
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/add_card.php", true);
+  xhr.open("POST", "api/card/add_card.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
@@ -40,7 +40,7 @@ function down(id) {
 
   // Sử dụng AJAX để gửi dữ liệu đến máy chủ
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/down_card.php", true);
+  xhr.open("POST", "api/card/down_card.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
@@ -71,7 +71,7 @@ function up(id) {
 
   // Sử dụng AJAX để gửi dữ liệu đến máy chủ
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/up_card.php", true);
+  xhr.open("POST", "api/card/up_card.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
@@ -101,7 +101,7 @@ function dele(id) {
 
   // Sử dụng AJAX để gửi dữ liệu đến máy chủ
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/delete_card.php", true);
+  xhr.open("POST", "api/card/delete_card.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
@@ -130,7 +130,7 @@ function sum(id) {
 
   // Sử dụng AJAX để gửi dữ liệu đến máy chủ
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/sum_card.php", true);
+  xhr.open("POST", "api/card/sum_card.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onreadystatechange = function () {
@@ -149,4 +149,18 @@ function sum(id) {
 
   // Chuyển đổi object thành JSON và gửi đi
   xhr.send(JSON.stringify(productInfo));
+}
+function selectAll() {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function (checkbox) {
+    checkbox.checked = true;
+  });
+}
+
+// Hàm để bỏ chọn tất cả các ô checkbox
+function deselectAll() {
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function (checkbox) {
+    checkbox.checked = false;
+  });
 }
