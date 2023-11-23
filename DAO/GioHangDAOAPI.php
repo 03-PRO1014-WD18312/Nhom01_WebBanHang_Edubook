@@ -40,7 +40,7 @@ class GioHangDAOAPI
         session_start(); // You need to start the session to access $_SESSION variables.
 
         $id = $_SESSION['id'];
-        $sql = "SELECT sum(so_luong) as so_luong FROM `gio_hang` WHERE id_user = $id ";
+        $sql = "SELECT COUNT(*) as so_luong FROM `gio_hang` WHERE id_user = $id ";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $so_luong = $stmt->fetchColumn();
