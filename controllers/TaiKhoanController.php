@@ -16,6 +16,8 @@ class TaiKhoanController
                 $list_lich_su = $DonHangDAO->lichsu($_SESSION['id']);
                 $GioHangDAO = new GioHangDAO();
                 $sum = $GioHangDAO->sum($_SESSION['id']);
+                $TaiKhoanDAO = new TaiKhoanDAO();
+                $list = $TaiKhoanDAO->show_dia_chi($_SESSION['id']);
                 include_once('views/TaiKhoan/user/Setting.php');
             }
         } else {
@@ -97,5 +99,10 @@ class TaiKhoanController
         } else {
             header("Location: index.php?controller=dangNhap");
         }
+    }
+
+    // lấy địa chỉ của tài khoản
+    public function show_dia_chi()
+    {
     }
 }

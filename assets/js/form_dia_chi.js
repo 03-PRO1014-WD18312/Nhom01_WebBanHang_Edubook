@@ -15,36 +15,56 @@ function them() {
 }
 
 function submit() {
+  // Get the input element by ID
   var diaChiInput = document.getElementById("dia_chi");
 
+  // Get the value from the input element
+  var diaChiValue = diaChiInput.value;
+
+  // Check if the address is not empty
+  if (!diaChiValue.trim()) {
+    alert("Vui lòng nhập địa chỉ.");
+    return;
+  }
+
+  // Create an object with the data to be sent
   var productInfo = {
-    dia_chi: diaChiInput.value,
-    // Thêm thông tin khác nếu cần thiết
+    dia_chi: diaChiValue,
+    // Add other information if needed
   };
 
-  // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+  // Use AJAX to send data to the server
   var xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/sum_card.php", true);
+  xhr.open("POST", "api/dia_chi/add_dia_chi.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
 
+  // Set up the callback function for handling the response
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {
+        // Handle the result from the server if needed
         // Xử lý kết quả từ máy chủ nếu cần
-        var response = JSON.parse(xhr.responseText);
-        card.innerHTML = response.result;
-        // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+
+        alert(xhr.responseText);
+        alert("Đã thêm mới một địa chỉ");
+        // You can update the content of an element with ID "card" here if needed
       } else {
-        // Xử lý lỗi nếu có
+        // Handle errors
         alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
       }
     }
   };
 
-  // Xóa văn bản trong trường địa chỉ sau khi form được gửi
-  diaChiInput.value = "";
+  // Convert the data object to a JSON string before sending
+  var jsonData = JSON.stringify(productInfo);
 
+  // Send the request with the JSON data
+  xhr.send(jsonData);
+
+  // Clear the input field after the form is submitted
+  diaChiInput.value = "";
   huy();
+  // Optionally, you can call a function like 'huy()' here if needed
 }
 
 function huy() {
