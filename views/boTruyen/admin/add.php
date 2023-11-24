@@ -14,10 +14,22 @@
         </div>
         <div class=" form-row">
             <div class="input-data">
+            <select name="id_loai_san_pham" id="">
+                <?php foreach ( $loai as $vl) {?>
+                <option value="<?php echo $vl->id ?>"><?php echo $vl->ten ?></option>
+                <?php } ?>
+            </select>
+                <div class="underline"></div>
+                <label for="">Loại truyện</label>
+             </div>
+        </div>
+        <div class=" form-row">
+            <div class="input-data">
                 <input type="file" name="img">
                 <div class="underline"></div>
             </div>
         </div>
+        
         <div class="form-row">
             <div class="input-data textarea">
                 <div class="form-row submit-btn">
