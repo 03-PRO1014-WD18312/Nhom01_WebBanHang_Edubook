@@ -32,10 +32,13 @@ include_once 'views/layout/user/Header.php'; ?>
                         <?php if ($soLuong==0 || $soLuong==""){?>
 
                         <?php }?>
-                        <?php foreach ($thongTinSp as $sp) {
+                        <?php if ($soLuong==0){ foreach ($thongTinSp as $sp) {
                             ?>
                         <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
                         <input type="hidden" name="soLuong[]" value="<?php echo $sp->so_luong?>">
+
+                        <?php }}else if ($soLuong>0){ ?>
+                            <input type="hidden" name="idsp" value="<?php echo $sp->id_san_pham?>">
 
                         <?php } ?>
                         <div class="form-group">
