@@ -14,7 +14,47 @@
                     <label for="">Tên bộ truyện</label>
                 </div>
             </div>
-            <img src="assets/imgs/item/<?php echo $vl->img ?>" width="10%" alt="">
+            <div class=" form-row">
+                <div class="input-data">
+                    <input type="number" name="giaban" value="<?php echo $vl->gia_ban ?>" required>
+                    <div class="underline"></div>
+                    <label for="">Giá bán</label>
+                </div>
+            </div>
+            <div class=" form-row">
+                <div class="input-data">
+                    <input type="number" name="giagoc" value="<?php echo $vl->gia_goc ?>" required>
+                    <div class="underline"></div>
+                    <label for="">Giá gốc</label>
+                </div>
+            </div>
+                <label for="">Mô tả</label>
+                <div class="input-data">
+                    <textarea name="mota" id="" cols="30" rows="5" style="width: 100%;"></textarea>
+                </div>
+                <div class=" form-row">
+                <div class="input-data">
+                <select name="loai" id="">
+                        <?php foreach($loai as $key => $value){
+                            if($value->id==$vl->id){
+                        ?>
+                            <option value="<?php echo $vl->id ?>"><?php echo $vl->ten ?></option>
+                        <?php
+                        } }
+                        ?>
+                        <?php foreach($loai as $key => $value){
+                            if($value->id!=$vl->id){
+                        ?>
+                            <option value="<?php echo $value->id ?>"><?php echo $value->ten ?></option>
+                        <?php
+                        } }
+                        ?>
+                    </select>
+                    <!-- <div class="underline"></div> -->
+                    <label for="">Loại truyện</label>
+                </div>
+            </div>
+            <img src="assets/imgs/shop/<?php echo $vl->img ?>" width="10%" alt="">
             <div class=" form-row">
                 <div class="input-data">
                     <input type="file" name="img">

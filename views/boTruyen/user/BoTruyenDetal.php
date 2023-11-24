@@ -49,7 +49,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
-                                <?php foreach ($bo_truyen as $key => $vl) {
+                                <?php  foreach ($bo_truyen as $key => $vl) {
                                     ?>
                                 <div class="detail-info">
                                     <h2 class="title-detail"><?php echo $vl->ten ?></h2>
@@ -69,7 +69,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                     </div>
                                     <div class="bt-1 border-color-1 mt-15 mb-15"></div>
                                     <div class="short-desc mb-30">
-                                        <p><?php echo $vl->mo_ta ?></p>
+                                        <p><?php echo $vl-> mo_ta?></p>
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
                                         <ul>
@@ -182,7 +182,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                 <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h5><a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><?php echo $vl->ten_san_pham ?></a></h5>
+                                <h5><a ><?php echo $vl->ten_san_pham ?></a></h5>
                                 <p class="price mb-0 mt-5"><?php echo  number_format($vl->gia_ban, 0, ',', '.')  ?> VND
                                 </p>
                                 <div class="product-rate">
