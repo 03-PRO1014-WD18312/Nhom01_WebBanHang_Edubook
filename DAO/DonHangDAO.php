@@ -139,13 +139,12 @@ class DonHangDAO extends BaseDAO
         dia_chi.dia_chi, 
         chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong as tong_tien,chi_tiet_don_hang.gia,chi_tiet_don_hang.so_luong,
         chi_tiet_don_hang.ten_san_pham,
-        ho_don.noidung,
         ho_don.trang_thai,users.ten,users.sdt
         FROM `ho_don` 
-        JOIN don_hang ON don_hang.id_don_hang = ho_don.id_hoa_don 
+        JOIN don_hang ON don_hang.id_don_hang = ho_don.id_don_hang 
         JOIN users ON users.id_user = don_hang.id_user 
         JOIN dia_chi ON users.id_user = dia_chi.id_user 
-        JOIN chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang WHERE dia_chi.trang_thai = 1 AND ho_don.id_hoa_don=" . $id;
+        JOIN chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang WHERE dia_chi.trang_thai = 1 AND ho_don.id_don_hang=" . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 
@@ -159,7 +158,6 @@ class DonHangDAO extends BaseDAO
                 $row['dia_chi'],
                 $row['tong_tien'],
                 $row['ten_san_pham'],
-                $row['noidung'],
                 $row['trang_thai'],
                 $row['ten'],
                 $row['sdt'],
@@ -188,6 +186,12 @@ class DonHangDAO extends BaseDAO
     public function add($id_user)
     {
         $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user',get_time(),1)";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
+    public function addHD($id_don_hang,$ma_hoa_don,$phuong_thuc,$trangThai)
+    {
+        $sql = "INSERT INTO `ho_don`(`id_don_hang`, `ma_hoa_don`, `phuong_thuc`, `trang_thai`) VALUES ('$id_don_hang','$ma_hoa_don','$phuong_thuc','$trangThai')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
