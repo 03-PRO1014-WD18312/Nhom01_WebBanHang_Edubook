@@ -103,6 +103,7 @@ class DonHangController
                         'mahd' => $_POST['order_id'],
                         'amount' => $_POST['amount'],
                         'idsp' => $_POST['idsp'],
+                        'soLuongGH' => $_POST['idsp'],
                         'so_luong' => $_POST['so_luong']
                     );
                     include_once "views/donhang/user/vnpay_create_payment.php";
@@ -114,9 +115,50 @@ class DonHangController
     }
     public function showCard()
     {
-        $sanPhamDAO = new SanPhamDAO();
-        $list = $sanPhamDAO->card($_POST['card']);
-        var_dump($list);
+        if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
+            if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+            } else {
+                if(isset($_GET['nd']) && $_GET['nd'] == "thongTin"){
+                    $sanPhamDAO = new SanPhamDAO();
+                    $user = new TaiKhoanDAO();
+                    $thongTinUs = $user->getUsID($_SESSION['id']);
+                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'],$_POST['card']);
+                    if (isset($_POST['so_luong'])){
+                        $soLuong = $_POST['so_luong'];
+                    }else{
+                        $soLuong = 0;
+                    }
+                    $thanhTien = 0;
+                    foreach ($thongTinSp as $sp) {
+                        $thanhTien = $thanhTien + ($sp->gia_ban * $sp->so_luong);
+                    }
+                    include_once "views/donHang/user/thongTin.php";
+                }
+                if (isset($_GET['nd']) && $_GET['nd'] == "thanhToan") {
+                    $sanPhamDAO = new SanPhamDAO();
+                    $_SESSION['value_hd'] = array(
+                        'mahd' => $_POST['order_id'],
+                        'amount' => $_POST['amount'],
+                        'idsp' => $_POST['idsp'],
+                        'soLuong' => $_POST['soLuong'],
+                        'so_luong' => $_POST['so_luong']
+                    );
+//                    echo $_SESSION['value_hd']['idsp'][0];
+//                    foreach ($_SESSION['value_hd'] as $key => $sp) {
+////                        var_dump($sp); // Hiển thị thông tin chi tiết về biến $sp
+//                        echo $sp[1]; // Hiển thị kiểu dữ liệu của phần tử đầu tiên trong mảng idsp
+//                    }
+
+//                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'],$_SESSION['value_hd']['idsp']);
+//                    foreach ($thongTinSp as $sl) {
+//                        $_SESSION['soLuong'][] = $sl->so_luong;
+//                    }
+                    include_once "views/donhang/user/vnpay_create_payment.php";
+                }
+            }
+        } else {
+            header("Location: index.php?controller=dangNhap");
+        }
     }
     public function addHD(){
         $sanPhamDAO = new SanPhamDAO();

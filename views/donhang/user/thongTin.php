@@ -27,9 +27,17 @@ include_once 'views/layout/user/Header.php'; ?>
                     <div class="mb-25">
                         <h4>Thông tin hóa đơn</h4>
                     </div>
-                    <form action="index.php?controller=muaHang" method="post">
+                    <form action="<?php if ($soLuong==0 || $soLuong==""){echo 'index.php?controller=check&&nd=thanhToan';}else{echo "index.php?controller=muaHang";} ?>" method="post">
                         <input type="hidden" name="so_luong" value="<?php echo $soLuong ?>">
-                        <input type="hidden" name="idsp" value="<?php echo $thongTinSp[0]->id_san_pham?>">
+                        <?php if ($soLuong==0 || $soLuong==""){?>
+
+                        <?php }?>
+                        <?php foreach ($thongTinSp as $sp) {
+                            ?>
+                        <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
+                        <input type="hidden" name="soLuong[]" value="<?php echo $sp->so_luong?>">
+
+                        <?php } ?>
                         <div class="form-group">
                             <label for="fname">Họ và tên:</label>
                             <input class="form-control" type="text" required="" name="txt_billing_fullname" placeholder="Họ và tên *" value="<?php echo $thongTinUs[0]->name ?>" readonly>
@@ -142,7 +150,7 @@ include_once 'views/layout/user/Header.php'; ?>
                                     <td class="image product-thumbnail"><img src="assets/imgs/shop/<?php echo $sp->hinh_anh?>" alt="#"></td>
                                     <td>
                                         <h5><a href="index.php?controller=sanPham_view&id=<?php echo $sp->id_san_pham ?>&loai=<?php echo $sp->id_loai_san_pham ?>&botruyen=<?php echo $sp->id_bo_truyen ?>"><?php echo $sp->ten_san_pham?></a></h5>
-                                        <span class="product-qty">x<?php echo $soLuong ?></span>
+                                        <span class="product-qty">x<?php if ($soLuong==0 && $soLuong==""){ echo $soLuong;}else{echo $sp->so_luong;} ?></span>
                                     </td>
                                     <td><?php echo  number_format($sp->gia_ban, 0, ',', '.') ?>  VND</td>
                                 </tr>
