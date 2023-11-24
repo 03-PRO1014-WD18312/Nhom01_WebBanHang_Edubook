@@ -84,10 +84,10 @@ input[type="number"]::-webkit-inner-spin-button {
                                     </div>
 
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                    <form action="" method="POST">
+                                    <form action="index.php?controller=muaHang&nd=muaHang" method="post">
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius" style="width: 10%;  ">
-                                                <input type="number" name="so_luong" min="1" max="10" value="1"
+                                                <input type="number" name="so_luong" min="1" max="<?php echo $vl->so_luong ?>" value="1"
                                                     style="">
                                                 <input type="hidden" name="idsp" value="<?php echo $vl->id_san_pham ?>">
                                             </div>

@@ -86,21 +86,21 @@ class DonHangController
         if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
             if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             } else {
-                if (isset($_GET['id'])) {
+                if (isset($_GET['nd']) && $_GET['nd']=="muaHang") {
                     $sanPhamDAO = new SanPhamDAO();
                     $user = new TaiKhoanDAO();
                     $thongTinUs = $user->getUsID($_SESSION['id']);
-                    $thongTinSp = $sanPhamDAO->showOne($_GET['id']);
-                    $tongTien = 0;
+                    $thongTinSp = $sanPhamDAO->showOne($_POST['idsp']);
+                    $soLuong = $_POST['so_luong'];
                     $thanhTien = 0;
                     foreach ($thongTinSp as $sp) {
-                        $tongTien = $tongTien + $sp->gia_ban;
+                        $thanhTien = $thanhTien + ($sp->gia_ban * $soLuong);
                     }
                     include_once "views/donHang/user/thongTin.php";
                 }
                 if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $_SESSION['value_hd'] = array(
-                        'order_id' => $_POST['order_id'],
+                        'mahd' => $_POST['order_id'],
                         'amount' => $_POST['amount'],
                         'idsp' => $_POST['idsp'],
                         'so_luong' => $_POST['so_luong']
@@ -117,5 +117,8 @@ class DonHangController
         $sanPhamDAO = new SanPhamDAO();
         $list = $sanPhamDAO->card($_POST['card']);
         var_dump($list);
+    }
+    public function addHD(){
+        $sanPhamDAO = new SanPhamDAO();
     }
 }

@@ -28,6 +28,7 @@ include_once 'views/layout/user/Header.php'; ?>
                         <h4>Thông tin hóa đơn</h4>
                     </div>
                     <form action="index.php?controller=muaHang" method="post">
+                        <input type="hidden" name="so_luong" value="<?php echo $soLuong ?>">
                         <input type="hidden" name="idsp" value="<?php echo $thongTinSp[0]->id_san_pham?>">
                         <div class="form-group">
                             <label for="fname">Họ và tên:</label>
@@ -51,7 +52,7 @@ include_once 'views/layout/user/Header.php'; ?>
                         <!--                                   name="amount" type="text" value="--><?php //echo $thanhTien; ?><!--" readonly>-->
                         <!--                            -->
                         <!--                        </div>-->
-                        <input class="form-control"  name="amount" type="hidden" value="<?php echo $tongTien?>">
+                        <input class="form-control"  name="amount" type="hidden" value="<?php echo $thanhTien?>">
                         <!-- Không cần quan tâm -->
                         <!-- Loại hàng hóa -->
                         <input type="hidden" name="order_type" id="order_type" class="form-control" value="billpayment">
@@ -141,22 +142,18 @@ include_once 'views/layout/user/Header.php'; ?>
                                     <td class="image product-thumbnail"><img src="assets/imgs/shop/<?php echo $sp->hinh_anh?>" alt="#"></td>
                                     <td>
                                         <h5><a href="index.php?controller=sanPham_view&id=<?php echo $sp->id_san_pham ?>&loai=<?php echo $sp->id_loai_san_pham ?>&botruyen=<?php echo $sp->id_bo_truyen ?>"><?php echo $sp->ten_san_pham?></a></h5>
-                                        <span class="product-qty">x1</span>
+                                        <span class="product-qty">x<?php echo $soLuong ?></span>
                                     </td>
                                     <td><?php echo  number_format($sp->gia_ban, 0, ',', '.') ?>  VND</td>
                                 </tr>
                                 <?php } ?>
-                                <tr>x
-                                    <th>Tổng tiền</th>
-                                    <td class="product-subtotal" colspan="2"><?php echo number_format($tongTien, 0, ',', '.')?> VND</td>
-                                </tr>
                                 <tr>
                                     <th>Phí giao hàng</th>
                                     <td colspan="2"><em>Miễn phí</em></td>
                                 </tr>
                                 <tr>
                                     <th>Thành tiền</th>
-                                    <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900">$280.00</span></td>
+                                    <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900"><?php echo number_format($thanhTien, 0, ',', '.')?> VND</span></td>
                                 </tr>
                                 </tbody>
                             </table>
