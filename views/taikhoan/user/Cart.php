@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="index.php?controller=check" method="post">
+                    <form action="index.php?controller=check&nd=thongTin" method="post">
                         <div class="table-responsive">
                             <table class="table shopping-summery text-center clean">
                                 <thead>
