@@ -14,7 +14,7 @@ class BinhLuanDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create a Login object and add it to the array
-            $user = new BinhLuan($row['id_binh_luan'], $row['ten'], $row['ten_san_pham'], $row['noi_dung_binh_luan'], $row['ngay_binh_luan'],$row['anh'], $row['danh_gia']);
+            $user = new BinhLuan($row['id_binh_luan'], $row['ten'], $row['ten_san_pham'], $row['noi_dung_binh_luan'], $row['ngay_binh_luan'], $row['anh'], $row['danh_gia']);
             $users[] = $user;
         }
 
@@ -31,14 +31,14 @@ class BinhLuanDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create a Login object and add it to the array
-            $user = new BinhLuan($row['id_binh_luan'], $row['ten'], $row['ten_san_pham'], $row['noi_dung_binh_luan'], $row['ngay_binh_luan'],$row['anh'], $row['danh_gia']);
+            $user = new BinhLuan($row['id_binh_luan'], $row['ten'], $row['ten_san_pham'], $row['noi_dung_binh_luan'], $row['ngay_binh_luan'], $row['anh'], $row['danh_gia']);
             $users[] = $user;
         }
 
         return $users;
     }
     // lệnh thêm mới tác giả
-    public function add($idpro,$iduser,$time,$mes)
+    public function add($idpro, $iduser, $time, $mes)
     {
         $sql = "INSERT INTO `binh_luan`( `id_user`, `id_san_pham`, `noi_dung_binh_luan`, `ngay_binh_luan`, `danh_gia`) VALUES ('$iduser','$idpro','$mes','$time','5')";
         $stmt = $this->PDO->prepare($sql);
@@ -47,7 +47,7 @@ class BinhLuanDAO extends BaseDAO
     // xoá bình luận
     public function delete($id)
     {
-        $sql = "UPDATE `tac_gia` SET `trang_thai`=0 WHERE  `id_tac_gia`=$id";
+        $sql = "DELETE FROM `binh_luan` WHERE  `id_binh_luan`=$id";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
