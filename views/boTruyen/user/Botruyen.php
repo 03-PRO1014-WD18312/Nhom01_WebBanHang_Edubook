@@ -64,14 +64,14 @@ include "views/layout/user/Header.php";
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                             href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Mua ngay" class="action-btn hover-up"
-                                            href="index.php?controller=muaHang&id=<?php echo $vl->id?>"><i
+                                            href="index.php?controller=muaHang&id=<?php echo $vl->id ?>"><i
                                                 class="fas fa-truck"></i></i></a>
                                     </div>
 
                                 </div>
                                 <div class="product-content-wrap" id="productInfo">
                                     <h2><a
-                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten?></a>
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten ?></a>
                                     </h2>
                                     <div class=" rating-result" title="90%">
                                         <span>
@@ -85,10 +85,10 @@ include "views/layout/user/Header.php";
                                     </div>
                                     <div class="product-action-1 show">
                                         <?php if (isset($_SESSION['id'])) { ?>
-                                        <button aria-label="Add To Cart" id="add_card"
+                                        <button aria-label="Theo dõi" id="add_card"
                                             onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
                                             class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
-                                        <?php } else { ?><a aria-label="Add To Cart" id="add_card"
+                                        <?php } else { ?><a aria-label="Theo dõi" id="add_card"
                                             href="index.php?controller=dangNhap" class="action-btn hover-up"><i
                                                 class="fi-rs-shopping-bag-add"></i></aria-label> </a>
                                         <?php } ?>
@@ -101,7 +101,7 @@ include "views/layout/user/Header.php";
                                 break;
                             }
                         }
-            ?>
+                        ?>
                     </div>
                     <!--End product-grid-4-->
                 </div>
@@ -109,11 +109,11 @@ include "views/layout/user/Header.php";
                 <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
                     <div class="row product-grid-4">
                         <?php
-                    $count_tow = 0;
-                    foreach ($san_pham as $key => $vl) {
-                        if ($vl->loai == $id[1]) {
-                            $count_tow++;
-                    ?>
+                        $count_tow = 0;
+                        foreach ($san_pham as $key => $vl) {
+                            if ($vl->loai == $id[1]) {
+                                $count_tow++;
+                        ?>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
@@ -134,14 +134,14 @@ include "views/layout/user/Header.php";
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                             href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Mua ngay" class="action-btn hover-up"
-                                            href="index.php?controller=muaHang&id=<?php echo $vl->id?>"><i
+                                            href="index.php?controller=muaHang&id=<?php echo $vl->id ?>"><i
                                                 class="fas fa-truck"></i></i></a>
                                     </div>
 
                                 </div>
                                 <div class="product-content-wrap" id="productInfo">
                                     <h2><a
-                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten?></a>
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten ?></a>
                                     </h2>
                                     <div class=" rating-result" title="90%">
                                         <span>
@@ -155,10 +155,10 @@ include "views/layout/user/Header.php";
                                     </div>
                                     <div class="product-action-1 show">
                                         <?php if (isset($_SESSION['id'])) { ?>
-                                        <button aria-label="Add To Cart" id="add_card"
+                                        <button aria-label="Theo dõi" id="add_card"
                                             onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
                                             class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
-                                        <?php } else { ?><a aria-label="Add To Cart" id="add_card"
+                                        <?php } else { ?><a aria-label="Theo dõi" id="add_card"
                                             href="index.php?controller=dangNhap" class="action-btn hover-up"><i
                                                 class="fi-rs-shopping-bag-add"></i></aria-label> </a>
                                         <?php } ?>
@@ -167,10 +167,10 @@ include "views/layout/user/Header.php";
                             </div>
                         </div>
                         <?php }
-                        if ($count_tow == 8) {
-                            break;
-                        }
-                    } ?>
+                            if ($count_tow == 8) {
+                                break;
+                            }
+                        } ?>
                     </div>
                     <!--End product-grid-4-->
                 </div>
@@ -178,11 +178,11 @@ include "views/layout/user/Header.php";
                 <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
                     <div class="row product-grid-4">
                         <?php
-                $count_three = 0;
-                foreach ($san_pham as $key => $vl) {
-                    if ($vl->loai == $id[2]) {
-                        $count_three++;
-                ?>
+                        $count_three = 0;
+                        foreach ($san_pham as $key => $vl) {
+                            if ($vl->loai == $id[2]) {
+                                $count_three++;
+                        ?>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
@@ -203,14 +203,14 @@ include "views/layout/user/Header.php";
                                         <a aria-label="Add To Wishlist" class="action-btn hover-up"
                                             href="wishlist.php"><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Mua ngay" class="action-btn hover-up"
-                                            href="index.php?controller=muaHang&id=<?php echo $vl->id?>"><i
+                                            href="index.php?controller=muaHang&id=<?php echo $vl->id ?>"><i
                                                 class="fas fa-truck"></i></i></a>
                                     </div>
 
                                 </div>
                                 <div class="product-content-wrap" id="productInfo">
                                     <h2><a
-                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten?></a>
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten ?></a>
                                     </h2>
                                     <div class=" rating-result" title="90%">
                                         <span>
@@ -224,10 +224,10 @@ include "views/layout/user/Header.php";
                                     </div>
                                     <div class="product-action-1 show">
                                         <?php if (isset($_SESSION['id'])) { ?>
-                                        <button aria-label="Add To Cart" id="add_card"
+                                        <button aria-label="Theo dõi" id="add_card"
                                             onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
                                             class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
-                                        <?php } else { ?><a aria-label="Add To Cart" id="add_card"
+                                        <?php } else { ?><a aria-label="Theo dõi" id="add_card"
                                             href="index.php?controller=dangNhap" class="action-btn hover-up"><i
                                                 class="fi-rs-shopping-bag-add"></i></aria-label> </a>
                                         <?php } ?>
@@ -236,10 +236,10 @@ include "views/layout/user/Header.php";
                             </div>
                         </div>
                         <?php }
-                    if ($count_three == 8) {
-                        break;
-                    }
-                } ?>
+                            if ($count_three == 8) {
+                                break;
+                            }
+                        } ?>
                     </div>
                     <!--End product-grid-4-->
                 </div>
