@@ -100,7 +100,9 @@
                                                             <td><?php echo $vl['ngay'] ?></td>
                                                             <td><?php echo $vl['trang_thai'] ?></td>
                                                             <td><?php echo $vl['san_pham'] ?></td>
-                                                            <td><?php echo $vl['tien'] ?></td>
+                                                            <td><?php echo  number_format($vl['tien'], 0, ',', '.')  ?>
+                                                                VND
+                                                            </td>
                                                             <td><a href="#" class="btn-small d-block">View</a></td>
                                                         </tr>
                                                         <?php
@@ -173,7 +175,9 @@
                                                             <td><?php echo $vl['ngay'] ?></td>
                                                             <td><?php echo $vl['trang_thai'] ?></td>
                                                             <td><?php echo $vl['san_pham'] ?></td>
-                                                            <td><?php echo $vl['tien'] ?></td>
+                                                            <td><?php  echo  number_format($vl['tien'], 0, ',', '.')?>
+                                                                VND
+                                                            </td>
                                                             <td><a href="#" class="btn-small d-block">View</a></td>
                                                         </tr>
                                                         <?php
