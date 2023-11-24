@@ -51,9 +51,14 @@ include "views/layout/user/Header.php";
                                         VND</span>
                                 </div>
                                 <div class="product-action-1 show">
+                                    <?php if (isset($_SESSION['id'])) { ?>
                                     <button aria-label="Add To Cart" id="add_card"
                                         onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
                                         class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
+                                    <?php } else { ?><a aria-label="Add To Cart" id="add_card"
+                                        href="index.php?controller=dangNhap" class="action-btn hover-up"><i
+                                            class="fi-rs-shopping-bag-add"></i></aria-label> </a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

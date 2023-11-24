@@ -10,10 +10,16 @@ class ChatBoxController
             } else {
                 $ChatBoxDAO = new User();
                 $id = $ChatBoxDAO->getId();
+                $GioHangDAO = new GioHangDAO();
+                $sum = $GioHangDAO->sum($_SESSION['id']);
                 include_once "views/chatbox/user/chatbox.php";
             }
         } else {
-            header("Location: index.php?controller=dangNhap");
+            $sum = 0;
+
+            $ChatBoxDAO = new User();
+            $id = $ChatBoxDAO->getId();
+            include_once "views/chatbox/user/chatbox.php";
         }
     }
     public function chat()
