@@ -264,6 +264,8 @@ switch ($controller) {
         $GioiThieuController->index();
         break;
     default:
+        $SanPhamController = new DonHangController();
+        $SanPhamController->showCard();
         break;
 }
 unset($_SESSION['error']);

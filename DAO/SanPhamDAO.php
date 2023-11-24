@@ -4,6 +4,15 @@ include_once 'models/AnhSanPham.php';
 include_once 'DAO/ConnectDAO.php';
 class SanPhamDAO extends BaseDAO
 {
+    public function card($listItem)
+    {
+        $id_string = implode(', ', $listItem);
+        $sql = "SELECT `id_gio_hang`, `id_user`, `id_san_pham`, `so_luong` FROM `gio_hang` WHERE  id_san_pham IN ($id_string)";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $list = $stmt->fetchAll();
+        return $list;
+    }
 
     public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh)
     {
@@ -83,14 +92,16 @@ class SanPhamDAO extends BaseDAO
         }
         return $lists;
     }
-    public function showImg($id){
+    public function showImg($id)
+    {
         $sql = "SELECT * FROM `anh_san_pham` WHERE id_san_pham= " . $id;
         $stmt = $this->PDO->prepare($sql);
-        $stmt->execute(); 
-        $imgs=$stmt->fetchAll();
+        $stmt->execute();
+        $imgs = $stmt->fetchAll();
         return $imgs;
     }
-    public function showBo($id){
+    public function showBo($id)
+    {
         $sql = "SELECT * FROM `san_pham` WHERE id_bo_truyen = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -121,7 +132,8 @@ class SanPhamDAO extends BaseDAO
         }
         return $lists;
     }
-    public function showLQ($id){
+    public function showLQ($id)
+    {
         $sql = "SELECT * FROM `san_pham` WHERE id_loai_san_pham = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();

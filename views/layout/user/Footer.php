@@ -1,7 +1,7 @@
 <footer class="main">
     <section class="newsletter p-30 text-white wow fadeIn animated">
         <div class="container">
-            
+
         </div>
     </section>
     <section class="section-padding footer-mid">
@@ -79,7 +79,8 @@
             </div>
             <div class="col-lg-6">
                 <p class="float-md-left font-sm text-muted mb-0">
-                    <a href="privacy-policy.html">Chính sách bảo mật</a> | <a href="terms-conditions.html">Điều khoản và điều kiện</a>
+                    <a href="privacy-policy.html">Chính sách bảo mật</a> | <a href="terms-conditions.html">Điều khoản và
+                        điều kiện</a>
                 </p>
             </div>
             <div class="col-lg-6">
@@ -115,6 +116,8 @@
 <script src="assets/js/main.js?v=3.3"></script>
 <script src="assets/js/shop.js?v=3.3"></script>
 <script src="assets/js/addcard.js"></script>
+<!-- địa chỉ -->
+<script src="assets/js/form_dia_chi.js"></script>
 </body>
 
 </html>

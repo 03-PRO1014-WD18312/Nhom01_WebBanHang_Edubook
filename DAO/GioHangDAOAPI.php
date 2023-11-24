@@ -6,7 +6,7 @@ class GioHangDAOAPI
     private $pdo;
     public function __construct()
     {
-        require_once('../config/PDO.php');
+        require_once('../../config/PDO.php');
         $this->pdo = $pdo;
     }
     // thêm giỏ hàng
@@ -85,7 +85,7 @@ class GioHangDAOAPI
                 $output .= "<tr>
                 <td>
                     <label class='checkbox-wrap checkbox-primary'>
-                        <input type='checkbox' />
+                        <input type='checkbox' name='card[]' value=" . $row['id_san_pham'] . " />
                         <span class='checkmark'></span>
                     </label>
                 </td>
@@ -154,10 +154,10 @@ class GioHangDAOAPI
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $output .= "<tr>
                 <td>
-                    <label class='checkbox-wrap checkbox-primary'>
-                        <input type='checkbox' />
-                        <span class='checkmark'></span>
-                    </label>
+                <label class='checkbox-wrap checkbox-primary'>
+                <input type='checkbox' name='card[]' value=" . $row['id_san_pham'] . " />
+                <span class='checkmark'></span>
+            </label>
                 </td>
                 <td class='image product-thumbnail'><img src=" . 'assets/imgs/shop/' .  $row['hinh_anh'] . " alt='#'></td>
                 <td class='product-des product-name'>
@@ -215,10 +215,10 @@ class GioHangDAOAPI
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $output .= "<tr>
                 <td>
-                    <label class='checkbox-wrap checkbox-primary'>
-                        <input type='checkbox' />
-                        <span class='checkmark'></span>
-                    </label>
+                <label class='checkbox-wrap checkbox-primary'>
+                <input type='checkbox' name='card[]' value=" . $row['id_san_pham'] . " />
+                <span class='checkmark'></span>
+            </label>
                 </td>
                 <td class='image product-thumbnail'><img src=" . 'assets/imgs/shop/' .  $row['hinh_anh'] . " alt='#'></td>
                 <td class='product-des product-name'>
