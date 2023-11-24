@@ -14,3 +14,20 @@ class BoTruyen
         $this -> img = $img;
     }
 }
+class ShowBoTruyen{
+    public $id;
+    public $img;
+    public $ten;
+    public $loai;
+    public $gia_ban;
+    public $gia_goc;
+    public $mo_ta;
+    public function __construct($id,$ten,$img,$loai,$gia_ban,$gia_goc,$mo_ta){
+        $this->id = $id;
+        $this->loai=$loai;
+        $this->ten=$ten;
+        $this -> img = $img;
+        $this -> gia_ban = $gia_ban;
+        $this -> gia_goc = $gia_goc;
+    }
+}

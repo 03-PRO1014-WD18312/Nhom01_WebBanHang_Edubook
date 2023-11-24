@@ -94,7 +94,7 @@
                                     <li><a href="index.php?controller=sanPham">Sản phẩm</a></li>
                                     <li><a href="index.php?controller=gioiThieu">Giới thiệu</a></li>
                                     <li><a href="index.php?controller=chatBox">Liên hệ </a></li>
-                                    <li><a href="index.php?controller=sanPham_view">Chi tiết sản phẩm </a></li>
+                                    <li><a href="index.php?controller=boTruyen">Bộ truyện </a></li>
                                 </ul>
                             </nav>
                         </div>
