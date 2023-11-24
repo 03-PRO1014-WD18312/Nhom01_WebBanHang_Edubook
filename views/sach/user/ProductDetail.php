@@ -84,10 +84,10 @@ input[type="number"]::-webkit-inner-spin-button {
                                     </div>
 
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                    <form action="" method="POST">
+                                    <form action="index.php?controller=muaHang&nd=muaHang" method="post">
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius" style="width: 10%;  ">
-                                                <input type="number" name="so_luong" min="1" max="10" value="1"
+                                                <input type="number" name="so_luong" min="1" max="<?php echo $vl->so_luong ?>" value="1"
                                                     style="">
                                                 <input type="hidden" name="idsp" value="<?php echo $vl->id_san_pham ?>">
                                             </div>
@@ -367,13 +367,7 @@ input[type="number"]::-webkit-inner-spin-button {
                     </div>
                 </div>
                 <div class="col-lg-3 primary-sidebar sticky-sidebar">
-                    <div class="widget-category mb-30">
-                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">DANH MỤC</h5>
-                        <ul class="categories">
-                            <!-- <li><a href="shop.html"></a></li> -->
-
-                        </ul>
-                    </div>
+                   
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10">BỘ TRUYỆN</h5>

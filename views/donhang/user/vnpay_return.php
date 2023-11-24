@@ -17,6 +17,59 @@
     <body>
         <?php
         session_start();
+        function connect(){
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            try {
+                $conn = new PDO("mysql:host=$servername;dbname=du_an_1",$username,$password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                //echo "thanh cong";
+            } catch (PDOException $e){
+                //echo "lỗi";
+            }
+            return $conn;
+        }
+        function getData($query, $params = [], $getAll = true) {
+            $conn = connect();
+            $stmt = $conn->prepare($query);
+            $stmt->execute($params);
+            if ($getAll) {
+                return $stmt->fetchAll();
+            }
+            return $stmt->fetch();
+        }
+        function get_time() {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $currentTime = time();
+            $timestamp = $currentTime;
+            return date("Y-m-d H:i:s", $timestamp);
+        }
+        function addDH($id_user,$time)
+        {
+            $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES (?,?,1)";
+            return getData($sql, [$id_user,$time], false);
+        }
+        function addHD($id_don_hang,$ma_hoa_don,$phuong_thuc,$trangThai)
+        {
+            $sql = "INSERT INTO `ho_don`(`id_don_hang`, `ma_hoa_don`, `phuong_thuc`, `trang_thai`) VALUES (?,?,?,?)";
+            return getData($sql, [$id_don_hang,$ma_hoa_don,$phuong_thuc,$trangThai], false);
+        }
+        function addChiTietDH($id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong)
+        {
+            $sql = "INSERT INTO `chi_tiet_don_hang`(`id_san_pham`, `id_don_hang`, `gia`, `ten_san_pham`, `so_luong`) VALUES (?,?,?,?,?)";
+            return getData($sql, [$id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong], false);
+        }
+        function getOneIdDesc()
+        {
+            $sql = "SELECT id_don_hang FROM don_hang ORDER BY id_don_hang DESC LIMIT 1";
+            return getData($sql);
+        }
+        function showOne($id)
+        {
+            $sql = "SELECT * FROM `san_pham` WHERE id_san_pham = ?";
+            return getData($sql,[$id]);
+        }
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         /*
          * To change this license header, choose License Headers in Project Properties.
@@ -55,15 +108,13 @@
         }
 
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
-//        if ($_GET['vnp_ResponseCode'] == 00 && $_GET['vnp_TransactionStatus'] == 00){
-//            $DonHangDAO = new DonHangDAO();
-//            $DonHangDAO->add($_SESSION['id']);
-//            $newIdDH = $DonHangDAO->getOneIdDesc();
-//            $SanPhamDAO = new SanPhamDAO();
-//            $sanPham =  $SanPhamDAO->showOne($_SESSION['idsp']);
-//            $DonHangDAO->addChiTietDH($_SESSION['idsp'],$newIdDH,$sanPham[0]->gia_ban,$sanPham[0]->ten_san_pham,$_SESSION['so_luong']);
-//
-//        }
+        if ($_GET['vnp_ResponseCode'] == 00 && $_GET['vnp_TransactionStatus'] == 00){
+            addDH($_SESSION['id'],get_time());
+            $newIdDH = getOneIdDesc();
+            $sanPham =  showOne($_SESSION['value_hd']['idsp']);
+            addChiTietDH($_SESSION['value_hd']['idsp'],$newIdDH[0]['id_don_hang'],$sanPham[0]['gia_ban'],$sanPham[0]['ten_san_pham'],$_SESSION['value_hd']['so_luong']);
+            addHD($newIdDH[0]['id_don_hang'], $_SESSION['value_hd']['mahd'],"vnpay",1);
+        }
         unset($_SESSION['value_hd']);
         ?>
         <!--Begin display -->
