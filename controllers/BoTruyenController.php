@@ -40,7 +40,7 @@ class BoTruyenController
         if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $BoTruyenDAO = new BoTruyenDAO();
-                $BoTruyenDAO->add($_POST['ten'],$_POST['id_loai_san_pham'],$_FILES['img']);
+                $BoTruyenDAO->add($_POST['ten'],$_POST['id_loai_san_pham'],$_FILES['img'],$_POST['giaban'],$_POST['giagoc'],$_POST['mo_ta']);
                 $list = $BoTruyenDAO->show();
 
                 $_SESSION['error'] = 'thêm mới thành công';
@@ -78,14 +78,16 @@ class BoTruyenController
         if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
             if (isset($_POST['ten'])) {
                 $BoTruyenDAO = new BoTruyenDAO();
-                $BoTruyenDAO->update($_POST['id'], $_POST['ten'], $_POST['trang_thai'], $_FILES['img']);
+                $BoTruyenDAO->update($_POST['id'],$_POST['loai'], $_POST['ten'],$_POST['giaban'],$_POST['giagoc'],$_POST['mota'], $_POST['trang_thai'],$_FILES['img'] );
                 $list = $BoTruyenDAO->show();
                 $_SESSION['error'] = 'Sửa thông tin thành công';
                 header('location: index.php?controller=boTruyen');
                 exit();
             } else {
                 $BoTruyenDAO = new BoTruyenDAO();
-                $list = $BoTruyenDAO->showOne($_GET['id']);
+                $list = $BoTruyenDAO->showView($_GET['id']);
+                $loaiTruyenDAO = new LoaiTruyenDAO();
+                $loai = $loaiTruyenDAO->show();
                 include_once "views/botruyen/admin/fix.php";
             }
         } else {

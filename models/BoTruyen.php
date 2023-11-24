@@ -29,5 +29,6 @@ class ShowBoTruyen{
         $this -> img = $img;
         $this -> gia_ban = $gia_ban;
         $this -> gia_goc = $gia_goc;
+        $this -> mo_ta = $mo_ta;
     }
 }
