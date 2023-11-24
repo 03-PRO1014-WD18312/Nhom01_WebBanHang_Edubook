@@ -51,7 +51,7 @@
                                 <td><?php echo $value->danh_gia ?></td>
                                 <td><?php echo $value->ngay ?></td>
                                 <td>
-                                    <a href="index.php?controller=taiKhoan_delete&id=<?php echo $value->id ?>">Xoá</a>
+                                    <a href="index.php?controller=binhLuan_delete&id=<?php echo $value->id ?>">Xoá</a>
                                 </td>
                             </tr>
                         <?php } ?>

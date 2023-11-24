@@ -47,3 +47,21 @@ class listDiaChi
         $this->trang_thai = $trang_thai;
     }
 }
+class infor
+{
+    public $id;
+    public $name;
+    public $email;
+    public $mat_khau;
+    public $sdt;
+    public $anh;
+    public function __construct($id, $name, $email, $mat_khau, $sdt, $anh)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
+        $this->mat_khau = $mat_khau;
+        $this->sdt = $sdt;
+        $this->anh = $anh;
+    }
+}
