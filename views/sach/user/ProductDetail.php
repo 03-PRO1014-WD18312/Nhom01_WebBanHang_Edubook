@@ -367,13 +367,7 @@ input[type="number"]::-webkit-inner-spin-button {
                     </div>
                 </div>
                 <div class="col-lg-3 primary-sidebar sticky-sidebar">
-                    <div class="widget-category mb-30">
-                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">DANH MỤC</h5>
-                        <ul class="categories">
-                            <!-- <li><a href="shop.html"></a></li> -->
-
-                        </ul>
-                    </div>
+                   
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10">BỘ TRUYỆN</h5>
@@ -388,7 +382,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                 <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h5><a href="product-details.html"><?php echo $vl->ten_san_pham ?></a></h5>
+                                <h5><a href="index.php?controller=boTruyen_view&id=<?php echo $vl->id_bo_truyen ?>"><?php echo $vl->ten_san_pham ?></a></h5>
                                 <p class="price mb-0 mt-5"><?php echo  number_format($vl->gia_ban, 0, ',', '.')  ?> VND
                                 </p>
                                 <div class="product-rate">

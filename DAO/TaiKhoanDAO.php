@@ -32,7 +32,7 @@ class TaiKhoanDAO extends BaseDAO
     // lấy địa chỉ
     public function show_dia_chi($id)
     {
-        $sql = "SELECT * FROM `dia_chi` WHERE id_user = $id ORDER BY trang_thai";
+        $sql = "SELECT * FROM `dia_chi` WHERE id_user = $id ORDER BY trang_thai DESC";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
 
