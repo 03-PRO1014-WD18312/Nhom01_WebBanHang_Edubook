@@ -173,6 +173,10 @@ switch ($controller) {
         $BoTruyenController = new BoTruyenController();
         $BoTruyenController->remove();
         break;
+        case 'boTruyen_view':
+            $BoTruyenController = new BoTruyenController();
+            $BoTruyenController->showOne();
+            break;
     case 'loaisanpham':
         $loaiSanPhamController = new LoaiSanPhamController();
         $loaiSanPhamController->index();

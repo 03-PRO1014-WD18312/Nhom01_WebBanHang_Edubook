@@ -388,7 +388,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                 <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h5><a href="product-details.html"><?php echo $vl->ten_san_pham ?></a></h5>
+                                <h5><a href="index.php?controller=boTruyen_view&id=<?php echo $vl->id_bo_truyen ?>"><?php echo $vl->ten_san_pham ?></a></h5>
                                 <p class="price mb-0 mt-5"><?php echo  number_format($vl->gia_ban, 0, ',', '.')  ?> VND
                                 </p>
                                 <div class="product-rate">

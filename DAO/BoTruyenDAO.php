@@ -3,17 +3,63 @@ include_once 'models/BoTruyen.php';
 include_once 'DAO/ConnectDAO.php';
 class BoTruyenDAO extends BaseDAO
 {
-    // kết nối database
+    // show list
+    public function showList()
+    {
+        $sql = "SELECT *
+        FROM bo_truyen ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
 
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_truyen'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $lists[] = $product;
+        }
+        return $lists;
+    }
+    //.
+    public function showView($id)
+    {
+        $sql = "SELECT *
+        FROM bo_truyen  where id_bo_truyen = $id";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_truyen'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $lists[] = $product;
+        }
+        return $lists;
+    }
+    //.
+    public function list($id,$loai)
+    {
+        $sql = "SELECT *
+        FROM bo_truyen  where id_bo_truyen != $id and id_loai_truyen = $loai";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_truyen'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $lists[] = $product;
+        }
+        return $lists;
+    }
     // thêm mới bộ truyện
-    public function add($img, $ten)
+    public function add($ten, $loai, $img)
     {
         // lưu file
         $fileName = $img['name'];
         $tmp = $img['tmp_name'];
-        $mov = 'assets/imgs/item/' . $fileName;
+        $mov = 'assets/imgs/shop/' . $fileName;
         move_uploaded_file($tmp, $mov);
-        $sql = "INSERT INTO `bo_truyen`( `ten_bo_truyen`,`hinh_anh`) VALUES ('$ten','$fileName');";
+        $sql = "INSERT INTO `bo_truyen`( `ten_bo_truyen`,`id_loai_truyen`,`hinh_anh`) VALUES ('$ten','$loai','$fileName');";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }

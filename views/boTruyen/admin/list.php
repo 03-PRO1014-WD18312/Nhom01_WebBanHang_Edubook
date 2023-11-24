@@ -41,7 +41,7 @@
                         <tr>
                             <td><?php echo $key + 1 ?></td>
                             <td><?php echo $vl->ten ?></td>
-                            <td><img src="assets/imgs/item/<?php echo $vl->img ?>" width="10%" alt=""></td>
+                            <td><img src="assets/imgs/shop/<?php echo $vl->img ?>" width="10%" alt=""></td>
                             <td><?php echo $vl->soluong ?></td>
                             <td><?php echo $vl->trang_thai ?></td>
                             <td>
