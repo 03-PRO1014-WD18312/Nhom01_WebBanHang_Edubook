@@ -6,7 +6,15 @@ class ChatBoxController
     {
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] != 4) {
-                include_once "views/chatbox/admin/users.php";
+                if (isset($_SESSION['chuyen'])) {
+                    $ChatBoxDAO = new User();
+                    $id = $ChatBoxDAO->getId();
+                    $GioHangDAO = new GioHangDAO();
+                    $sum = $GioHangDAO->sum($_SESSION['id']);
+                    include_once "views/chatbox/user/chatbox.php";
+                } else {
+                    include_once "views/chatbox/admin/users.php";
+                }
             } else {
                 $ChatBoxDAO = new User();
                 $id = $ChatBoxDAO->getId();
@@ -16,7 +24,6 @@ class ChatBoxController
             }
         } else {
             $sum = 0;
-
             $ChatBoxDAO = new User();
             $id = $ChatBoxDAO->getId();
             include_once "views/chatbox/user/chatbox.php";
@@ -24,9 +31,16 @@ class ChatBoxController
     }
     public function chat()
     {
+
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] != 4) {
-                include_once "views/chatbox/admin/chatbox.php";
+                if (isset($_SESSION['chuyen'])) {
+                    $ChatBoxDAO = new User();
+                    $id = $ChatBoxDAO->getId();
+                    include_once "views/chatbox/user/chatbox.php";
+                } else {
+                    include_once "views/chatbox/admin/chatbox.php";
+                }
             } else {
                 $ChatBoxDAO = new User();
                 $id = $ChatBoxDAO->getId();
