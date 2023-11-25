@@ -30,6 +30,14 @@
                                             href="#account-detail" role="tab" aria-controls="account-detail"
                                             aria-selected="true"><i class="fi-rs-user mr-10"></i>Thông tin</a>
                                     </li>
+                                    <?php if (isset($_SESSION['chuyen'])) {?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?controller=chuyenDoi"><i
+                                                class="fi-rs-sign-out mr-10"></i>Chuyển đổi qua admin</a>
+                                    </li>
+                                    <?php
+                                    } ?>
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="index.php?controller=dangXuat"><i
                                                 class="fi-rs-sign-out mr-10"></i>Đăng xuất</a>
@@ -175,7 +183,7 @@
                                                             <td><?php echo $vl['ngay'] ?></td>
                                                             <td><?php echo $vl['trang_thai'] ?></td>
                                                             <td><?php echo $vl['san_pham'] ?></td>
-                                                            <td><?php  echo  number_format($vl['tien'], 0, ',', '.')?>
+                                                            <td><?php echo  number_format($vl['tien'], 0, ',', '.') ?>
                                                                 VND
                                                             </td>
                                                             <td><a href="#" class="btn-small d-block">View</a></td>
@@ -254,7 +262,7 @@
                                         <div class="card-body">
 
                                             <form method="post" name="enq">
-                                                <?php 
+                                                <?php
                                                 foreach ($infor as $key => $vl) { ?>
                                                 <div class="row">
                                                     <div class="form-group col-md-12">

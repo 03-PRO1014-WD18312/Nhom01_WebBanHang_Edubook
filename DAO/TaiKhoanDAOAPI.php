@@ -19,11 +19,11 @@ class TaiKhoaDAOAPI
         $stmt->execute();
         $so_luong = $stmt->fetchColumn();
         if ($so_luong > 0) {
-            $sql = "INSERT INTO `dia_chi` ( `id_user`, `dia_chi`, `trang_thai`) VALUES ( '35', '$test', '0')";
+            $sql = "INSERT INTO `dia_chi` ( `id_user`, `dia_chi`, `trang_thai`) VALUES ( '$id', '$test', '0')";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
         } else {
-            $sql = "INSERT INTO `dia_chi` ( `id_user`, `dia_chi`, `trang_thai`) VALUES ( '35', '$test', '1')";
+            $sql = "INSERT INTO `dia_chi` ( `id_user`, `dia_chi`, `trang_thai`) VALUES ( '$id', '$test', '1')";
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->execute();

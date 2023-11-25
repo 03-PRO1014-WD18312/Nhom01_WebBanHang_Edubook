@@ -16,6 +16,7 @@ include_once 'controllers/ChatBoxController.php';
 include_once 'controllers/BinhLuanController.php';
 include_once 'controllers/PDFController.php';
 include_once 'controllers/GioiThieuController.php';
+include_once 'controllers/ChuyenDoiController.php';
 $controller = $_GET['controller'] ?? 'trangChu';
 // routing controller
 switch ($controller) {
@@ -264,6 +265,10 @@ switch ($controller) {
     case 'gioiThieu':
         $GioiThieuController = new GioiThieuController();
         $GioiThieuController->index();
+        break;
+    case 'chuyenDoi':
+        $ChuyenDoiController = new ChuyenDoiController();
+        $ChuyenDoiController->index();
         break;
     default:
         $SanPhamController = new DonHangController();
