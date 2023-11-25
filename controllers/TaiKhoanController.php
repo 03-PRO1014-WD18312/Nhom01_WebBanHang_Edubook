@@ -18,6 +18,7 @@ class TaiKhoanController
                 $sum = $GioHangDAO->sum($_SESSION['id']);
                 $TaiKhoanDAO = new TaiKhoanDAO();
                 $list = $TaiKhoanDAO->show_dia_chi($_SESSION['id']);
+                $infor = $TaiKhoanDAO->showInfor($_SESSION['id']);
                 include_once('views/TaiKhoan/user/Setting.php');
             }
         } else {

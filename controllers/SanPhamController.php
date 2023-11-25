@@ -75,22 +75,59 @@ class SanPhamController
     }
     public function productViewMore()
     {
-        $LoaiTruyenDAO = new LoaiTruyenDAO();
-        $danh_muc = $LoaiTruyenDAO->show();
-        $SanPhamDAO = new SanPhamDAO();
-        $san_pham = $SanPhamDAO->show();
-        include_once "views/sach/user/ProducrMore.php";
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 4) {
+
+                header("Location: index.php?controller=trangChu");
+            } else {
+                $LoaiTruyenDAO = new LoaiTruyenDAO();
+                $danh_muc = $LoaiTruyenDAO->show();
+                $SanPhamDAO = new SanPhamDAO();
+                $san_pham = $SanPhamDAO->show();
+                $GioHang = new GioHangDAO();
+                $sum = $GioHang->sum($_SESSION['id']);
+                include_once "views/sach/user/ProducrMore.php";
+            }
+        } else {
+            $LoaiTruyenDAO = new LoaiTruyenDAO();
+            $danh_muc = $LoaiTruyenDAO->show();
+            $SanPhamDAO = new SanPhamDAO();
+            $san_pham = $SanPhamDAO->show();
+            $sum = 0;
+            include_once "views/sach/user/ProducrMore.php";
+        }
     }
     public function search()
     {
-        if (isset($_POST['search']) && $_POST['search'] != "") {
-            $sanPhamDAO = new SanPhamDAO();
-            $LoaiTruyenDAO = new LoaiTruyenDAO();
-            $danh_muc = $LoaiTruyenDAO->show();
-            $list = $sanPhamDAO->search($_POST['search']);
-            include_once "views/sach/user/Product.php";
+        if (isset($_SESSION['role'])) {
+            if ($_SESSION['role'] != 4) {
+
+
+                header("Location: index.php?controller=trangChu");
+            } else {
+                if (isset($_POST['search']) && $_POST['search'] != "") {
+                    $sanPhamDAO = new SanPhamDAO();
+                    $LoaiTruyenDAO = new LoaiTruyenDAO();
+                    $danh_muc = $LoaiTruyenDAO->show();
+                    $list = $sanPhamDAO->search($_POST['search']);
+                    $GioHang = new GioHangDAO();
+                    $sum = $GioHang->sum($_SESSION['id']);
+                    include_once "views/sach/user/Product.php";
+                } else {
+                    header("Location: index.php?controller=sanPham");
+                }
+            }
         } else {
-            header("Location: index.php?controller=sanPham");
+            if (isset($_POST['search']) && $_POST['search'] != "") {
+                $sanPhamDAO = new SanPhamDAO();
+                $LoaiTruyenDAO = new LoaiTruyenDAO();
+                $danh_muc = $LoaiTruyenDAO->show();
+                $list = $sanPhamDAO->search($_POST['search']);
+                $sum = 0;
+                include_once "views/sach/user/Product.php";
+            } else {
+                header("Location: index.php?controller=sanPham");
+            }
         }
     }
 

@@ -173,10 +173,10 @@ switch ($controller) {
         $BoTruyenController = new BoTruyenController();
         $BoTruyenController->remove();
         break;
-        case 'boTruyen_view':
-            $BoTruyenController = new BoTruyenController();
-            $BoTruyenController->showOne();
-            break;
+    case 'boTruyen_view':
+        $BoTruyenController = new BoTruyenController();
+        $BoTruyenController->showOne();
+        break;
     case 'loaisanpham':
         $loaiSanPhamController = new LoaiSanPhamController();
         $loaiSanPhamController->index();
@@ -234,6 +234,8 @@ switch ($controller) {
         $BinhLuanController->index();
         break;
     case 'binhLuan_delete':
+        $BinhLuanController = new BinhLuanController();
+        $BinhLuanController->delete();
         break;
     case 'theodoi':
         break;

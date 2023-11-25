@@ -24,3 +24,18 @@ class SanPham
         $this->trang_thai = $trang_thai;
     }
 }
+class card{
+    public $id_gio_hang,$id_user,$id_san_pham,$gia_ban,$so_luong,$hinh_anh,$id_loai_san_pham,$id_bo_truyen,$ten_san_pham;
+    public function __construct($id_gio_hang,$id_user,$id_san_pham,$gia_ban,$so_luong,$hinh_anh,$id_loai_san_pham,$id_bo_truyen,$ten_san_pham)
+    {
+        $this->id_gio_hang = $id_gio_hang;
+        $this->id_user = $id_user;
+        $this->id_san_pham = $id_san_pham;
+        $this->gia_ban = $gia_ban;
+        $this->so_luong = $so_luong;
+        $this->hinh_anh = $hinh_anh;
+        $this->id_loai_san_pham = $id_loai_san_pham;
+        $this->id_bo_truyen = $id_bo_truyen;
+        $this->ten_san_pham = $ten_san_pham;
+    }
+}

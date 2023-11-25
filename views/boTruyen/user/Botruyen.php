@@ -17,13 +17,19 @@ include "views/layout/user/Header.php";
                         $id[] = $vl->id;
                     } ?>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true"><?php echo $ten[0] ?></button>
+                        <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one"
+                            type="button" role="tab" aria-controls="tab-one"
+                            aria-selected="true"><?php echo $ten[0] ?></button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false"><?php echo $ten[1] ?></button>
+                        <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two"
+                            type="button" role="tab" aria-controls="tab-two"
+                            aria-selected="false"><?php echo $ten[1] ?></button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false"><?php echo $ten[2] ?></button>
+                        <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three"
+                            type="button" role="tab" aria-controls="tab-three"
+                            aria-selected="false"><?php echo $ten[2] ?></button>
                     </li>
                 </ul>
             </div>
@@ -38,157 +44,208 @@ include "views/layout/user/Header.php";
                             if ($vl->loai == $id[0]) {
                                 $count_one++;
                         ?>
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
-                                    <div class="product-cart-wrap mb-30">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom" style="min-height: 300px; max-height:300px ; overflow: hidden;">
-                                                <a  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
-                                                    <img class="default-img" src="assets/imgs/shop/<?php echo $vl->img ?>" style="margin: auto;min-height:  300px;" alt="loi">
-                                                    <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->img ?>" style="margin: auto;min-height:  300px;" alt="loi">
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up"  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom"
+                                        style="min-height: 300px; max-height:300px ; overflow: hidden;">
+                                        <a
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
+                                            <img class="default-img" src="assets/imgs/shop/<?php echo $vl->img ?>"
+                                                style="margin: auto;min-height:  300px;" alt="loi">
+                                            <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->img ?>"
+                                                style="margin: auto;min-height:  300px;" alt="loi">
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a aria-label="Quick view" class="action-btn hover-up"
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
                                                 class=" fi-rs-eye"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id?>"><i class="fas fa-truck"></i></i></a>
-                                            </div>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Mua ngay" class="action-btn hover-up"
+                                            href="index.php?controller=muaHang&id=<?php echo $vl->id ?>"><i
+                                                class="fas fa-truck"></i></i></a>
+                                    </div>
 
-                                        </div>
-                                        <div class="product-content-wrap" id="productInfo">
-                                            <h2><a  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten?></a></h2>
+                                </div>
+                                <div class="product-content-wrap" id="productInfo">
+                                    <h2><a
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten ?></a>
+                                    </h2>
                                     <div class=" rating-result" title="90%">
-                                                    <span>
-                                                        <span>90%</span>
-                                                    </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
-                                            <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
-                                                VND</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <button aria-label="Add To Cart" id="add_card" onclick="addToCart(<?php echo $vl->id ?>)" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
-                                        </div>
+                                        <span>
+                                            <span>90%</span>
+                                        </span>
+                                    </div>
+                                    <div class="product-price">
+                                        <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                                        <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                            VND</span>
+                                    </div>
+                                    <div class="product-action-1 show">
+                                        <?php if (isset($_SESSION['id'])) { ?>
+                                        <button aria-label="Theo dõi" id="add_card"
+                                            onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
+                                            class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
+                                        <?php } else { ?><a aria-label="Theo dõi" id="add_card"
+                                            href="index.php?controller=dangNhap" class="action-btn hover-up"><i
+                                                class="fi-rs-shopping-bag-add"></i></aria-label> </a>
+                                        <?php } ?>
                                     </div>
                                 </div>
-                    </div>
-            <?php }
+                            </div>
+                        </div>
+                        <?php }
                             if ($count_one == 8) {
                                 break;
                             }
                         }
-            ?>
+                        ?>
+                    </div>
+                    <!--End product-grid-4-->
                 </div>
-                <!--End product-grid-4-->
-            </div>
-            <!--En tab one (Featured)-->
-            <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
-                <div class="row product-grid-4">
-                    <?php
-                    $count_tow = 0;
-                    foreach ($san_pham as $key => $vl) {
-                        if ($vl->loai == $id[1]) {
-                            $count_tow++;
-                    ?>
-                           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
-                                    <div class="product-cart-wrap mb-30">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom" style="min-height: 300px; max-height:300px ; overflow: hidden;">
-                                                <a href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
-                                                    <img class="default-img" src="assets/imgs/shop/<?php echo $vl->img ?>" style="margin: auto;min-height:  300px;" alt="loi">
-                                                    <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->img ?>" style="margin: auto;min-height:  300px;" alt="loi">
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up"  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
+                <!--En tab one (Featured)-->
+                <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
+                    <div class="row product-grid-4">
+                        <?php
+                        $count_tow = 0;
+                        foreach ($san_pham as $key => $vl) {
+                            if ($vl->loai == $id[1]) {
+                                $count_tow++;
+                        ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom"
+                                        style="min-height: 300px; max-height:300px ; overflow: hidden;">
+                                        <a
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
+                                            <img class="default-img" src="assets/imgs/shop/<?php echo $vl->img ?>"
+                                                style="margin: auto;min-height:  300px;" alt="loi">
+                                            <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->img ?>"
+                                                style="margin: auto;min-height:  300px;" alt="loi">
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a aria-label="Quick view" class="action-btn hover-up"
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
                                                 class=" fi-rs-eye"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id?>"><i class="fas fa-truck"></i></i></a>
-                                            </div>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Mua ngay" class="action-btn hover-up"
+                                            href="index.php?controller=muaHang&id=<?php echo $vl->id ?>"><i
+                                                class="fas fa-truck"></i></i></a>
+                                    </div>
 
-                                        </div>
-                                        <div class="product-content-wrap" id="productInfo">
-                                            <h2><a  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten?></a></h2>
+                                </div>
+                                <div class="product-content-wrap" id="productInfo">
+                                    <h2><a
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten ?></a>
+                                    </h2>
                                     <div class=" rating-result" title="90%">
-                                                    <span>
-                                                        <span>90%</span>
-                                                    </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
-                                            <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
-                                                VND</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <button aria-label="Add To Cart" id="add_card" onclick="addToCart(<?php echo $vl->id ?>)" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
-                                        </div>
+                                        <span>
+                                            <span>90%</span>
+                                        </span>
+                                    </div>
+                                    <div class="product-price">
+                                        <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                                        <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                            VND</span>
+                                    </div>
+                                    <div class="product-action-1 show">
+                                        <?php if (isset($_SESSION['id'])) { ?>
+                                        <button aria-label="Theo dõi" id="add_card"
+                                            onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
+                                            class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
+                                        <?php } else { ?><a aria-label="Theo dõi" id="add_card"
+                                            href="index.php?controller=dangNhap" class="action-btn hover-up"><i
+                                                class="fi-rs-shopping-bag-add"></i></aria-label> </a>
+                                        <?php } ?>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <?php }
+                            if ($count_tow == 8) {
+                                break;
+                            }
+                        } ?>
                     </div>
-        <?php }
-                        if ($count_tow == 8) {
-                            break;
-                        }
-                    } ?>
-            </div>
-            <!--End product-grid-4-->
-        </div>
-        <!--En tab two (Popular)-->
-        <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
-            <div class="row product-grid-4">
-                <?php
-                $count_three = 0;
-                foreach ($san_pham as $key => $vl) {
-                    if ($vl->loai == $id[2]) {
-                        $count_three++;
-                ?>
-                      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
-                                    <div class="product-cart-wrap mb-30">
-                                        <div class="product-img-action-wrap">
-                                            <div class="product-img product-img-zoom" style="min-height: 300px; max-height:300px ; overflow: hidden;">
-                                                <a  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
-                                                    <img class="default-img" src="assets/imgs/shop/<?php echo $vl->img ?>" style="margin: auto;min-height:  300px;" alt="loi">
-                                                    <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->img ?>" style="margin: auto;min-height:  300px;" alt="loi">
-                                                </a>
-                                            </div>
-                                            <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up"  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
+                    <!--End product-grid-4-->
+                </div>
+                <!--En tab two (Popular)-->
+                <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
+                    <div class="row product-grid-4">
+                        <?php
+                        $count_three = 0;
+                        foreach ($san_pham as $key => $vl) {
+                            if ($vl->loai == $id[2]) {
+                                $count_three++;
+                        ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
+                            <div class="product-cart-wrap mb-30">
+                                <div class="product-img-action-wrap">
+                                    <div class="product-img product-img-zoom"
+                                        style="min-height: 300px; max-height:300px ; overflow: hidden;">
+                                        <a
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
+                                            <img class="default-img" src="assets/imgs/shop/<?php echo $vl->img ?>"
+                                                style="margin: auto;min-height:  300px;" alt="loi">
+                                            <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->img ?>"
+                                                style="margin: auto;min-height:  300px;" alt="loi">
+                                        </a>
+                                    </div>
+                                    <div class="product-action-1">
+                                        <a aria-label="Quick view" class="action-btn hover-up"
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
                                                 class=" fi-rs-eye"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id?>"><i class="fas fa-truck"></i></i></a>
-                                            </div>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
+                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Mua ngay" class="action-btn hover-up"
+                                            href="index.php?controller=muaHang&id=<?php echo $vl->id ?>"><i
+                                                class="fas fa-truck"></i></i></a>
+                                    </div>
 
-                                        </div>
-                                        <div class="product-content-wrap" id="productInfo">
-                                            <h2><a  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten?></a></h2>
+                                </div>
+                                <div class="product-content-wrap" id="productInfo">
+                                    <h2><a
+                                            href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><?php echo $vl->ten ?></a>
+                                    </h2>
                                     <div class=" rating-result" title="90%">
-                                                    <span>
-                                                        <span>90%</span>
-                                                    </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
-                                            <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
-                                                VND</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <button aria-label="Add To Cart" id="add_card" onclick="addToCart(<?php echo $vl->id ?>)" class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
-                                        </div>
+                                        <span>
+                                            <span>90%</span>
+                                        </span>
+                                    </div>
+                                    <div class="product-price">
+                                        <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
+                                        <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                            VND</span>
+                                    </div>
+                                    <div class="product-action-1 show">
+                                        <?php if (isset($_SESSION['id'])) { ?>
+                                        <button aria-label="Theo dõi" id="add_card"
+                                            onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
+                                            class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
+                                        <?php } else { ?><a aria-label="Theo dõi" id="add_card"
+                                            href="index.php?controller=dangNhap" class="action-btn hover-up"><i
+                                                class="fi-rs-shopping-bag-add"></i></aria-label> </a>
+                                        <?php } ?>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <?php }
+                            if ($count_three == 8) {
+                                break;
+                            }
+                        } ?>
                     </div>
-    <?php }
-                    if ($count_three == 8) {
-                        break;
-                    }
-                } ?>
-        </div>
-        <!--End product-grid-4-->
-        </div>
-        <!--En tab three (New added)-->
-        </div>
-        <!--End tab-content-->
+                    <!--End product-grid-4-->
+                </div>
+                <!--En tab three (New added)-->
+            </div>
+            <!--End tab-content-->
         </div>
     </section>
 </body>
