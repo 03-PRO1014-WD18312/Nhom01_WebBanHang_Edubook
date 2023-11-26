@@ -5,8 +5,13 @@ class GioiThieuController
     {
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] != 4) {
-
-                header('Location: index.php?controller=trangChu');
+                if (isset($_SESSION['chuyen'])) {
+                    $GioHangDAO = new GioHangDAO();
+                    $sum = $GioHangDAO->sum($_SESSION['id']);
+                    include_once "views/gioithieu/gioithieu.php";
+                } else {
+                    header('Location: index.php?controller=trangChu');
+                }
             } else {
 
                 $GioHangDAO = new GioHangDAO();

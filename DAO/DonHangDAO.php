@@ -69,13 +69,13 @@ class DonHangDAO extends BaseDAO
     //
     public function show()
     {
-        $sql = "SELECT * FROM `don_hang` INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang ORDER BY `id_don_hang` DESC";
+        $sql = "SELECT don_hang.id_don_hang,ho_don.ma_hoa_don,users.ten,users.sdt,don_hang.thoi_gian,trang_thai_don_hang.ten_trang_thai_don_hang,trang_thai_don_hang.id_trang_thai_don_hang FROM `don_hang` INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang JOIN users  on users.id_user = don_hang.id_user JOIN ho_don on don_hang.id_don_hang = ho_don.id_don_hang ORDER BY don_hang.id_don_hang DESC";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new DonHang($row['id_don_hang'], $row['id_user'], $row['thoi_gian'], $row['id_trang_thai_don_hang'], $row['ten_trang_thai_don_hang'],);
+            $product = new DonHangshow($row['id_don_hang'], $row['ma_hoa_don'], $row['ten'], $row['sdt'], $row['thoi_gian'], $row['id_trang_thai_don_hang'], $row['ten_trang_thai_don_hang']);
             $lists[] = $product;
         }
         return $lists;
@@ -189,13 +189,14 @@ class DonHangDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function addHD($id_don_hang,$ma_hoa_don,$phuong_thuc,$trangThai)
+    public function addHD($id_don_hang, $ma_hoa_don, $phuong_thuc, $trangThai)
     {
         $sql = "INSERT INTO `ho_don`(`id_don_hang`, `ma_hoa_don`, `phuong_thuc`, `trang_thai`) VALUES ('$id_don_hang','$ma_hoa_don','$phuong_thuc','$trangThai')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function getOneIdDesc(){
+    public function getOneIdDesc()
+    {
         $sql = "SELECT id_don_hang FROM don_hang ORDER BY id_don_hang DESC LIMIT 1";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -207,7 +208,8 @@ class DonHangDAO extends BaseDAO
         }
         return $lists;
     }
-    public function addChiTietDH($id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong){
+    public function addChiTietDH($id_san_pham, $id_don_hang, $gia, $ten_san_pham, $so_luong)
+    {
         $sql = "INSERT INTO `chi_tiet_don_hang`(`id_san_pham`, `id_don_hang`, `gia`, `ten_san_pham`, `so_luong`) VALUES ('$id_san_pham','$id_don_hang','$gia','$ten_san_pham','$so_luong')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
