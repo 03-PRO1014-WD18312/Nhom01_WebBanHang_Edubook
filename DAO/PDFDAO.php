@@ -1,5 +1,6 @@
 <?php
 require_once 'vendor/autoload.php'; // Load autoloader của Composer
+require_once "vendor/phpqrcode/qrlib.php";
 use TCPDF as TCPDF;
 
 class PDFDAO extends TCPDF
@@ -41,7 +42,51 @@ class PDFDAO extends TCPDF
 //            // ...
 //        ];
 
-        // Tạo một trang mới
+        // chuyển đổi thành mã qr code
+        $path = "assets/imgs/qrcode/";
+        $qrcode = $path . time() . ".png";
+        QRcode::png("http://localhost/php/Nhom01_WebBanHang_Edubook/index.php?controller=ctsp&id=".$info[0]->ma_hoa_don, $qrcode, "H", 4, 4);
+//        echo "<img src='" . $qrcode . "'>";
+
+        // xóa ảnh
+        $directory = 'assets/imgs/qrcode/';
+// Kiểm tra xem đường dẫn thư mục tồn tại hay không
+        if (is_dir($directory)) {
+            // Lấy danh sách tất cả các file hoặc thư mục trong thư mục
+            $files = glob($directory . '*');
+
+            // Kiểm tra xem có ít nhất một file hoặc thư mục trong thư mục hay không
+            if (!empty($files)) {
+                // Sắp xếp danh sách theo thời gian sửa đổi giảm dần
+                arsort($files);
+
+                // Giữ lại phần tử mới nhất
+                $latest_item = reset($files);
+
+                // Lặp qua danh sách và xóa tất cả các phần tử khác
+                foreach ($files as $item) {
+                    if ($item !== $latest_item) {
+                        // Kiểm tra xem phần tử là file hay thư mục trước khi xóa
+                        if (is_file($item) || is_link($item)) {
+                            unlink($item);
+//                    echo 'Đã xóa: ' . $item . '<br>';
+                        } elseif (is_dir($item)) {
+                            // Nếu bạn muốn xóa thư mục, sử dụng hàm rmdir thay vì unlink
+                            rmdir($item);
+//                    echo 'Đã xóa thư mục: ' . $item . '<br>';
+                        }
+                    }
+                }
+
+//        echo 'Đã giữ lại: ' . $latest_item;
+            } else {
+                echo 'Thư mục trống.';
+            }
+        } else {
+            echo 'Thư mục không tồn tại.';
+        }
+
+        //Tạo một trang mới
         $this->AddPage();
         // Thêm dữ liệu hóa đơn
         $this->SetFont('dejavusans', '', 12);
@@ -80,9 +125,12 @@ class PDFDAO extends TCPDF
 
         <td colspan="1" style="border-left: 1px dashed black;border-bottom: 1px dashed black;height: 30%">
             <table style="height: 100%">
+            <tr>
+            <td></td>
+            </tr>
                 <tr>
                     <td>
-                    <img src="assets/imgs/donHang/qrcode.png" style="width: 100px;height: 100px" alt="">
+                        <img src="' . $qrcode . '" style="width: 100px;height: 100px;" alt="">
                     </td>
                 </tr>
                 
@@ -110,7 +158,6 @@ class PDFDAO extends TCPDF
     </tr>
     <tr>
         <td colspan="2" style="border-bottom: 1px dashed black;text-align: center">
-            <p><b>Chỉ dẫn giao hàng:</b> Không đồng kiểm; Chuyển hoàn sau 3 lần phát; Lưu kho tối đa 5 ngày.</p>
         </td>
     </tr>
     <tr>
