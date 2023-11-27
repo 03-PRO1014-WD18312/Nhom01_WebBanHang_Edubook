@@ -59,7 +59,7 @@ class BoTruyenDAO extends BaseDAO
         $tmp = $img['tmp_name'];
         $mov = 'assets/imgs/shop/' . $fileName;
         move_uploaded_file($tmp, $mov);
-        $sql = "INSERT INTO `bo_truyen`( `id_loai_truyen`, `ten_bo_truyen`, `gia_ban`, `gia_goc`, `mo_ta`, `hinh_anh`) VALUES ('$loai','$ten','$gia_ban','$gia_goc','$mo_ta','$img');";
+        $sql = "INSERT INTO `bo_truyen`( `id_loai_truyen`, `ten_bo_truyen`, `gia_ban`, `gia_goc`, `mo_ta`, `hinh_anh`) VALUES ('$loai','$ten','$gia_ban','$gia_goc','$mo_ta','$fileName');";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
