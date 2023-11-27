@@ -170,6 +170,45 @@ class DonHangDAO extends BaseDAO
 
         return $users;
     }
+    public function showAllXN()
+    {
+        $sql = "SELECT 
+        ho_don.ma_hoa_don, 
+        don_hang.thoi_gian,
+        dia_chi.dia_chi, 
+        chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong as tong_tien,chi_tiet_don_hang.gia,chi_tiet_don_hang.so_luong,
+        chi_tiet_don_hang.ten_san_pham,
+        ho_don.trang_thai,users.ten,users.sdt
+        FROM `ho_don` 
+        JOIN don_hang ON don_hang.id_don_hang = ho_don.id_don_hang 
+        JOIN users ON users.id_user = don_hang.id_user 
+        JOIN dia_chi ON users.id_user = dia_chi.id_user 
+        JOIN chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang WHERE dia_chi.trang_thai = 1 AND ho_don.id_don_hang=" . $id;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $users = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Create a Login object and add it to the array
+            $user = new PDF(
+                $row['ma_hoa_don'],
+                $row['thoi_gian'],
+                $row['dia_chi'],
+                $row['tong_tien'],
+                $row['ten_san_pham'],
+                $row['trang_thai'],
+                $row['ten'],
+                $row['sdt'],
+                $row['gia'],
+                $row['so_luong'],
+            );
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
     public function gethd_id($id)
     {
         $sql = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = " . $id;
@@ -183,9 +222,9 @@ class DonHangDAO extends BaseDAO
         }
         return $lists;
     }
-    public function add($id_user)
+    public function addDH($id_user,$thoi_gian,$id_trang_thai_don_hang)
     {
-        $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user',get_time(),1)";
+        $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user','$thoi_gian','$id_trang_thai_don_hang')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
@@ -203,7 +242,7 @@ class DonHangDAO extends BaseDAO
         $lists = array(); // hoặc $products = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new DonHang($row['id_don_hang'], $row['id_user'], $row['thoi_gian'], $row['id_trang_thai_don_hang'], 0);
+            $product = new DonHang($row['id_don_hang'], 0, 0, 0, 0);
             $lists[] = $product;
         }
         return $lists;

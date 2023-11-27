@@ -15,6 +15,7 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
+                <button><a href="index.php?controller=donHang_exportId&nd=all">Xuất đơn hàng chờ xác nhận</a></button>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -81,7 +82,7 @@
                                 </button>
                                 <br>
                                 <button style="margin-top: 5px;" type="button" class="btn btn-primary">
-                                    Xuất hoá đơn
+                                    <a style="padding: 3px;color: white" href="index.php?controller=donHang_exportId&id=<?php echo $dh->id_don_hang?>">Xuất hóa đơn</a>
                                 </button>
                             </td>
                         </tr>

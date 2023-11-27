@@ -129,9 +129,21 @@ include_once 'views/layout/user/Header.php'; ?>
                             <button type="submit" name="redirect" id="redirect" class="btn btn-default">Thanh toán vnpay</button>
                         </form>
                         <br>
-                        <form action="" method="post">
-                            <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán khi nhận hàng</button>
+                        <form action="index.php?controller=thanhToanKNH" method="post">
+                            <input type="hidden" name="so_luong" value="<?php echo $soLuong ?>">
+                            <?php if ($soLuong==0 || $soLuong==""){?>
+                            <?php }?>
+                            <?php if ($soLuong==0){ foreach ($thongTinSp as $sp) {
+                                ?>
+                                <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
+                                <input type="hidden" name="soLuong[]" value="<?php echo $sp->so_luong?>">
+                            <?php }}else if ($soLuong>0){ ?>
+                                <input type="hidden" name="idsp" value="<?php echo $sp->id_san_pham?>">
+                            <?php } ?>
+                            <input class="form-control" id="order_id" name="order_id" type="hidden" value="<?php echo date("YmdHis") ?>" readonly/>
+                            <input class="form-control"  name="amount" type="hidden" value="<?php echo $thanhTien?>">
 
+                            <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán khi nhận hàng</button>
                         </form>
                     </div>
                     <div class="col-md-6">

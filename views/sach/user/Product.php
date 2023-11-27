@@ -46,8 +46,8 @@ include "views/layout/user/Header.php";
                                             </span>
                                 </div>
                                 <div class="product-price">
-                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
-                                    <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', ',') ?> VND</span>
+                                    <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', ',') ?>
                                         VND</span>
                                 </div>
                                 <div class="product-action-1 show">
@@ -120,7 +120,7 @@ include "views/layout/user/Header.php";
                             <h5><a
                                     href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><?php echo $vl->ten_san_pham ?></a>
                             </h5>
-                            <p class="price mb-0 mt-5"><?php echo   number_format($vl->gia_ban, 0, ',', '.') ?></p>
+                            <p class="price mb-0 mt-5"><?php echo   number_format($vl->gia_ban, 0, ',', ',') ?></p>
                             <div class="product-rate">
                                 <div class="product-rating" style="width:100%"></div>
                             </div>

@@ -29,12 +29,12 @@ class SanPhamDAO extends BaseDAO
 
         return $lists;
     }
-    public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh)
+    public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham,  $id_nha_san_xuat, $id_nha_phat_hanh)
     {
         $sql = "INSERT INTO `san_pham`(`ten_san_pham`, `mo_ta`, `gia_ban`, `gia_goc`, `so_luong`,
-               `so_trang`, `id_tac_gia`, `nam_xb`, `kich_thuoc`, `trong_luong`,`ngay_nhap`, `id_loai_san_pham`, `id_bo_truyen`, `id_nha_san_xuat`,
+               `so_trang`, `id_tac_gia`, `nam_xb`, `kich_thuoc`, `trong_luong`,`ngay_nhap`, `id_loai_san_pham`, `id_nha_san_xuat`,
                `id_nha_phat_hanh`) VALUES ('$ten_san_pham','$mo_ta','$gia_ban','$gia_goc',
-             '$so_luong','$so_trang','$id_tac_gia','$nam_xb','$kich_thuoc','$trong_luong','$ngay_nhap','$id_loai_san_pham','$id_bo_truyen','$id_nha_san_xuat',
+             '$so_luong','$so_trang','$id_tac_gia','$nam_xb','$kich_thuoc','$trong_luong','$ngay_nhap','$id_loai_san_pham','$id_nha_san_xuat',
              '$id_nha_phat_hanh')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -300,6 +300,12 @@ JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
     public function updateImgSP($hinh_anh, $id_san_pham)
     {
         $sql = "UPDATE `san_pham` SET `hinh_anh`='$hinh_anh' WHERE id_san_pham = " . $id_san_pham;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
+    public function updateSlSP($so_luong,$trangThai,$id_san_pham)
+    {
+        $sql = "UPDATE `san_pham` SET `so_luong`=$so_luong,`trang_thai`=$trangThai WHERE id_san_pham = " . $id_san_pham;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
