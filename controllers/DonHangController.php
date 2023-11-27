@@ -250,9 +250,10 @@ class DonHangController
             header("Location: index.php?controller=dangNhap");
         }
     }
-    public function thanhToanKNH(){
+    public function thanhToanKNH()
+    {
         $so_luong = $_POST['so_luong'];
-        if ($so_luong == 0){
+        if ($so_luong == 0) {
             $DonHangDAO = new DonHangDAO();
             $SanPhamDAO = new SanPhamDAO();
             $_SESSION['value_hd'] = array(
@@ -262,48 +263,66 @@ class DonHangController
                 'soLuong' => $_POST['soLuong'],
                 'so_luong' => $_POST['so_luong']
             );
-            $DonHangDAO->addDH($_SESSION['id'],get_time(),1);
+            $DonHangDAO->addDH($_SESSION['id'], get_time(), 1);
             foreach ($_SESSION['value_hd']['idsp'] as $i => $sp) {
                 $vlsp = $SanPhamDAO->showOne($_SESSION['value_hd']['idsp'][$i]);
                 $slsp = $vlsp[0]->so_luong;
                 $slm = $_SESSION['value_hd']['soLuong'][$i];
                 $soLuongUD = $slsp - $slm;
-                if ($soLuongUD == 0){
-                    $SanPhamDAO->updateSlSP(0,0,$_SESSION['value_hd']['idsp'][$i]);
-                }elseif ($soLuongUD > 0 ){
-                    $SanPhamDAO->updateSlSP($soLuongUD,1,$_SESSION['value_hd']['idsp'][$i]);
-                }else{
+                if ($soLuongUD == 0) {
+                    $SanPhamDAO->updateSlSP(0, 0, $_SESSION['value_hd']['idsp'][$i]);
+                } elseif ($soLuongUD > 0) {
+                    $SanPhamDAO->updateSlSP($soLuongUD, 1, $_SESSION['value_hd']['idsp'][$i]);
+                } else {
                     echo "Lỗi";
                 }
                 $iddh = $DonHangDAO->getOneIdDesc();
                 $DonHangDAO->addChiTietDH($_SESSION['value_hd']['idsp'][$i], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
-                $DonHangDAO->addHD($iddh[0]->id_don_hang, $_SESSION['value_hd']['mahd'],"Thanh toán khi nhận hàng", 0);
-
+                $DonHangDAO->addHD($iddh[0]->id_don_hang, $_SESSION['value_hd']['mahd'], "Thanh toán khi nhận hàng", 0);
             }
             header("location: index.php?controller=taiKhoan");
-        }elseif ($so_luong>0){
+        } elseif ($so_luong > 0) {
             $DonHangDAO = new DonHangDAO();
             $SanPhamDAO = new SanPhamDAO();
-            $DonHangDAO->addDH($_SESSION['id'],get_time(),1);
+            $DonHangDAO->addDH($_SESSION['id'], get_time(), 1);
             $vlsp = $SanPhamDAO->showOne($_POST['idsp']);
             $slsp = $vlsp[0]->so_luong;
             $slm = $_POST['so_luong'];
             $soLuongUD = $slsp - $slm;
-            if ($soLuongUD == 0){
-                $SanPhamDAO->updateSlSP(0,0,$_POST['idsp']);
-            }elseif ($soLuongUD > 0 ){
-                $SanPhamDAO->updateSlSP($soLuongUD,1,$_POST['idsp']);
-            }else{
+            if ($soLuongUD == 0) {
+                $SanPhamDAO->updateSlSP(0, 0, $_POST['idsp']);
+            } elseif ($soLuongUD > 0) {
+                $SanPhamDAO->updateSlSP($soLuongUD, 1, $_POST['idsp']);
+            } else {
                 echo "Lỗi";
             }
             $iddh = $DonHangDAO->getOneIdDesc();
             $DonHangDAO->addChiTietDH($_POST['idsp'], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
-            $DonHangDAO->addHD($iddh[0]->id_don_hang, $_POST['order_id'],"Thanh toán khi nhận hàng", 0);
+            $DonHangDAO->addHD($iddh[0]->id_don_hang, $_POST['order_id'], "Thanh toán khi nhận hàng", 0);
             header("location: index.php?controller=taiKhoan");
         }
     }
     public function addHD()
     {
         $sanPhamDAO = new SanPhamDAO();
+    }
+    public function don_hang_tt()
+    {
+
+        if (isset($_SESSION['role']) && $_SESSION['role'] != 4) {
+            if (isset($_SESSION['chuyen'])) {
+                $GioHangDAO = new GioHangDAO();
+                $sum = $GioHangDAO->sum($_SESSION['id']);
+                $DonHangDAO = new DonHangDAO();
+                $thongTinUs = $DonHangDAO->tt_user_don_hang($_GET['id']);
+                $thongTinSp  = $DonHangDAO->tt_sp_don_hang($_GET['id']);
+                include_once('views/donhang/user/chiTietDonHang.php');
+            } else {
+                header('location: index.php?controller=trangChu');
+            }
+        } else {
+            $sum = 0;
+            include_once('views/donhang/user/chiTietDonHang.php');
+        }
     }
 }

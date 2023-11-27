@@ -170,7 +170,7 @@ class DonHangDAO extends BaseDAO
 
         return $users;
     }
-    public function showAllXN()
+    public function showAllXN($id)
     {
         $sql = "SELECT 
         ho_don.ma_hoa_don, 
@@ -222,7 +222,7 @@ class DonHangDAO extends BaseDAO
         }
         return $lists;
     }
-    public function addDH($id_user,$thoi_gian,$id_trang_thai_don_hang)
+    public function addDH($id_user, $thoi_gian, $id_trang_thai_don_hang)
     {
         $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user','$thoi_gian','$id_trang_thai_don_hang')";
         $stmt = $this->PDO->prepare($sql);
@@ -252,5 +252,67 @@ class DonHangDAO extends BaseDAO
         $sql = "INSERT INTO `chi_tiet_don_hang`(`id_san_pham`, `id_don_hang`, `gia`, `ten_san_pham`, `so_luong`) VALUES ('$id_san_pham','$id_don_hang','$gia','$ten_san_pham','$so_luong')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
+    }
+    public function tt_user_don_hang($id)
+    {
+        $sql = "SELECT DISTINCT
+        don_hang.id_don_hang,
+        ho_don.ma_hoa_don,
+        ho_don.phuong_thuc,
+        users.ten,
+        users.sdt,
+        dia_chi.dia_chi,
+        don_hang.thoi_gian
+    FROM
+        don_hang
+    JOIN
+        trang_thai_don_hang ON trang_thai_don_hang.id_trang_thai_don_hang = don_hang.id_trang_thai_don_hang
+    JOIN
+        users ON don_hang.id_user = users.id_user
+    JOIN
+        dia_chi ON users.id_user = dia_chi.id_user AND dia_chi.trang_thai = 1
+    JOIN
+        ho_don ON ho_don.id_don_hang = don_hang.id_don_hang
+    WHERE
+        don_hang.id_don_hang = $id";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new showu($row['id_don_hang'], $row['ma_hoa_don'], $row['ten'], $row['sdt'], $row['thoi_gian'], $row['dia_chi'], $row['phuong_thuc']);
+            $lists[] = $product;
+        }
+        return $lists;
+    }
+    public function tt_sp_don_hang($id)
+    {
+        $sql = "SELECT 
+        san_pham.hinh_anh,
+        chi_tiet_don_hang.ten_san_pham,
+        chi_tiet_don_hang.gia,
+        chi_tiet_don_hang.so_luong,
+        san_pham.id_san_pham,
+        san_pham.id_loai_san_pham,
+        chi_tiet_bo_truyen.id_bo_truyen
+     FROM
+         don_hang
+     JOIN
+         trang_thai_don_hang ON trang_thai_don_hang.id_trang_thai_don_hang = don_hang.id_trang_thai_don_hang
+     JOIN
+         chi_tiet_don_hang on chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang
+         JOIN san_pham ON san_pham.id_san_pham = chi_tiet_don_hang.id_san_pham
+         JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham 
+    WHERE
+        don_hang.id_don_hang = $id";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new showpro($row['hinh_anh'], $row['ten_san_pham'], $row['gia'], $row['so_luong'], $row['id_san_pham'], $row['id_loai_san_pham'], $row['id_bo_truyen']);
+            $lists[] = $product;
+        }
+        return $lists;
     }
 }
