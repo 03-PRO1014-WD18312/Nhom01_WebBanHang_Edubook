@@ -183,9 +183,9 @@ class DonHangDAO extends BaseDAO
         }
         return $lists;
     }
-    public function add($id_user)
+    public function addDH($id_user,$thoi_gian,$id_trang_thai_don_hang)
     {
-        $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user',get_time(),1)";
+        $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES ('$id_user','$thoi_gian','$id_trang_thai_don_hang')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
@@ -203,7 +203,7 @@ class DonHangDAO extends BaseDAO
         $lists = array(); // hoặc $products = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new DonHang($row['id_don_hang'], $row['id_user'], $row['thoi_gian'], $row['id_trang_thai_don_hang'], 0);
+            $product = new DonHang($row['id_don_hang'], 0, 0, 0, 0);
             $lists[] = $product;
         }
         return $lists;

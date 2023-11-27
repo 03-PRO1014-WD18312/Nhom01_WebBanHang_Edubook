@@ -41,6 +41,14 @@
             $timestamp = $currentTime;
             return date("Y-m-d H:i:s", $timestamp);
         }
+        function soLuongIdSp($id){
+            $sql = "SELECT so_luong FROM `san_pham` WHERE id_san_pham = ?";
+            return getData($sql,[$id]);
+        }
+        function updateSP($soLuong,$trangThai,$id){
+            $sql = "UPDATE `san_pham` SET `so_luong`=?,`trang_thai`=? WHERE id_san_pham = ?";
+            return getData($sql,[$soLuong,$trangThai,$id],false);
+        }
         function addDH($id_user,$time)
         {
             $sql = "INSERT INTO `don_hang`(`id_user`, `thoi_gian`, `id_trang_thai_don_hang`) VALUES (?,?,1)";
@@ -114,15 +122,35 @@
 //                }
 
                 foreach ($_SESSION['value_hd']['idsp'] as $i => $sp) {
+                        $slsp = soLuongIdSp($_SESSION['value_hd']['idsp'][$i]);
+                        $slm = $_SESSION['value_hd']['soLuong'][$i];
                         $sanPham =  showOne($sp);
                         addChiTietDH($_SESSION['value_hd']['idsp'][$i],$newIdDH[0]['id_don_hang'],$sanPham[0]['gia_ban'],$sanPham[0]['ten_san_pham'],$_SESSION['value_hd']['soLuong'][$i]);
+                        $soLuongUD = $slsp[0]['so_luong'] - $slm;
+                        if ($soLuongUD == 0){
+                            updateSP(0,0,$_SESSION['value_hd']['idsp'][$i]);
+                        }elseif ($soLuongUD > 0 ){
+                            updateSP($soLuongUD,1,$_SESSION['value_hd']['idsp'][$i]);
+                        }else{
+                            echo "Lỗi";
+                        }
                 }
                 addHD($newIdDH[0]['id_don_hang'], $_SESSION['value_hd']['mahd'],"vnpay",1);
             }else{
                 addDH($_SESSION['id'],get_time());
+                $slsp = soLuongIdSp($_SESSION['value_hd']['idsp']);
+                $slm = $_SESSION['value_hd']['so_luong'];
                 $newIdDH = getOneIdDesc();
                 $sanPham =  showOne($_SESSION['value_hd']['idsp']);
                 addChiTietDH($_SESSION['value_hd']['idsp'],$newIdDH[0]['id_don_hang'],$sanPham[0]['gia_ban'],$sanPham[0]['ten_san_pham'],$_SESSION['value_hd']['so_luong']);
+                $soLuongUD = $slsp[0]['so_luong'] - $slm;
+                if ($soLuongUD == 0){
+                    updateSP(0,0,$_SESSION['value_hd']['idsp']);
+                }elseif ($soLuongUD > 0 ){
+                    updateSP($soLuongUD,1,$_SESSION['value_hd']['idsp']);
+                }else{
+                    echo "Lỗi";
+                }
                 addHD($newIdDH[0]['id_don_hang'], $_SESSION['value_hd']['mahd'],"vnpay",1);
             }
         }

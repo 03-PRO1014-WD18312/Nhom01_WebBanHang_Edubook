@@ -303,6 +303,12 @@ JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
+    public function updateSlSP($so_luong,$trangThai,$id_san_pham)
+    {
+        $sql = "UPDATE `san_pham` SET `so_luong`=$so_luong,`trang_thai`=$trangThai WHERE id_san_pham = " . $id_san_pham;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
     public function deleteSP($id_san_pham)
     {
         $sql = "DELETE FROM `san_pham` WHERE id_san_pham = " . $id_san_pham;
