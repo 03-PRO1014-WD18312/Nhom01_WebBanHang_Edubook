@@ -3,7 +3,6 @@ session_start();
 include_once 'controllers/DangNhapController.php';
 include_once 'controllers/TrangChuController.php';
 include_once 'controllers/SanPhamController.php';
-// include_once 'controllers/SettingController.php';
 include_once 'controllers/GioHangController.php';
 include_once 'controllers/LoaiSanPhamController.php';
 include_once 'controllers/BoTruyenController.php';
