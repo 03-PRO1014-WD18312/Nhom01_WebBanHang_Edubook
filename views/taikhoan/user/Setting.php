@@ -187,7 +187,8 @@
                                                             <td><?php echo  number_format($vl['tien'], 0, ',', ',') ?>
                                                                 VND
                                                             </td>
-                                                            <td><a href="#" class="btn-small d-block">View</a></td>
+                                                            <td><a href="index.php?controller=donHang_chi_tiet&id=<?php echo $vl['id'] ?>"
+                                                                    class="btn-small d-block">View</a></td>
                                                         </tr>
                                                         <?php
                                                         } ?>

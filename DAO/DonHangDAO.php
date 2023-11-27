@@ -69,7 +69,13 @@ class DonHangDAO extends BaseDAO
     //
     public function show()
     {
-        $sql = "SELECT don_hang.id_don_hang,ho_don.ma_hoa_don,users.ten,users.sdt,don_hang.thoi_gian,trang_thai_don_hang.ten_trang_thai_don_hang,trang_thai_don_hang.id_trang_thai_don_hang FROM `don_hang` INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang JOIN users  on users.id_user = don_hang.id_user JOIN ho_don on don_hang.id_don_hang = ho_don.id_don_hang ORDER BY don_hang.id_don_hang DESC";
+        $sql = "SELECT DISTINCT don_hang.id_don_hang, ho_don.ma_hoa_don, users.ten, users.sdt, don_hang.thoi_gian, trang_thai_don_hang.ten_trang_thai_don_hang, trang_thai_don_hang.id_trang_thai_don_hang
+        FROM `don_hang`
+        INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang
+        JOIN users ON users.id_user = don_hang.id_user
+        JOIN ho_don ON don_hang.id_don_hang = ho_don.id_don_hang
+        ORDER BY don_hang.id_don_hang DESC;
+        ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
