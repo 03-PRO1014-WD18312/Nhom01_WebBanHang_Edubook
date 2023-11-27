@@ -36,7 +36,7 @@ class BoTruyenDAO extends BaseDAO
         return $lists;
     }
     //.
-    public function list($id,$loai)
+    public function list($id, $loai)
     {
         $sql = "SELECT *
         FROM bo_truyen  where id_bo_truyen != $id and id_loai_truyen = $loai";
@@ -52,7 +52,7 @@ class BoTruyenDAO extends BaseDAO
         return $lists;
     }
     // thêm mới bộ truyện
-    public function add($ten, $loai, $img,$gia_ban, $gia_goc, $mo_ta)
+    public function add($ten, $loai, $img, $gia_ban, $gia_goc, $mo_ta)
     {
         // lưu file
         $fileName = $img['name'];
@@ -67,8 +67,8 @@ class BoTruyenDAO extends BaseDAO
     public function show()
     {
         $sql = "SELECT bo_truyen.*, COUNT(san_pham.id_san_pham) AS so_luong_sach
-        FROM bo_truyen
-        LEFT JOIN san_pham ON bo_truyen.id_bo_truyen = san_pham.id_bo_truyen
+        FROM bo_truyen LEFT JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
+        LEFT JOIN san_pham ON chi_tiet_bo_truyen.id_san_pham = chi_tiet_bo_truyen.id_san_pham
         GROUP BY bo_truyen.id_bo_truyen;";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -105,7 +105,7 @@ class BoTruyenDAO extends BaseDAO
         return $lists;
     }
     // sửa bộ truyên
-    public function update($id,$loai, $name,$gia_ban, $gia_goc,$mo_ta, $trang_thai, $img)
+    public function update($id, $loai, $name, $gia_ban, $gia_goc, $mo_ta, $trang_thai, $img)
     {
         if (isset($img)) {
             // lưu file
