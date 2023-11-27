@@ -42,7 +42,7 @@
                             <td><?php echo $i+1?></td>
                             <td><?php echo $sp->ten_san_pham?></td>
                             <td><img src="assets/imgs/shop/<?php echo $sp->hinh_anh?>" width="100px" height="60px" alt=""></td>
-                            <td><?php echo $sp->gia_ban?></td>
+                            <td><?php echo  number_format($sp->gia_ban, 0, ',', ',')?></td>
                             <td><?php echo $sp->so_luong?></td>
                             <td><?php echo $sp->id_loai_san_pham?></td>
                             <td><?php echo $sp->id_bo_truyen?></td>

@@ -82,8 +82,8 @@ include "views/layout/user/Header.php";
                                             </span>
                                 </div>
                                 <div class="product-price">
-                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
-                                    <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', ',') ?> VND</span>
+                                    <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', ',') ?>
                                         VND</span>
                                 </div>
                                 <div class="product-action-1 show">
@@ -153,8 +153,8 @@ include "views/layout/user/Header.php";
                                         </span>
                             </div>
                             <div class="product-price">
-                                <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?> VND</span>
-                                <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                <span><?php echo  number_format($vl->gia_ban, 0, ',', ',') ?> VND</span>
+                                <span class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', ',') ?>
                                     VND</span>
                             </div>
                             <div class="product-action-1 show">

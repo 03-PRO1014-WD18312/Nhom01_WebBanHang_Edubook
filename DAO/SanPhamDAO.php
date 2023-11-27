@@ -29,12 +29,12 @@ class SanPhamDAO extends BaseDAO
 
         return $lists;
     }
-    public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh)
+    public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham,  $id_nha_san_xuat, $id_nha_phat_hanh)
     {
         $sql = "INSERT INTO `san_pham`(`ten_san_pham`, `mo_ta`, `gia_ban`, `gia_goc`, `so_luong`,
-               `so_trang`, `id_tac_gia`, `nam_xb`, `kich_thuoc`, `trong_luong`,`ngay_nhap`, `id_loai_san_pham`, `id_bo_truyen`, `id_nha_san_xuat`,
+               `so_trang`, `id_tac_gia`, `nam_xb`, `kich_thuoc`, `trong_luong`,`ngay_nhap`, `id_loai_san_pham`, `id_nha_san_xuat`,
                `id_nha_phat_hanh`) VALUES ('$ten_san_pham','$mo_ta','$gia_ban','$gia_goc',
-             '$so_luong','$so_trang','$id_tac_gia','$nam_xb','$kich_thuoc','$trong_luong','$ngay_nhap','$id_loai_san_pham','$id_bo_truyen','$id_nha_san_xuat',
+             '$so_luong','$so_trang','$id_tac_gia','$nam_xb','$kich_thuoc','$trong_luong','$ngay_nhap','$id_loai_san_pham','$id_nha_san_xuat',
              '$id_nha_phat_hanh')";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
