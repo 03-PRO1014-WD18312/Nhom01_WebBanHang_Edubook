@@ -74,6 +74,10 @@ switch ($controller) {
         $SanPhamController = new DonHangController();
         $SanPhamController->muaHang();
         break;
+    case 'thanhToanKNH':
+        $SanPhamController = new DonHangController();
+        $SanPhamController->thanhToanKNH();
+        break;
         // case 'sanPham':
         //     $SanPhamController = new SanPhamController();
         //     $SanPhamController->index();

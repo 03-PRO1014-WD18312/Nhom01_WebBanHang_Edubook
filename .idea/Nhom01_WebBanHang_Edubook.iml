@@ -14,6 +14,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/svgs" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/fontawesome-free/webfonts" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tecnickcom/tcpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpqrcode/bindings" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpqrcode/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpqrcode/tools" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
