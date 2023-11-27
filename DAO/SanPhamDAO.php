@@ -4,10 +4,10 @@ include_once 'models/AnhSanPham.php';
 include_once 'DAO/ConnectDAO.php';
 class SanPhamDAO extends BaseDAO
 {
-    public function card($id,$listItem)
+    public function card($id, $listItem)
     {
         $id_string = implode(', ', $listItem);
-        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,san_pham.id_loai_san_pham,san_pham.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham=san_pham.id_san_pham  WHERE gio_hang.id_user = $id AND gio_hang.id_san_pham IN ($id_string)";
+        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,san_pham.id_loai_san_pham,chi_tiet_bo_truyen.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham=san_pham.id_san_pham JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham  WHERE gio_hang.id_user = $id AND gio_hang.id_san_pham IN ($id_string)";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -29,7 +29,6 @@ class SanPhamDAO extends BaseDAO
 
         return $lists;
     }
-
     public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh)
     {
         $sql = "INSERT INTO `san_pham`(`ten_san_pham`, `mo_ta`, `gia_ban`, `gia_goc`, `so_luong`,
@@ -42,7 +41,11 @@ class SanPhamDAO extends BaseDAO
     }
     public function show()
     {
-        $sql = "SELECT * FROM `san_pham` ORDER BY `id_san_pham` DESC;";
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen 
+FROM san_pham
+JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
+ORDER BY san_pham.id_san_pham DESC;
+";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -74,10 +77,12 @@ class SanPhamDAO extends BaseDAO
     }
     public function showNow()
     {
-        $sql = "SELECT *
-        FROM `san_pham`
-        WHERE MONTH(`ngay_nhap`) <= MONTH(NOW()) AND YEAR(`ngay_nhap`) <= YEAR(NOW())
-        ORDER BY `ngay_nhap` DESC;
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen 
+FROM san_pham
+JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
+WHERE MONTH(`ngay_nhap`) <= MONTH(NOW()) AND YEAR(`ngay_nhap`) <= YEAR(NOW())
+ORDER BY `ngay_nhap` DESC;
+
         ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -118,7 +123,7 @@ class SanPhamDAO extends BaseDAO
     }
     public function showBo($id)
     {
-        $sql = "SELECT * FROM `san_pham` WHERE id_bo_truyen = " . $id;
+        $sql = "SELECT san_pham.*,chi_tiet_bo_truyen.id_bo_truyen FROM `san_pham` JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham WHERE id_bo_truyen = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -150,7 +155,8 @@ class SanPhamDAO extends BaseDAO
     }
     public function showLQ($id)
     {
-        $sql = "SELECT * FROM `san_pham` WHERE id_loai_san_pham = " . $id;
+        $sql = "SELECT san_pham.*,chi_tiet_bo_truyen.id_bo_truyen FROM `san_pham`
+JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham WHERE id_loai_san_pham = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -182,7 +188,10 @@ class SanPhamDAO extends BaseDAO
     }
     public function showOne($id)
     {
-        $sql = "SELECT * FROM `san_pham` WHERE id_san_pham = " . $id;
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen 
+FROM san_pham
+JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
+       WHERE san_pham.id_san_pham = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -214,7 +223,11 @@ class SanPhamDAO extends BaseDAO
     }
     public function search($key)
     {
-        $sql = "SELECT * FROM `san_pham` WHERE ten_san_pham LIKE '%$key%' AND trang_thai =1";
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen
+        FROM san_pham
+        JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham
+        WHERE san_pham.ten_san_pham LIKE '%$key%' AND san_pham.trang_thai = 1;
+        ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];

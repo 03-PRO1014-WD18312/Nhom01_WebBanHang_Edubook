@@ -22,7 +22,7 @@ searchBar.onkeyup = () => {
   }
 
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/search.php", true);
+  xhr.open("POST", "api/chatbox/search.php", true);
   xhr.onload = () => {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       usersList.innerHTML = xhr.response;
@@ -34,7 +34,7 @@ searchBar.onkeyup = () => {
 
 setInterval(() => {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", "api/users.php", true);
+  xhr.open("POST", "api/chatbox/users.php", true);
   xhr.onload = () => {
     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
       if (!searchBar.classList.contains("active")) {
