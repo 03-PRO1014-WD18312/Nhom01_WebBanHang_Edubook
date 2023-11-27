@@ -40,52 +40,55 @@
                     </tfoot>
                     <tbody>
                         <?php foreach ($list as $i => $dh) { ?>
-                            <tr>
+                        <tr id="dh<?php echo $dh->id_don_hang ?>">
 
-                                <td><?php echo $i + 1 ?></td>
-                                <td> <a href="index.php?controller=donHang_fix&id=<?php echo $dh->id_don_hang ?>">#<?php echo $dh->ma_hoa_don ?></a>
-                                </td>
-                                <td><?php echo $dh->id_user ?></td>
-                                <td><?php echo $dh->sdt ?></td>
-                                <td><?php echo $dh->thoi_gian ?></td>
-                                <th> <?php
+                            <td><?php echo $i + 1 ?></td>
+                            <td> <a
+                                    href="index.php?controller=donHang_fix&id=<?php echo $dh->id_don_hang ?>">#<?php echo $dh->ma_hoa_don ?></a>
+                            </td>
+                            <td><?php echo $dh->id_user ?></td>
+                            <td><?php echo $dh->sdt ?></td>
+                            <td><?php echo $dh->thoi_gian ?></td>
+                            <th> <?php
                                         if ($dh->ten_tt_don_hang == "Chờ xác nhận") {
                                         ?> <span style="color: black;" class="badge bg-warning text-dark">
-                                            <?php echo $dh->ten_tt_don_hang ?></span>
-                                    <?php
+                                    <?php echo $dh->ten_tt_don_hang ?></span>
+                                <?php
                                         } elseif ($dh->ten_tt_don_hang == "Đang giao hàng") {
                                     ?> <span style="color: aliceblue;" class="badge bg-primary">
-                                            <?php echo $dh->ten_tt_don_hang ?></span>
-                                    <?php
+                                    <?php echo $dh->ten_tt_don_hang ?></span>
+                                <?php
                                         } elseif ($dh->ten_tt_don_hang == "Hủy") {
                                     ?> <span style="color: aliceblue;" class="badge bg-danger">
-                                            <?php echo $dh->ten_tt_don_hang ?></span>
-                                    <?php
+                                    <?php echo $dh->ten_tt_don_hang ?></span>
+                                <?php
                                         } elseif ($dh->ten_tt_don_hang == "Đã giao hàng") {
                                     ?> <span style="color: aliceblue;" class="badge bg-success">
-                                            <?php echo $dh->ten_tt_don_hang ?></span>
-                                    <?php
+                                    <?php echo $dh->ten_tt_don_hang ?></span>
+                                <?php
                                         } elseif ($dh->ten_tt_don_hang == "Giao hàng không thành công") {
                                     ?> <span style="color: aliceblue;" class="badge bg-secondary">
-                                            <?php echo $dh->ten_tt_don_hang ?></span>
-                                    <?php
+                                    <?php echo $dh->ten_tt_don_hang ?></span>
+                                <?php
                                         }
                                     ?>
-                                </th>
+                            </th>
 
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" onclick="showDH(<?php echo $dh->id_don_hang ?>)">
-                                        Trạng thái đơn hàng
-                                    </button>
-                                    <br>
-                                    <button style="margin-top: 5px;" type="button" class="btn btn-primary">
-                                        Xuất hoá đơn
-                                    </button>
-                                </td>
-                            </tr>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalLong" onclick="showDH(<?php echo $dh->id_don_hang ?>)">
+                                    Trạng thái đơn hàng
+                                </button>
+                                <br>
+                                <button style="margin-top: 5px;" type="button" class="btn btn-primary">
+                                    Xuất hoá đơn
+                                </button>
+                            </td>
+                        </tr>
                         <?php } ?>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -104,25 +107,28 @@
                                         </div>
                                         <div>
                                             <h5 style="color: dimgray">Thông tin đơn hàng</h5>
+                                            <p id="ma_don">Mã đơn hàng : </p>
                                             <div id="showDH">
                                                 <p>Sản phẩm 1 X1 </p>
                                                 <p>Sản Phẩm 2 X2 </p>
                                             </div>
                                             <div>
                                                 Trạng thái đơn hàng:
-                                                <select name="" id="trang thai">
-                                                    <option value=""></option>p
+                                                <select name="trang_thai" id="trang_thai">
+
                                                 </select>
                                             </div>
                                             <div>
                                                 <h5 style="color: dimgray">Ghi chú</h5>
-                                                <textarea name="" id="" cols="50" rows="10"></textarea>
+                                                <textarea name="ghi_chu" id="ghi_chu" cols="50" rows="10"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
-                                        <button type="button" class="btn btn-primary">Lưu</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                            onclick="huy()">Huỷ</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                            onclick="save()">Lưu</button>
                                     </div>
                                 </div>
                             </div>

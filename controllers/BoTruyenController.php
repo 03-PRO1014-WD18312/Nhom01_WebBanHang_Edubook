@@ -142,6 +142,8 @@ class BoTruyenController
                     $list = $BoTruyenDAO->showView($_GET['id']);
                     $loaiTruyenDAO = new LoaiTruyenDAO();
                     $loai = $loaiTruyenDAO->show();
+                    $SanPhamDAO = new SanPhamDAO();
+                    $bo = $SanPhamDAO->showBo($_GET['id']);
                     include_once "views/botruyen/admin/fix.php";
                 }
             }
