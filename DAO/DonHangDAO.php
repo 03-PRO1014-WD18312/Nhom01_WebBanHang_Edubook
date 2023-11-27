@@ -170,6 +170,45 @@ class DonHangDAO extends BaseDAO
 
         return $users;
     }
+    public function showAllXN()
+    {
+        $sql = "SELECT 
+        ho_don.ma_hoa_don, 
+        don_hang.thoi_gian,
+        dia_chi.dia_chi, 
+        chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong as tong_tien,chi_tiet_don_hang.gia,chi_tiet_don_hang.so_luong,
+        chi_tiet_don_hang.ten_san_pham,
+        ho_don.trang_thai,users.ten,users.sdt
+        FROM `ho_don` 
+        JOIN don_hang ON don_hang.id_don_hang = ho_don.id_don_hang 
+        JOIN users ON users.id_user = don_hang.id_user 
+        JOIN dia_chi ON users.id_user = dia_chi.id_user 
+        JOIN chi_tiet_don_hang ON chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang WHERE dia_chi.trang_thai = 1 AND ho_don.id_don_hang=" . $id;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $users = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Create a Login object and add it to the array
+            $user = new PDF(
+                $row['ma_hoa_don'],
+                $row['thoi_gian'],
+                $row['dia_chi'],
+                $row['tong_tien'],
+                $row['ten_san_pham'],
+                $row['trang_thai'],
+                $row['ten'],
+                $row['sdt'],
+                $row['gia'],
+                $row['so_luong'],
+            );
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
     public function gethd_id($id)
     {
         $sql = "SELECT * FROM chi_tiet_don_hang WHERE id_don_hang = " . $id;
