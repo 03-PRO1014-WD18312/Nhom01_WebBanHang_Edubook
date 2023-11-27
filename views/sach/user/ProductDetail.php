@@ -59,10 +59,10 @@ input[type="number"]::-webkit-inner-spin-button {
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <ins><span
-                                                    class="text-brand"><?php echo number_format($vl->gia_ban, 0, ',', '.') ?>
+                                                    class="text-brand"><?php echo number_format($vl->gia_ban, 0, ',', ',') ?>
                                                     VND</span></ins>
                                             <ins><span
-                                                    class="old-price font-md ml-15"><?php echo number_format($vl->gia_goc, 0, ',', '.') ?>
+                                                    class="old-price font-md ml-15"><?php echo number_format($vl->gia_goc, 0, ',', ',') ?>
                                                     VND</span></ins>
                                             <span
                                                 class="save-price  font-md color3 ml-15"><?php echo ($vl->gia_ban / $vl->gia_goc) * 100 ?>%
@@ -346,10 +346,10 @@ input[type="number"]::-webkit-inner-spin-button {
                                                     </span>
                                                 </div>
                                                 <div class="product-price">
-                                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', '.') ?>
+                                                    <span><?php echo  number_format($vl->gia_ban, 0, ',', ',') ?>
                                                         VND</span>
                                                     <span
-                                                        class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', '.') ?>
+                                                        class="old-price"><?php echo  number_format($vl->gia_goc, 0, ',', ',') ?>
                                                         VND</span>
                                                 </div>
                                             </div>
@@ -383,7 +383,7 @@ input[type="number"]::-webkit-inner-spin-button {
                             </div>
                             <div class="content pt-10">
                                 <h5><a href="index.php?controller=boTruyen_view&id=<?php echo $vl->id_bo_truyen ?>"><?php echo $vl->ten_san_pham ?></a></h5>
-                                <p class="price mb-0 mt-5"><?php echo  number_format($vl->gia_ban, 0, ',', '.')  ?> VND
+                                <p class="price mb-0 mt-5"><?php echo  number_format($vl->gia_ban, 0, ',', ',')  ?> VND
                                 </p>
                                 <div class="product-rate">
                                     <div class="product-rating" style="width:90%"></div>

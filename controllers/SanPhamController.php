@@ -210,7 +210,7 @@ class SanPhamController
                     $_POST['trong_luong'],
                     get_time(),
                     $_POST['id_loai_san_pham'],
-                    $_POST['id_bo_truyen'],
+                    
                     $_POST['id_nha_san_xuat'],
                     $_POST['id_nha_phat_hanh']
                 );

@@ -39,7 +39,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Doanh thu</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $doanh_thu['tong_tien']; ?>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($doanh_thu['tong_tien'], 0, ',', ',') ; ?>
                             </div>
                         </div>
                         <div class="col-auto">
