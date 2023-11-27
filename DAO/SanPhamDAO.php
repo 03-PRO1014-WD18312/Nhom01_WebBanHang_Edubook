@@ -4,7 +4,7 @@ include_once 'models/AnhSanPham.php';
 include_once 'DAO/ConnectDAO.php';
 class SanPhamDAO extends BaseDAO
 {
-    public function card($id,$listItem)
+    public function card($id, $listItem)
     {
         $id_string = implode(', ', $listItem);
         $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,san_pham.id_loai_san_pham,san_pham.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham=san_pham.id_san_pham  WHERE gio_hang.id_user = $id AND gio_hang.id_san_pham IN ($id_string)";
@@ -29,7 +29,6 @@ class SanPhamDAO extends BaseDAO
 
         return $lists;
     }
-
     public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham, $id_bo_truyen, $id_nha_san_xuat, $id_nha_phat_hanh)
     {
         $sql = "INSERT INTO `san_pham`(`ten_san_pham`, `mo_ta`, `gia_ban`, `gia_goc`, `so_luong`,

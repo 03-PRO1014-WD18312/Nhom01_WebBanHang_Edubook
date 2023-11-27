@@ -14,6 +14,17 @@
   -webkit-text-fill-color: transparent;
   margin-bottom: 217px;
 }
+.text {
+  margin: 0 !important;
+}
+.show {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; /* hoặc có thể sử dụng space-between hoặc space-evenly tùy theo ý muốn */
+  align-items: center;
+}
+
 .container form {
   padding: 30px 0 0 0;
 }
