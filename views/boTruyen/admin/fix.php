@@ -94,7 +94,7 @@
         </div>
         <div class="form-row " id="list">
             <?php foreach ($bo as $key => $vl) { ?>
-                <div class="show">
+                <div class="show1">
                     <div>
                         <label for="">Tên sản phẩm</label> <br>
                         <input type="text" name="<?php echo $vl->ten_san_pham ?>" value="<?php echo $vl->ten_san_pham ?>" id="">
@@ -114,7 +114,7 @@
                 </div>
             <?php } ?>
         </div>
-        <div class="form-row show">
+        <div class="form-row show1">
             <div>
 
                 <p onclick="add()" style="font-size: 40px;">+</p>
@@ -166,7 +166,7 @@
         var div4 = document.createElement("div");
 
         var box = document.createElement("div");
-        div.classList.add("show");
+        div.classList.add("show1");
         // Append các phần tử vào div
         div1.appendChild(label1);
         div1.appendChild(document.createElement("br"));
