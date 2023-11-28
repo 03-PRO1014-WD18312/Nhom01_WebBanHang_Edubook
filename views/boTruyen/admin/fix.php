@@ -44,7 +44,7 @@
                         <?php foreach ($loai as $key => $value) {
                             if ($value->id == $vl->id) {
                         ?>
-                                <option value="<?php echo $vl->id ?>"><?php echo $vl->ten ?></option>
+                                <option value="<?php echo $vl->id ?>"><?php echo $value->ten ?></option>
                         <?php
                             }
                         }

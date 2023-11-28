@@ -28,7 +28,7 @@ class SanPhamController
                     }
                 } else {
                     $sanPhamDAO = new SanPhamDAO();
-                    $list = $sanPhamDAO->show();
+                    $list = $sanPhamDAO->showList();
                     include_once "views/sach/admin/list.php";
                 }
             } else {
@@ -76,7 +76,7 @@ class SanPhamController
                     include_once "views/sach/user/ProductDetail.php";
                 } else {
                     $sanPhamDAO = new SanPhamDAO();
-                    $list = $sanPhamDAO->show();
+                    $list = $sanPhamDAO->showList();
                     include_once "views/sach/admin/list.php";
                 }
             } else {

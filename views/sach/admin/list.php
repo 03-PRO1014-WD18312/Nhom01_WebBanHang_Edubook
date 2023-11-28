@@ -19,8 +19,7 @@
                             <th>Hình ảnh</th>
                             <th>giá bán</th>
                             <th>Số lượng</th>
-                            <th>Loại sách</th>
-                            <th>Bộ truyện</th>
+                           
                             <th>button</th>
                         </tr>
                     </thead>
@@ -31,8 +30,7 @@
                             <th>Hình ảnh</th>
                             <th>giá bán</th>
                             <th>Số lượng</th>
-                            <th>Loại sách</th>
-                            <th>Bộ truyện</th>
+                            
                             <th>button</th>
                         </tr>
                     </tfoot>
@@ -44,8 +42,6 @@
                             <td><img src="assets/imgs/shop/<?php echo $sp->hinh_anh?>" width="100px" height="60px" alt=""></td>
                             <td><?php echo  number_format($sp->gia_ban, 0, ',', ',')?></td>
                             <td><?php echo $sp->so_luong?></td>
-                            <td><?php echo $sp->id_loai_san_pham?></td>
-                            <td><?php echo $sp->id_bo_truyen?></td>
                             <td>
                                 <a href="index.php?controller=sanPham_fix&id=<?php echo $sp->id_san_pham?>">Chi tiết</a> |
                                 <a href="index.php?controller=sanPham_delete&id=<?php echo $sp->id_san_pham?>">Xóa</a>
