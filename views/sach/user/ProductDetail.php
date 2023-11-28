@@ -66,10 +66,9 @@
                                         </div>
                                         <div class="product_sort_info font-xs mb-30">
                                             <ul>
-                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Bảo hành một năm </li>
-                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả 30
-                                                    ngày</li>
-                                                <li><i class="fi-rs-credit-card mr-5"></i> Tiền mặt khi giao hàng có sẵn
+                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Thời gian giao hàng </li>
+                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả</li>
+                                                <li><i class="fi-rs-credit-card mr-5"></i> Đổi sản phẩm trong 30 ngày
                                                 </li>
                                             </ul>
                                         </div>
@@ -340,11 +339,13 @@
                             <h5 class="widget-title mb-10">BỘ TRUYỆN</h5>
                             <div class="bt-1 border-color-1"></div>
                         </div>
+                        <form action="index.php?controller=check&nd=thongTin" method="post">
                         <?php
                         $count_one = 0;
                         $sum_list = 0;
                         foreach ($bo_truyen as $key => $vl) {
                             $count_one++; ?>
+                            <input type="hidden" name="so_luong" value="0">
                             <div class="single-post clearfix">
                                 <div class="image">
                                     <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
@@ -356,22 +357,21 @@
                                         <?php $sum_list += $vl->gia_ban;
                                         echo  number_format($vl->gia_ban, 0, ',', ',')  ?> VND
                                     </p>
+                                    <input type="hidden" name="card[]" value="<?php echo $vl->id_san_pham?>">
+                                    <input type="hidden" name="boTruyen">
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>
                                 </div>
                             </div>
                         <?php
-                            if ($count_one == 3) {
-                                break;
-                            }
                         }
                         ?>
-
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10"><?php echo $sum_list; ?></h5>
-                            <div class="bt-1 border-color-1"> <button>Mua bộ truyện</button></div>
+                            <div class="bt-1 border-color-1"> <button type="submit">Mua bộ truyện</button></div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

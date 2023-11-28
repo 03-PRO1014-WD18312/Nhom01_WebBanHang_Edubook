@@ -7,7 +7,13 @@ class SanPhamDAO extends BaseDAO
     public function card($id, $listItem)
     {
         $id_string = implode(', ', $listItem);
-        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,san_pham.id_loai_san_pham,chi_tiet_bo_truyen.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham ON gio_hang.id_san_pham=san_pham.id_san_pham JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham  WHERE gio_hang.id_user = $id AND gio_hang.id_san_pham IN ($id_string)";
+        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,bo_truyen.id_loai_san_pham,
+        chi_tiet_bo_truyen.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,
+        san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham 
+            ON gio_hang.id_san_pham=san_pham.id_san_pham JOIN chi_tiet_bo_truyen 
+                ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham
+                JOIN bo_truyen ON bo_truyen.id_bo_truyen = chi_tiet_bo_truyen.id_bo_truyen  WHERE gio_hang.id_user = $id AND
+                                           gio_hang.id_san_pham IN ($id_string)";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -29,6 +35,37 @@ class SanPhamDAO extends BaseDAO
 
         return $lists;
     }
+    public function cardB($listItem)
+    {
+        $id_string = implode(', ', $listItem);
+        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,bo_truyen.id_loai_san_pham,san_pham.id_san_pham,
+        chi_tiet_bo_truyen.id_bo_truyen,
+        san_pham.gia_ban FROM san_pham 
+            JOIN chi_tiet_bo_truyen 
+                ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham 
+                JOIN bo_truyen ON bo_truyen.id_bo_truyen = chi_tiet_bo_truyen.id_bo_truyen WHERE 
+                                           chi_tiet_bo_truyen.id_san_pham IN ($id_string)";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new card(
+                0,
+                0,
+                $row['id_san_pham'],
+                $row['gia_ban'],
+                1,
+                $row['hinh_anh'],
+                $row['id_loai_san_pham'],
+                $row['id_bo_truyen'],
+                $row['ten_san_pham']
+            );
+            $lists[] = $product;
+        }
+
+        return $lists;
+    }
     public function add($ten_san_pham, $mo_ta, $gia_ban, $gia_goc, $so_luong, $so_trang, $id_tac_gia, $nam_xb, $kich_thuoc, $trong_luong, $ngay_nhap, $id_loai_san_pham,  $id_nha_san_xuat, $id_nha_phat_hanh)
     {
         $sql = "INSERT INTO `san_pham`(`ten_san_pham`, `mo_ta`, `gia_ban`, `gia_goc`, `so_luong`,
@@ -39,7 +76,8 @@ class SanPhamDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function showList(){
+    public function showList()
+    {
         $sql = "SELECT san_pham.*
         FROM san_pham
         ORDER BY san_pham.id_san_pham DESC;";
@@ -339,7 +377,7 @@ class SanPhamDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function updateSlSP($so_luong,$trangThai,$id_san_pham)
+    public function updateSlSP($so_luong, $trangThai, $id_san_pham)
     {
         $sql = "UPDATE `san_pham` SET `so_luong`=$so_luong,`trang_thai`=$trangThai WHERE id_san_pham = " . $id_san_pham;
         $stmt = $this->PDO->prepare($sql);

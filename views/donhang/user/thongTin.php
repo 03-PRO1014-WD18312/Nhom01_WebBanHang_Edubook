@@ -160,7 +160,7 @@ include_once 'views/layout/user/Header.php'; ?>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach ($thongTinSp as $sp) {?>
+                                    <?php foreach ($thongTinSp as $sp) { ?>
                                         <tr>
                                             <td class="image product-thumbnail"><img src="assets/imgs/shop/<?php echo $sp->hinh_anh?>" alt="#"></td>
                                             <td>

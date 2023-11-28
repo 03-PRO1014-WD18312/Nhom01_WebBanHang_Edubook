@@ -172,7 +172,11 @@ class DonHangController
                         $sanPhamDAO = new SanPhamDAO();
                         $user = new TaiKhoanDAO();
                         $thongTinUs = $user->getUsID($_SESSION['id']);
-                        $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                        if (isset($_POST['boTruyen'])) {
+                            $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
+                        } else {
+                            $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                        }
                         if (isset($_POST['so_luong'])) {
                             $soLuong = $_POST['so_luong'];
                         } else {
@@ -212,7 +216,11 @@ class DonHangController
                     $sanPhamDAO = new SanPhamDAO();
                     $user = new TaiKhoanDAO();
                     $thongTinUs = $user->getUsID($_SESSION['id']);
-                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                    if (isset($_POST['boTruyen'])) {
+                        $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
+                    } else {
+                        $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                    }
                     if (isset($_POST['so_luong'])) {
                         $soLuong = $_POST['so_luong'];
                     } else {
@@ -321,7 +329,11 @@ class DonHangController
                 header('location: index.php?controller=trangChu');
             }
         } else {
-            $sum = 0;
+            $GioHangDAO = new GioHangDAO();
+            $sum = $GioHangDAO->sum($_SESSION['id']);
+            $DonHangDAO = new DonHangDAO();
+            $thongTinUs = $DonHangDAO->tt_user_don_hang($_GET['id']);
+            $thongTinSp  = $DonHangDAO->tt_sp_don_hang($_GET['id']);
             include_once('views/donhang/user/chiTietDonHang.php');
         }
     }
