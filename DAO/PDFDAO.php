@@ -45,7 +45,7 @@ class PDFDAO extends TCPDF
         // chuyển đổi thành mã qr code
         $path = "assets/imgs/qrcode/";
         $qrcode = $path . time() . ".png";
-        QRcode::png("http://localhost/php/Nhom01_WebBanHang_Edubook/index.php?controller=ctsp&id=".$info[0]->ma_hoa_don, $qrcode, "H", 4, 4);
+        QRcode::png("http://localhost/php/Nhom01_WebBanHang_Edubook/index.php?controller=donHang_chi_tiet&id=".$info[0]->id_don_hang, $qrcode, "H", 4, 4);
 //        echo "<img src='" . $qrcode . "'>";
 
         // xóa ảnh

@@ -245,14 +245,14 @@ include "views/layout/user/Header.php";
                 </div>
                 <div class="carausel-6-columns carausel-arrow-center" id="carausel-6-columns-2">
                     <?php foreach ($san_pham_now as $key => $vl) { ?>
-                    <div class="product-cart-wrap small hover-up">
+                    <div class="product-cart-wrap small hover-up" >
                         <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom" style="min-height: 240px; overflow: hidden;">
+                            <div class="product-img product-img-zoom" style="position: relative; width: 100%; height: 0;padding-bottom: 120%;overflow: hidden;">
                                 <a href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"">
                                     <img class=" default-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>"
-                                    width="100%" alt="" style="margin: auto; min-height: 240px;">
-                                    <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>"
-                                        width="100%" alt="" style="margin: auto;min-height: 240px;">
+                                    width="100%" alt="" style=" position: absolute;top: 0;left: 0;width: 100%;height: 100%; object-fit: cover; ">
+                                    <img class=" default-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>"
+                                    width="100%" alt="" style=" position: absolute;top: 0;left: 0;width: 100%;height: 100%; object-fit: cover; ">
                                 </a>
                             </div>
                             <div class="product-action-1">

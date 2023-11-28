@@ -16,7 +16,9 @@ class LoaiTruyenDAO extends BaseDAO
     {
         $sql = "SELECT loai_san_pham.*, COUNT(san_pham.id_san_pham) AS so_luong_sach
         FROM loai_san_pham
-        LEFT JOIN san_pham ON loai_san_pham.id_loai_san_pham = san_pham.id_loai_san_pham
+        LEFT JOIN bo_truyen ON loai_san_pham.id_loai_san_pham = bo_truyen.id_loai_san_pham
+        LEFT JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
+        LEFT JOIN san_pham ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
         GROUP BY loai_san_pham.id_loai_san_pham;";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();

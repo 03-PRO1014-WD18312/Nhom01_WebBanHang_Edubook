@@ -14,7 +14,7 @@ class BoTruyenDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_truyen'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
             $lists[] = $product;
         }
         return $lists;
@@ -30,7 +30,7 @@ class BoTruyenDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_truyen'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
             $lists[] = $product;
         }
         return $lists;
@@ -39,14 +39,14 @@ class BoTruyenDAO extends BaseDAO
     public function list($id, $loai)
     {
         $sql = "SELECT *
-        FROM bo_truyen  where id_bo_truyen != $id and id_loai_truyen = $loai";
+        FROM bo_truyen  where id_bo_truyen != $id and id_loai_san_pham = $loai";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_truyen'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
             $lists[] = $product;
         }
         return $lists;
@@ -59,7 +59,7 @@ class BoTruyenDAO extends BaseDAO
         $tmp = $img['tmp_name'];
         $mov = 'assets/imgs/shop/' . $fileName;
         move_uploaded_file($tmp, $mov);
-        $sql = "INSERT INTO `bo_truyen`( `id_loai_truyen`, `ten_bo_truyen`, `gia_ban`, `gia_goc`, `mo_ta`, `hinh_anh`) VALUES ('$loai','$ten','$gia_ban','$gia_goc','$mo_ta','$fileName');";
+        $sql = "INSERT INTO `bo_truyen`( `id_loai_san_pham`, `ten_bo_truyen`, `gia_ban`, `gia_goc`, `mo_ta`, `hinh_anh`) VALUES ('$loai','$ten','$gia_ban','$gia_goc','$mo_ta','$fileName');";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
@@ -116,9 +116,9 @@ class BoTruyenDAO extends BaseDAO
             $mov = 'assets/imgs/shop/' . $fileName;
 
             move_uploaded_file($tmp, $mov);
-            $sql = "UPDATE `bo_truyen` SET `id_loai_truyen`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`hinh_anh`='$fileName',`trang_thai`='$trang_thai' WHERE   id_bo_truyen = $id";
+            $sql = "UPDATE `bo_truyen` SET `id_loai_san_pham`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`hinh_anh`='$fileName',`trang_thai`='$trang_thai' WHERE   id_bo_truyen = $id";
         } else {
-            $sql = "UPDATE `bo_truyen` SET `id_loai_truyen`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`trang_thai`='$trang_thai' WHERE   id_bo_truyen = $id";
+            $sql = "UPDATE `bo_truyen` SET `id_loai_san_pham`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`trang_thai`='$trang_thai' WHERE   id_bo_truyen = $id";
         }
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();

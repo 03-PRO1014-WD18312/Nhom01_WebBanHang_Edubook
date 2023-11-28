@@ -339,11 +339,13 @@
                             <h5 class="widget-title mb-10">BỘ TRUYỆN</h5>
                             <div class="bt-1 border-color-1"></div>
                         </div>
+                        <form action="index.php?controller=check&nd=thongTin" method="post">
                         <?php
                         $count_one = 0;
                         $sum_list = 0;
                         foreach ($bo_truyen as $key => $vl) {
                             $count_one++; ?>
+                            <input type="hidden" name="so_luong" value="0">
                             <div class="single-post clearfix">
                                 <div class="image">
                                     <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
@@ -355,22 +357,21 @@
                                         <?php $sum_list += $vl->gia_ban;
                                         echo  number_format($vl->gia_ban, 0, ',', ',')  ?> VND
                                     </p>
+                                    <input type="hidden" name="card[]" value="<?php echo $vl->id_san_pham?>">
+                                    <input type="hidden" name="boTruyen">
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>
                                 </div>
                             </div>
                         <?php
-                            if ($count_one == 3) {
-                                break;
-                            }
                         }
                         ?>
-
                         <div class="widget-header position-relative mb-20 pb-10">
                             <h5 class="widget-title mb-10"><?php echo $sum_list; ?></h5>
-                            <div class="bt-1 border-color-1"> <button>Mua bộ truyện</button></div>
+                            <div class="bt-1 border-color-1"> <button type="submit">Mua bộ truyện</button></div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
