@@ -172,7 +172,11 @@ class DonHangController
                         $sanPhamDAO = new SanPhamDAO();
                         $user = new TaiKhoanDAO();
                         $thongTinUs = $user->getUsID($_SESSION['id']);
-                        $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                        if (isset($_POST['boTruyen'])) {
+                            $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
+                        } else {
+                            $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                        }
                         if (isset($_POST['so_luong'])) {
                             $soLuong = $_POST['so_luong'];
                         } else {
@@ -212,9 +216,9 @@ class DonHangController
                     $sanPhamDAO = new SanPhamDAO();
                     $user = new TaiKhoanDAO();
                     $thongTinUs = $user->getUsID($_SESSION['id']);
-                    if (isset($_POST['boTruyen'])){
+                    if (isset($_POST['boTruyen'])) {
                         $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
-                    }else{
+                    } else {
                         $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
                     }
                     if (isset($_POST['so_luong'])) {
