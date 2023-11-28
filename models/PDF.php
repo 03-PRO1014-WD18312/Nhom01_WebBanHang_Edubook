@@ -1,9 +1,10 @@
 <?php
 class PDF
 {
-    public $ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $trang_thai,$ten,$sdt,$gia,$so_luong;
-    public function __construct($ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $trang_thai, $ten, $sdt,$gia,$so_luong)
+    public $id_don_hang,$ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $trang_thai,$ten,$sdt,$gia,$so_luong;
+    public function __construct($id_don_hang,$ma_hoa_don, $thoi_gian, $dia_chi, $tong_tien, $ten_san_pham, $trang_thai, $ten, $sdt,$gia,$so_luong)
     {
+        $this->id_don_hang = $id_don_hang;
         $this->ma_hoa_don = $ma_hoa_don;
         $this->thoi_gian = $thoi_gian;
         $this->dia_chi = $dia_chi;
