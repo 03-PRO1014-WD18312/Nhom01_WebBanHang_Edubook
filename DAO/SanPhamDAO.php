@@ -303,6 +303,12 @@ JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
+    public function updateSlSP($so_luong,$trangThai,$id_san_pham)
+    {
+        $sql = "UPDATE `san_pham` SET `so_luong`=$so_luong,`trang_thai`=$trangThai WHERE id_san_pham = " . $id_san_pham;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
     public function deleteSP($id_san_pham)
     {
         $sql = "DELETE FROM `san_pham` WHERE id_san_pham = " . $id_san_pham;
@@ -462,5 +468,42 @@ JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
 
         return $users;
     }
-    // delete ảnh sản phẩm
+    public function listSanPham()
+    {
+
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen 
+        FROM san_pham
+        LEFT JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham 
+        WHERE chi_tiet_bo_truyen.id_san_pham IS NULL
+        ORDER BY san_pham.id_san_pham DESC;        
+";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lists = array(); // hoặc $products = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
+            $product = new SanPham(
+                $row['id_san_pham'],
+                $row['ten_san_pham'],
+                $row['mo_ta'],
+                $row['hinh_anh'],
+                $row['gia_ban'],
+                $row['gia_goc'],
+                $row['so_luong'],
+                $row['so_trang'],
+                $row['id_tac_gia'],
+                $row['nam_xb'],
+                $row['kich_thuoc'],
+                $row['trong_luong'],
+                $row['ngay_nhap'],
+                $row['id_loai_san_pham'],
+                $row['id_bo_truyen'],
+                $row['id_nha_san_xuat'],
+                $row['id_nha_phat_hanh'],
+                $row['trang_thai'],
+            );
+            $lists[] = $product;
+        }
+        return $lists;
+    }
 }

@@ -93,7 +93,8 @@
             <h3 style="">Sản phẩm</h3>
         </div>
         <div class="form-row " id="list">
-            <?php foreach ($bo as $key => $vl) { ?>
+            <?php
+            foreach ($bo as $key => $vl) { ?>
                 <div class="show1">
                     <div>
                         <label for="">Tên sản phẩm</label> <br>
@@ -133,36 +134,109 @@
     </form>
 </div>
 <script>
+    <?php
+    // Chuyển đổi dữ liệu PHP thành chuỗi JSON
+    $json_data = json_encode($san_pham);
+    ?>
+    var list = <?php echo $json_data; ?>;
     // Xác định đối tượng div mà bạn muốn append HTML vào
     var container = document.getElementById("list");
-
+    count = 0;
     // Dữ liệu mẫu (thay thế bằng dữ liệu thực nếu cần)
     function add() {
         var div = document.createElement("div");
-
         // Tạo các phần tử HTML và thiết lập thuộc tính
         var label1 = document.createElement("label");
         label1.textContent = "Tên sản phẩm";
-        var input1 = document.createElement("input");
+        var input1 = document.createElement("select");
         input1.type = "text";
-        var div1 = document.createElement("div");
+        input1.name = 'add_pro[]'
+        var name_pro = document.getElementsByName("add_pro[]");
+        // Tạo các tùy chọn cho thẻ select
+        var option1 = document.createElement("option");
+        option1.value = "0";
+        option1.text = "Option 1";
+        input1.add(option1);
+        if (count == 0) {
+            list.forEach(element => {
+                var option = document.createElement("option");
+                option.value = element.id_san_pham;
+                option.text = element.ten_san_pham;
+                input1.add(option);
+            });
+            count++;
+        } else {
+            list.forEach(element => {
+                var option = document.createElement("option");
+                option.value = element.id_san_pham;
+                option.text = element.ten_san_pham;
+                input1.add(option);
+            });
+            count++;
+            name_pro.forEach(function(element) {
+                var value = element.value;
+                list.forEach(element => {
+                    if (element.id_san_pham != value) {
+                        for (var i = 0; i < input1.options.length; i++) {
+                            if (input1.options[i].value === value) {
+                                input1.remove(i);
+                                break; // Kết thúc vòng lặp sau khi xóa
+                            }
+                        }
+                    }
+                });
 
+
+            });
+        }
+
+
+        // Thêm sự kiện "change" cho thẻ select
+        input1.addEventListener("change", function() {
+            // Khi giá trị được chọn thay đổi, lấy giá trị và hiển thị trong console
+            list.forEach(element => {
+                var selectedValue = input1.value;
+
+                if (element.id_san_pham == selectedValue) {
+
+                    input2.value = element.gia_ban;
+                    input3.value = element.gia_goc;
+                    input4.value = element.so_luong;
+
+                }
+                if (0 == selectedValue) {
+
+                    input2.value = "";
+                    input3.value = "";
+                    input4.value = "";
+                }
+            });
+            // Thực hiện các bước tiếp theo tùy thuộc vào yêu cầu của bạn
+        });
+        // Thêm các tùy chọn vào thẻ select
+        var div1 = document.createElement("div");
+        input1.style.width = "200px";
         var label2 = document.createElement("label");
         label2.textContent = "Giá bán";
         var input2 = document.createElement("input");
-        input2.type = "text";
+        input2.type = "number";
+        input2.name = "add_gia_ban[]";
         var div2 = document.createElement("div");
 
         var label3 = document.createElement("label");
         label3.textContent = "Giá gốc";
+
         var input3 = document.createElement("input");
-        input3.type = "text";
+        input3.type = "number";
+        input2.name = "add_gia_goc[]";
         var div3 = document.createElement("div");
 
         var label4 = document.createElement("label");
         label4.textContent = "Số lượng";
+
         var input4 = document.createElement("input");
-        input4.type = "text";
+        input4.type = "number";
+        input2.name = "add_so_luong[]";
         var div4 = document.createElement("div");
 
         var box = document.createElement("div");

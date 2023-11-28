@@ -87,8 +87,9 @@ class BoTruyenController
                 if (isset($_POST['ten'])) {
                     $BoTruyenDAO = new BoTruyenDAO();
                     $BoTruyenDAO->add($_POST['ten'], $_POST['id_loai_san_pham'], $_FILES['img'], $_POST['giaban'], $_POST['giagoc'], $_POST['mo_ta']);
+                    $sl = $BoTruyenDAO->countid();
+                    $BoTruyenDAO->addPro($sl, $_POST['add_pro']);
                     $list = $BoTruyenDAO->show();
-
                     $_SESSION['error'] = 'thêm mới thành công';
                     header('location: index.php?controller=boTruyen');
                     exit();
@@ -97,7 +98,11 @@ class BoTruyenController
                     $loai = $loaiTruyenDAO->show();
                     $danh_muc = $loaiTruyenDAO->show();
                     $BoTruyenDAO = new BoTruyenDAO();
-                    $san_pham = $BoTruyenDAO->show();
+                  
+                    // $san_pham = $BoTruyenDAO->show();
+                    $SanPhamDAO = new SanPhamDAO();
+                    $san_pham = $SanPhamDAO->listSanPham();
+
                     include_once('views/botruyen/admin/add.php');
                 }
             }
@@ -133,6 +138,8 @@ class BoTruyenController
                 if (isset($_POST['ten'])) {
                     $BoTruyenDAO = new BoTruyenDAO();
                     $BoTruyenDAO->update($_POST['id'], $_POST['loai'], $_POST['ten'], $_POST['giaban'], $_POST['giagoc'], $_POST['mota'], $_POST['trang_thai'], $_FILES['img']);
+                    $BoTruyenDAO->addPro($_POST['id'], $_POST['add_pro']);
+                    // var_dump($_POST['add_pro']);
                     $list = $BoTruyenDAO->show();
                     $_SESSION['error'] = 'Sửa thông tin thành công';
                     header('location: index.php?controller=boTruyen');
@@ -144,6 +151,7 @@ class BoTruyenController
                     $loai = $loaiTruyenDAO->show();
                     $SanPhamDAO = new SanPhamDAO();
                     $bo = $SanPhamDAO->showBo($_GET['id']);
+                    $san_pham = $SanPhamDAO->listSanPham();
                     include_once "views/botruyen/admin/fix.php";
                 }
             }
