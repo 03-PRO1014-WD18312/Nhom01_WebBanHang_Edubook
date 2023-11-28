@@ -52,10 +52,12 @@ class trangChuDAO extends BaseDAO
     // tổng hợp sản phẩm của từng loại
     public function List_san_pham()
     {
-        $sql = "SELECT loai_san_pham.ten_loai_san_pham, COUNT(san_pham.id_san_pham) AS so_luong_sach
+        $sql = " SELECT loai_san_pham.ten_loai_san_pham, COUNT(san_pham.id_san_pham) AS so_luong_sach
         FROM loai_san_pham
-        LEFT JOIN san_pham ON loai_san_pham.id_loai_san_pham = san_pham.id_loai_san_pham AND san_pham.trang_thai = 1
-        GROUP BY loai_san_pham.id_loai_san_pham, loai_san_pham.ten_loai_san_pham;";
+         LEFT JOIN bo_truyen ON loai_san_pham.id_loai_san_pham = bo_truyen.id_loai_san_pham
+         LEFT JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
+         LEFT JOIN san_pham ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham AND san_pham.trang_thai = 1
+         GROUP BY loai_san_pham.id_loai_san_pham, loai_san_pham.ten_loai_san_pham;";
 
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -73,10 +75,12 @@ class trangChuDAO extends BaseDAO
         COUNT( CASE WHEN dh.id_trang_thai_don_hang not in (1,4,5) THEN ctdh.id_san_pham END) AS so_luong_san_pham
     FROM
         loai_san_pham lsp
+    LEFT JOIN bo_truyen ON lsp.id_loai_san_pham = bo_truyen.id_loai_san_pham
+        LEFT JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
+        LEFT JOIN san_pham ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham 
+        
     LEFT JOIN
-        san_pham sp ON lsp.id_loai_san_pham = sp.id_loai_san_pham
-    LEFT JOIN
-        chi_tiet_don_hang ctdh ON sp.id_san_pham = ctdh.id_san_pham
+        chi_tiet_don_hang ctdh ON san_pham.id_san_pham = ctdh.id_san_pham
     LEFT JOIN
         don_hang dh ON ctdh.id_don_hang = dh.id_don_hang 
     GROUP BY
