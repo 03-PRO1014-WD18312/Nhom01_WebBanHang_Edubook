@@ -66,10 +66,9 @@
                                         </div>
                                         <div class="product_sort_info font-xs mb-30">
                                             <ul>
-                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Bảo hành một năm </li>
-                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả 30
-                                                    ngày</li>
-                                                <li><i class="fi-rs-credit-card mr-5"></i> Tiền mặt khi giao hàng có sẵn
+                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Thời gian giao hàng </li>
+                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả</li>
+                                                <li><i class="fi-rs-credit-card mr-5"></i> Đổi sản phẩm trong 30 ngày
                                                 </li>
                                             </ul>
                                         </div>
