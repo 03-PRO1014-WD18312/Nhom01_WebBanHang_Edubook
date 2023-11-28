@@ -20,16 +20,15 @@ input[type="number"]::-webkit-inner-spin-button {
 
                                         <?php  foreach ($bo_truyen as $key => $vl) { ?>
                                         <figure class="border-radius-10">
-                                            <img src="assets/imgs/shop/<?php echo $vl->img ?>"
-                                                alt="product image">
+                                            <img src="assets/imgs/shop/<?php echo $vl->img ?>" alt="product image">
                                         </figure>
                                         <?php } ?>
                                     </div>
                                     <!-- THUMBNAILS -->
                                     <div class="slider-nav-thumbnails pl-15 pr-15">
                                         <?php foreach ($bo_truyen as $key => $vl) { ?>
-                                        <div><img src="assets/imgs/shop/<?php echo $vl->img ?>"
-                                                alt="product image"></div>
+                                        <div><img src="assets/imgs/shop/<?php echo $vl->img ?>" alt="product image">
+                                        </div>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -73,10 +72,9 @@ input[type="number"]::-webkit-inner-spin-button {
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
                                         <ul>
-                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Bảo hành một năm </li>
-                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả 30
-                                                ngày</li>
-                                            <li><i class="fi-rs-credit-card mr-5"></i> Tiền mặt khi giao hàng có sẵn
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Thời gian giao hàng </li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả</li>
+                                            <li><i class="fi-rs-credit-card mr-5"></i> Đổi sản phẩm trong 30 ngày
                                             </li>
                                         </ul>
                                     </div>
@@ -104,7 +102,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                 <!-- Detail Info -->
                             </div>
                         </div>
-                       
+
                         <div class="row mt-60">
                             <div class="col-12">
                                 <h3 class="section-t    itle style-1 mb-30">Bộ truyện Liên Quan</h3>
@@ -120,7 +118,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                         <div class="product-cart-wrap small hover-up">
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
-                                                    <a  href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"
+                                                    <a href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"
                                                         tabindex="0">
                                                         <img class="default-img"
                                                             src="assets/imgs/shop/<?php echo $vl->img ?>" alt="">
@@ -130,18 +128,18 @@ input[type="number"]::-webkit-inner-spin-button {
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn hover-up"
-                                                         href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
+                                                        href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
                                                             class="fi-rs-eye"></i></a>
 
                                                     <a aria-label="Mua ngay" class="action-btn hover-up"
-                                                     href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
+                                                        href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>"><i
                                                             class="fas fa-truck"></i></i></a>
                                                 </div>
 
                                             </div>
                                             <div class="product-content-wrap">
                                                 <h2><a
-                                                 href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
+                                                        href="index.php?controller=boTruyen_view&id=<?php echo $vl->id ?>&loai=<?php echo $vl->loai ?>">
                                                         <?php echo $vl->ten ?>
                                                     </a></h2>
                                                 <div class="rating-result" title="90%">
@@ -170,10 +168,10 @@ input[type="number"]::-webkit-inner-spin-button {
                     </div>
                 </div>
                 <div class="col-lg-3 primary-sidebar sticky-sidebar">
-                  
+
                     <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
-                    <h5 class="section-title style-1 mb-30 wow fadeIn animated">Tập truyện</h5>
-                       <?php
+                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">Tập truyện</h5>
+                        <?php
                         
                         foreach ($san_pham as $key => $vl) {
                              ?>
@@ -182,7 +180,7 @@ input[type="number"]::-webkit-inner-spin-button {
                                 <img src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" alt="#">
                             </div>
                             <div class="content pt-10">
-                                <h5><a ><?php echo $vl->ten_san_pham ?></a></h5>
+                                <h5><a><?php echo $vl->ten_san_pham ?></a></h5>
                                 <p class="price mb-0 mt-5"><?php echo  number_format($vl->gia_ban, 0, ',', ',')  ?> VND
                                 </p>
                                 <div class="product-rate">
