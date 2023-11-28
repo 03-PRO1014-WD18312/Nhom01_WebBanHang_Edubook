@@ -7,11 +7,12 @@ class SanPhamDAO extends BaseDAO
     public function card($id, $listItem)
     {
         $id_string = implode(', ', $listItem);
-        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,san_pham.id_loai_san_pham,
-       chi_tiet_bo_truyen.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,
-       san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham 
-           ON gio_hang.id_san_pham=san_pham.id_san_pham JOIN chi_tiet_bo_truyen 
-               ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham  WHERE gio_hang.id_user = $id AND
+        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,bo_truyen.id_loai_san_pham,
+        chi_tiet_bo_truyen.id_bo_truyen,`id_gio_hang`, `id_user`, gio_hang.id_san_pham,
+        san_pham.gia_ban, gio_hang.so_luong FROM `gio_hang` JOIN san_pham 
+            ON gio_hang.id_san_pham=san_pham.id_san_pham JOIN chi_tiet_bo_truyen 
+                ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham
+                JOIN bo_truyen ON bo_truyen.id_bo_truyen = chi_tiet_bo_truyen.id_bo_truyen  WHERE gio_hang.id_user = $id AND
                                            gio_hang.id_san_pham IN ($id_string)";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -37,11 +38,12 @@ class SanPhamDAO extends BaseDAO
     public function cardB($listItem)
     {
         $id_string = implode(', ', $listItem);
-        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,san_pham.id_loai_san_pham,san_pham.id_san_pham,
-       chi_tiet_bo_truyen.id_bo_truyen,
-       san_pham.gia_ban FROM san_pham 
-           JOIN chi_tiet_bo_truyen 
-               ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham  WHERE 
+        $sql = "SELECT san_pham.ten_san_pham,san_pham.hinh_anh,bo_truyen.id_loai_san_pham,san_pham.id_san_pham,
+        chi_tiet_bo_truyen.id_bo_truyen,
+        san_pham.gia_ban FROM san_pham 
+            JOIN chi_tiet_bo_truyen 
+                ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham 
+                JOIN bo_truyen ON bo_truyen.id_bo_truyen = chi_tiet_bo_truyen.id_bo_truyen WHERE 
                                            chi_tiet_bo_truyen.id_san_pham IN ($id_string)";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -74,7 +76,8 @@ class SanPhamDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function showList(){
+    public function showList()
+    {
         $sql = "SELECT san_pham.*
         FROM san_pham
         ORDER BY san_pham.id_san_pham DESC;";
@@ -374,7 +377,7 @@ class SanPhamDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
-    public function updateSlSP($so_luong,$trangThai,$id_san_pham)
+    public function updateSlSP($so_luong, $trangThai, $id_san_pham)
     {
         $sql = "UPDATE `san_pham` SET `so_luong`=$so_luong,`trang_thai`=$trangThai WHERE id_san_pham = " . $id_san_pham;
         $stmt = $this->PDO->prepare($sql);
