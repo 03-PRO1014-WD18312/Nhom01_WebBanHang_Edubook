@@ -112,8 +112,28 @@ class DonHangDAOAPI
 
         $stmt->execute();
         // $tt = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch instead of fetchAll since you are fetching a single value
+        $sql = "SELECT DISTINCT don_hang.id_don_hang, ho_don.ma_hoa_don, users.ten, users.sdt, don_hang.thoi_gian, trang_thai_don_hang.ten_trang_thai_don_hang, trang_thai_don_hang.id_trang_thai_don_hang
+        FROM `don_hang`
+        INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang
+        JOIN users ON users.id_user = don_hang.id_user
+        JOIN ho_don ON don_hang.id_don_hang = ho_don.id_don_hang
+        ORDER BY don_hang.id_don_hang DESC";
 
-        $sql = "SELECT don_hang.id_don_hang,ho_don.ma_hoa_don,users.ten,users.sdt,don_hang.thoi_gian,trang_thai_don_hang.ten_trang_thai_don_hang,trang_thai_don_hang.id_trang_thai_don_hang FROM `don_hang` INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang JOIN users  on users.id_user = don_hang.id_user JOIN ho_don on don_hang.id_don_hang = ho_don.id_don_hang WHERE don_hang.id_don_hang =$id";
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->execute();
+        $count = 1;
+        if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                if ($row['id_don_hang'] == $id) {
+                    break;
+                } else {
+                    $count++;
+                }
+            }
+        }
+
+        $sql = "SELECT DISTINCT don_hang.id_don_hang,ho_don.ma_hoa_don,users.ten,users.sdt,don_hang.thoi_gian,trang_thai_don_hang.ten_trang_thai_don_hang,trang_thai_don_hang.id_trang_thai_don_hang FROM `don_hang` INNER JOIN `trang_thai_don_hang` ON don_hang.id_trang_thai_don_hang = trang_thai_don_hang.id_trang_thai_don_hang JOIN users  on users.id_user = don_hang.id_user JOIN ho_don on don_hang.id_don_hang = ho_don.id_don_hang WHERE don_hang.id_don_hang =$id";
 
         $stmt = $this->pdo->prepare($sql);
 
@@ -127,7 +147,7 @@ class DonHangDAOAPI
                      " . $row['ten_trang_thai_don_hang'] . " </span>";
                 } elseif ($row['ten_trang_thai_don_hang'] == "Đang giao hàng") {
                     $show = "<span style='color: aliceblue;' class='badge bg-primary'>
-                    " . $row['ten_trang_thai_don_hang'] . " ></span>";
+                    " . $row['ten_trang_thai_don_hang'] . " </span>";
                 } elseif ($row['ten_trang_thai_don_hang'] == "Hủy") {
                     $show = "<span style='color: aliceblue;' class='badge bg-danger'>
                     " . $row['ten_trang_thai_don_hang'] . " </span>";
@@ -141,16 +161,16 @@ class DonHangDAOAPI
 
                 $output .= "<tr id='dh24' class='even'>
 
-                <td class='sorting_1'>4</td>
-                <td> <a href='index.php?controller=donHang_fix&amp;id=24'>#20231125134143</a>
+                <td class='sorting_1'>" . $count . "</td>
+                <td> <a href='index.php?controller=donHang_fix&amp;id=" . $row['id_don_hang'] . "'>#" . $row['ma_hoa_don'] . "</a>
                 </td>
-                <td>Phú Nguyễn</td>
-                <td>0962954690</td>
-                <td>2023-11-27 09:10:45</td>
+                <td>" . $row['ten'] . "</td>
+                <td>" . $row['sdt'] . "</td>
+                <td>" . $row['thoi_gian'] . "</td>
                 <th> " . $show . " </th>
 
                 <td>
-                    <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong' onclick='showDH(24)'>
+                    <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModalLong' onclick='showDH(" . $row['id_don_hang'] . ")'>
                         Trạng thái đơn hàng
                     </button>
                     <br>

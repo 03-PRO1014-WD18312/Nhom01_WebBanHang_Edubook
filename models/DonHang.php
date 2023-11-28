@@ -51,3 +51,31 @@ class LichSu
         $this->so_luong = $so_luong;
     }
 }
+class showu
+{
+    public $id_don_hang, $ma_don, $ten, $sdt, $thoi_gian, $dia_chi, $phung_thuc;
+    public function __construct($id_don_hang, $ma_don, $ten, $sdt, $thoi_gian, $dia_chi, $phung_thuc)
+    {
+        $this->id_don_hang = $id_don_hang;
+        $this->ma_don = $ma_don;
+        $this->sdt = $sdt;
+        $this->ten = $ten;
+        $this->thoi_gian = $thoi_gian;
+        $this->dia_chi = $dia_chi;
+        $this->phung_thuc = $phung_thuc;
+    }
+}
+class showpro
+{
+    public $hinh_anh, $ten_san_pham, $gia, $so_luong, $id_san_pham, $id_loai_san_pham, $id_bo_truyen;
+    public function __construct($hinh_anh, $ten_san_pham, $gia, $so_luong, $id_san_pham, $id_loai_san_pham, $id_bo_truyen)
+    {
+        $this->hinh_anh = $hinh_anh;
+        $this->ten_san_pham = $ten_san_pham;
+        $this->gia = $gia;
+        $this->so_luong = $so_luong;
+        $this->id_san_pham = $id_san_pham;
+        $this->id_loai_san_pham = $id_loai_san_pham;
+        $this->id_bo_truyen = $id_bo_truyen;
+    }
+}

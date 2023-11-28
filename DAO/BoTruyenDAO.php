@@ -59,7 +59,7 @@ class BoTruyenDAO extends BaseDAO
         $tmp = $img['tmp_name'];
         $mov = 'assets/imgs/shop/' . $fileName;
         move_uploaded_file($tmp, $mov);
-        $sql = "INSERT INTO `bo_truyen`( `id_loai_truyen`, `ten_bo_truyen`, `gia_ban`, `gia_goc`, `mo_ta`, `hinh_anh`) VALUES ('$loai','$ten','$gia_ban','$gia_goc','$mo_ta','$img');";
+        $sql = "INSERT INTO `bo_truyen`( `id_loai_truyen`, `ten_bo_truyen`, `gia_ban`, `gia_goc`, `mo_ta`, `hinh_anh`) VALUES ('$loai','$ten','$gia_ban','$gia_goc','$mo_ta','$fileName');";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
@@ -67,9 +67,11 @@ class BoTruyenDAO extends BaseDAO
     public function show()
     {
         $sql = "SELECT bo_truyen.*, COUNT(san_pham.id_san_pham) AS so_luong_sach
-        FROM bo_truyen LEFT JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
-        LEFT JOIN san_pham ON chi_tiet_bo_truyen.id_san_pham = chi_tiet_bo_truyen.id_san_pham
-        GROUP BY bo_truyen.id_bo_truyen;";
+        FROM bo_truyen
+        LEFT JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
+        LEFT JOIN san_pham ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham
+        GROUP BY bo_truyen.id_bo_truyen;
+        ";
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
         $lists = array(); // hoặc $products = [];
@@ -120,5 +122,25 @@ class BoTruyenDAO extends BaseDAO
         }
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
+    }
+    public function addPro($id, $proArray)
+    {
+        // Sử dụng prepared statement để thêm nhiều giá trị
+        $sql = "INSERT INTO `chi_tiet_bo_truyen`(`id_bo_truyen`, `id_san_pham`) VALUES (?, ?)";
+        $stmt = $this->PDO->prepare($sql);
+
+        // Lặp qua mảng $proArray và thêm từng giá trị vào database
+        foreach ($proArray as $pro) {
+            $stmt->execute([$id, $pro]);
+        }
+    }
+    public function countid()
+    {
+        // Sử dụng prepared statement để thêm nhiều giá trị
+        $sql = "SELECT id_bo_truyen FROM bo_truyen ORDER BY id_bo_truyen  DESC LIMIT  1";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+        $lastId = $stmt->fetchColumn();
+        return $lastId;
     }
 }

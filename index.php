@@ -73,6 +73,10 @@ switch ($controller) {
         $SanPhamController = new DonHangController();
         $SanPhamController->muaHang();
         break;
+    case 'thanhToanKNH':
+        $SanPhamController = new DonHangController();
+        $SanPhamController->thanhToanKNH();
+        break;
         // case 'sanPham':
         //     $SanPhamController = new SanPhamController();
         //     $SanPhamController->index();
@@ -132,6 +136,10 @@ switch ($controller) {
     case 'donHang_delete':
         $DonHangController = new DonHangController();
         $DonHangController->delete();
+        break;
+    case 'donHang_chi_tiet':
+        $DonHangController = new DonHangController();
+        $DonHangController->don_hang_tt();
         break;
     case 'trangThaiDH':
         $DonHangController = new DonHangController();
