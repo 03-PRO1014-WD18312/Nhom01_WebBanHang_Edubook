@@ -141,7 +141,7 @@ class DonHangDAO extends BaseDAO
     {
         $sql = "SELECT 
         ho_don.ma_hoa_don, 
-        don_hang.thoi_gian,
+        don_hang.thoi_gian,don_hang.id_don_hang,
         dia_chi.dia_chi, 
         chi_tiet_don_hang.gia*chi_tiet_don_hang.so_luong as tong_tien,chi_tiet_don_hang.gia,chi_tiet_don_hang.so_luong,
         chi_tiet_don_hang.ten_san_pham,
@@ -159,6 +159,7 @@ class DonHangDAO extends BaseDAO
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Create a Login object and add it to the array
             $user = new PDF(
+                $row['id_don_hang'],
                 $row['ma_hoa_don'],
                 $row['thoi_gian'],
                 $row['dia_chi'],
