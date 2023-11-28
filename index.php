@@ -137,6 +137,10 @@ switch ($controller) {
         $DonHangController = new DonHangController();
         $DonHangController->delete();
         break;
+    case 'donHang_chi_tiet':
+        $DonHangController = new DonHangController();
+        $DonHangController->don_hang_tt();
+        break;
     case 'trangThaiDH':
         $DonHangController = new DonHangController();
         $DonHangController->showTT();
