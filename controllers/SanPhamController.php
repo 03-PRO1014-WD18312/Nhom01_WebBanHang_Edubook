@@ -23,7 +23,6 @@ class SanPhamController
                         $LoaiTruyenDAO = new LoaiTruyenDAO();
                         $danh_muc = $LoaiTruyenDAO->show();
                         $list = $sanPhamDAO->show();
-
                         include_once "views/sach/user/Product.php";
                     }
                 } else {
@@ -210,7 +209,7 @@ class SanPhamController
                     $_POST['trong_luong'],
                     get_time(),
                     $_POST['id_loai_san_pham'],
-                    
+
                     $_POST['id_nha_san_xuat'],
                     $_POST['id_nha_phat_hanh']
                 );
