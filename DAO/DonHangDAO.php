@@ -300,7 +300,7 @@ class DonHangDAO extends BaseDAO
         chi_tiet_don_hang.gia,
         chi_tiet_don_hang.so_luong,
         san_pham.id_san_pham,
-        san_pham.id_loai_san_pham,
+        bo_truyen.id_loai_san_pham,
         chi_tiet_bo_truyen.id_bo_truyen
      FROM
          don_hang
@@ -310,6 +310,7 @@ class DonHangDAO extends BaseDAO
          chi_tiet_don_hang on chi_tiet_don_hang.id_don_hang = don_hang.id_don_hang
          JOIN san_pham ON san_pham.id_san_pham = chi_tiet_don_hang.id_san_pham
          JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham 
+         join bo_truyen on bo_truyen.id_bo_truyen = chi_tiet_bo_truyen.id_bo_truyen
     WHERE
         don_hang.id_don_hang = $id";
         $stmt = $this->PDO->prepare($sql);
