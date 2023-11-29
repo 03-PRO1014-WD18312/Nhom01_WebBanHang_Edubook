@@ -297,9 +297,10 @@ class SanPhamDAO extends BaseDAO
     }
     public function search($key)
     {
-        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen,bo_truyen.id_loai_san_pham
         FROM san_pham
         JOIN chi_tiet_bo_truyen ON chi_tiet_bo_truyen.id_san_pham = san_pham.id_san_pham
+        join bo_truyen ON bo_truyen.id_bo_truyen = chi_tiet_bo_truyen.id_bo_truyen
         WHERE san_pham.ten_san_pham LIKE '%$key%' AND san_pham.trang_thai = 1;
         ";
         $stmt = $this->PDO->prepare($sql);
