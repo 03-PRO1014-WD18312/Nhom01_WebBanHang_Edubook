@@ -121,6 +121,7 @@ class DonHangController
                         foreach ($thongTinSp as $sp) {
                             $thanhTien = $thanhTien + ($sp->gia_ban * $soLuong);
                         }
+                       
                         include_once "views/donHang/user/thongTin.php";
                     }
                     if ($_SERVER['REQUEST_METHOD'] == "POST") {
