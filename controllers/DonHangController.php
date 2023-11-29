@@ -149,7 +149,7 @@ class DonHangController
                     }
                     include_once "views/donHang/user/thongTin.php";
                 }
-                if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                if (isset($_GET['nd']) && $_GET['nd'] == "thanhToan") {
                     $_SESSION['value_hd'] = array(
                         'mahd' => $_POST['order_id'],
                         'amount' => $_POST['amount'],
@@ -198,16 +198,6 @@ class DonHangController
                             'soLuong' => $_POST['soLuong'],
                             'so_luong' => $_POST['so_luong']
                         );
-                        //                    echo $_SESSION['value_hd']['idsp'][0];
-                        //                    foreach ($_SESSION['value_hd'] as $key => $sp) {
-                        ////                        var_dump($sp); // Hiển thị thông tin chi tiết về biến $sp
-                        //                        echo $sp[1]; // Hiển thị kiểu dữ liệu của phần tử đầu tiên trong mảng idsp
-                        //                    }
-
-                        //                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'],$_SESSION['value_hd']['idsp']);
-                        //                    foreach ($thongTinSp as $sl) {
-                        //                        $_SESSION['soLuong'][] = $sl->so_luong;
-                        //                    }
                         include_once "views/donhang/user/vnpay_create_payment.php";
                     }
                 } else {
@@ -242,16 +232,6 @@ class DonHangController
                         'soLuong' => $_POST['soLuong'],
                         'so_luong' => $_POST['so_luong']
                     );
-                    //                    echo $_SESSION['value_hd']['idsp'][0];
-                    //                    foreach ($_SESSION['value_hd'] as $key => $sp) {
-                    ////                        var_dump($sp); // Hiển thị thông tin chi tiết về biến $sp
-                    //                        echo $sp[1]; // Hiển thị kiểu dữ liệu của phần tử đầu tiên trong mảng idsp
-                    //                    }
-
-                    //                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'],$_SESSION['value_hd']['idsp']);
-                    //                    foreach ($thongTinSp as $sl) {
-                    //                        $_SESSION['soLuong'][] = $sl->so_luong;
-                    //                    }
                     include_once "views/donhang/user/vnpay_create_payment.php";
                 }
             }
@@ -265,6 +245,7 @@ class DonHangController
         if ($so_luong == 0) {
             $DonHangDAO = new DonHangDAO();
             $SanPhamDAO = new SanPhamDAO();
+            $GioHangDAO = new GioHangDAO();
             $_SESSION['value_hd'] = array(
                 'mahd' => $_POST['order_id'],
                 'amount' => $_POST['amount'],
@@ -288,6 +269,7 @@ class DonHangController
                 $iddh = $DonHangDAO->getOneIdDesc();
                 $DonHangDAO->addChiTietDH($_SESSION['value_hd']['idsp'][$i], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
                 $DonHangDAO->addHD($iddh[0]->id_don_hang, $_SESSION['value_hd']['mahd'], "Thanh toán khi nhận hàng", 0);
+                $GioHangDAO->delete($_SESSION['value_hd']['idsp'][$i]);
             }
             header("location: index.php?controller=taiKhoan");
         } elseif ($so_luong > 0) {

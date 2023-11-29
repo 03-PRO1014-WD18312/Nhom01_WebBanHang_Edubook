@@ -28,7 +28,7 @@ include_once 'views/layout/user/Header.php'; ?>
                         <h4>Thông tin hóa đơn</h4>
                     </div>
                     <form
-                        action="<?php if ($soLuong==0 || $soLuong==""){echo 'index.php?controller=check&&nd=thanhToan';}else{echo "index.php?controller=muaHang";} ?>"
+                        action="<?php if ($soLuong==0 || $soLuong==""){echo 'index.php?controller=check&nd=thanhToan';}else{echo "index.php?controller=muaHang&nd=thanhToan";} ?>"
                         method="post">
                         <input type="hidden" name="so_luong" value="<?php echo $soLuong ?>">
                         <?php if ($soLuong==0 || $soLuong==""){?>

@@ -45,6 +45,10 @@
             $sql = "SELECT so_luong FROM `san_pham` WHERE id_san_pham = ?";
             return getData($sql,[$id]);
         }
+        function deleteGH($id){
+            $sql = "DELETE FROM `gio_hang` WHERE id_san_pham = ?";
+            return getData($sql,[$id],false);
+        }
         function updateSP($soLuong,$trangThai,$id){
             $sql = "UPDATE `san_pham` SET `so_luong`=?,`trang_thai`=? WHERE id_san_pham = ?";
             return getData($sql,[$soLuong,$trangThai,$id],false);
@@ -134,6 +138,7 @@
                         }else{
                             echo "Lỗi";
                         }
+                    deleteGH($_SESSION['value_hd']['idsp'][$i]);
                 }
                 addHD($newIdDH[0]['id_don_hang'], $_SESSION['value_hd']['mahd'],"vnpay",1);
             }else{
