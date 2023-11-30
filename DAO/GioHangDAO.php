@@ -27,4 +27,10 @@ class GioHangDAO extends BaseDAO
         }
         return $so_luong;
     }
+    public function delete($id_san_pham)
+    {
+        $sql = "DELETE FROM `gio_hang` WHERE id_san_pham = " . $id_san_pham;
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
 }

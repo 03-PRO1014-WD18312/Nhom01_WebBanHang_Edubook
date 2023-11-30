@@ -45,6 +45,10 @@
             $sql = "SELECT so_luong FROM `san_pham` WHERE id_san_pham = ?";
             return getData($sql,[$id]);
         }
+        function deleteGH($id){
+            $sql = "DELETE FROM `gio_hang` WHERE id_san_pham = ?";
+            return getData($sql,[$id],false);
+        }
         function updateSP($soLuong,$trangThai,$id){
             $sql = "UPDATE `san_pham` SET `so_luong`=?,`trang_thai`=? WHERE id_san_pham = ?";
             return getData($sql,[$soLuong,$trangThai,$id],false);
@@ -63,6 +67,11 @@
         {
             $sql = "INSERT INTO `chi_tiet_don_hang`(`id_san_pham`, `id_don_hang`, `gia`, `ten_san_pham`, `so_luong`) VALUES (?,?,?,?,?)";
             return getData($sql, [$id_san_pham,$id_don_hang,$gia,$ten_san_pham,$so_luong], false);
+        }
+        function addChiTietBT($id_bo_truyen, $id_don_hang,$id_user, $so_luong)
+        {
+            $sql = "INSERT INTO `chi_tiet_don_hang_bo_truyen`(`id_bo_truyen`, `id_don_hang`, `id_user`, `soLuong`) VALUES (?,?,?,?)";
+            return getData($sql, [$id_bo_truyen, $id_don_hang,$id_user, $so_luong], false);
         }
         function getOneIdDesc()
         {
@@ -113,14 +122,27 @@
 
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
         if ($_GET['vnp_ResponseCode'] == 00 && $_GET['vnp_TransactionStatus'] == 00){
-            if ($_SESSION['value_hd']['so_luong'] == 0){
+            if (isset($_SESSION['value_hd']['idbt'])){
                 addDH($_SESSION['id'],get_time());
                 $newIdDH = getOneIdDesc();
-//                foreach ($_SESSION['value_hd']['idsp'] as $i => $item) {
-//                    echo $_SESSION['value_hd']['soLuong'][$i] . "<br>";
-//                    echo $_SESSION['value_hd']['idsp'][$i];
-//                }
-
+                foreach ($_SESSION['value_hd']['idsp'] as $i => $sp) {
+                    $slsp = soLuongIdSp($_SESSION['value_hd']['idsp'][$i]);
+                    $slm = $_SESSION['value_hd']['soLuong'];
+                    $sanPham =  showOne($sp);
+                    $soLuongUD = $slsp[0]['so_luong'] - $slm;
+                    if ($soLuongUD == 0){
+                        updateSP(0,0,$_SESSION['value_hd']['idsp'][$i]);
+                    }elseif ($soLuongUD > 0 ){
+                        updateSP($soLuongUD,1,$_SESSION['value_hd']['idsp'][$i]);
+                    }else{
+                        echo "Lỗi";
+                    }
+                }
+                addChiTietBT($_SESSION['value_hd']['idbt'], $newIdDH[0]['id_don_hang'],$_SESSION['id'], $_SESSION['value_hd']['soLuong']);
+                addHD($newIdDH[0]['id_don_hang'], $_SESSION['value_hd']['mahd'],"vnpay",1);
+            } else if (isset($_SESSION['value_hd']['so_luong']) && $_SESSION['value_hd']['so_luong'] == 0 && !isset($_SESSION['value_hd']['idbt'])){
+                addDH($_SESSION['id'],get_time());
+                $newIdDH = getOneIdDesc();
                 foreach ($_SESSION['value_hd']['idsp'] as $i => $sp) {
                         $slsp = soLuongIdSp($_SESSION['value_hd']['idsp'][$i]);
                         $slm = $_SESSION['value_hd']['soLuong'][$i];
@@ -134,9 +156,10 @@
                         }else{
                             echo "Lỗi";
                         }
+                    deleteGH($_SESSION['value_hd']['idsp'][$i]);
                 }
                 addHD($newIdDH[0]['id_don_hang'], $_SESSION['value_hd']['mahd'],"vnpay",1);
-            }else{
+            }else if (isset($_SESSION['value_hd']['so_luong']) && $_SESSION['value_hd']['so_luong'] > 0 && !isset($_SESSION['value_hd']['idbt'])){
                 addDH($_SESSION['id'],get_time());
                 $slsp = soLuongIdSp($_SESSION['value_hd']['idsp']);
                 $slm = $_SESSION['value_hd']['so_luong'];

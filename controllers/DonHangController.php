@@ -121,7 +121,6 @@ class DonHangController
                         foreach ($thongTinSp as $sp) {
                             $thanhTien = $thanhTien + ($sp->gia_ban * $soLuong);
                         }
-                       
                         include_once "views/donHang/user/thongTin.php";
                     }
                     if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -149,15 +148,26 @@ class DonHangController
                     }
                     include_once "views/donHang/user/thongTin.php";
                 }
-                if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                    $_SESSION['value_hd'] = array(
-                        'mahd' => $_POST['order_id'],
-                        'amount' => $_POST['amount'],
-                        'idsp' => $_POST['idsp'],
-                        'soLuongGH' => $_POST['idsp'],
-                        'so_luong' => $_POST['so_luong']
-                    );
-                    include_once "views/donhang/user/vnpay_create_payment.php";
+                if (isset($_GET['nd']) && $_GET['nd'] == "thanhToan") {
+                    if (isset($_POST['idbt'])){
+                        $_SESSION['value_hd'] = array(
+                            'mahd' => $_POST['order_id'],
+                            'amount' => $_POST['amount'],
+                            'idsp' => $_POST['idsp'],
+                            'idbt' => $_POST['idbt'],
+                            'soLuong' => $_POST['so_luong'],
+                        );
+                        include_once "views/donhang/user/vnpay_create_payment.php";
+                    }else{
+                        $_SESSION['value_hd'] = array(
+                            'mahd' => $_POST['order_id'],
+                            'amount' => $_POST['amount'],
+                            'idsp' => $_POST['idsp'],
+                            'soLuongGH' => $_POST['idsp'],
+                            'so_luong' => $_POST['so_luong']
+                        );
+                        include_once "views/donhang/user/vnpay_create_payment.php";
+                    }
                 }
             }
         } else {
@@ -198,61 +208,64 @@ class DonHangController
                             'soLuong' => $_POST['soLuong'],
                             'so_luong' => $_POST['so_luong']
                         );
-                        //                    echo $_SESSION['value_hd']['idsp'][0];
-                        //                    foreach ($_SESSION['value_hd'] as $key => $sp) {
-                        ////                        var_dump($sp); // Hiển thị thông tin chi tiết về biến $sp
-                        //                        echo $sp[1]; // Hiển thị kiểu dữ liệu của phần tử đầu tiên trong mảng idsp
-                        //                    }
-
-                        //                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'],$_SESSION['value_hd']['idsp']);
-                        //                    foreach ($thongTinSp as $sl) {
-                        //                        $_SESSION['soLuong'][] = $sl->so_luong;
-                        //                    }
                         include_once "views/donhang/user/vnpay_create_payment.php";
                     }
                 } else {
                 }
             } else {
                 if (isset($_GET['nd']) && $_GET['nd'] == "thongTin") {
-                    $sanPhamDAO = new SanPhamDAO();
-                    $user = new TaiKhoanDAO();
-                    $thongTinUs = $user->getUsID($_SESSION['id']);
-                    if (isset($_POST['boTruyen'])) {
-                        $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
-                    } else {
-                        $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                    if (isset($_POST['id_bo_truyen'])){
+                        $BoTruyenDao = new BoTruyenDAO();
+                        $sanPhamDAO = new SanPhamDAO();
+                        $user = new TaiKhoanDAO();
+                        $thongTinUs = $user->getUsID($_SESSION['id']);
+                        if (isset($_POST['boTruyen'])) {
+                            $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
+                        } else {
+                            $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                        }
+                        $thongTinBT = $BoTruyenDao->showView($_POST['id_bo_truyen']);
+                        $id_bo_truyen = $_POST['id_bo_truyen'];
+                        if (isset($_POST['so_luong'])) {
+                            $soLuong = $_POST['so_luong'];
+                        } else {
+                            $soLuong = 0;
+                        }
+                        $thanhTien = $thongTinBT[0]->gia_ban * $soLuong;
+                        $giaGoc =  $thongTinBT[0]->gia_goc * $soLuong;
+                        include_once "views/donHang/user/thongTin.php";
+                    }else{
+                        $sanPhamDAO = new SanPhamDAO();
+                        $user = new TaiKhoanDAO();
+                        $thongTinUs = $user->getUsID($_SESSION['id']);
+                        if (isset($_POST['boTruyen'])) {
+                            $thongTinSp = $sanPhamDAO->cardB($_POST['card']);
+                        } else {
+                            $thongTinSp = $sanPhamDAO->card($_SESSION['id'], $_POST['card']);
+                        }
+                        if (isset($_POST['so_luong'])) {
+                            $soLuong = $_POST['so_luong'];
+                        } else {
+                            $soLuong = 0;
+                        }
+                        $thanhTien = 0;
+                        foreach ($thongTinSp as $sp) {
+                            $thanhTien = $thanhTien + ($sp->gia_ban * $sp->so_luong);
+                        }
+                        include_once "views/donHang/user/thongTin.php";
                     }
-                    if (isset($_POST['so_luong'])) {
-                        $soLuong = $_POST['so_luong'];
-                    } else {
-                        $soLuong = 0;
-                    }
-                    $thanhTien = 0;
-                    foreach ($thongTinSp as $sp) {
-                        $thanhTien = $thanhTien + ($sp->gia_ban * $sp->so_luong);
-                    }
-                    include_once "views/donHang/user/thongTin.php";
+
                 }
                 if (isset($_GET['nd']) && $_GET['nd'] == "thanhToan") {
-                    $sanPhamDAO = new SanPhamDAO();
-                    $_SESSION['value_hd'] = array(
-                        'mahd' => $_POST['order_id'],
-                        'amount' => $_POST['amount'],
-                        'idsp' => $_POST['idsp'],
-                        'soLuong' => $_POST['soLuong'],
-                        'so_luong' => $_POST['so_luong']
-                    );
-                    //                    echo $_SESSION['value_hd']['idsp'][0];
-                    //                    foreach ($_SESSION['value_hd'] as $key => $sp) {
-                    ////                        var_dump($sp); // Hiển thị thông tin chi tiết về biến $sp
-                    //                        echo $sp[1]; // Hiển thị kiểu dữ liệu của phần tử đầu tiên trong mảng idsp
-                    //                    }
-
-                    //                    $thongTinSp = $sanPhamDAO->card($_SESSION['id'],$_SESSION['value_hd']['idsp']);
-                    //                    foreach ($thongTinSp as $sl) {
-                    //                        $_SESSION['soLuong'][] = $sl->so_luong;
-                    //                    }
-                    include_once "views/donhang/user/vnpay_create_payment.php";
+                        $sanPhamDAO = new SanPhamDAO();
+                        $_SESSION['value_hd'] = array(
+                            'mahd' => $_POST['order_id'],
+                            'amount' => $_POST['amount'],
+                            'idsp' => $_POST['idsp'],
+                            'soLuong' => $_POST['soLuong'],
+                            'so_luong' => $_POST['so_luong']
+                        );
+                        include_once "views/donhang/user/vnpay_create_payment.php";
                 }
             }
         } else {
@@ -261,54 +274,82 @@ class DonHangController
     }
     public function thanhToanKNH()
     {
-        $so_luong = $_POST['so_luong'];
-        if ($so_luong == 0) {
+        if (isset($_GET['nd']) && $_GET['nd']=='boTruyen'){
             $DonHangDAO = new DonHangDAO();
             $SanPhamDAO = new SanPhamDAO();
-            $_SESSION['value_hd'] = array(
-                'mahd' => $_POST['order_id'],
-                'amount' => $_POST['amount'],
-                'idsp' => $_POST['idsp'],
-                'soLuong' => $_POST['soLuong'],
-                'so_luong' => $_POST['so_luong']
-            );
+            $BoTruyenDao = new BoTruyenDAO();
             $DonHangDAO->addDH($_SESSION['id'], get_time(), 1);
-            foreach ($_SESSION['value_hd']['idsp'] as $i => $sp) {
-                $vlsp = $SanPhamDAO->showOne($_SESSION['value_hd']['idsp'][$i]);
+            $thongTinBT = $BoTruyenDao->showView($_POST['idbt']);
+            $idsp = $_POST['idsp'];
+            $iddh = $DonHangDAO->getOneIdDesc();
+            foreach ($idsp as $idSp) {
+                $vlsp = $SanPhamDAO->showOne($idSp);
                 $slsp = $vlsp[0]->so_luong;
-                $slm = $_SESSION['value_hd']['soLuong'][$i];
+                $slm = $_POST['so_luong'];
+                $soLuongUD = $slsp - $slm;echo $soLuongUD;
+                if ($soLuongUD == 0) {
+                    $SanPhamDAO->updateSlSP(0, 0, $idSp);
+                } elseif ($soLuongUD > 0) {
+                    $SanPhamDAO->updateSlSP($soLuongUD, 1, $idSp);
+                } else {
+                    echo "Lỗi";
+                }
+            }
+            $DonHangDAO->addChiTietBT($_POST['idbt'], $iddh[0]->id_don_hang,$_SESSION['id'], $slm);
+            $DonHangDAO->addHD($iddh[0]->id_don_hang, $_POST['order_id'], "Thanh toán khi nhận hàng", 0);
+            header("location: index.php?controller=taiKhoan");
+        }else{
+            $so_luong = $_POST['so_luong'];
+            if ($so_luong == 0) {
+                $DonHangDAO = new DonHangDAO();
+                $SanPhamDAO = new SanPhamDAO();
+                $GioHangDAO = new GioHangDAO();
+                $_SESSION['value_hd'] = array(
+                    'mahd' => $_POST['order_id'],
+                    'amount' => $_POST['amount'],
+                    'idsp' => $_POST['idsp'],
+                    'soLuong' => $_POST['soLuong'],
+                    'so_luong' => $_POST['so_luong']
+                );
+                $DonHangDAO->addDH($_SESSION['id'], get_time(), 1);
+                foreach ($_SESSION['value_hd']['idsp'] as $i => $sp) {
+                    $vlsp = $SanPhamDAO->showOne($_SESSION['value_hd']['idsp'][$i]);
+                    $slsp = $vlsp[0]->so_luong;
+                    $slm = $_SESSION['value_hd']['soLuong'][$i];
+                    $soLuongUD = $slsp - $slm;
+                    if ($soLuongUD == 0) {
+                        $SanPhamDAO->updateSlSP(0, 0, $_SESSION['value_hd']['idsp'][$i]);
+                    } elseif ($soLuongUD > 0) {
+                        $SanPhamDAO->updateSlSP($soLuongUD, 1, $_SESSION['value_hd']['idsp'][$i]);
+                    } else {
+                        echo "Lỗi";
+                    }
+                    $iddh = $DonHangDAO->getOneIdDesc();
+                    $DonHangDAO->addChiTietDH($_SESSION['value_hd']['idsp'][$i], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
+                    $DonHangDAO->addHD($iddh[0]->id_don_hang, $_SESSION['value_hd']['mahd'], "Thanh toán khi nhận hàng", 0);
+                    $GioHangDAO->delete($_SESSION['value_hd']['idsp'][$i]);
+                }
+                header("location: index.php?controller=taiKhoan");
+            } elseif ($so_luong > 0) {
+                $DonHangDAO = new DonHangDAO();
+                $SanPhamDAO = new SanPhamDAO();
+                $DonHangDAO->addDH($_SESSION['id'], get_time(), 1);
+                $vlsp = $SanPhamDAO->showOne($_POST['idsp']);
+                $slsp = $vlsp[0]->so_luong;
+                $slm = $_POST['so_luong'];
                 $soLuongUD = $slsp - $slm;
                 if ($soLuongUD == 0) {
-                    $SanPhamDAO->updateSlSP(0, 0, $_SESSION['value_hd']['idsp'][$i]);
+                    $SanPhamDAO->updateSlSP(0, 0, $_POST['idsp']);
                 } elseif ($soLuongUD > 0) {
-                    $SanPhamDAO->updateSlSP($soLuongUD, 1, $_SESSION['value_hd']['idsp'][$i]);
+                    $SanPhamDAO->updateSlSP($soLuongUD, 1, $_POST['idsp']);
                 } else {
                     echo "Lỗi";
                 }
                 $iddh = $DonHangDAO->getOneIdDesc();
-                $DonHangDAO->addChiTietDH($_SESSION['value_hd']['idsp'][$i], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
-                $DonHangDAO->addHD($iddh[0]->id_don_hang, $_SESSION['value_hd']['mahd'], "Thanh toán khi nhận hàng", 0);
+                $DonHangDAO->addChiTietDH($_POST['idsp'], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
+                $DonHangDAO->addHD($iddh[0]->id_don_hang, $_POST['order_id'], "Thanh toán khi nhận hàng", 0);
+                header("location: index.php?controller=taiKhoan");
             }
-            header("location: index.php?controller=taiKhoan");
-        } elseif ($so_luong > 0) {
-            $DonHangDAO = new DonHangDAO();
-            $SanPhamDAO = new SanPhamDAO();
-            $DonHangDAO->addDH($_SESSION['id'], get_time(), 1);
-            $vlsp = $SanPhamDAO->showOne($_POST['idsp']);
-            $slsp = $vlsp[0]->so_luong;
-            $slm = $_POST['so_luong'];
-            $soLuongUD = $slsp - $slm;
-            if ($soLuongUD == 0) {
-                $SanPhamDAO->updateSlSP(0, 0, $_POST['idsp']);
-            } elseif ($soLuongUD > 0) {
-                $SanPhamDAO->updateSlSP($soLuongUD, 1, $_POST['idsp']);
-            } else {
-                echo "Lỗi";
-            }
-            $iddh = $DonHangDAO->getOneIdDesc();
-            $DonHangDAO->addChiTietDH($_POST['idsp'], $iddh[0]->id_don_hang, $vlsp[0]->gia_ban, $vlsp[0]->ten_san_pham, $slm);
-            $DonHangDAO->addHD($iddh[0]->id_don_hang, $_POST['order_id'], "Thanh toán khi nhận hàng", 0);
-            header("location: index.php?controller=taiKhoan");
         }
     }
     public function addHD()

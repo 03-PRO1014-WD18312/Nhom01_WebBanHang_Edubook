@@ -80,13 +80,18 @@ input[type="number"]::-webkit-inner-spin-button {
                                     </div>
 
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                    <form action="" method="POST">
+                                    <form action="index.php?controller=check&nd=thongTin" method="POST">
                                         <div class="detail-extralink">
                                             <div class="detail-qty border radius" style="width: 10%;  ">
                                                 <input type="number" name="so_luong" min="1" max="10" value="1"
                                                     style="">
                                                 <input type="hidden" name="idsp" value="<?php echo $vl->id ?>">
                                             </div>
+                                            <?php foreach ($san_pham as $sp) {?>
+                                                <input type="hidden" name="card[]" value="<?php echo $sp->id_san_pham ?>">
+                                            <?php } ?>
+                                            <input type="hidden" name="boTruyen">
+                                            <input type="hidden" name="id_bo_truyen" value="<?php echo $vl->id ?>">
                                             <div class="product-extra-link2">
                                                 <button type="submit" class="button button-add-to-cart">Mua
                                                     ngay</button>
