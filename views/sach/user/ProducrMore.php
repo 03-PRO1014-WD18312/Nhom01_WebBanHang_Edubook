@@ -27,7 +27,7 @@ include "views/layout/user/Header.php";
                         $count++;
                     } ?>
                 </ul>
-                <a href="index.php?controller=sanPham_view_more" class="view-more d-none d-md-flex">Xem thêm<i class="fi-rs-angle-double-small-right"></i></a>
+
             </div>
             <!--End nav-tabs-->
             <div class="tab-content wow fadeIn animated" id="myTabContent">
@@ -52,12 +52,7 @@ include "views/layout/user/Header.php";
                                                             <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" style="margin: auto;min-height:  300px;" alt="loi">
                                                         </a>
                                                     </div>
-                                                    <div class="product-action-1">
-                                                        <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><i
-                                                class=" fi-rs-eye"></i></a>
-                                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i class="fas fa-truck"></i></i></a>
-                                                    </div>
+
 
                                                 </div>
                                                 <div class="product-content-wrap" id="productInfo">
@@ -111,12 +106,7 @@ include "views/layout/user/Header.php";
                                                 <img class="hover-img" src="assets/imgs/shop/<?php echo $vl->hinh_anh ?>" style="margin: auto;min-height:  300px;" alt="loi">
                                             </a>
                                         </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>""><i
-                                                class=" fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Mua ngay" class="action-btn hover-up" href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i class="fas fa-truck"></i></i></a>
-                                        </div>
+
 
                                     </div>
                                     <div class="product-content-wrap" id="productInfo">

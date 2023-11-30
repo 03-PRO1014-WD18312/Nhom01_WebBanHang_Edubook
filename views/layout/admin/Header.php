@@ -70,7 +70,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Bộ truyện:</h6>
+                        <h6 class="collapse-header">Loại sách:</h6>
+
                         <a class="collapse-item" href="index.php?controller=loaisanpham">Danh sách</a>
                         <a class="collapse-item" href="index.php?controller=loaisanpham_add">Thêm</a>
                     </div>
@@ -81,11 +82,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1"
                     aria-expanded="true" aria-controls="collapseTwo1">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span> bộ truyện</span>
+                    <span> Bộ truyện</span>
                 </a>
                 <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Loại sách:</h6>
+                        <h6 class="collapse-header">Bộ truyện:</h6>
                         <a class="collapse-item" href="index.php?controller=boTruyen">Danh sách</a>
                         <a class="collapse-item" href="index.php?controller=boTruyen_add">Thêm</a>
                     </div>
@@ -145,7 +146,7 @@
                 </a>
                 <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Loại sách:</h6>
+                        <h6 class="collapse-header">Sản phẩm:</h6>
                         <a class="collapse-item" href="index.php?controller=sanPham">Danh sách</a>
                         <a class="collapse-item" href="index.php?controller=sanPham_add">Thêm</a>
                     </div>

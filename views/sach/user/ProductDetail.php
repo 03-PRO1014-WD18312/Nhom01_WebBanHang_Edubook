@@ -186,7 +186,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
                                             <div class="col-lg-8">
                                                 <h4 class="mb-30">Câu hỏi & trả lời của khách hàng</h4>
-                                                <div class="comment-list">
+                                                <div class="comment-list" id="list_comment">
                                                     <?php
                                                     $count_one = 0;
 
@@ -229,39 +229,96 @@ input[type="number"]::-webkit-inner-spin-button {
                                                 <h4 class="mb-30">Phản hồi khách hàng</h4>
                                                 <div class="d-flex mb-30">
                                                     <div class="product-rate d-inline-block mr-15">
-                                                        <div class="product-rating" style="width:90%">
+                                                        <div class="product-rating" style="width:<?php if ($sum == 0) {
+                                                                                                        echo 0;
+                                                                                                    } else {
+                                                                                                        echo $svg / $sum;
+                                                                                                    } ?>%">
                                                         </div>
                                                     </div>
-                                                    <h6>4.8 out of 5</h6>
+                                                    <?php $sum = $star[0]['so_luong'] + $star[1]['so_luong'] + $star[2]['so_luong'] + $star[3]['so_luong'] + $star[4]['so_luong'];
+                                                    $svg = $star[0]['so_luong'] * 1 + $star[1]['so_luong'] * 2 + $star[2]['so_luong'] * 3 + $star[3]['so_luong'] * 4 + $star[4]['so_luong'] * 5;
+                                                    ?>
+                                                    <h6><?php if ($sum == 0) {
+                                                            echo 0;
+                                                        } else {
+                                                            echo $svg / $sum;
+                                                        } ?> out of
+                                                        5</h6>
                                                 </div>
                                                 <div class="progress">
                                                     <span>5 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 50%;"
-                                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%
+                                                    <div class="progress-bar" role="progressbar" style="width:  <?php if ($star[4]['so_luong'] == 0) {
+                                                                                                                    echo 0;
+                                                                                                                } else {
+                                                                                                                    echo ($star[4]['so_luong'] / $sum) * 100;
+                                                                                                                } ?>%;"
+                                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                                                        <?php if ($star[4]['so_luong'] == 0) {
+                                                            echo 0;
+                                                        } else {
+                                                            echo ($star[4]['so_luong'] / $sum) * 100;
+                                                        } ?>%
                                                     </div>
                                                 </div>
                                                 <div class="progress">
                                                     <span>4 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 25%;"
-                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+                                                    <div class="progress-bar" role="progressbar" style="width:  <?php if ($star[3]['so_luong'] == 0) {
+                                                                                                                    echo 0;
+                                                                                                                } else {
+                                                                                                                    echo ($star[3]['so_luong'] / $sum) * 100;
+                                                                                                                } ?>%;"
+                                                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                        <?php if ($star[3]['so_luong'] == 0) {
+                                                            echo 0;
+                                                        } else {
+                                                            echo ($star[3]['so_luong'] / $sum) * 100;
+                                                        } ?>%
                                                     </div>
                                                 </div>
                                                 <div class="progress">
                                                     <span>3 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 45%;"
-                                                        aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
+                                                    <div class="progress-bar" role="progressbar" style="width:  <?php if ($star[2]['so_luong'] == 0) {
+                                                                                                                    echo 0;
+                                                                                                                } else {
+                                                                                                                    echo ($star[2]['so_luong'] / $sum) * 100;
+                                                                                                                } ?>%;"
+                                                        aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+                                                        <?php if ($star[2]['so_luong'] == 0) {
+                                                            echo 0;
+                                                        } else {
+                                                            echo ($star[2]['so_luong'] / $sum) * 100;
+                                                        } ?>%
                                                     </div>
                                                 </div>
                                                 <div class="progress">
                                                     <span>2 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 65%;"
-                                                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%
+                                                    <div class="progress-bar" role="progressbar" style="width:  <?php if ($star[1]['so_luong'] == 0) {
+                                                                                                                    echo 0;
+                                                                                                                } else {
+                                                                                                                    echo ($star[1]['so_luong'] / $sum) * 100;
+                                                                                                                } ?>%;"
+                                                        aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                        <?php if ($star[1]['so_luong'] == 0) {
+                                                            echo 0;
+                                                        } else {
+                                                            echo ($star[1]['so_luong'] / $sum) * 100;
+                                                        } ?>%
                                                     </div>
                                                 </div>
                                                 <div class="progress mb-30">
                                                     <span>1 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 85%;"
-                                                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%
+                                                    <div class="progress-bar" role="progressbar" style="width: <?php if ($star[0]['so_luong'] == 0) {
+                                                                                                                    echo 0;
+                                                                                                                } else {
+                                                                                                                    echo ($star[0]['so_luong'] / $sum) * 100;
+                                                                                                                } ?>%;"
+                                                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                        <?php if ($star[0]['so_luong'] == 0) {
+                                                            echo 0;
+                                                        } else {
+                                                            echo ($star[0]['so_luong'] / $sum) * 100;
+                                                        } ?>%
                                                     </div>
                                                 </div>
                                                 <a href="#" class="font-xs text-muted">Xếp hạng được tính thế nào?</a>
@@ -276,26 +333,23 @@ input[type="number"]::-webkit-inner-spin-button {
 
                                         <div class="row">
                                             <div class="col-lg-8 col-md-12">
-                                                <form class="form-contact comment_form"
-                                                    action="index.php?controller=binhLuan_add&loai=<?php echo $loai ?>&botruyen=<?php echo $bo ?>"
-                                                    method="post" id="commentForm">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <textarea class="form-control w-100" name="comment"
-                                                                    id="comment" cols="30" rows="9"
-                                                                    placeholder="Viết bình luận"></textarea>
-                                                            </div>
-                                                            <input type="hidden" name="id" value="<?php echo $id ?>"
-                                                                id="">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <textarea class="form-control w-100" name="comment"
+                                                                id="comment" cols="30" rows="9"
+                                                                placeholder="Viết bình luận"></textarea>
                                                         </div>
+                                                        <input type="hidden" name="id" value="<?php echo $id ?>"
+                                                            id="id">
                                                     </div>
-                                                    <div class="form-group">
-                                                        <button type="submit"
-                                                            class="button button-contactForm">Gửi</button>
-                                                    </div>
-                                                </form>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="button button-contactForm"
+                                                        onclick="comment()">Gửi</button>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
