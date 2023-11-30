@@ -307,7 +307,8 @@ class DonHangDAO extends BaseDAO
         chi_tiet_don_hang.so_luong,
         san_pham.id_san_pham,
         bo_truyen.id_loai_san_pham,
-        chi_tiet_bo_truyen.id_bo_truyen
+        chi_tiet_bo_truyen.id_bo_truyen,
+        don_hang.id_trang_thai_don_hang
      FROM
          don_hang
      JOIN
@@ -324,7 +325,7 @@ class DonHangDAO extends BaseDAO
         $lists = array(); // hoặc $products = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new showpro($row['hinh_anh'], $row['ten_san_pham'], $row['gia'], $row['so_luong'], $row['id_san_pham'], $row['id_loai_san_pham'], $row['id_bo_truyen']);
+            $product = new showpro($row['hinh_anh'], $row['ten_san_pham'], $row['gia'], $row['so_luong'], $row['id_san_pham'], $row['id_loai_san_pham'], $row['id_bo_truyen'], $row['id_trang_thai_don_hang']);
             $lists[] = $product;
         }
         return $lists;

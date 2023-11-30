@@ -19,7 +19,6 @@ class GioHangDAOAPI
         // $output = "";
         $sql = "SELECT so_luong FROM `gio_hang` WHERE id_user = $id AND id_san_pham = $data";
 
-
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->execute();
@@ -31,7 +30,6 @@ class GioHangDAOAPI
         } else {
             $sql = "INSERT INTO `gio_hang` (`id_user`, `id_san_pham`, `so_luong`) VALUES ( '$id', $data, '1');";
             $stmt = $this->pdo->prepare($sql);
-
             $stmt->execute();
         }
     }

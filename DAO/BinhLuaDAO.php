@@ -37,6 +37,25 @@ class BinhLuanDAO extends BaseDAO
 
         return $users;
     }
+    public function showOne_star($id)
+    {
+        $sql = "SELECT g.gia_tri, COALESCE(COUNT(b.danh_gia), 0) AS so_luong
+        FROM (
+            SELECT 1 AS gia_tri
+            UNION SELECT 2 AS gia_tri
+            UNION SELECT 3 AS gia_tri
+            UNION SELECT 4 AS gia_tri
+            UNION SELECT 5 AS gia_tri
+        ) g
+        LEFT JOIN binh_luan b ON g.gia_tri = b.danh_gia AND b.id_san_pham = $id
+        GROUP BY g.gia_tri;
+        ";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $start = $stmt->fetchAll();
+        return $start;
+    }
     // lệnh thêm mới tác giả
     public function add($idpro, $iduser, $time, $mes)
     {

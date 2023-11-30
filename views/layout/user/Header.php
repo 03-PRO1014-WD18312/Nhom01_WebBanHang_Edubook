@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edu-Book</title>
     <!-- chat -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+        integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/chatbox/style1.css">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
@@ -64,25 +66,12 @@
                                 <span class="fi-rs-apps"></span> Danh mục
                             </a>
                             <div class="categori-dropdown-wrap categori-dropdown-active-large">
-                                <ul>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Computer &
-                                            Office</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Consumer
-                                            Electronics</a></li>
-                                    <li><a href="shop.html"><i class="surfsidemedia-font-diamond"></i>Jewelry &
-                                            Accessories</a></li>
-                                    <!-- <li>
-                                        <ul class="more_slide_open" style="display: none;">
-                                            <li><a href="shop.html"><i class="surfsidemedia-font-desktop"></i>Beauty,
-                                                    Health</a></li>
-                                            <li><a href="shop.html"><i class="surfsidemedia-font-cpu"></i>Bags and
-                                                    Shoes</a></li>
-                                            <li><a href="shop.html"><i class="surfsidemedia-font-diamond"></i>Consumer
-                                                    Electronics</a></li>
-                                            <li><a href="shop.html"><i class="surfsidemedia-font-home"></i>Automobiles &
-                                                    Motorcycles</a></li>
-                                        </ul>
-                                    </li> -->
+                                <ul class="categories">
+                                    <?php foreach ($danh_muc as $key => $vl) { ?>
+                                    <li><a
+                                            href="index.php?controller=sanPham&id=<?php echo $vl->id ?>"><?php echo $vl->ten ?></a>
+                                    </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -136,7 +125,8 @@
                     <!-- mobile menu start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Trang chủ</a></li>
+                            <li class="menu-item-has-children"><span class="menu-expand"></span><a
+                                    href="index.html">Trang chủ</a></li>
                             <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop.html">Sản
                                     phẩm</a>
                             </li>
