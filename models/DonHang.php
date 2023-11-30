@@ -67,8 +67,8 @@ class showu
 }
 class showpro
 {
-    public $hinh_anh, $ten_san_pham, $gia, $so_luong, $id_san_pham, $id_loai_san_pham, $id_bo_truyen;
-    public function __construct($hinh_anh, $ten_san_pham, $gia, $so_luong, $id_san_pham, $id_loai_san_pham, $id_bo_truyen)
+    public $hinh_anh, $ten_san_pham, $gia, $so_luong, $id_san_pham, $id_loai_san_pham, $id_bo_truyen, $trang_thai;
+    public function __construct($hinh_anh, $ten_san_pham, $gia, $so_luong, $id_san_pham, $id_loai_san_pham, $id_bo_truyen, $trang_thai)
     {
         $this->hinh_anh = $hinh_anh;
         $this->ten_san_pham = $ten_san_pham;
@@ -77,5 +77,6 @@ class showpro
         $this->id_san_pham = $id_san_pham;
         $this->id_loai_san_pham = $id_loai_san_pham;
         $this->id_bo_truyen = $id_bo_truyen;
+        $this->trang_thai = $trang_thai;
     }
 }

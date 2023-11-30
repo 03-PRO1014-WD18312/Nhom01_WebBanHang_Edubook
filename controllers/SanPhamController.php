@@ -70,6 +70,7 @@ class SanPhamController
                     $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
                     $BinhLuanDAO = new BinhLuanDAO();
                     $binh_luan = $BinhLuanDAO->showOne($_GET['id']);
+                    $star = $BinhLuanDAO->showOne_star($_GET['id']);
                     $GioHang = new GioHangDAO();
                     $sum = $GioHang->sum($_SESSION['id']);
                     include_once "views/sach/user/ProductDetail.php";
@@ -86,6 +87,7 @@ class SanPhamController
                 $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
                 $BinhLuanDAO = new BinhLuanDAO();
                 $binh_luan = $BinhLuanDAO->showOne($_GET['id']);
+                $star = $BinhLuanDAO->showOne_star($_GET['id']);
                 $GioHang = new GioHangDAO();
                 $sum = $GioHang->sum($_SESSION['id']);
                 include_once "views/sach/user/ProductDetail.php";
@@ -98,6 +100,7 @@ class SanPhamController
             $bo_truyen = $sanPhamDAO->showBo($_GET['botruyen']);
             $BinhLuanDAO = new BinhLuanDAO();
             $binh_luan = $BinhLuanDAO->showOne($_GET['id']);
+            $star = $BinhLuanDAO->showOne_star($_GET['id']);
             $sum = 0;
             include_once "views/sach/user/ProductDetail.php";
         }

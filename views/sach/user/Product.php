@@ -26,16 +26,7 @@ include "views/layout/user/Header.php";
                                                 style="margin: auto;min-height:  300px;" alt="loi">
                                         </a>
                                     </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up"
-                                            href="index.php?controller=sanPham_view&id=<?php echo $vl->id_san_pham ?>&loai=<?php echo $vl->id_loai_san_pham ?>&botruyen=<?php echo $vl->id_bo_truyen ?>"><i
-                                                class=" fi-rs-eye"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                            href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Mua ngay" class="action-btn hover-up"
-                                            href="index.php?controller=muaHang&id=<?php echo $vl->id_san_pham ?>"><i
-                                                class="fas fa-truck"></i></i></a>
-                                    </div>
+
 
                                 </div>
                                 <div class="product-content-wrap" id="productInfo">
