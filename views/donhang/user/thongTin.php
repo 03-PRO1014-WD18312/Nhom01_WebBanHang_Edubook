@@ -39,24 +39,27 @@ include_once 'views/layout/user/Header.php'; ?>
                         <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
                         <input type="hidden" name="soLuong[]" value="<?php echo $sp->so_luong?>">
 
-                        <?php }}else if ($soLuong>0){ ?>
-                        <input type="hidden" name="idsp" value="<?php echo $sp->id_san_pham?>">
-
-                        <?php } ?>
+                        <?php }}else if ($soLuong>0 && !isset($id_bo_truyen)){ ?>
+                        <input type="hidden" name="idsp" value="<?php echo $thongTinSp[0]->id_san_pham?>">
+                        <?php }else if($soLuong>0 && isset($id_bo_truyen)){ ?>
+                            <input type="hidden" name="idbt" value="<?php echo $thongTinBT[0]->id?>">
+                            <?php foreach ($thongTinSp as $sp) {?>
+                                <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
+                            <?php }} ?>
                         <div class="form-group">
                             <label for="fname">Họ và tên:</label>
                             <input class="form-control" type="text" required="" name="txt_billing_fullname"
-                                placeholder="Họ và tên *" value="<?php echo $thongTinUs[0]->name ?>" readonly>
+                                placeholder="Họ và tên *" value="<?php echo $thongTinUs[0]->name ?>">
                         </div>
                         <div class="form-group">
                             <label for="sdt">Số điện thoại:</label>
                             <input class="form-control" required="" type="text" name="txt_billing_mobile"
-                                placeholder="Số điện thoại *" value="<?php echo $thongTinUs[0]->sdt?>" readonly>
+                                placeholder="Số điện thoại *" value="<?php echo $thongTinUs[0]->sdt?>" >
                         </div>
                         <div class="form-group">
                             <label for="diaChi">Địa chỉ:</label>
                             <input class="form-control" type="text" name="txt_billing_addr1" required=""
-                                placeholder="Địa chỉ *" value="<?php echo $thongTinUs[0]->diaChi?>" readonly>
+                                placeholder="Địa chỉ *" value="<?php echo $thongTinUs[0]->diaChi?>">
                         </div>
                         <div class="form-group">
                             <label for="diaChi">Mã hóa đơn:</label>
@@ -138,7 +141,7 @@ include_once 'views/layout/user/Header.php'; ?>
                             vnpay</button>
                     </form>
                     <br>
-                    <form action="index.php?controller=thanhToanKNH" method="post">
+                    <form action="<?php if (isset($giaGoc)){echo 'index.php?controller=thanhToanKNH&nd=boTruyen';}else{ echo 'index.php?controller=thanhToanKNH';} ?>" method="post">
                         <input type="hidden" name="so_luong" value="<?php echo $soLuong ?>">
                         <?php if ($soLuong==0 || $soLuong==""){?>
                         <?php }?>
@@ -146,9 +149,13 @@ include_once 'views/layout/user/Header.php'; ?>
                                 ?>
                         <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
                         <input type="hidden" name="soLuong[]" value="<?php echo $sp->so_luong?>">
-                        <?php }}else if ($soLuong>0){ ?>
-                        <input type="hidden" name="idsp" value="<?php echo $sp->id_san_pham?>">
-                        <?php } ?>
+                        <?php }}else if ($soLuong>0 && !isset($id_bo_truyen)){ ?>
+                        <input type="hidden" name="idsp" value="<?php echo $thongTinSp[0]->id_san_pham?>">
+                        <?php }else if($soLuong>0 && isset($id_bo_truyen)){ ?>
+                            <input type="hidden" name="idbt" value="<?php echo $thongTinBT[0]->id?>">
+                            <?php foreach ($thongTinSp as $sp) {?>
+                            <input type="hidden" name="idsp[]" value="<?php echo $sp->id_san_pham?>">
+                        <?php }} ?>
                         <input class="form-control" id="order_id" name="order_id" type="hidden"
                             value="<?php echo date("YmdHis") ?>" readonly />
                         <input class="form-control" name="amount" type="hidden" value="<?php echo $thanhTien?>">
@@ -193,7 +200,7 @@ include_once 'views/layout/user/Header.php'; ?>
                                         <th>Thành tiền</th>
                                         <td colspan="2" class="product-subtotal"><span
                                                 class="font-xl text-brand fw-900"><?php echo number_format($thanhTien, 0, ',', '.')?>
-                                                VND</span></td>
+                                                VND<p style="color: black"><?php if (isset($giaGoc)){ echo "(<s>".$giaGoc." VND</s>)";} ?></p></span></td>
                                     </tr>
                                 </tbody>
                             </table>

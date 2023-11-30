@@ -260,6 +260,12 @@ class DonHangDAO extends BaseDAO
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }
+    public function addChiTietBT($id_bo_truyen, $id_don_hang,$id_user, $so_luong)
+    {
+        $sql = "INSERT INTO `chi_tiet_don_hang_bo_truyen`(`id_bo_truyen`, `id_don_hang`, `id_user`, `soLuong`) VALUES ('$id_bo_truyen','$id_don_hang','$id_user','$so_luong')";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
     public function tt_user_don_hang($id)
     {
         $sql = "SELECT DISTINCT
