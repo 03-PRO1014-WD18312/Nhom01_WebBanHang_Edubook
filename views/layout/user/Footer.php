@@ -58,8 +58,7 @@
                         <div class="col-md-8 col-lg-12">
                             <p class="wow fadeIn animated">Từ App Store hoặc Google Play</p>
                             <div class="download-app wow fadeIn animated mob-app">
-                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
-                                        src="assets/imgs/theme/app-store.jpg" alt=""></a>
+                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="assets/imgs/theme/app-store.jpg" alt=""></a>
                                 <a href="#" class="hover-up"><img src="assets/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
@@ -118,6 +117,10 @@
 <script src="assets/js/addcard.js"></script>
 <!-- địa chỉ -->
 <script src="assets/js/form_dia_chi.js"></script>
+<!-- commnent -->
+<script src="assets/js/binh_luan.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
