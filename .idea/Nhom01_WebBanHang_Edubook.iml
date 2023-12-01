@@ -17,6 +17,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpqrcode/bindings" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpqrcode/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpqrcode/tools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
