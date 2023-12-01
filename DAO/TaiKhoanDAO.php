@@ -162,4 +162,9 @@ class TaiKhoanDAO extends BaseDAO
 
         return $users;
     }
+    public function updateMK($MatKhau,$email){
+        $sql = "UPDATE `users` SET `mat_khau`='$MatKhau' WHERE email = '$email'";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+    }
 }
