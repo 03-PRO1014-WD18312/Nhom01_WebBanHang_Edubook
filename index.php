@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once 'controllers/DangNhapController.php';
+include_once 'controllers/EmailController.php';
 include_once 'controllers/TrangChuController.php';
 include_once 'controllers/SanPhamController.php';
 include_once 'controllers/GioHangController.php';
@@ -36,6 +37,8 @@ switch ($controller) {
         $DangNhapController->logout();
         break;
     case 'quenMatKhau':
+        $EmailController = new EmailController();
+        $EmailController->quenMatKhau();
         break;
     case 'search':
         $SanPhamController = new SanPhamController();
