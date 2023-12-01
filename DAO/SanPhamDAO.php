@@ -261,10 +261,14 @@ class SanPhamDAO extends BaseDAO
     }
     public function showOne($id)
     {
-        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen ,bo_truyen.id_loai_san_pham
+        $sql = "SELECT san_pham.*, chi_tiet_bo_truyen.id_bo_truyen ,bo_truyen.id_loai_san_pham,tac_gia.ten_tac_gia,loai_san_pham.ten_loai_san_pham,nha_san_xuat.ten_nha_san_xuat,nha_phat_hanh.ten_nha_phat_hanh,bo_truyen.ten_bo_truyen
         FROM san_pham
         JOIN chi_tiet_bo_truyen ON san_pham.id_san_pham = chi_tiet_bo_truyen.id_san_pham
         JOIN bo_truyen ON chi_tiet_bo_truyen.id_bo_truyen = bo_truyen.id_bo_truyen
+        JOIN tac_gia on tac_gia.id_tac_gia = san_pham.id_tac_gia
+        JOIN nha_san_xuat on nha_san_xuat.id_nha_san_xuat = san_pham.id_nha_san_xuat
+        JOIN nha_phat_hanh on nha_phat_hanh.id_nha_phat_hanh = san_pham.id_nha_phat_hanh
+        JOIN loai_san_pham ON loai_san_pham.id_loai_san_pham = bo_truyen.id_loai_san_pham
                WHERE san_pham.id_san_pham = " . $id;
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
@@ -280,15 +284,15 @@ class SanPhamDAO extends BaseDAO
                 $row['gia_goc'],
                 $row['so_luong'],
                 $row['so_trang'],
-                $row['id_tac_gia'],
+                $row['ten_tac_gia'],
                 $row['nam_xb'],
                 $row['kich_thuoc'],
                 $row['trong_luong'],
                 $row['ngay_nhap'],
-                $row['id_loai_san_pham'],
-                $row['id_bo_truyen'],
-                $row['id_nha_san_xuat'],
-                $row['id_nha_phat_hanh'],
+                $row['ten_loai_san_pham'],
+                $row['ten_bo_truyen'],
+                $row['ten_nha_san_xuat'],
+                $row['ten_nha_phat_hanh'],
                 $row['trang_thai'],
             );
             $lists[] = $product;

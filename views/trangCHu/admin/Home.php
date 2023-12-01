@@ -39,7 +39,8 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Doanh thu</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo number_format($doanh_thu['tong_tien'], 0, ',', ',') ; ?>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <?php echo number_format($doanh_thu['tong_tien'], 0, ',', ','); ?>
                             </div>
                         </div>
                         <div class="col-auto">
@@ -67,7 +68,7 @@
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
                                         <div class="progress-bar bg-info" role="progressbar"
-                                            style="width: <?php echo $don_hanh_chua_giao['soluong'] / $don_hang['soluong'] * 100; ?>%"
+                                            style="width: <?php echo  round($don_hanh_chua_giao['soluong'] / $don_hang['soluong'] * 100, 2); ?>%"
                                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
@@ -172,32 +173,32 @@
                     ?>
                     <h4 class="small font-weight-bold"><?php echo $ten[0] ?>
                         <span class="float-right">
-                            <?php echo  $so[0] / $all_san_pham['soluong'] * 100; ?>%(<?php echo $so[0] ?>)</span>
+                            <?php echo round($so[0] / $all_san_pham['soluong'] * 100, 2); ?>%(<?php echo $so[0] ?>)</span>
                     </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-danger" role="progressbar"
-                            style="width: <?php echo  $so[0] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="20"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                            style="width: <?php echo  round($so[0] / $all_san_pham['soluong'] * 100, 2); ?>%"
+                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">
                         <?php echo $ten[1] ?>
                         <span
-                            class="float-right"><?php echo  $so[1] / $all_san_pham['soluong'] * 100; ?>%(<?php echo $so[1] ?>)</span>
+                            class="float-right"><?php echo  round($so[1] / $all_san_pham['soluong'] * 100, 2); ?>%(<?php echo $so[1] ?>)</span>
                     </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar bg-warning" role="progressbar"
-                            style="width: <?php echo  $so[1] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="40"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                            style="width: <?php echo  round($so[1] / $all_san_pham['soluong'] * 100, 2); ?>%"
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <h4 class="small font-weight-bold">
                         <?php echo $ten[2] ?> <span
-                            class="float-right"><?php echo  $so[2] / $all_san_pham['soluong'] * 100; ?>%(
+                            class="float-right"><?php echo round($so[2] / $all_san_pham['soluong'] * 100, 2); ?>%(
                             <?php echo $so[2] ?>)</span>
                     </h4>
                     <div class="progress mb-4">
                         <div class="progress-bar" role="progressbar"
-                            style="width: <?php echo  $so[2] / $all_san_pham['soluong'] * 100; ?>%" aria-valuenow="60"
-                            aria-valuemin="0" aria-valuemax="100"></div>
+                            style="width: <?php echo  round($so[2] / $all_san_pham['soluong'] * 100, 2) ?>%"
+                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <!-- <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
                     <div class="progress mb-4">
@@ -230,4 +231,5 @@ var data = <?php echo $Date; ?>
 </script>
 
 <!-- End of Main Content -->
-<?php include "views/layout/admin/Footer.php"; echo "acv";?>
+<?php include "views/layout/admin/Footer.php";
+echo "acv"; ?>

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <h3>
+    <h3 id="error">
         <?php if (isset($_SESSION['error'])) {
             echo $_SESSION['error'];
         } ?>
@@ -32,10 +32,13 @@
                 </div>
                 <span>or use your email for registration</span>
                 <input type="text" name="name" placeholder="Name" />
-                <input type="email" name="email" placeholder="Email" required />
+                <input type="email" id="email" name="email" onblur="checkEmail()" placeholder="Email" required />
                 <input type="password" name="password" placeholder="Password" required />
-                <button>Sign Up</button>
+                <button id="done_Signup">Sign Up</button>
+                <button id="error_Signup" style="display: none;" disabled>Sign Up</button>
+
             </form>
+
         </div>
         <div class="form-container sign-in-container">
             <form action="index.php?controller=dangNhap" method="post">
@@ -78,4 +81,81 @@
 </body>
 
 </html>
-<script src="assets/js/login/js.js"></script>
+<script>
+function checkEmail() {
+
+    // Lấy thông tin sản phẩm
+    var productInfo = {
+        email: document.getElementById('email').value,
+        // Thêm thông tin khác nếu cần thiết
+    };
+
+    // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "api/check_email/check.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // Xử lý kết quả từ máy chủ nếu cần
+                if (xhr.responseText > 0) {
+                    document.getElementById('error').innerHTML = "Email đã tồn tại"
+                    document.getElementById('done_Signup').style.display = "none"
+                    document.getElementById('error_Signup').style.display = "block"
+                } else {
+                    checktontai();
+                }
+
+                // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+            } else {
+                // Xử lý lỗi nếu có
+                alert("Có lỗi xảy ra");
+            }
+        }
+    };
+
+    // Chuyển đổi object thành JSON và gửi đi
+    xhr.send(JSON.stringify(productInfo));
+}
+
+function checktontai() {
+    // Lấy thông tin sản phẩm
+    var productInfo = {
+        email: document.getElementById('email').value,
+        // Thêm thông tin khác nếu cần thiết
+    };
+
+    // Sử dụng AJAX để gửi dữ liệu đến máy chủ
+    var xhl = new XMLHttpRequest();
+    xhl.open("POST", "api/check_email/check_ton_tai.php", true);
+    xhl.setRequestHeader("Content-Type", "application/json");
+
+    xhl.onreadystatechange = function() {
+        if (xhl.readyState === 4) {
+            if (xhl.status === 200) {
+                // Xử lý kết quả từ máy chủ nếu cần
+                if (xhl.responseText > 0) {
+                    document.getElementById('error').innerHTML = "Email không có thật"
+                    document.getElementById('done_Signup').style.display = "none"
+                    document.getElementById('error_Signup').style.display = "block"
+                } else {
+                    document.getElementById('error').innerHTML = "Email hợp lệ"
+                    document.getElementById('done_Signup').style.display = "block"
+                    document.getElementById('error_Signup').style.display = "none"
+                }
+
+                // Cập nhật nội dung thẻ có id là "card" với dữ liệu từ máy chủ
+            } else {
+                // Xử lý lỗi nếu có
+                alert("Có lỗi xảy ra");
+            }
+        }
+    };
+
+    // Chuyển đổi object thành JSON và gửi đi
+    xhl.send(JSON.stringify(productInfo));
+}
+</script>
+<script src="assets/js/login/js.js">
+</script>
