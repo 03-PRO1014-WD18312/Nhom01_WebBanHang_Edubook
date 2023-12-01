@@ -46,7 +46,12 @@
                                 <td><?php echo $value->name ?></td>
                                 <td><?php echo $value->email ?></td>
                                 <td><?php echo $value->quyen ?></td>
-                                <td><?php echo $value->trang_thai ?></td>
+                                <td><?php if ($vl->trang_thai == 0) {
+                                        echo "Vô hiệu hoá";
+                                    } else {
+                                        echo "Còn tông tại";
+                                    }  ?></td>
+                                </td>
                                 <td>
                                     <a href="index.php?controller=taiKhoan_delete&id=<?php echo $value->id ?>">Xoá</a>
                                     /<a href="index.php?controller=taiKhoan_fix&id=<?php echo $value->id ?>">Sửa</a>
