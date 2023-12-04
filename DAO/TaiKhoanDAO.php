@@ -76,6 +76,54 @@ class TaiKhoanDAO extends BaseDAO
 
         return $users;
     }
+    public function showEmail($email)
+    {
+        $sql = "SELECT `id_user`, `email`, `mat_khau`, `sdt`, `ten`, `anh` FROM `users` WHERE `email`='$email'";
+        $stmt = $this->PDO->prepare($sql);
+        $stmt->execute();
+
+        $users = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Create a Login object and add it to the array
+            $user = new infor(
+                $row['id_user'],
+                $row['ten'],
+                $row['email'],
+                $row['mat_khau'],
+                $row['sdt'],
+                $row['anh']
+            );
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+    public function checkUS($email,$id_user)
+    {
+        $sql = "SELECT `id_user`, `email`, `mat_khau`, `sdt`, `ten`, `anh` FROM `users` WHERE `email` = '$email' AND `id_user` = $id_user";
+        $stmt = $this->PDO->prepare($sql);
+
+        $stmt->execute();
+        $users = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Create a Login object and add it to the array
+            $user = new infor(
+                $row['id_user'],
+                $row['ten'],
+                $row['email'],
+                $row['mat_khau'],
+                $row['sdt'],
+                $row['anh']
+            );
+
+            $users[] = $user;
+        }
+
+        return $users;
+    }
     // lấy danh sách quyền hạn của trang web
     public function showRole()
     {
