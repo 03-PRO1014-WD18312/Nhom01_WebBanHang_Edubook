@@ -38,18 +38,18 @@
                 <label for="">Giá gốc</label>
             </div>
         </div>
-        <label for="">Mô tả</label>
+        <label style="width: 98%; margin-left: 23px;" for="">Mô tả</label>
         <div class="input-data">
-            <textarea name="mota" id="" cols="30" rows="5" style="width: 100%;"></textarea>
+            <textarea name="mota" id="" cols="30" rows="5" style="width: 95%; margin-left: 23px;"></textarea>
         </div>
-        <div class=" form-row">
+        <div class=" form-row" style=" margin-left: 7px;">
             <div class="input-data">
                 <input type="file" name="img">
                 <div class="underline"></div>
             </div>
         </div>
         <div class="form-row">
-            <h3 style="">Sản phẩm</h3>
+            <h3 style=" margin-left: 23px;">Sản phẩm</h3>
         </div>
         <div class="form-row " id="list">
 

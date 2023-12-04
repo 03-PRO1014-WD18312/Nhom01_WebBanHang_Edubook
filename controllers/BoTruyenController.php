@@ -98,7 +98,7 @@ class BoTruyenController
                     $loai = $loaiTruyenDAO->show();
                     $danh_muc = $loaiTruyenDAO->show();
                     $BoTruyenDAO = new BoTruyenDAO();
-                  
+
                     // $san_pham = $BoTruyenDAO->show();
                     $SanPhamDAO = new SanPhamDAO();
                     $san_pham = $SanPhamDAO->listSanPham();
