@@ -22,13 +22,13 @@ class DonHangDAOAPI
         $output = "";
         if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $output .= "  <h5 style='color: dimgray'>Thông tin khách hàng</h5>
+                $output = "  <h5 style='color: dimgray'>Thông tin khách hàng</h5>
                 <p>Người đặt hàng: " . $row['ten'] . " </p>
                 <p>Số điện thoại: " . $row['sdt'] . " </p>
                 <p>Địa chỉ nhận hàng: " . $row['dia_chi'] . " </p>";
             }
         } else {
-            $output .= "aaaaaaa";
+            $output = "aaaaaaa";
         }
         return $output;
     }

@@ -197,12 +197,12 @@
                     </div>
                 </div>
             </li>
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Dashboard
             <li class="nav-item active">
                 <a class="nav-link" href="index.php?controller=chuyenDoi">
                     <i class="fas fa-fw fa-truck"></i>
                     <span>Tới trang mua hàng</span></a>
-            </li>
+            </li> -->
         </ul>
         <!-- End of Sidebar -->
 
@@ -249,23 +249,6 @@
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">Thông báo đơn hàng</h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <span class="font-weight-bold">Shop đang có đơn hàng mới</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500"
-                                    href="index.php?controller=donHang">Show All Alerts</a>
-                            </div>
                         </li>
 
                         <!-- Nav Item - Messages -->

@@ -77,29 +77,7 @@
         <h6>Tác giả</h6>
         <div class="input-data">
             <select name="id_tac_gia" id="">
-                <?php foreach ( $tg as $vl) {?>
-                <option value="<?php echo $vl->id ?>"><?php echo $vl->ten ?></option>
-                <?php } ?>
-            </select>
-            <div class="underline"></div>
-        </div>
-    </div>
-    <div class=" form-row">
-        <h6>Loại sản phẩm</h6>
-        <div class="input-data">
-            <select name="id_loai_san_pham" id="">
-                <?php foreach ($l as $vl) { ?>
-                    <option value="<?php echo $vl->id ?>"><?php echo $vl->ten ?></option>
-                <?php } ?>
-            </select>
-            <div class="underline"></div>
-        </div>
-    </div>
-    <div class=" form-row">
-        <h6>Bộ truyện</h6>
-        <div class="input-data">
-            <select name="id_bo_truyen" id="">
-                <?php foreach ($b as $vl) { ?>
+                <?php foreach ($tg as $vl) { ?>
                     <option value="<?php echo $vl->id ?>"><?php echo $vl->ten ?></option>
                 <?php } ?>
             </select>

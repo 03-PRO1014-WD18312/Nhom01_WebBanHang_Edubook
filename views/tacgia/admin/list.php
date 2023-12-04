@@ -37,21 +37,21 @@
                     <tbody>
                         <?php foreach ($list as $key => $value) {
                         ?>
-                            <tr>
-                                <td><?php echo $key + 1 ?></td>
-                                <td><?php echo $value->ten ?></td>
-                                <td><?php echo $value->soluong ?></td>
-                                <td><?php if ($vl->trang_thai == 0) {
+                        <tr>
+                            <td><?php echo $key + 1 ?></td>
+                            <td><?php echo $value->ten ?></td>
+                            <td><?php echo $value->soluong ?></td>
+                            <td><?php if ($value->trang_thai == 0) {
                                         echo "Không còn lưu trữ ";
                                     } else {
                                         echo "Còn tông tại";
                                     }  ?></td>
-                                </td>
-                                <td>
-                                    <a href="index.php?controller=tacGia_delete&id=<?php echo $value->id ?>">Xoá</a>
-                                    /<a href="index.php?controller=tacGia_fix&id=<?php echo $value->id ?>">Sửa</a>
-                                </td>
-                            </tr>
+                            </td>
+                            <td>
+                                <a href="index.php?controller=tacGia_delete&id=<?php echo $value->id ?>">Xoá</a>
+                                /<a href="index.php?controller=tacGia_fix&id=<?php echo $value->id ?>">Sửa</a>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
