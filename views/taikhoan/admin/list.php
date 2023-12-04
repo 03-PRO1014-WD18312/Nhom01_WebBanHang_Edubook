@@ -41,22 +41,22 @@
                         <?php
                         foreach ($list as $key => $value) {
                         ?>
-                            <tr>
-                                <td><?php echo $key + 1 ?></td>
-                                <td><?php echo $value->name ?></td>
-                                <td><?php echo $value->email ?></td>
-                                <td><?php echo $value->quyen ?></td>
-                                <td><?php if ($vl->trang_thai == 0) {
+                        <tr>
+                            <td><?php echo $key + 1 ?></td>
+                            <td><?php echo $value->name ?></td>
+                            <td><?php echo $value->email ?></td>
+                            <td><?php echo $value->quyen ?></td>
+                            <td><?php if ($value->trang_thai == 0) {
                                         echo "Vô hiệu hoá";
                                     } else {
-                                        echo "Còn tông tại";
+                                        echo "Còn tồn tại";
                                     }  ?></td>
-                                </td>
-                                <td>
-                                    <a href="index.php?controller=taiKhoan_delete&id=<?php echo $value->id ?>">Xoá</a>
-                                    /<a href="index.php?controller=taiKhoan_fix&id=<?php echo $value->id ?>">Sửa</a>
-                                </td>
-                            </tr>
+                            </td>
+                            <td>
+                                <a href="index.php?controller=taiKhoan_delete&id=<?php echo $value->id ?>">Xoá</a>
+                                /<a href="index.php?controller=taiKhoan_fix&id=<?php echo $value->id ?>">Sửa</a>
+                            </td>
+                        </tr>
                         <?php } ?>
 
                     </tbody>

@@ -37,22 +37,22 @@
                     </tfoot>
                     <tbody>
                         <?php foreach ($list as $key => $vl) { ?>
-                            <tr>
-                                <td><?php echo $key + 1 ?></td>
-                                <td><?php echo $vl->ten ?></td>
-                                <td><?php echo $vl->soluong ?></td>
-                                <td><?php if ($vl->trang_thai == 0) {
+                        <tr>
+                            <td><?php echo $key + 1 ?></td>
+                            <td><?php echo $vl->ten ?></td>
+                            <td><?php echo $vl->soluong ?></td>
+                            <td><?php if ($vl->trang_thai == 0) {
                                         echo "Không còn lưu trữ ";
                                     } else {
-                                        echo "Còn tông tại";
+                                        echo "Còn tồn tại";
                                     }  ?></td>
-                                </td>
-                                <td>
-                                    <a href="index.php?controller=loaisanpham_delete&id=<?php echo $vl->id ?>">xoá</a>/
-                                    <a href="index.php?controller=loaisanpham_fix&id=<?php echo $vl->id ?>">sửa</a>
-                                </td>
+                            </td>
+                            <td>
+                                <a href="index.php?controller=loaisanpham_delete&id=<?php echo $vl->id ?>">xoá</a>/
+                                <a href="index.php?controller=loaisanpham_fix&id=<?php echo $vl->id ?>">sửa</a>
+                            </td>
 
-                            </tr>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
