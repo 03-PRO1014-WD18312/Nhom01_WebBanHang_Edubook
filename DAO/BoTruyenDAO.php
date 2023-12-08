@@ -14,7 +14,7 @@ class BoTruyenDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta'], $row['trang_thai']);
             $lists[] = $product;
         }
         return $lists;
@@ -30,7 +30,7 @@ class BoTruyenDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta'], $row['trang_thai']);
             $lists[] = $product;
         }
         return $lists;
@@ -46,7 +46,7 @@ class BoTruyenDAO extends BaseDAO
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             // Tạo đối tượng sản phẩm từ dữ liệu và thêm vào danh sách
-            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta']);
+            $product = new ShowBoTruyen($row['id_bo_truyen'], $row['ten_bo_truyen'], $row['hinh_anh'], $row['id_loai_san_pham'], $row['gia_ban'], $row['gia_goc'], $row['mo_ta'], $row['trang_thai']);
             $lists[] = $product;
         }
         return $lists;

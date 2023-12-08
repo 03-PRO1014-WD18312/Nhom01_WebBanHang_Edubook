@@ -11,7 +11,9 @@
         Thêm Bộ truyện
     </div>
     <form action="index.php?controller=boTruyen_fix" method="post" enctype="multipart/form-data" style="min-height: 500px;">
-        <?php foreach ($list as $key => $vl) { ?>
+        <?php foreach ($list as $key => $vl) {
+
+        ?>
             <input type="hidden" name="id" value="<?php echo $vl->id ?>">
             <div class=" form-row">
                 <div class="input-data">
@@ -42,15 +44,15 @@
                 <div class="input-data">
                     <select name="loai" id="">
                         <?php foreach ($loai as $key => $value) {
-                            if ($value->id == $vl->id) {
+                            if ($value->id == $vl->loai) {
                         ?>
-                                <option value="<?php echo $vl->id ?>"><?php echo $value->ten ?></option>
+                                <option value="<?php echo $vl->loai ?>"><?php echo $value->ten ?></option>
                         <?php
                             }
                         }
                         ?>
                         <?php foreach ($loai as $key => $value) {
-                            if ($value->id != $vl->id) {
+                            if ($value->id != $vl->loai) {
                         ?>
                                 <option value="<?php echo $value->id ?>"><?php echo $value->ten ?></option>
                         <?php

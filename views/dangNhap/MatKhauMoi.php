@@ -26,6 +26,7 @@
         <label for="mk1">Nhập lại mật khẩu mới:</label>
         <input type="text" name="mk2" required>
         <input type="hidden" name="email" value="<?php echo $email ?>" required>
+        <input type="hidden" name="id" value="<?php echo $id ?>" required>
         <input type="submit" value="Gửi">
         <a href="index.php?controller=dangNhap">Trở về lại trang đăng nhập</a>
     </form>
