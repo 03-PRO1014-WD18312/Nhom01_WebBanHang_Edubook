@@ -48,7 +48,7 @@ class EmailController
                     //Thiếu thông báo nhập không trùng mk
                     $email = $_POST['email'];
                     $id = $_POST['id'];
-                    header("location: http://localhost:3000/index.php?controller=quenMatKhau&datLaiMatKhau&id=" . $id . "&email=" . $email);
+                    header("location: http://localhost/php/Nhom01_WebBanHang_Edubook/index.php?controller=quenMatKhau&datLaiMatKhau&id=" . $id . "&email=" . $email);
                 }
             }
         } else {

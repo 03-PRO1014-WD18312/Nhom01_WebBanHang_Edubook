@@ -37,7 +37,7 @@ class EmailDAO
         $tieuDe = "Đặt lại mật khẩu";
 
         // Tạo đường link dẫn
-        $linkDanhLaiMatKhau = 'http://localhost:3000/index.php?controller=quenMatKhau&datLaiMatKhau&id=' . $id . '&email=' . $email;
+        $linkDanhLaiMatKhau = 'http://localhost/php/Nhom01_WebBanHang_Edubook/index.php?controller=quenMatKhau&datLaiMatKhau&id=' . $id . '&email=' . $email;
 
         // Thay thế nội dung email với đường link dẫn
         $htmlContent = str_replace("{linkDanhLaiMatKhau}", $linkDanhLaiMatKhau, $htmlContent);

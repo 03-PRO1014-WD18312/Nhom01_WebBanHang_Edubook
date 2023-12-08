@@ -24,13 +24,13 @@
                                             </figure>
                                         <?php } ?>
                                     </div>
-                                    <!-- THUMBNAILS
+                                    <!-- THUMBNAILS -->
                                     <div class="slider-nav-thumbnails pl-15 pr-15">
                                         <?php foreach ($imgs as $key => $vl) { ?>
                                         <div><img src="assets/imgs/shop/<?php echo $vl['hinh_anh'] ?>"
                                                 alt="product image"></div>
                                         <?php } ?>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <!-- End Gallery -->
                                 <div class="social-icons single-share">
