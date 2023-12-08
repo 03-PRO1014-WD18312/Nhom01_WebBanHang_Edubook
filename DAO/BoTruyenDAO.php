@@ -109,17 +109,20 @@ class BoTruyenDAO extends BaseDAO
     // sửa bộ truyên
     public function update($id, $loai, $name, $gia_ban, $gia_goc, $mo_ta, $trang_thai, $img)
     {
-        if (isset($img)) {
-            // lưu file
+        if (isset($img) && !empty($img['name'])) {
+            // File upload logic
             $fileName = $img['name'];
             $tmp = $img['tmp_name'];
             $mov = 'assets/imgs/shop/' . $fileName;
 
             move_uploaded_file($tmp, $mov);
-            $sql = "UPDATE `bo_truyen` SET `id_loai_san_pham`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`hinh_anh`='$fileName',`trang_thai`='$trang_thai' WHERE   id_bo_truyen = $id";
+
+            $sql = "UPDATE `bo_truyen` SET `id_loai_san_pham`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`hinh_anh`='$fileName',`trang_thai`='$trang_thai' WHERE id_bo_truyen = $id";
         } else {
-            $sql = "UPDATE `bo_truyen` SET `id_loai_san_pham`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`trang_thai`='$trang_thai' WHERE   id_bo_truyen = $id";
+            // No file uploaded, update without image
+            $sql = "UPDATE `bo_truyen` SET `id_loai_san_pham`='$loai',`ten_bo_truyen`='$name',`gia_ban`='$gia_ban',`gia_goc`='$gia_goc',`mo_ta`='$mo_ta',`trang_thai`='$trang_thai' WHERE id_bo_truyen = $id";
         }
+
         $stmt = $this->PDO->prepare($sql);
         $stmt->execute();
     }

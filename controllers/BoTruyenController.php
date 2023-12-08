@@ -138,7 +138,10 @@ class BoTruyenController
                 if (isset($_POST['ten'])) {
                     $BoTruyenDAO = new BoTruyenDAO();
                     $BoTruyenDAO->update($_POST['id'], $_POST['loai'], $_POST['ten'], $_POST['giaban'], $_POST['giagoc'], $_POST['mota'], $_POST['trang_thai'], $_FILES['img']);
-                    $BoTruyenDAO->addPro($_POST['id'], $_POST['add_pro']);
+
+                    if (isset($_POST['add_pro'])) {
+                        $BoTruyenDAO->addPro($_POST['id'], $_POST['add_pro']);
+                    }
                     // var_dump($_POST['add_pro']);
                     $list = $BoTruyenDAO->show();
                     $_SESSION['error'] = 'Sửa thông tin thành công';
