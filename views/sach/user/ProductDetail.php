@@ -75,13 +75,13 @@ input[type="number"]::-webkit-inner-spin-button {
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
                                         <ul>
-                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Thời gian giao hàng </li>
-                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Chính sách hoàn trả</li>
-                                            <li><i class="fi-rs-credit-card mr-5"></i> Đổi sản phẩm trong 30 ngày
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> Giao hàng nhanh </li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Đổi trả hàng khi có lỗi
+                                                từ nhà sản xuất</li>
+                                            <li><i class="fi-rs-credit-card mr-5"></i> Phục vụ hỗ trợ 24/24
                                             </li>
                                         </ul>
                                     </div>
-
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                     <form action="index.php?controller=muaHang&nd=muaHang" method="post">
                                         <div class="detail-extralink">
@@ -93,8 +93,16 @@ input[type="number"]::-webkit-inner-spin-button {
                                             <div class="product-extra-link2">
                                                 <button type="submit" class="button button-add-to-cart">Mua
                                                     ngay</button>
-                                                <a aria-label="Compare" class="action-btn hover-up"
-                                                    href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                                <?php if (isset($_SESSION['id'])) { ?>
+                                                <a aria-label="Add To Cart" id="add_card"
+                                                    onclick="addToCart(<?php echo $vl->id_san_pham ?>)"
+                                                    class="action-btn hover-up"><i
+                                                        class="fi-rs-shopping-bag-add"></i></a>
+                                                <?php } else { ?><a aria-label="Add To Cart" id="add_card"
+                                                    href="index.php?controller=dangNhap" class="action-btn hover-up"><i
+                                                        class="fi-rs-shopping-bag-add"></i></aria-label> </a>
+                                                <?php } ?>
+
                                             </div>
                                         </div>
                                     </form>
